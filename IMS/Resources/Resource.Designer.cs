@@ -79,6 +79,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 修改密碼 的當地語系化字串。
+        /// </summary>
+        public static string ChangePassword {
+            get {
+                return ResourceManager.GetString("ChangePassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 語系 的當地語系化字串。
         /// </summary>
         public static string LangSys {
@@ -97,6 +106,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 登出 的當地語系化字串。
+        /// </summary>
+        public static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 密碼 的當地語系化字串。
         /// </summary>
         public static string Password {
@@ -106,11 +124,38 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 畜牧場管理系統 的當地語系化字串。
+        ///   查詢類似 智慧型畜牧場管理平台 的當地語系化字串。
         /// </summary>
         public static string SysTitle {
             get {
                 return ResourceManager.GetString("SysTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 使用者 的當地語系化字串。
+        /// </summary>
+        public static string User {
+            get {
+                return ResourceManager.GetString("User", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 使用者設定 的當地語系化字串。
+        /// </summary>
+        public static string UserSetting {
+            get {
+                return ResourceManager.GetString("UserSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 歡迎 的當地語系化字串。
+        /// </summary>
+        public static string Welcome {
+            get {
+                return ResourceManager.GetString("Welcome", resourceCulture);
             }
         }
     }

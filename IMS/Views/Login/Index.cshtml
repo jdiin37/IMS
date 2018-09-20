@@ -12,6 +12,13 @@
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        function doIt(item, baseUrl) {
+            window.location.href = baseUrl + '?lang=' + item.value;
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -31,10 +38,11 @@
                             </p>
                             <p>
                                 <label for="langSelect">@IMS.Resources.Resource.LangSys</label>
-                                <select class="form-control" id="langSelect">
-                                    <option>中文</option>
-                                    <option>English</option>
+                                <select class="form-control" id="langSelect" onchange="doIt(this,'@Url.Action("ChangeLang")')">
+                                    <option value="zh-TW">繁體中文</option>
+                                    <option value="en-US">English</option>
                                 </select>
+                                @ViewBag.langSys
                             </p>
                             <br />
                             <p>
@@ -47,7 +55,6 @@
             </div>
         </div>
     </div>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    
 </body>
 </html>

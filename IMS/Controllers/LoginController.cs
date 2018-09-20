@@ -14,12 +14,8 @@ namespace IMS.Controllers
             return View();
         }
 
-
         public ActionResult Login()
         {
-
-
-
 
             if(true)
             {
@@ -30,6 +26,12 @@ namespace IMS.Controllers
                 return RedirectToAction("Index");
             }
             
+        }
+
+        public ActionResult ChangeLang(string lang)
+        {
+            ViewBag.langSys = lang;
+            return RedirectToAction("Index");
         }
     }
 }
