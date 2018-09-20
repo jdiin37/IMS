@@ -126,6 +126,9 @@
   <data name="ChangePassword" xml:space="preserve">
     <value>修改密碼</value>
   </data>
+  <data name="Creater" xml:space="preserve">
+    <value>Kuo,TsungHan</value>
+  </data>
   <data name="LangSys" xml:space="preserve">
     <value>語系</value>
   </data>

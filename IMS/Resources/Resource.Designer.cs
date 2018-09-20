@@ -88,6 +88,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Kuo,TsungHan 的當地語系化字串。
+        /// </summary>
+        public static string Creater {
+            get {
+                return ResourceManager.GetString("Creater", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 語系 的當地語系化字串。
         /// </summary>
         public static string LangSys {

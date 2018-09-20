@@ -13,5 +13,13 @@ namespace IMS.Controllers
         {
             return View();
         }
+
+        [ChildActionOnly]
+        public ActionResult NavMenu()
+        {
+            return View();
+        }
+
+
     }
 }

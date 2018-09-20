@@ -12,7 +12,7 @@
     background-color: #2e353d;
     position: fixed;
     top: 50px;
-    width: 300px;
+    width: 220px;
     height: 100%;
     color: #e1ffff;
 }
@@ -168,3 +168,47 @@
 }
 
 /*left menu end*/
+
+
+
+/* btn circle start*/
+.btn-circle {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571429;
+    border-radius: 15px;
+}
+
+    .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+    }
+
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        font-size: 24px;
+        line-height: 1.33;
+        border-radius: 35px;
+    }
+
+/*btn circle end*/
+
+
+.body-content{
+	margin-left:220px;
+}
+
+@media (max-width: 767px){
+	.body-content {
+		margin-left: 0px;
+	}
+}
