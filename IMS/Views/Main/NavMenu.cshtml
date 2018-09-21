@@ -12,53 +12,45 @@
         <ul id="menu-content" class="menu-content collapse out">
             <li>
                 <a href="#">
-                    <i class="fa fa-dashboard fa-lg"></i> Dashboard 111
-                </a>
-            </li>
-            <li data-toggle="collapse" data-target="#products" class="collapsed">
-                <a href="#"><i class="fa fa-gift fa-lg"></i> UI Elements <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="products">
-                <li class="active"><a href="#">CSS3 Animation</a></li>
-                <li><a href="#">General</a></li>
-                <li><a href="#">Buttons</a></li>
-                <li><a href="#">Tabs & Accordions</a></li>
-                <li><a href="#">Typography</a></li>
-                <li><a href="#">FontAwesome</a></li>
-                <li><a href="#">Slider</a></li>
-                <li><a href="#">Panels</a></li>
-                <li><a href="#">Widgets</a></li>
-                <li><a href="#">Bootstrap Model</a></li>
-            </ul>
-
-            <li data-toggle="collapse" data-target="#service" class="collapsed">
-                <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="service">
-                <li>New Service 1</li>
-                <li>New Service 2</li>
-                <li>New Service 3</li>
-            </ul>
-
-            <li data-toggle="collapse" data-target="#new" class="collapsed">
-                <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
-            </li>
-            <ul class="sub-menu collapse" id="new">
-                <li>New New 1</li>
-                <li>New New 2</li>
-                <li>New New 3</li>
-            </ul>
-
-            <li>
-                <a href="#">
-                    <i class="fa fa-user fa-lg"></i> Profile
+                    <i class="fa fa-home fa-lg"></i> @IMS.Resources.Resource.MenuHome
                 </a>
             </li>
             <li>
                 <a href="#">
-                    <i class="fa fa-users fa-lg"></i> Users
+                    <i class="fa fa-dashboard fa-lg"></i> @IMS.Resources.Resource.MenuDashboard
                 </a>
             </li>
+            <li data-toggle="collapse" data-target="#pigM" class="collapsed">
+                <a href="#"><i class="fa fa-paw fa-lg"></i> @IMS.Resources.Resource.MenuPigM <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="pigM">
+                <li onclick="location.href='@Url.Action("Index","pigM_sow")'"><a href="">母豬管理</a></li>
+                <li><a href="#">小豬管理</a></li>
+            </ul>
+
+            <li data-toggle="collapse" data-target="#report" class="collapsed">
+                <a href="#"><i class="fa fa-file-text-o fa-lg"></i> @IMS.Resources.Resource.MenuReport <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="report">
+                <li>報表a</li>
+                <li>報表b</li>
+                <li>報表c</li>
+            </ul>
+
+            <li data-toggle="collapse" data-target="#MenuStock" class="collapsed">
+                <a href="#"><i class="fa fa-inbox fa-lg"></i> @IMS.Resources.Resource.MenuStock <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="MenuStock">
+                <li>項目設定</li>
+            </ul>
+
+            <li data-toggle="collapse" data-target="#MenuSys" class="collapsed">
+                <a href="#"><i class="fa fa-gear fa-lg"></i> @IMS.Resources.Resource.MenuSys <span class="arrow"></span></a>
+            </li>
+            <ul class="sub-menu collapse" id="MenuSys">
+                <li>場內消息</li>
+                <li>系統設定</li>
+            </ul>
         </ul>
     </div>
 </div>

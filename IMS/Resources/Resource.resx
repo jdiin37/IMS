@@ -138,8 +138,29 @@
   <data name="Logout" xml:space="preserve">
     <value>登出</value>
   </data>
+  <data name="MenuDashboard" xml:space="preserve">
+    <value>儀表板</value>
+  </data>
+  <data name="MenuHome" xml:space="preserve">
+    <value>首頁</value>
+  </data>
+  <data name="MenuPigM" xml:space="preserve">
+    <value>豬隻管理</value>
+  </data>
+  <data name="MenuReport" xml:space="preserve">
+    <value>報表</value>
+  </data>
+  <data name="MenuStock" xml:space="preserve">
+    <value>庫存</value>
+  </data>
+  <data name="MenuSys" xml:space="preserve">
+    <value>系統</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>密碼</value>
+  </data>
+  <data name="SysMenu" xml:space="preserve">
+    <value>系統選單</value>
   </data>
   <data name="SysTitle" xml:space="preserve">
     <value>智慧型畜牧場管理平台</value>

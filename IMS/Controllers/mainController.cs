@@ -14,6 +14,16 @@ namespace IMS.Controllers
             return View();
         }
 
+        
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Index","Login");
+        }
+
+
+
+
+
         [ChildActionOnly]
         public ActionResult NavMenu()
         {

@@ -124,11 +124,74 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 儀表板 的當地語系化字串。
+        /// </summary>
+        public static string MenuDashboard {
+            get {
+                return ResourceManager.GetString("MenuDashboard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 首頁 的當地語系化字串。
+        /// </summary>
+        public static string MenuHome {
+            get {
+                return ResourceManager.GetString("MenuHome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 豬隻管理 的當地語系化字串。
+        /// </summary>
+        public static string MenuPigM {
+            get {
+                return ResourceManager.GetString("MenuPigM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 報表 的當地語系化字串。
+        /// </summary>
+        public static string MenuReport {
+            get {
+                return ResourceManager.GetString("MenuReport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 庫存 的當地語系化字串。
+        /// </summary>
+        public static string MenuStock {
+            get {
+                return ResourceManager.GetString("MenuStock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 系統 的當地語系化字串。
+        /// </summary>
+        public static string MenuSys {
+            get {
+                return ResourceManager.GetString("MenuSys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 密碼 的當地語系化字串。
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 系統選單 的當地語系化字串。
+        /// </summary>
+        public static string SysMenu {
+            get {
+                return ResourceManager.GetString("SysMenu", resourceCulture);
             }
         }
         

@@ -11,3 +11,14 @@
 
 /* Set width on the form input elements since they're 100% wide by default */
 
+
+
+.body-content{
+	margin-left:220px;
+}
+
+/*@media (max-width: 767px){
+    .body-content {
+        margin-left: 0px;
+    }
+}*/
