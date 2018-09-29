@@ -1,0 +1,76 @@
+﻿@model IEnumerable<IMS.Models.PigResume>
+
+@{
+    ViewBag.Title = "豬隻生產履歷";
+}
+
+<h2>Index</h2>
+
+<p >
+    @Html.ActionLink("新增履歷", "Create","", new {Class= "btn btn-primary" })
+</p>
+<br/>
+<table class="table table-striped table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PigFarmID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Slaughterhouse)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.CreDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreUser)
+        </th>*@
+        @*<th>
+            @Html.DisplayNameFor(model => model.ModDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModUser)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PigFarmID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Slaughterhouse)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.CreDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreUser)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModUser)
+        </td>*@
+        <td>
+            @Html.ActionLink("編輯", "Edit", new { id = item.ID },new { Class = "btn btn-success"}) |
+            @Html.ActionLink("生產流程紀錄", "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |
+            @Html.ActionLink("刪除", "Delete", new { id=item.ID }, new { Class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

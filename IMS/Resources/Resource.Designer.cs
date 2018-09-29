@@ -187,6 +187,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 豬隻履歷管理 的當地語系化字串。
+        /// </summary>
+        public static string PigResumeM {
+            get {
+                return ResourceManager.GetString("PigResumeM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 豬隻生產履歷 的當地語系化字串。
+        /// </summary>
+        public static string PigResumeMProduce {
+            get {
+                return ResourceManager.GetString("PigResumeMProduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 系統選單 的當地語系化字串。
         /// </summary>
         public static string SysMenu {
