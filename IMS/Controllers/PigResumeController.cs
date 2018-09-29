@@ -14,7 +14,7 @@ namespace IMS.Controllers
         {
             List<PigResume> list = new List<PigResume>();
 
-            string[] id = { "01", "02", "03" };
+            int[] id = { 1, 2, 3 };
             string[] PigFarmID = { "AA", "BB", "CC" };
             string[] Type = { "黑豬", "白豬", "毛豬" };
             string[] Slaughterhouse = { "屏東屠宰場", "長治屠宰場", "左營屠宰場" };
