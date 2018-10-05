@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<IMS.Models.PigResume>
 
 @{
-    ViewBag.Title = "豬隻生產履歷";
+    ViewBag.Title = @IMS.Resources.Resource.PigResumeMProduce;
 }
 
-<h2>Index</h2>
+<h2>@IMS.Resources.Resource.PigResumeMProduce</h2>
 
 <p >
     @Html.ActionLink("新增履歷", "Create","", new {Class= "btn btn-primary" })
@@ -14,6 +14,9 @@
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.PigFarmID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PigNo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.BirthDate)
@@ -45,6 +48,9 @@
             @Html.DisplayFor(modelItem => item.PigFarmID)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.PigNo)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.BirthDate)
         </td>
         <td>
@@ -66,9 +72,9 @@
             @Html.DisplayFor(modelItem => item.ModUser)
         </td>*@
         <td>
-            @Html.ActionLink("編輯", "Edit", new { id = item.ID },new { Class = "btn btn-success"}) |
-            @Html.ActionLink("生產流程紀錄", "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |
-            @Html.ActionLink("刪除", "Delete", new { id=item.ID }, new { Class = "btn btn-danger" })
+            @Html.ActionLink("編輯", "Edit", new { id = item.ID }, new { Class = "btn btn-success" }) |
+            @Html.ActionLink("生產流程紀錄", "Details", new { id = item.ID }, new { Class = "btn btn-info" }) |
+            @Html.ActionLink("刪除", "Delete", new { id = item.ID }, new { Class = "btn btn-danger" })
         </td>
     </tr>
 }

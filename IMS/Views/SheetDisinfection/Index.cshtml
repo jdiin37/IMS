@@ -1,0 +1,58 @@
+﻿@model IEnumerable<IMS.Models.SheetDisinfection>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>@IMS.Resources.Resource.SheetDisinfection</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ExcuteDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Building)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UseType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UseDose)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExcuteDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Building)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UseType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UseDose)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>       
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -21,6 +21,7 @@
         // Code First 模型的詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=390109。
 
          public virtual DbSet<PigResume> PigResume { get; set; }
+         public virtual DbSet<SheetDisinfection> SheetDisinfection { get; set; }
     }
 
     //public class MyEntity

@@ -10,7 +10,7 @@
     <div class="menu-list">
 
         <ul id="menu-content" class="menu-content collapse out">
-            <li>
+            <li onclick="location.href='@Url.Action("Index","Main")'">
                 <a href="#">
                     <i class="fa fa-home fa-lg"></i> @IMS.Resources.Resource.MenuHome
                 </a>
@@ -27,13 +27,18 @@
                 <li onclick="location.href='@Url.Action("Index","PigResume")'">生產履歷</li>
             </ul>
 
-            <li data-toggle="collapse" data-target="#report" class="collapsed">
-                <a href="#"><i class="fa fa-file-text-o fa-lg"></i> @IMS.Resources.Resource.MenuReport <span class="arrow"></span></a>
+            <li data-toggle="collapse" data-target="#baseSheet" class="collapsed">
+                <a href="#"><i class="fa fa-file-text-o fa-lg"></i> @IMS.Resources.Resource.BaseSheet <span class="arrow"></span></a>
             </li>
-            <ul class="sub-menu collapse" id="report">
-                <li>報表a</li>
-                <li>報表b</li>
-                <li>報表c</li>
+            <ul class="sub-menu collapse" id="baseSheet">
+                <li onclick="location.href='@Url.Action("Index","SheetDisinfection")'">@IMS.Resources.Resource.SheetDisinfection</li>
+                <li>猪隻治療及治療後流向紀錄表</li>
+                <li>整場購買藥品紀錄表</li>
+                <li>猪隻生產履歷紀錄表</li>
+                <li>屠宰場產銷履歷猪隻進貨明細表</li>
+                <li>作業場與屠體各部位溫度紀錄表</li>
+                <li>小分切場（廠）產銷履歷猪肉進貨明細表</li>
+                <li>作業場溫度紀錄表</li>
             </ul>
 
             <li data-toggle="collapse" data-target="#MenuStock" class="collapsed">

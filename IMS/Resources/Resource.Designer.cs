@@ -70,6 +70,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 基本資料表單 的當地語系化字串。
+        /// </summary>
+        public static string BaseSheet {
+            get {
+                return ResourceManager.GetString("BaseSheet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 取消 的當地語系化字串。
         /// </summary>
         public static string Cancel {
@@ -201,6 +210,15 @@ namespace IMS.Resources {
         public static string PigResumeMProduce {
             get {
                 return ResourceManager.GetString("PigResumeMProduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 全場消毒紀錄表 的當地語系化字串。
+        /// </summary>
+        public static string SheetDisinfection {
+            get {
+                return ResourceManager.GetString("SheetDisinfection", resourceCulture);
             }
         }
         

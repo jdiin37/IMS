@@ -134,12 +134,18 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\pigM_sowController.cs" />
     <Compile Include="Controllers\PigResumeController.cs" />
+    <Compile Include="Controllers\SheetDisinfectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810050914519_add sheetDisinfection.cs" />
+    <Compile Include="Migrations\201810050914519_add sheetDisinfection.Designer.cs">
+      <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\PigResume.cs" />
+    <Compile Include="Models\SheetDisinfection.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -161,6 +167,8 @@
     <Content Include="Views\Main\NavMenu.cshtml" />
     <Content Include="Views\pigM_sow\Index.cshtml" />
     <Content Include="Views\PigResume\Index.cshtml" />
+    <Content Include="Views\SheetDisinfection\Index.cshtml" />
+    <Content Include="Views\SheetDisinfection\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -172,6 +180,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Migrations\201810050914519_add sheetDisinfection.resx">
+      <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.Designer.cs</LastGenOutput>

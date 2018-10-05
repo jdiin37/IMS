@@ -117,73 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Account" xml:space="preserve">
-    <value>帳號</value>
+  <data name="Source" xml:space="preserve">
+    <value>H4sIAAAAAAAEAO1ZzW7jNhC+F+g7CDq1QNaKk0sbyLvI2kkRdO0EUXbvtDS2iVKUSlKB/Ww99JH6Ch39UTTlOPJfsFgEucij4Tc/5Iw+Tv7751//0zJmzjMISRM+cPu9c9cBHiYR5fOBm6nZh9/cTx9//sm/ieKl863Wu8z1cCWXA3ehVHrleTJcQExkL6ahSGQyU70wiT0SJd7F+fnvXr/vAUK4iOU4/mPGFY2h+IE/hwkPIVUZYeMkAiYrOb4JClRnQmKQKQlh4N6Ng16p5TrXjBL0IAA2cx3CeaKIQv+uvkoIlEj4PEhRQNjTKgXUmxEmofL7qlHvGsL5RR6C1yysocJMqiTeEbB/WeXEs5fvlVlX5wyzdoPZVas86iJzA/eBzh9BZjFGb1u7GjKRa5qZ7Wn9MwelZ3rj8Xzkf2fOMGMqEzDgkClB2JnzkE0ZDf+E1VPyF/ABzxgzXUKn8N2aAEUPIklBqNUjzCpH70au462v8+yFepmxpoqAq8sL15mgcTJloHfciDZQiYA/gIMgCqIHohQI3LC7CIqctaxbtjAxk6Q2h2cMy8R1xmT5BfhcLQYuPrrOLV1CVEsqF75yilWFi5TIoIOVWyLiJrCTWfpMhVqMMBW1pfz5ieYHpZXF7Uj58pO7GzCSzRe4ZYskk6c3NxRwlNwgDrYkcXJ/sXqP4i/inMBf32v60tZuFSwA1IhKymcQlh2xU9dqrXvvXuu2bpZhpo5zpD9nlEXFqTjxmcaD+CatBe2MkjfoKZNEvTeuH6lxIXlVhGJJ1gU9DnIRLNWGtoXeVZ1LVpbW4ykhA1Bt4tb4UDLenvHO246yoaG20DbobMqBjrbh6F5J0msy773A5v0xSVPcDoPdVxInKKn98EOwO/eNSwwvlBsosPZWW8IGSuZgvUXT6OktFVLh0SNTkh+IYRS31Iy9fSHjtSF7++yPR5P/ekX+rE9Qi4jbAE32bjGgGPt/ERtoR7YYL1YHIWFEbPgYDROWxfylD9q21RU5NgEq0U4YNfW1cGpxdyyD3JpYhrg7VvkNMmFKSXcEm7uaWPa77qi605twWrgTTtk5LZxS2B1Hd3ITRwt3wmn7o4VtHN+zysEuOK9VcRZRs0u4U4G3u+aehf4qUIeC74BxmsI3eaWJYsp3KFtNLdeqVku7I2nuaAJp4U44JTe0cEphd5yS+5kgpeS93L+rcm9xHVtFW9ecx+I2fsUzXh9ntohHqeI6mKBnGuWkI1hJBXEvV+gFf7MhoxhvozAmnM5AqvLq6l6c9y+syej3M6X0pIxY11Hlm1/AaZ7WV6/YO15J1iaG/JmIcEHELzFZ/mpC7TUVPAitNfmL8FkdOvk7yKXN072DIK2L8N4xWhfhg3yyLrt7+2Rddnfw6YBJ3I9RlO1B2N67YA/CDjoa1rDrUCxzoHUQljm0eq/HN65He8DUnlUcZYZUEg+Mf5p/rkpX9Wt5qhnTJqstNbk5XR1mUW0e5nvmP5/9EUg6byDyf0Xz0mgDWuvc8VlS7zkGbnpUq9hHAhTB80SuhaIzEip8HYKURbv4RliWt6J4CtEdv89UmqlrKSGesrVBvu9tt18M3NZ99u/TIm3HCAHdpHlJ3POi02m/b9sl8RJEfmCr5o1eBSpv4vOVRpokvCNQlb4RpMDz1v8EccoQTN7zgDzDPr5hxX6BOQlXNZ1+GeT1jVhPuz+iZC5ILCuMZj3+xDMcxcuP/wPRabtjgyEAAA==</value>
   </data>
-  <data name="BaseSheet" xml:space="preserve">
-    <value>基本資料表單</value>
+  <data name="Target" xml:space="preserve">
+    <value>H4sIAAAAAAAEAO1ZzW7jNhC+F+g7CDq1QNaKk0sbyLvI2kkRdO0EUXbvtDS2iVKUSlKB/Ww99JH6Ch39UTTlOPJfsFgEucij4Tc/5Iw+Tv7751//0zJmzjMISRM+cPu9c9cBHiYR5fOBm6nZh9/cTx9//sm/ieKl863Wu8z1cCWXA3ehVHrleTJcQExkL6ahSGQyU70wiT0SJd7F+fnvXr/vAUK4iOU4/mPGFY2h+IE/hwkPIVUZYeMkAiYrOb4JClRnQmKQKQlh4N6Ng16p5TrXjBL0IAA2cx3CeaKIQv+uvkoIlEj4PEhRQNjTKgXUmxEmofL7qlHvGsL5RR6C1yysocJMqiTeEbB/WeXEs5fvlVlX5wyzdoPZVas86iJzA/eBzh9BZjFGb1u7GjKRa5qZ7Wn9MwelZ3rj8Xzkf2fOMGMqEzDgkClB2JnzkE0ZDf+E1VPyF/ABzxgzXUKn8N2aAEUPIklBqNUjzCpH70au462v8+yFepmxpoqAq8sL15mgcTJloHfciDZQiYA/gIMgCqIHohQI3LC7CIqctaxbtjAxk6Q2h2cMy8R1xmT5BfhcLQYuPrrOLV1CVEsqF75yilWFi5TIoIOVWyLiJrCTWfpMhVqMMBW1pfz5ieYHpZXF7Uj58pO7GzCSzRe4ZYskk6c3NxRwlNwgDrYkcXJ/sXqP4i/inMBf32v60tZuFSwA1IhKymcQlh2xU9dqrXvvXuu2bpZhpo5zpD9nlEXFqTjxmcaD+CatBe2MkjfoKZNEvTeuH6lxIXlVhGJJ1gU9DnIRLNWGtoXeVZ1LVpbW4ykhA1Bt4tb4UDLenvHO246yoaG20DbobMqBjrbh6F5J0msy773A5v0xSVPcDoPdVxInKKn98EOwO/eNSwwvlBsosPZWW8IGSuZgvUXT6OktFVLh0SNTkh+IYRS31Iy9fSHjtSF7++yPR5P/ekX+rE9Qi4jbAE32bjGgGPt/ERtoR7YYL1YHIWFEbPgYDROWxfylD9q21RU5NgEq0U4YNfW1cGpxdyyD3JpYhrg7VvkNMmFKSXcEm7uaWPa77qi605twWrgTTtk5LZxS2B1Hd3ITRwt3wmn7o4VtHN+zysEuOK9VcRZRs0u4U4G3u+aehf4qUIeC74BxmsI3eaWJYsp3KFtNLdeqVku7I2nuaAJp4U44JTe0cEphd5yS+5kgpeS93L+rcm9xHVtFW9ecx+I2fsUzXh9ntohHqeI6mKBnGuWkI1hJBXEvV+gFf7MhoxhvozAmnM5AqvLq6l6c9y+syej3M6X0pIxY11Hlm1/AaZ7WV6/YO15J1iaG/JmIcEHELzFZ/mpC7TUVPAitNfmL8FkdOvk7yKXN072DIK2L8N4xWhfhg3yyLrt7+2Rddnfw6YBJ3I9RlO1B2N67YA/CDjoa1rDrUCxzoHUQljm0eq/HN65He8DUnlUcZYZUEg+Mf5p/rkpX9Wt5qhnTJqstNbk5XR1mUW0e5nvmP5/9EUg6byDyf0Xz0mgDWuvc8VlS7zkGbnpUq9hHAhTB80SuhaIzEip8HYKURbv4RliWt6J4CtEdv89UmqlrKSGesrVBvu9tt18M3NZ99u/TIm3HCAHdpHlJ3POi02m/b9sl8RJEfmCr5o1eBSpv4vOVRpokvCNQlb4RpMDz1v8EccoQTN7zgDzDPr5hxX6BOQlXNZ1+GeT1jVhPuz+iZC5ILCuMZj3+xDMcxcuP/wPRabtjgyEAAA==</value>
   </data>
-  <data name="Cancel" xml:space="preserve">
-    <value>取消</value>
-  </data>
-  <data name="ChangePassword" xml:space="preserve">
-    <value>修改密碼</value>
-  </data>
-  <data name="Creater" xml:space="preserve">
-    <value>Kuo,TsungHan</value>
-  </data>
-  <data name="LangSys" xml:space="preserve">
-    <value>語系</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>登入</value>
-  </data>
-  <data name="Logout" xml:space="preserve">
-    <value>登出</value>
-  </data>
-  <data name="MenuDashboard" xml:space="preserve">
-    <value>儀表板</value>
-  </data>
-  <data name="MenuHome" xml:space="preserve">
-    <value>首頁</value>
-  </data>
-  <data name="MenuPigM" xml:space="preserve">
-    <value>豬隻管理</value>
-  </data>
-  <data name="MenuReport" xml:space="preserve">
-    <value>報表</value>
-  </data>
-  <data name="MenuStock" xml:space="preserve">
-    <value>庫存</value>
-  </data>
-  <data name="MenuSys" xml:space="preserve">
-    <value>系統</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>密碼</value>
-  </data>
-  <data name="PigResumeM" xml:space="preserve">
-    <value>豬隻履歷管理</value>
-  </data>
-  <data name="PigResumeMProduce" xml:space="preserve">
-    <value>豬隻生產履歷</value>
-  </data>
-  <data name="SheetDisinfection" xml:space="preserve">
-    <value>全場消毒紀錄表</value>
-  </data>
-  <data name="SysMenu" xml:space="preserve">
-    <value>系統選單</value>
-  </data>
-  <data name="SysTitle" xml:space="preserve">
-    <value>智慧型畜牧場管理平台</value>
-  </data>
-  <data name="User" xml:space="preserve">
-    <value>使用者</value>
-  </data>
-  <data name="UserSetting" xml:space="preserve">
-    <value>使用者設定</value>
-  </data>
-  <data name="Welcome" xml:space="preserve">
-    <value>歡迎</value>
+  <data name="DefaultSchema" xml:space="preserve">
+    <value>dbo</value>
   </data>
 </root>

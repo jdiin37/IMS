@@ -16,6 +16,7 @@ namespace IMS.Controllers
 
             int[] id = { 1, 2, 3 };
             string[] PigFarmID = { "AA", "BB", "CC" };
+            string[] PigNo = { "AA-1", "BB-1", "CC-1" };
             string[] Type = { "黑豬", "白豬", "毛豬" };
             string[] Slaughterhouse = { "屏東屠宰場", "長治屠宰場", "左營屠宰場" };
             DateTime[] BirthDate = { DateTime.Now, DateTime.Now, DateTime.Now };
@@ -26,6 +27,7 @@ namespace IMS.Controllers
                 {
                     ID = id[i],
                     PigFarmID = PigFarmID[i],
+                    PigNo = PigNo[i],
                     Type = Type[i],
                     Slaughterhouse = Slaughterhouse[i],
                     BirthDate = BirthDate[i]
