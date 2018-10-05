@@ -169,6 +169,7 @@
     <Content Include="Views\PigResume\Index.cshtml" />
     <Content Include="Views\SheetDisinfection\Index.cshtml" />
     <Content Include="Views\SheetDisinfection\Create.cshtml" />
+    <Content Include="Views\SheetDisinfection\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

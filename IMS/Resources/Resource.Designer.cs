@@ -97,6 +97,78 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 新增 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Add {
+            get {
+                return ResourceManager.GetString("Comm_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 返回 的當地語系化字串。
+        /// </summary>
+        public static string Comm_BackToList {
+            get {
+                return ResourceManager.GetString("Comm_BackToList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 取消 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Cancel {
+            get {
+                return ResourceManager.GetString("Comm_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 刪除 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Delete {
+            get {
+                return ResourceManager.GetString("Comm_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 明細 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Details {
+            get {
+                return ResourceManager.GetString("Comm_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 編輯 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Edit {
+            get {
+                return ResourceManager.GetString("Comm_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 確定 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Save {
+            get {
+                return ResourceManager.GetString("Comm_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 查詢 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Search {
+            get {
+                return ResourceManager.GetString("Comm_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Kuo,TsungHan 的當地語系化字串。
         /// </summary>
         public static string Creater {

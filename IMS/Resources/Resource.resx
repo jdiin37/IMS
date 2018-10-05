@@ -129,6 +129,30 @@
   <data name="ChangePassword" xml:space="preserve">
     <value>修改密碼</value>
   </data>
+  <data name="Comm_Add" xml:space="preserve">
+    <value>新增</value>
+  </data>
+  <data name="Comm_BackToList" xml:space="preserve">
+    <value>返回</value>
+  </data>
+  <data name="Comm_Cancel" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="Comm_Delete" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="Comm_Details" xml:space="preserve">
+    <value>明細</value>
+  </data>
+  <data name="Comm_Edit" xml:space="preserve">
+    <value>編輯</value>
+  </data>
+  <data name="Comm_Save" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="Comm_Search" xml:space="preserve">
+    <value>查詢</value>
+  </data>
   <data name="Creater" xml:space="preserve">
     <value>Kuo,TsungHan</value>
   </data>

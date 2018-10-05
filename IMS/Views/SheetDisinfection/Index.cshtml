@@ -4,10 +4,16 @@
     ViewBag.Title = "Index";
 }
 
+<ol class="breadcrumb">
+    <li class=""><a href="@Url.Action("Index","Main")">首頁</a></li>
+    <li class="">@IMS.Resources.Resource.BaseSheet</li>
+    <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.SheetDisinfection</a></li>
+</ol>
+
 <h2>@IMS.Resources.Resource.SheetDisinfection</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("新增", "Create", "", new { Class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -48,9 +54,9 @@
             @Html.DisplayFor(modelItem => item.Note)
         </td>       
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id=item.ID }, new { Class = "btn btn-success" }) |
+            @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
+            @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id=item.ID }, new { Class = "btn btn-danger" })
         </td>
     </tr>
 }

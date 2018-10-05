@@ -14,6 +14,7 @@ namespace IMS.Models
         public int ID { get; set; }
 
         [DisplayName("日期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime ExcuteDate { get; set; }
 
         [DisplayName("棟(欄)別")]
