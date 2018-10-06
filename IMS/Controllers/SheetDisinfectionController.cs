@@ -30,7 +30,6 @@ namespace IMS.Controllers
         public ActionResult Create(SheetDisinfection m)
         {           
             m.CreDate = DateTime.Now;
-            m.ModDate = DateTime.Now;
 
             Db.SheetDisinfection.Add(m);
             Db.SaveChanges();
@@ -61,7 +60,6 @@ namespace IMS.Controllers
             item.UseType = sheetDisinfection.UseType;
             item.UseDose = sheetDisinfection.UseDose;
             item.Note = sheetDisinfection.Note;
-            item.CreDate = DateTime.Now;
             item.ModDate = DateTime.Now;
             
             Db.SaveChanges();

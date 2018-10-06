@@ -1,7 +1,7 @@
 ﻿@model IMS.Models.SheetDisinfection
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = @IMS.Resources.Resource.Comm_Edit;
 }
 
 <ol class="breadcrumb">
@@ -15,7 +15,7 @@
 {
     @Html.AntiForgeryToken()
     <div class="form-horizontal">
-        <h4>SheetDisinfection</h4>
+        <h4>@IMS.Resources.Resource.SheetDisinfection</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)

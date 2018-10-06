@@ -33,7 +33,7 @@ namespace IMS.Models
 
         public string CreUser { get; set; }
 
-        public DateTime ModDate { get; set; }
+        public DateTime? ModDate { get; set; }
 
         public string ModUser { get; set; }
     }

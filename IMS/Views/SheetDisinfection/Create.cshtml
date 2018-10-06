@@ -1,7 +1,7 @@
 ﻿@model IMS.Models.SheetDisinfection
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = @IMS.Resources.Resource.Comm_Add;
 }
 
 <ol class="breadcrumb">
@@ -11,7 +11,7 @@
     <li class="active"><a href="@Url.Action("Create")">@IMS.Resources.Resource.Comm_Add</a></li>
 </ol>
 
-@*<h2>@IMS.Resources.Resource.Comm_Add</h2>*@
+<h2>@IMS.Resources.Resource.SheetDisinfection</h2>
 
 
 @using (Html.BeginForm()) 
@@ -19,6 +19,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
