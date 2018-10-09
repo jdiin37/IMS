@@ -151,6 +151,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 列印 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Print {
+            get {
+                return ResourceManager.GetString("Comm_Print", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 確定 的當地語系化字串。
         /// </summary>
         public static string Comm_Save {
