@@ -1,11 +1,15 @@
-﻿@model IEnumerable<IMS.Models.SheetDisinfection>
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<IMS.Models.SheetDisinfection>
 
 @{
     ViewBag.Title = @IMS.Resources.Resource.SheetDisinfection;
 }
 
 <ol class="breadcrumb">
-    <li class=""><a href="@Url.Action("Index","Main")">首頁</a></li>
+    <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
     <li class="">@IMS.Resources.Resource.BaseSheet</li>
     <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.SheetDisinfection</a></li>
 </ol>
@@ -16,7 +20,7 @@
     <div class="panel-heading">
         <div class="pull-right">
             @Html.ActionLink(IMS.Resources.Resource.Comm_Add, "Create", "", new { Class = "btn btn-primary" })
-        </div>        
+        </div>
         <h4>@IMS.Resources.Resource.SheetDisinfection</h4>
 
     </div>

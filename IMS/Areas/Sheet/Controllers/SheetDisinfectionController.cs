@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IMS.Controllers
+namespace IMS.Areas.Sheet.Controllers
 {
     public class SheetDisinfectionController : Controller
     {

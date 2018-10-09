@@ -144,6 +144,11 @@
     <Content Include="Content\select2-bootstrap.less" />
     <Content Include="Content\select2-bootstrap-build.scss" />
     <Content Include="Content\select2-bootstrap-build.less" />
+    <Content Include="Areas\Sys\Views\web.config" />
+    <Content Include="Areas\Sys\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sys\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Sys\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Sheet\Views\web.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\select2\i18n\en.js" />
@@ -173,11 +178,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
+    <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\pigM_sowController.cs" />
     <Compile Include="Controllers\PigResumeController.cs" />
-    <Compile Include="Controllers\SheetDisinfectionController.cs" />
+    <Compile Include="Areas\Sheet\Controllers\SheetDisinfectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -185,7 +193,13 @@
     <Compile Include="Migrations\201810050914519_add sheetDisinfection.Designer.cs">
       <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810090818473_Add Category.cs" />
+    <Compile Include="Migrations\201810090818473_Add Category.Designer.cs">
+      <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CategoryList.cs" />
+    <Compile Include="Models\CategorySub.cs" />
     <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\PigResume.cs" />
     <Compile Include="Models\SheetDisinfection.cs" />
@@ -207,9 +221,9 @@
     <Content Include="Views\Main\NavMenu.cshtml" />
     <Content Include="Views\pigM_sow\Index.cshtml" />
     <Content Include="Views\PigResume\Index.cshtml" />
-    <Content Include="Views\SheetDisinfection\Index.cshtml" />
-    <Content Include="Views\SheetDisinfection\Create.cshtml" />
-    <Content Include="Views\SheetDisinfection\Edit.cshtml" />
+    <Content Include="Areas\Sheet\Views\SheetDisinfection\Index.cshtml" />
+    <Content Include="Areas\Sheet\Views\SheetDisinfection\Create.cshtml" />
+    <Content Include="Areas\Sheet\Views\SheetDisinfection\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -219,10 +233,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Sheet\Models\" />
+    <Folder Include="Areas\Sheet\Views\Shared\" />
+    <Folder Include="Areas\Sys\Models\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810050914519_add sheetDisinfection.resx">
       <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810090818473_Add Category.resx">
+      <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

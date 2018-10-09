@@ -22,6 +22,8 @@
 
          public virtual DbSet<PigResume> PigResume { get; set; }
          public virtual DbSet<SheetDisinfection> SheetDisinfection { get; set; }
+         public virtual DbSet<CategoryList> CategoryList { get; set; }
+         public virtual DbSet<CategorySub> CategorySub { get; set; }
     }
 
     //public class MyEntity
