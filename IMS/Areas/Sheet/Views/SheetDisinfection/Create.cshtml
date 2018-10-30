@@ -1,6 +1,4 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿
 
 @model IMS.Models.SheetDisinfection
 
@@ -10,10 +8,10 @@
 
 
 <ol class="breadcrumb">
-    <li class=""><a href="@Url.Action("Index","Main")">首頁</a></li>
+    <li class=""><a href="@Url.Action("Index","Main",new { area=""})">首頁</a></li>
     <li class="">@IMS.Resources.Resource.BaseSheet</li>
-    <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.SheetDisinfection</a></li>
-    <li class="active"><a href="@Url.Action("Create")">@IMS.Resources.Resource.Comm_Add</a></li>
+    <li class="active"><a href="@Url.Action("Index",new { area="Sheet"})">@IMS.Resources.Resource.SheetDisinfection</a></li>
+    <li class="active"><a href="@Url.Action("Create",new { area="Sheet"})">@IMS.Resources.Resource.Comm_Add</a></li>
 </ol>
 
 <h2>@IMS.Resources.Resource.SheetDisinfection</h2>

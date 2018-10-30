@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace IMS.Controllers
+namespace IMS.Areas.Dashboard.Controllers
 {
-    public class pigM_sowController : Controller
+    public class MainController : Controller
     {
-        // GET: pigM_sow
+        // GET: Dashboard/Main
         public ActionResult Index()
         {
             return View();

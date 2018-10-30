@@ -149,8 +149,15 @@
     <Content Include="Areas\Sys\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Sys\Views\Category\Index.cshtml" />
     <Content Include="Areas\Sheet\Views\web.config" />
+    <Content Include="Areas\Dashboard\Views\web.config" />
+    <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Dashboard\Views\Main\Index.cshtml" />
+    <Content Include="Areas\Sheet\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
+    <Content Include="Scripts\highchart\export-data.js" />
+    <Content Include="Scripts\highchart\exporting.js" />
+    <Content Include="Scripts\highchart\highcharts.js" />
     <Content Include="Scripts\select2\i18n\en.js" />
     <Content Include="Scripts\select2\i18n\es.js" />
     <Content Include="Scripts\select2\i18n\zh-CN.js" />
@@ -178,13 +185,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Dashboard\Controllers\MainController.cs" />
+    <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
+    <Compile Include="Areas\Sys\Controllers\AccountController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Controllers\pigM_sowController.cs" />
-    <Compile Include="Controllers\PigResumeController.cs" />
     <Compile Include="Areas\Sheet\Controllers\SheetDisinfectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,7 +205,12 @@
     <Compile Include="Migrations\201810090818473_Add Category.Designer.cs">
       <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810291001482_Add Account.cs" />
+    <Compile Include="Migrations\201810291001482_Add Account.Designer.cs">
+      <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Account.cs" />
     <Compile Include="Models\CategoryList.cs" />
     <Compile Include="Models\CategorySub.cs" />
     <Compile Include="Models\IMSContext.cs" />
@@ -219,8 +232,6 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Main\NavMenu.cshtml" />
-    <Content Include="Views\pigM_sow\Index.cshtml" />
-    <Content Include="Views\PigResume\Index.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Index.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Create.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Edit.cshtml" />
@@ -233,9 +244,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Dashboard\Models\" />
+    <Folder Include="Areas\Dashboard\Views\Shared\" />
     <Folder Include="Areas\Sheet\Models\" />
     <Folder Include="Areas\Sheet\Views\Shared\" />
     <Folder Include="Areas\Sys\Models\" />
+    <Folder Include="Areas\Sys\Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810050914519_add sheetDisinfection.resx">
@@ -243,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810090818473_Add Category.resx">
       <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810291001482_Add Account.resx">
+      <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

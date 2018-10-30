@@ -20,10 +20,11 @@
         // 針對您要包含在模型中的每種實體類型新增 DbSet。如需有關設定和使用
         // Code First 模型的詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=390109。
 
-         public virtual DbSet<PigResume> PigResume { get; set; }
-         public virtual DbSet<SheetDisinfection> SheetDisinfection { get; set; }
-         public virtual DbSet<CategoryList> CategoryList { get; set; }
-         public virtual DbSet<CategorySub> CategorySub { get; set; }
+        //public virtual DbSet<PigResume> PigResume { get; set; }
+        public virtual DbSet<SheetDisinfection> SheetDisinfection { get; set; }
+        public virtual DbSet<CategoryList> CategoryList { get; set; }
+        public virtual DbSet<CategorySub> CategorySub { get; set; }
+        public virtual DbSet<Account> Account { get; set; }
     }
 
     //public class MyEntity
