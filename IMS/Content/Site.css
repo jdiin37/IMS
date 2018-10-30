@@ -1,11 +1,12 @@
 ﻿body {
     /*padding-top: 50px;*/
     padding-bottom: 20px;
-    background-image: url("../Images/IMG_3686.JPG");
+    background-image: url("../Images/Kite1.JPG");
     background-size: 100%;
+    
     background-repeat: no-repeat;
     z-index: -1;
-    opacity: 0.87;
+    opacity: 0.92;
     background-attachment: fixed;
     /*background-position: center;*/
 }

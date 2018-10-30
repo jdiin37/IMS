@@ -9,9 +9,17 @@ namespace IMS.Controllers
     public class LoginController : Controller
     {
         // GET: Login
-        public ActionResult Index()
+        public ActionResult Index(string lang)
         {
-            return View();
+            if(lang == null)
+            {
+                return View();
+            }
+            else
+            {
+                ViewBag.lang = lang;
+                return View(lang);
+            }
         }
 
         public ActionResult Login()

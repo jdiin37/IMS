@@ -45,10 +45,7 @@
         string appName = @IMS.Resources.Resource.SysTitle + "-" + @ViewBag.SubSysName;
     }    
     <div class="container">
-        <div class="navbar-brand h5">
-            @appName
-            @*@Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "text-center" })*@
-        </div>
+        @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "text-center navbar-brand h5" })
     </div>
     <div class="navbar navbar-inverse">
         <div class="container">
