@@ -70,6 +70,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 使用者帳號管理 的當地語系化字串。
+        /// </summary>
+        public static string AccountMgr {
+            get {
+                return ResourceManager.GetString("AccountMgr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 基本資料表單 的當地語系化字串。
         /// </summary>
         public static string BaseSheet {
@@ -84,6 +93,15 @@ namespace IMS.Resources {
         public static string Cancel {
             get {
                 return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 項目管理 的當地語系化字串。
+        /// </summary>
+        public static string CategoryMgr {
+            get {
+                return ResourceManager.GetString("CategoryMgr", resourceCulture);
             }
         }
         

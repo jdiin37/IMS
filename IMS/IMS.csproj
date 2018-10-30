@@ -119,6 +119,10 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="Images\Kite1.JPG" />
+    <Content Include="Images\Kite2.JPG" />
+    <Content Include="Images\Kite3.JPG" />
+    <Content Include="Images\Kite4.JPG" />
     <Content Include="Scripts\bootstrap-datepicker.js" />
     <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -153,6 +157,7 @@
     <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Dashboard\Views\Main\Index.cshtml" />
     <Content Include="Areas\Sheet\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Sys\Views\Account\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -261,7 +266,6 @@
     <Folder Include="Areas\Sheet\Models\" />
     <Folder Include="Areas\Sheet\Views\Shared\" />
     <Folder Include="Areas\Sys\Models\" />
-    <Folder Include="Areas\Sys\Views\Account\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201810050914519_add sheetDisinfection.resx">
