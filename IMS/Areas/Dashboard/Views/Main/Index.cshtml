@@ -3,11 +3,10 @@
     ViewBag.Title = IMS.Resources.Resource.MenuDashboard;
 }
 
-<h2>@IMS.Resources.Resource.MenuDashboard</h2>
-
-<style>
-    
-</style>
+<ol class="breadcrumb">
+    <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
+    <li class="active"><a href="@Url.Action("Index","Main",new { area = "Dashboard" })">@IMS.Resources.Resource.MenuDashboard</a></li>
+</ol>
 
 <div class="panel panel-default">
     <!-- Default panel contents -->

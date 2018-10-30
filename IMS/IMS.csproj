@@ -184,6 +184,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Dashboard\Controllers\MainController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
@@ -191,6 +192,7 @@
     <Compile Include="Areas\Sys\Controllers\AccountController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
+    <Compile Include="Controllers\ValueReport.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Areas\Sheet\Controllers\SheetDisinfectionController.cs" />
@@ -209,12 +211,22 @@
     <Compile Include="Migrations\201810291001482_Add Account.Designer.cs">
       <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810300301126_Add ActionLog.cs" />
+    <Compile Include="Migrations\201810300301126_Add ActionLog.Designer.cs">
+      <DependentUpon>201810300301126_Add ActionLog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810300335088_Add RequestLog.cs" />
+    <Compile Include="Migrations\201810300335088_Add RequestLog.Designer.cs">
+      <DependentUpon>201810300335088_Add RequestLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ActionLog.cs" />
     <Compile Include="Models\CategoryList.cs" />
     <Compile Include="Models\CategorySub.cs" />
     <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\PigResume.cs" />
+    <Compile Include="Models\RequestLog.cs" />
     <Compile Include="Models\SheetDisinfection.cs" />
     <Compile Include="Resources\Resource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -260,6 +272,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810291001482_Add Account.resx">
       <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300301126_Add ActionLog.resx">
+      <DependentUpon>201810300301126_Add ActionLog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810300335088_Add RequestLog.resx">
+      <DependentUpon>201810300335088_Add RequestLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -1,12 +1,19 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
+    background-image: url("../Images/IMG_3686.JPG");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.87;
+    background-attachment: fixed;
+    /*background-position: center;*/
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    /*padding-left: 15px;
+    padding-right: 15px;*/
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
@@ -14,7 +21,7 @@
 
 
 .body-content{
-    margin-top:26px;
+    /*margin-top:22px;*/
 	
 }
 
@@ -23,3 +30,8 @@
         margin-left: 0px;
     }
 }*/
+
+#top_menu > li{
+    
+}
+
