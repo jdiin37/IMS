@@ -25,6 +25,10 @@
         public virtual DbSet<CategoryList> CategoryList { get; set; }
         public virtual DbSet<CategorySub> CategorySub { get; set; }
         public virtual DbSet<Account> Account { get; set; }
+        public virtual DbSet<AccountLevel> AccountLevel { get; set; }
+
+
+
         public virtual DbSet<ActionLog> ActionLog { get; set; }
         public virtual DbSet<RequestLog> RequestLog { get; set; }
     }

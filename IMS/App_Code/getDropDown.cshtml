@@ -1,0 +1,45 @@
+﻿@helper getEnumDropdown(string name, Type enumType, Enum value, bool HasEmpty = false, string elementStr = null)
+{
+    /**/
+    <select name="@name" id="@name" @(elementStr == null ? "" : elementStr)>
+        @{
+            if (HasEmpty)
+            {
+                <option value="">@IMS.Resources.Resource.Dropdown_Null</option>
+            }
+            foreach (Enum val in Enum.GetValues(enumType))
+            {
+                var enum_name = Enum.GetName(enumType, val);
+                <option value="@val" @(val.Equals(value) ? "selected" : "")>@enum_name</option>
+            }
+            @*foreach (Enum val in Enum.GetValues(enumType))
+                {
+                    var enum_name = Enum.GetName(enumType, val);
+
+                    var enum_name_post = (value == null) ? "" : Enum.GetName(enumType, value);
+
+                    var z = (enum_name == enum_name_post) ? true : false;
+
+                    <option value="@val" @(enum_name == enum_name_post ? "selected" : "")>@enum_name</option>
+                }*@
+        }
+    </select>
+}
+
+//權限等級下拉
+@helper getAccountLevel(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.AccountLevel> list = IMSdb.AccountLevel.Where(m => m.Status == "Y").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.Level" @(item.Level == val ? "selected" : "")>@item.LevelName</option>
+            }
+        }
+    </select>
+}

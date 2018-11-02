@@ -1,11 +1,72 @@
-﻿
+﻿@model IMS.ViewModels.AccountVM
+
+
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = IMS.Resources.Resource.AccountMgr;
 }
 
 <ol class="breadcrumb">
     <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
-    <li class="">@IMS.Resources.Resource.SysMenu</li>
+    <li class="">@IMS.Resources.Resource.MenuSys</li>
     <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.AccountMgr</a></li>
 </ol>
 
+<h2>@ViewBag.LevelName</h2>
+
+<p>
+    @Html.ActionLink(IMS.Resources.Resource.Comm_AddAccount, "Create", "", new { Class = "btn btn-primary" })
+</p>
+
+<div class="row">
+    <div class="col-xs-3">
+        <div class="list-group">
+            @foreach (var item in Model.accountLevels)
+            {
+                @Html.ActionLink(item.LevelName, "Index", new { level = item.Level},new { @class = "list-group-item" })
+            }
+        </div>
+    </div>
+
+    <div class="col-xs-9">
+        <table class="table table-striped">
+
+            <tr>
+
+                <th>
+                    @IMS.Resources.Resource.AccountNo
+                </th>
+                <th>
+                    @IMS.Resources.Resource.AccountName
+                </th>
+                <th>
+                    Email
+                </th>
+                <th>
+                    
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.accounts)
+            {
+                <tr>
+
+                    <td>
+                        @item.AccountNo
+                    </td>
+                    <td>
+                        @item.AccountName
+                    </td>
+                    <td>
+                        @item.Email
+                    </td>
+                    <td>
+                        @Html.ActionLink("刪除", "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定刪嗎??')", @class = "btn btn-danger" })
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>

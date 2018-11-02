@@ -61,7 +61,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 帳號 的當地語系化字串。
+        ///   查詢類似 Account 的當地語系化字串。
         /// </summary>
         public static string Account {
             get {
@@ -70,11 +70,56 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 使用者帳號管理 的當地語系化字串。
+        ///   查詢類似 權限等級 的當地語系化字串。
+        /// </summary>
+        public static string AccountLevel_Level {
+            get {
+                return ResourceManager.GetString("AccountLevel_Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 權限名稱 的當地語系化字串。
+        /// </summary>
+        public static string AccountLevel_LevelName {
+            get {
+                return ResourceManager.GetString("AccountLevel_LevelName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 權限等級 的當地語系化字串。
+        /// </summary>
+        public static string AccountLevelMgr {
+            get {
+                return ResourceManager.GetString("AccountLevelMgr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 使用者帳號 的當地語系化字串。
         /// </summary>
         public static string AccountMgr {
             get {
                 return ResourceManager.GetString("AccountMgr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 AccountName 的當地語系化字串。
+        /// </summary>
+        public static string AccountName {
+            get {
+                return ResourceManager.GetString("AccountName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 AccountNo 的當地語系化字串。
+        /// </summary>
+        public static string AccountNo {
+            get {
+                return ResourceManager.GetString("AccountNo", resourceCulture);
             }
         }
         
@@ -88,7 +133,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 取消 的當地語系化字串。
+        ///   查詢類似 Cancel 的當地語系化字串。
         /// </summary>
         public static string Cancel {
             get {
@@ -97,7 +142,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 項目管理 的當地語系化字串。
+        ///   查詢類似 分類項目 的當地語系化字串。
         /// </summary>
         public static string CategoryMgr {
             get {
@@ -120,6 +165,15 @@ namespace IMS.Resources {
         public static string Comm_Add {
             get {
                 return ResourceManager.GetString("Comm_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Add Account 的當地語系化字串。
+        /// </summary>
+        public static string Comm_AddAccount {
+            get {
+                return ResourceManager.GetString("Comm_AddAccount", resourceCulture);
             }
         }
         
@@ -205,7 +259,16 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 語系 的當地語系化字串。
+        ///   查詢類似 none 的當地語系化字串。
+        /// </summary>
+        public static string Dropdown_Null {
+            get {
+                return ResourceManager.GetString("Dropdown_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Language 的當地語系化字串。
         /// </summary>
         public static string LangSys {
             get {
@@ -214,7 +277,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 登入 的當地語系化字串。
+        ///   查詢類似 SingIn 的當地語系化字串。
         /// </summary>
         public static string Login {
             get {
@@ -223,7 +286,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 登出 的當地語系化字串。
+        ///   查詢類似 SingOut 的當地語系化字串。
         /// </summary>
         public static string Logout {
             get {
@@ -277,7 +340,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 系統 的當地語系化字串。
+        ///   查詢類似 系統維護 的當地語系化字串。
         /// </summary>
         public static string MenuSys {
             get {
@@ -286,7 +349,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 密碼 的當地語系化字串。
+        ///   查詢類似 Password 的當地語系化字串。
         /// </summary>
         public static string Password {
             get {
@@ -313,6 +376,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Required 的當地語系化字串。
+        /// </summary>
+        public static string Required {
+            get {
+                return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 全場消毒紀錄表 的當地語系化字串。
         /// </summary>
         public static string SheetDisinfection {
@@ -331,7 +403,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 智慧型畜牧場管理平台 的當地語系化字串。
+        ///   查詢類似 Smart LiveStock 的當地語系化字串。
         /// </summary>
         public static string SysTitle {
             get {

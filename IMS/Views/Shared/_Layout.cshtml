@@ -7,17 +7,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>@ViewBag.Title - @IMS.Resources.Resource.SysTitle</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    @*<link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />*@
-    <link href="~/Content/bootstrap.theme.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrapCustom.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    @*<link href="~/Content/bootstrap.theme.css" rel="stylesheet" type="text/css" />*@
+    @*<link href="~/Content/bootstrapCustom.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
     <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
     <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <link href="~/Content/custom.css" rel="stylesheet" />
+
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>   
     <script>
         function f_navMenu_toggle() {
             if ($('#leftMenu').is(":visible")) {
@@ -32,23 +35,32 @@
     </script>
 </head>
 <body>
-    <style>
-        #top_menu > li {
-            border-bottom: 4px solid transparent;
-        }
-
-        #top_menu > li:hover {
-            border-bottom: 4px solid #5bc0de;
-        }
-    </style>
     @{
         string appName = @IMS.Resources.Resource.SysTitle + "-" + @ViewBag.SubSysName;
-    }    
-    <div class="container">
-        @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "text-center navbar-brand h5" })
-    </div>
+    }
+    @*<div class="container">
+            @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "text-center navbar-brand h5" })
+        </div>*@
     <div class="navbar navbar-inverse">
         <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+
+                @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "navbar-brand" })
+
+                @*<button class="btn btn-default" style="margin-top:8px" onclick="f_navMenu_toggle()">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                        <lable>
+                            顯示/隱藏 選單
+                        </lable>
+                    </button>*@
+
+            </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="top_menu">
                     <li><a href="@Url.Action("Index","Main",new { area="Dashboard"})">@IMS.Resources.Resource.MenuDashboard</a></li>
@@ -72,6 +84,7 @@
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index","Category",new { area="Sys"})">@IMS.Resources.Resource.CategoryMgr</a></li>
                             <li><a href="@Url.Action("Index","Account",new { area="Sys"})">@IMS.Resources.Resource.AccountMgr</a></li>
+                            <li><a href="@Url.Action("Index","AccountLevel",new { area="Sys"})">@IMS.Resources.Resource.AccountLevelMgr</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -91,23 +104,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
 
-
-                @*@Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "navbar-brand" })*@
-                @*<button class="btn btn-default" style="margin-top:8px" onclick="f_navMenu_toggle()">
-                <span class="glyphicon glyphicon-list-alt"></span>
-                <lable>
-                    顯示/隱藏 選單
-                </lable>
-            </button>*@
-
-            </div>
         </div>
     </div>
 
@@ -115,6 +112,8 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.dataTables.min.js"></script>
     <script src="~/Scripts/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/base.js"></script>
 
 
     @*<div id="leftMenu">

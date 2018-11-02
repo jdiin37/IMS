@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Account" xml:space="preserve">
-    <value>Account</value>
+    <value>帳號</value>
   </data>
   <data name="AccountLevelMgr" xml:space="preserve">
     <value>權限等級</value>
@@ -133,16 +133,16 @@
     <value>使用者帳號</value>
   </data>
   <data name="AccountName" xml:space="preserve">
-    <value>AccountName</value>
+    <value>帳號名稱</value>
   </data>
   <data name="AccountNo" xml:space="preserve">
-    <value>AccountNo</value>
+    <value>帳號</value>
   </data>
   <data name="BaseSheet" xml:space="preserve">
     <value>基本資料表單</value>
   </data>
   <data name="Cancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>取消</value>
   </data>
   <data name="CategoryMgr" xml:space="preserve">
     <value>分類項目</value>
@@ -154,7 +154,7 @@
     <value>新增</value>
   </data>
   <data name="Comm_AddAccount" xml:space="preserve">
-    <value>Add Account</value>
+    <value>新增帳號</value>
   </data>
   <data name="Comm_BackToList" xml:space="preserve">
     <value>返回</value>
@@ -184,16 +184,16 @@
     <value>Kuo,TsungHan</value>
   </data>
   <data name="Dropdown_Null" xml:space="preserve">
-    <value>none</value>
+    <value>無</value>
   </data>
   <data name="LangSys" xml:space="preserve">
-    <value>Language</value>
+    <value>語系</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>SingIn</value>
+    <value>登入</value>
   </data>
   <data name="Logout" xml:space="preserve">
-    <value>SingOut</value>
+    <value>登出</value>
   </data>
   <data name="MenuDashboard" xml:space="preserve">
     <value>儀表板</value>
@@ -214,7 +214,7 @@
     <value>系統維護</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>密碼</value>
   </data>
   <data name="PigResumeM" xml:space="preserve">
     <value>豬隻履歷管理</value>
@@ -223,7 +223,7 @@
     <value>豬隻生產履歷</value>
   </data>
   <data name="Required" xml:space="preserve">
-    <value>Required</value>
+    <value>必填</value>
   </data>
   <data name="SheetDisinfection" xml:space="preserve">
     <value>全場消毒紀錄表</value>
@@ -232,7 +232,7 @@
     <value>系統選單</value>
   </data>
   <data name="SysTitle" xml:space="preserve">
-    <value>Smart LiveStock</value>
+    <value>智慧型畜牧場管理平台</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>使用者</value>

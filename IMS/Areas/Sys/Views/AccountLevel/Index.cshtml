@@ -1,17 +1,14 @@
-﻿
-
-@model IEnumerable<IMS.Models.SheetDisinfection>
+﻿@model IEnumerable<IMS.Models.AccountLevel>
 
 @{
-    ViewBag.Title = @IMS.Resources.Resource.SheetDisinfection;
+    ViewBag.Title = IMS.Resources.Resource.AccountLevelMgr;
 }
 
 <ol class="breadcrumb">
     <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
-    <li class="">@IMS.Resources.Resource.BaseSheet</li>
-    <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.SheetDisinfection</a></li>
+    <li class="">@IMS.Resources.Resource.MenuSys</li>
+    <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.AccountLevelMgr</a></li>
 </ol>
-
 
 <div class="panel panel-default">
     <!-- Default panel contents -->
@@ -19,7 +16,7 @@
         <div class="pull-right">
             @Html.ActionLink(IMS.Resources.Resource.Comm_Add, "Create", "", new { Class = "btn btn-primary" })
         </div>
-        <h4>@IMS.Resources.Resource.SheetDisinfection</h4>
+        <h4>@IMS.Resources.Resource.AccountLevelMgr</h4>
 
     </div>
     <div class="panel-body">
@@ -36,7 +33,6 @@
                 <br />
                 @*<input type="button" class="btn btn-success" id="btn_Search" value="@IMS.Resources.Resource.Comm_Search" />*@
                 @Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Print, "Print", "", new { Class = "btn btn-info" })
             </div>
         </div>
     </div>
@@ -45,49 +41,40 @@
     <table class="table table-striped">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ExcuteDate)
+                @Html.DisplayNameFor(model => model.Level)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Building)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UseType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UseDose)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Note)
+                @Html.DisplayNameFor(model => model.LevelName)
             </th>
 
             <th></th>
         </tr>
-
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ExcuteDate)
+                    @Html.DisplayFor(modelItem => item.Level)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Building)
+                    @Html.DisplayFor(modelItem => item.LevelName)
                 </td>
+
                 <td>
-                    @Html.DisplayFor(modelItem => item.UseType)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UseDose)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Note)
-                </td>
-                <td>
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.ID }, new { Class = "btn btn-success" }) |
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.Id }, new { Class = "btn btn-success" }) |
                     @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.ID }, new { Class = "btn btn-danger" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.Id }, new { Class = "btn btn-danger" })
                 </td>
             </tr>
         }
+
+
     </table>
+
+    @if (Model.Count() < 1)
+    {
+        <div class="well well-sm" style="width:100%">
+            <p class="text-center text-warning">查無資料</p>
+        </div>
+    }
 </div>
 
