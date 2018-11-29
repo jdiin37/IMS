@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = IMS.Resources.Resource.Model_Management;
+    ViewBag.Title = IMS.Resources.Resource.Model_DataAnalysis;
 }
 
 <!DOCTYPE html>
@@ -29,40 +29,40 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Management"})"><span class="fa fa-files-o">&nbsp;</span>@ViewBag.Title</a>
+                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="DataAnalysis"})"><span class="fa fa-database">&nbsp;</span>@ViewBag.Title</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="top_menu">
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Management_FarmData <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Classification <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Base",new { area="Management"})">@IMS.Resources.Resource.FarmData_base</a></li>
-                                <li><a href="@Url.Action("Index","Land",new { area="Management"})">@IMS.Resources.Resource.FarmData_Land</a></li>
-                                <li><a href="@Url.Action("Index","License",new { area="Management"})">@IMS.Resources.Resource.FarmData_License</a></li>
-                                <li><a href="@Url.Action("Index","Barn",new { area="Management"})">@IMS.Resources.Resource.FarmData_Barn</a></li>
+                                <li><a href="@Url.Action("Index","K-Means",new { area="DataAnalysis"})">K-Means</a></li>
+                                <li><a href="@Url.Action("Index","Self-Organizing Map",new { area="DataAnalysis"})">Self-Organizing Map</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Management_EnvironmentData <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Cluster <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Abnormal",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Abnormal</a></li>
-                                <li><a href="@Url.Action("Index","Land",new { area="Management"})"><i class="fa fa-thermometer-half" aria-hidden="true">&nbsp;</i>@IMS.Resources.Resource.EnvironmentData_Temperature</a></li>
-                                <li><a href="@Url.Action("Index","Humidity",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Humidity</a></li>
-                                <li><a href="@Url.Action("Index","Image",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Image</a></li>
+                                <li><a href="@Url.Action("Index","C4.5",new { area="DataAnalysis"})">C4.5</a></li>
+                                <li><a href="@Url.Action("Index","K-Nearest Neighbor",new { area="DataAnalysis"})">K-Nearest Neighbor</a></li>
                             </ul>
                         </li>
 
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Management_BaseData <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Associative <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","PigChange",new { area="Management"})">@IMS.Resources.Resource.BaseData_PigChange</a></li>
-                                <li><a href="@Url.Action("Index","Med",new { area="Management"})">@IMS.Resources.Resource.BaseData_Med</a></li>
-                                <li><a href="@Url.Action("Index","FixedCost",new { area="Management"})">@IMS.Resources.Resource.BaseData_FixedCost</a></li>
-                                <li><a href="@Url.Action("Index","Customer",new { area="Management"})">@IMS.Resources.Resource.BaseData_Customer</a></li>
-                                <li><a href="@Url.Action("Index","Expenses",new { area="Management"})">@IMS.Resources.Resource.BaseData_Expenses</a></li>
-                                <li><a href="@Url.Action("Index","Income",new { area="Management"})">@IMS.Resources.Resource.BaseData_Income</a></li>
+                                <li><a href="@Url.Action("Index","Apriori",new { area="DataAnalysis"})">Apriori</a></li>
+                                <li><a href="@Url.Action("Index","COFI Tree",new { area="DataAnalysis"})">COFI Tree</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Regression <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Simple Regression",new { area="DataAnalysis"})">Simple Regression</a></li>
+                                <li><a href="@Url.Action("Index","Multiple Regression",new { area="DataAnalysis"})">Multiple Regression</a></li>
                             </ul>
                         </li>
 

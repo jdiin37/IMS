@@ -12,28 +12,14 @@
     <link rel="shortcut icon" href="~/favicon.ico">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    @*<link href="~/Content/bootstrap.theme.css" rel="stylesheet" type="text/css" />*@
-    @*<link href="~/Content/bootstrapCustom.css" rel="stylesheet" type="text/css" />*@
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
     <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
     <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/custom.css" rel="stylesheet" />
-   
+    <link href="~/Content/custom.css" rel="stylesheet" />   
     <script src="~/Scripts/modernizr-2.6.2.js"></script>   
-    <script>
-        function f_navMenu_toggle() {
-            if ($('#leftMenu').is(":visible")) {
-                $('#leftMenu').hide();
-                $('#bodyContent').css("margin-left", "0px");
-            } else {
-                $('#leftMenu').show();
-                $('#bodyContent').css("margin-left", "220px");
-            }
-        }
 
-    </script>
 </head>
 <body>
     @{
@@ -42,93 +28,124 @@
     @*<div class="container">
             @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "text-center navbar-brand h5" })
         </div>*@
-    <div class="navbar navbar-inverse">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+
+    <header>
+        <div class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
 
-                @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink(appName, "Index", "main", new { area = "" }, new { @class = "navbar-brand" })
 
-                @*<button class="btn btn-default" style="margin-top:8px" onclick="f_navMenu_toggle()">
+                    @*<button class="btn btn-default" style="margin-top:8px" onclick="f_navMenu_toggle()">
                         <span class="glyphicon glyphicon-list-alt"></span>
                         <lable>
                             顯示/隱藏 選單
                         </lable>
                     </button>*@
 
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav" id="top_menu">
-                    <li><a href="@Url.Action("Index","Main",new { area="Dashboard"})">@IMS.Resources.Resource.MenuDashboard</a></li>
-                    @*<li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.BaseSheet <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index","SheetDisinfection",new { area="Sheet"})">@IMS.Resources.Resource.SheetDisinfection</a></li>
-                            <li><a href="#">猪隻治療及治療後流向紀錄表</a></li>
-                            <li><a href="#">整場購買藥品紀錄表</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">猪隻生產履歷紀錄表</a></li>
-                            <li><a href="#">屠宰場產銷履歷猪隻進貨明細表</a></li>
-                            <li><a href="#">作業場與屠體各部位溫度紀錄表</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">小分切場（廠）產銷履歷猪肉進貨明細表</a></li>
-                            <li><a href="#">作業場溫度紀錄表</a></li>
-                        </ul>
-                    </li>*@
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Management <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Home</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Traceability <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Home</a></li>
-                            <li class="divider"></li>
-                            <li><a href="@Url.Action("Index","Produce",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Produce</a></li>
-                            <li><a href="@Url.Action("Index","Process",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Process</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_DataAnalysis <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Home</a></li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.MenuSys <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="@Url.Action("Index","Category",new { area="Sys"})">@IMS.Resources.Resource.CategoryMgr</a></li>
-                            <li><a href="@Url.Action("Index","Account",new { area="Sys"})">@IMS.Resources.Resource.AccountMgr</a></li>
-                            <li><a href="@Url.Action("Index","AccountLevel",new { area="Sys"})">@IMS.Resources.Resource.AccountLevelMgr</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            @IMS.Resources.Resource.Welcome
-                            ,aaa
-                            <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">@IMS.Resources.Resource.UserSetting</a></li>
-                            <li><a href="#">@IMS.Resources.Resource.ChangePassword</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="@Url.Action("Logout","Main",new { area=""})">@IMS.Resources.Resource.Logout</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="top_menu">
+                        <li>
+                            <a href="@Url.Action("Index","Main",new { area="Dashboard"})">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.MenuDashboard
+                            </a>
+                        </li>
 
+                        <li>
+                            <a href="@Url.Action("Index","Home",new { area="Management"})">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.Model_Management
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Home",new { area="Traceability"})">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.Model_Traceability
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("Index","Home",new { area="DataAnalysis"})">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.Model_DataAnalysis
+                            </a>
+                        </li>
+                        @*<li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Management <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Home</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Traceability <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Home</a></li>
+                                <li class="divider"></li>
+                                <li><a href="@Url.Action("Index","Produce",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Produce</a></li>
+                                <li><a href="@Url.Action("Index","Process",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Process</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_DataAnalysis <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Home</a></li>
+                            </ul>
+                        </li>*@
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-cogs" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.MenuSys <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Category",new { area="Sys"})">@IMS.Resources.Resource.CategoryMgr</a></li>
+                                <li><a href="@Url.Action("Index","Account",new { area="Sys"})">@IMS.Resources.Resource.AccountMgr</a></li>
+                                <li><a href="@Url.Action("Index","AccountLevel",new { area="Sys"})">@IMS.Resources.Resource.AccountLevelMgr</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+                                @IMS.Resources.Resource.Welcome
+                                ,aaa
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">@IMS.Resources.Resource.UserSetting</a></li>
+                                <li><a href="#">@IMS.Resources.Resource.ChangePassword</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="@Url.Action("Logout","Main",new { area=""})">@IMS.Resources.Resource.Logout</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
         </div>
-    </div>
+    </header>
+
+
+    @*<div id="leftMenu">
+            @{Html.RenderAction("NavMenu", "Main", new { area = "" });}
+        </div>*@
+
+    <section class="container" id="bodyContent">
+        @RenderBody()
+    </section>
+
+    <hr />
+    <footer class="container">
+        <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+    </footer>
+
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
@@ -136,20 +153,6 @@
     <script src="~/Scripts/dataTables.bootstrap.min.js"></script>
     <script src="~/Scripts/jquery.cookie.js"></script>
     <script src="~/Scripts/base.js"></script>
-
-
-    @*<div id="leftMenu">
-            @{Html.RenderAction("NavMenu", "Main", new { area = "" });}
-        </div>*@
-
-    <div class="container" id="bodyContent">
-
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
-        </footer>
-    </div>
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script src="~/Scripts/locales/bootstrap-datepicker.zh-TW.min.js"></script>
     <script src="~/Scripts/select2/select2.min.js"></script>

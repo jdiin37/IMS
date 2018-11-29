@@ -50,12 +50,6 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -184,10 +178,6 @@
     <Content Include="Areas\Traceability\Views\Process\Index.cshtml" />
     <Content Include="Areas\Management\Views\Home\Index.cshtml" />
     <Content Include="Areas\DataAnalysis\Views\Home\Index.cshtml" />
-    <Content Include="Mvc.sitemap" />
-    <None Include="MvcSiteMapSchema.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -330,14 +320,8 @@
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Create.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Edit.cshtml" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\Shared\_TraceabilityLayout.cshtml" />
+    <Content Include="Views\Shared\_DataAnalysisLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

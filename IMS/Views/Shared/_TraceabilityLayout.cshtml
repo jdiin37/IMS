@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title </title>
+    <link rel="shortcut icon" href="~/favicon.ico">
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
+    <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/custom.css" rel="stylesheet" />   
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>   
+</head>
+<body>
+    <header>
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Traceability"})"><span class="fa fa-id-card-o">&nbsp;</span>@ViewBag.Title</a>
+                </div>
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav" id="top_menu">
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Produce <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a></li>
+                                <li><a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a></li>
+                                <li><a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a></li>
+                                <li><a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a></li>
+                                <li><a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Process <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a></li>
+                                <li><a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a></li>
+                                <li><a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a></li>
+                                <li><a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a></li>
+                            </ul>
+                        </li>
+
+
+
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="@Url.Action("Index","Main",new { area=""})"><span class="fa fa-home fa-lg">&nbsp;</span>@IMS.Resources.Resource.Home</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <section class="container" id="bodyContent">
+        @RenderBody()
+    </section>
+
+    <hr />
+    <footer class="container">
+        <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+    </footer>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/dataTables.bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/base.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/locales/bootstrap-datepicker.zh-TW.min.js"></script>
+    <script src="~/Scripts/select2/select2.min.js"></script>
+
+</body>
+</html>

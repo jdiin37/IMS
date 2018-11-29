@@ -322,6 +322,42 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Associative 的當地語系化字串。
+        /// </summary>
+        public static string DataAnalysis_Associative {
+            get {
+                return ResourceManager.GetString("DataAnalysis_Associative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Classification 的當地語系化字串。
+        /// </summary>
+        public static string DataAnalysis_Classification {
+            get {
+                return ResourceManager.GetString("DataAnalysis_Classification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Cluster 的當地語系化字串。
+        /// </summary>
+        public static string DataAnalysis_Cluster {
+            get {
+                return ResourceManager.GetString("DataAnalysis_Cluster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Regression 的當地語系化字串。
+        /// </summary>
+        public static string DataAnalysis_Regression {
+            get {
+                return ResourceManager.GetString("DataAnalysis_Regression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 none 的當地語系化字串。
         /// </summary>
         public static string Dropdown_Null {

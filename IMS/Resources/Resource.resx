@@ -342,4 +342,16 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="DataAnalysis_Associative" xml:space="preserve">
+    <value>Associative</value>
+  </data>
+  <data name="DataAnalysis_Classification" xml:space="preserve">
+    <value>Classification</value>
+  </data>
+  <data name="DataAnalysis_Cluster" xml:space="preserve">
+    <value>Cluster</value>
+  </data>
+  <data name="DataAnalysis_Regression" xml:space="preserve">
+    <value>Regression</value>
+  </data>
 </root>

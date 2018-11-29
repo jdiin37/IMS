@@ -232,7 +232,7 @@
     <value>經營證照資料</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>總覽</value>
+    <value>首頁</value>
   </data>
   <data name="LangSys" xml:space="preserve">
     <value>語系</value>
@@ -341,5 +341,17 @@
   </data>
   <data name="Welcome" xml:space="preserve">
     <value>歡迎</value>
+  </data>
+  <data name="DataAnalysis_Associative" xml:space="preserve">
+    <value>關聯法則</value>
+  </data>
+  <data name="DataAnalysis_Classification" xml:space="preserve">
+    <value>分群</value>
+  </data>
+  <data name="DataAnalysis_Cluster" xml:space="preserve">
+    <value>分類</value>
+  </data>
+  <data name="DataAnalysis_Regression" xml:space="preserve">
+    <value>迴歸分析</value>
   </data>
 </root>
