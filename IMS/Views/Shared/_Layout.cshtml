@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>@ViewBag.Title - @IMS.Resources.Resource.SysTitle</title>
+    <link rel="shortcut icon" href="~/favicon.ico">
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
     @*<link href="~/Content/bootstrap.theme.css" rel="stylesheet" type="text/css" />*@
@@ -19,7 +20,7 @@
     <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
     <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
     <link href="~/Content/custom.css" rel="stylesheet" />
-
+   
     <script src="~/Scripts/modernizr-2.6.2.js"></script>   
     <script>
         function f_navMenu_toggle() {
@@ -64,7 +65,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav" id="top_menu">
                     <li><a href="@Url.Action("Index","Main",new { area="Dashboard"})">@IMS.Resources.Resource.MenuDashboard</a></li>
-                    <li class="dropdown">
+                    @*<li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.BaseSheet <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                             <li><a href="@Url.Action("Index","SheetDisinfection",new { area="Sheet"})">@IMS.Resources.Resource.SheetDisinfection</a></li>
@@ -77,6 +78,27 @@
                             <li role="separator" class="divider"></li>
                             <li><a href="#">小分切場（廠）產銷履歷猪肉進貨明細表</a></li>
                             <li><a href="#">作業場溫度紀錄表</a></li>
+                        </ul>
+                    </li>*@
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Management <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Home</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_Traceability <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Home</a></li>
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Index","Produce",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Produce</a></li>
+                            <li><a href="@Url.Action("Index","Process",new { area="Traceability"})">@IMS.Resources.Resource.Traceability_Process</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Model_DataAnalysis <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Home</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">

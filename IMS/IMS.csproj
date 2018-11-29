@@ -50,6 +50,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.26.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.26\lib\net45\MvcSiteMapProvider.dll</HintPath>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.26.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.26\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -68,6 +74,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -120,6 +129,7 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="favicon.ico" />
     <Content Include="Images\Kite1.JPG" />
     <Content Include="Images\Kite2.JPG" />
     <Content Include="Images\Kite3.JPG" />
@@ -165,6 +175,19 @@
     <Content Include="Areas\Sys\Views\AccountLevel\Edit.cshtml" />
     <Content Include="Areas\Sys\Views\Account\Create.cshtml" />
     <Content Include="App_Code\getDropDown.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\web.config" />
+    <Content Include="Areas\Management\Views\web.config" />
+    <Content Include="Areas\Traceability\Views\web.config" />
+    <Content Include="Areas\Traceability\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Traceability\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\Produce\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\Process\Index.cshtml" />
+    <Content Include="Areas\Management\Views\Home\Index.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\Home\Index.cshtml" />
+    <Content Include="Mvc.sitemap" />
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -201,11 +224,19 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Dashboard\Controllers\MainController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\DataAnalysis\Controllers\HomeController.cs" />
+    <Compile Include="Areas\DataAnalysis\DataAnalysisAreaRegistration.cs" />
+    <Compile Include="Areas\Management\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
     <Compile Include="Areas\Sys\Controllers\AccountController.cs" />
     <Compile Include="Areas\Sys\Controllers\AccountLevelController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
+    <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\ProcessController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\ProduceController.cs" />
+    <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ValueReport.cs" />
@@ -298,6 +329,15 @@
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Index.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Create.cshtml" />
     <Content Include="Areas\Sheet\Views\SheetDisinfection\Edit.cshtml" />
+    <Content Include="Views\Shared\_ManagementLayout.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -309,9 +349,16 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Dashboard\Models\" />
     <Folder Include="Areas\Dashboard\Views\Shared\" />
+    <Folder Include="Areas\DataAnalysis\Models\" />
+    <Folder Include="Areas\DataAnalysis\Views\Shared\" />
+    <Folder Include="Areas\Management\Models\" />
+    <Folder Include="Areas\Management\Views\Shared\" />
     <Folder Include="Areas\Sheet\Models\" />
     <Folder Include="Areas\Sheet\Views\Shared\" />
     <Folder Include="Areas\Sys\Models\" />
+    <Folder Include="Areas\Traceability\Models\" />
+    <Folder Include="Areas\Traceability\Views\Shared\" />
+    <Folder Include="Images\ico\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>

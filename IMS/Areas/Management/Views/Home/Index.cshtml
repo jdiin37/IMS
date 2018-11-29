@@ -1,0 +1,51 @@
+﻿
+@{
+    ViewBag.Title = IMS.Resources.Resource.Model_Management;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="well">@IMS.Resources.Resource.Model_Management</h2>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="jumbotron">
+            <h1>@IMS.Resources.Resource.Management_FarmData</h1>
+            <p>
+                <a>@IMS.Resources.Resource.FarmData_base</a>、
+                <a>@IMS.Resources.Resource.FarmData_Land</a>、
+                <a>@IMS.Resources.Resource.FarmData_License</a>、
+                <a>@IMS.Resources.Resource.FarmData_Barn</a>
+            </p>
+            <p>@Html.ActionLink(IMS.Resources.Resource.Comm_Enter, "Index", "豬場基本資料", "", new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+    </div>
+    <div class="col-sm-6">       
+        <div class="jumbotron">
+            <h1>@IMS.Resources.Resource.Management_EnvironmentData</h1>
+            <p>
+                <a>@IMS.Resources.Resource.EnvironmentData_Abnormal</a>、
+                <a>@IMS.Resources.Resource.EnvironmentData_Temperature</a>、
+                <a>@IMS.Resources.Resource.EnvironmentData_Humidity</a>、
+                <a>@IMS.Resources.Resource.EnvironmentData_Image</a>
+            </p>
+            <p>@Html.ActionLink(IMS.Resources.Resource.Comm_Enter, "Index", "環境數據", "", new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="jumbotron">
+            <h1>@IMS.Resources.Resource.Management_BaseData</h1>
+            <p>
+                <a>@IMS.Resources.Resource.BaseData_PigChange</a>、
+                <a>@IMS.Resources.Resource.BaseData_Med</a>、
+                <a>@IMS.Resources.Resource.BaseData_FixedCost</a>、
+                <a>@IMS.Resources.Resource.BaseData_Customer</a>、
+                <a>@IMS.Resources.Resource.BaseData_Expenses</a>、
+                <a>@IMS.Resources.Resource.BaseData_Income</a>
+            </p>
+            <p>@Html.ActionLink(IMS.Resources.Resource.Comm_Enter, "Index", "資料維護", "", new { @class = "btn btn-primary btn-lg" })</p>
+        </div>
+    </div>
+</div>

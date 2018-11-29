@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = IMS.Resources.Resource.Traceability_Process;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@IMS.Resources.Resource.Traceability_Process</h2>
+<hr />
+<div class="row">
+    <div class="col-sm-3">
+        <br />
+        @Html.ActionLink(IMS.Resources.Resource.Process_Butcher, "Index", "", new { @class = "btn btn-info btn-block" })
+    </div>
+    <div class="col-sm-3">
+        <br />
+        @Html.ActionLink(IMS.Resources.Resource.Process_BigCut, "Index", "", new { @class = "btn btn-info btn-block" })
+    </div>
+    <div class="col-sm-3">
+        <br />
+        @Html.ActionLink(IMS.Resources.Resource.Process_SmallCut, "Index", "", new { @class = "btn btn-info btn-block" })
+    </div>
+    <div class="col-sm-3">
+        <br />
+        @Html.ActionLink(IMS.Resources.Resource.Process_Package, "Index", "", new { @class = "btn btn-info btn-block" })
+    </div>
+</div>

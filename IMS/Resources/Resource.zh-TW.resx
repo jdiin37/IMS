@@ -138,6 +138,24 @@
   <data name="AccountNo" xml:space="preserve">
     <value>帳號</value>
   </data>
+  <data name="BaseData_Customer" xml:space="preserve">
+    <value>客戶建檔作業</value>
+  </data>
+  <data name="BaseData_Expenses" xml:space="preserve">
+    <value>支出作業</value>
+  </data>
+  <data name="BaseData_FixedCost" xml:space="preserve">
+    <value>固定成本維護</value>
+  </data>
+  <data name="BaseData_Income" xml:space="preserve">
+    <value>收入作業</value>
+  </data>
+  <data name="BaseData_Med" xml:space="preserve">
+    <value>醫藥品項建檔作業</value>
+  </data>
+  <data name="BaseData_PigChange" xml:space="preserve">
+    <value>豬隻異動作業</value>
+  </data>
   <data name="BaseSheet" xml:space="preserve">
     <value>基本資料表單</value>
   </data>
@@ -171,6 +189,9 @@
   <data name="Comm_Edit" xml:space="preserve">
     <value>編輯</value>
   </data>
+  <data name="Comm_Enter" xml:space="preserve">
+    <value>進入</value>
+  </data>
   <data name="Comm_Print" xml:space="preserve">
     <value>列印</value>
   </data>
@@ -186,6 +207,33 @@
   <data name="Dropdown_Null" xml:space="preserve">
     <value>無</value>
   </data>
+  <data name="EnvironmentData_Abnormal" xml:space="preserve">
+    <value>環境異常提醒</value>
+  </data>
+  <data name="EnvironmentData_Humidity" xml:space="preserve">
+    <value>濕度感測</value>
+  </data>
+  <data name="EnvironmentData_Image" xml:space="preserve">
+    <value>影像數據</value>
+  </data>
+  <data name="EnvironmentData_Temperature" xml:space="preserve">
+    <value>溫度感測</value>
+  </data>
+  <data name="FarmData_Barn" xml:space="preserve">
+    <value>畜舍資料</value>
+  </data>
+  <data name="FarmData_base" xml:space="preserve">
+    <value>基本資料</value>
+  </data>
+  <data name="FarmData_Land" xml:space="preserve">
+    <value>土地資料</value>
+  </data>
+  <data name="FarmData_License" xml:space="preserve">
+    <value>經營證照資料</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>總覽</value>
+  </data>
   <data name="LangSys" xml:space="preserve">
     <value>語系</value>
   </data>
@@ -194,6 +242,15 @@
   </data>
   <data name="Logout" xml:space="preserve">
     <value>登出</value>
+  </data>
+  <data name="Management_BaseData" xml:space="preserve">
+    <value>資料維護</value>
+  </data>
+  <data name="Management_EnvironmentData" xml:space="preserve">
+    <value>環境數據</value>
+  </data>
+  <data name="Management_FarmData" xml:space="preserve">
+    <value>豬場基本資料</value>
   </data>
   <data name="MenuDashboard" xml:space="preserve">
     <value>儀表板</value>
@@ -213,6 +270,15 @@
   <data name="MenuSys" xml:space="preserve">
     <value>系統維護</value>
   </data>
+  <data name="Model_DataAnalysis" xml:space="preserve">
+    <value>資料分析模組</value>
+  </data>
+  <data name="Model_Management" xml:space="preserve">
+    <value>經營管理模組</value>
+  </data>
+  <data name="Model_Traceability" xml:space="preserve">
+    <value>生產履歷模組</value>
+  </data>
   <data name="Password" xml:space="preserve">
     <value>密碼</value>
   </data>
@@ -221,6 +287,33 @@
   </data>
   <data name="PigResumeMProduce" xml:space="preserve">
     <value>豬隻生產履歷</value>
+  </data>
+  <data name="Process_BigCut" xml:space="preserve">
+    <value>大分切作業</value>
+  </data>
+  <data name="Process_Butcher" xml:space="preserve">
+    <value>屠宰作業</value>
+  </data>
+  <data name="Process_Package" xml:space="preserve">
+    <value>分裝作業</value>
+  </data>
+  <data name="Process_SmallCut" xml:space="preserve">
+    <value>小分切作業</value>
+  </data>
+  <data name="Produce_Environment" xml:space="preserve">
+    <value>衛生管理作業</value>
+  </data>
+  <data name="Produce_FeedAndAdditive" xml:space="preserve">
+    <value>飼料與添加物作業</value>
+  </data>
+  <data name="Produce_FeedingAndBatch" xml:space="preserve">
+    <value>飼養與出豬作業</value>
+  </data>
+  <data name="Produce_Health" xml:space="preserve">
+    <value>豬隻健康作業</value>
+  </data>
+  <data name="Produce_Med" xml:space="preserve">
+    <value>用藥作業</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>必填</value>
@@ -233,6 +326,12 @@
   </data>
   <data name="SysTitle" xml:space="preserve">
     <value>智慧型畜牧場管理平台</value>
+  </data>
+  <data name="Traceability_Process" xml:space="preserve">
+    <value>加工流程</value>
+  </data>
+  <data name="Traceability_Produce" xml:space="preserve">
+    <value>生產流程</value>
   </data>
   <data name="User" xml:space="preserve">
     <value>使用者</value>

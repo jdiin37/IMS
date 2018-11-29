@@ -124,6 +124,60 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Customer 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_Customer {
+            get {
+                return ResourceManager.GetString("BaseData_Customer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Expenses 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_Expenses {
+            get {
+                return ResourceManager.GetString("BaseData_Expenses", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 FixedCost 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_FixedCost {
+            get {
+                return ResourceManager.GetString("BaseData_FixedCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Income 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_Income {
+            get {
+                return ResourceManager.GetString("BaseData_Income", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Med 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_Med {
+            get {
+                return ResourceManager.GetString("BaseData_Med", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 PigChange 的當地語系化字串。
+        /// </summary>
+        public static string BaseData_PigChange {
+            get {
+                return ResourceManager.GetString("BaseData_PigChange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 基本資料表單 的當地語系化字串。
         /// </summary>
         public static string BaseSheet {
@@ -151,7 +205,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 修改密碼 的當地語系化字串。
+        ///   查詢類似 Change Password 的當地語系化字串。
         /// </summary>
         public static string ChangePassword {
             get {
@@ -160,7 +214,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 新增 的當地語系化字串。
+        ///   查詢類似 Add 的當地語系化字串。
         /// </summary>
         public static string Comm_Add {
             get {
@@ -178,7 +232,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 返回 的當地語系化字串。
+        ///   查詢類似 BackToList 的當地語系化字串。
         /// </summary>
         public static string Comm_BackToList {
             get {
@@ -187,7 +241,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 取消 的當地語系化字串。
+        ///   查詢類似 Cancek 的當地語系化字串。
         /// </summary>
         public static string Comm_Cancel {
             get {
@@ -196,7 +250,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 刪除 的當地語系化字串。
+        ///   查詢類似 Delete 的當地語系化字串。
         /// </summary>
         public static string Comm_Delete {
             get {
@@ -205,7 +259,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 明細 的當地語系化字串。
+        ///   查詢類似 Details 的當地語系化字串。
         /// </summary>
         public static string Comm_Details {
             get {
@@ -214,7 +268,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 編輯 的當地語系化字串。
+        ///   查詢類似 Edit 的當地語系化字串。
         /// </summary>
         public static string Comm_Edit {
             get {
@@ -223,7 +277,16 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 列印 的當地語系化字串。
+        ///   查詢類似 Enter 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Enter {
+            get {
+                return ResourceManager.GetString("Comm_Enter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Print 的當地語系化字串。
         /// </summary>
         public static string Comm_Print {
             get {
@@ -232,7 +295,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 確定 的當地語系化字串。
+        ///   查詢類似 Save 的當地語系化字串。
         /// </summary>
         public static string Comm_Save {
             get {
@@ -241,7 +304,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 查詢 的當地語系化字串。
+        ///   查詢類似 Search 的當地語系化字串。
         /// </summary>
         public static string Comm_Search {
             get {
@@ -264,6 +327,87 @@ namespace IMS.Resources {
         public static string Dropdown_Null {
             get {
                 return ResourceManager.GetString("Dropdown_Null", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Abnormal 的當地語系化字串。
+        /// </summary>
+        public static string EnvironmentData_Abnormal {
+            get {
+                return ResourceManager.GetString("EnvironmentData_Abnormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Humidity 的當地語系化字串。
+        /// </summary>
+        public static string EnvironmentData_Humidity {
+            get {
+                return ResourceManager.GetString("EnvironmentData_Humidity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Image 的當地語系化字串。
+        /// </summary>
+        public static string EnvironmentData_Image {
+            get {
+                return ResourceManager.GetString("EnvironmentData_Image", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Temperature 的當地語系化字串。
+        /// </summary>
+        public static string EnvironmentData_Temperature {
+            get {
+                return ResourceManager.GetString("EnvironmentData_Temperature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Barn 的當地語系化字串。
+        /// </summary>
+        public static string FarmData_Barn {
+            get {
+                return ResourceManager.GetString("FarmData_Barn", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Base 的當地語系化字串。
+        /// </summary>
+        public static string FarmData_base {
+            get {
+                return ResourceManager.GetString("FarmData_base", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Land 的當地語系化字串。
+        /// </summary>
+        public static string FarmData_Land {
+            get {
+                return ResourceManager.GetString("FarmData_Land", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 License 的當地語系化字串。
+        /// </summary>
+        public static string FarmData_License {
+            get {
+                return ResourceManager.GetString("FarmData_License", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Home 的當地語系化字串。
+        /// </summary>
+        public static string Home {
+            get {
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -295,7 +439,34 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 儀表板 的當地語系化字串。
+        ///   查詢類似 BaseData 的當地語系化字串。
+        /// </summary>
+        public static string Management_BaseData {
+            get {
+                return ResourceManager.GetString("Management_BaseData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 EnvironmentData 的當地語系化字串。
+        /// </summary>
+        public static string Management_EnvironmentData {
+            get {
+                return ResourceManager.GetString("Management_EnvironmentData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 FarmData 的當地語系化字串。
+        /// </summary>
+        public static string Management_FarmData {
+            get {
+                return ResourceManager.GetString("Management_FarmData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Dashboard 的當地語系化字串。
         /// </summary>
         public static string MenuDashboard {
             get {
@@ -304,7 +475,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 首頁 的當地語系化字串。
+        ///   查詢類似 Home 的當地語系化字串。
         /// </summary>
         public static string MenuHome {
             get {
@@ -340,11 +511,38 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 系統維護 的當地語系化字串。
+        ///   查詢類似 System 的當地語系化字串。
         /// </summary>
         public static string MenuSys {
             get {
                 return ResourceManager.GetString("MenuSys", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 DataAnalysis 的當地語系化字串。
+        /// </summary>
+        public static string Model_DataAnalysis {
+            get {
+                return ResourceManager.GetString("Model_DataAnalysis", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Management 的當地語系化字串。
+        /// </summary>
+        public static string Model_Management {
+            get {
+                return ResourceManager.GetString("Model_Management", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Traceability 的當地語系化字串。
+        /// </summary>
+        public static string Model_Traceability {
+            get {
+                return ResourceManager.GetString("Model_Traceability", resourceCulture);
             }
         }
         
@@ -372,6 +570,87 @@ namespace IMS.Resources {
         public static string PigResumeMProduce {
             get {
                 return ResourceManager.GetString("PigResumeMProduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 BigCut 的當地語系化字串。
+        /// </summary>
+        public static string Process_BigCut {
+            get {
+                return ResourceManager.GetString("Process_BigCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Butcher 的當地語系化字串。
+        /// </summary>
+        public static string Process_Butcher {
+            get {
+                return ResourceManager.GetString("Process_Butcher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Package 的當地語系化字串。
+        /// </summary>
+        public static string Process_Package {
+            get {
+                return ResourceManager.GetString("Process_Package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 SmallCut 的當地語系化字串。
+        /// </summary>
+        public static string Process_SmallCut {
+            get {
+                return ResourceManager.GetString("Process_SmallCut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Environment 的當地語系化字串。
+        /// </summary>
+        public static string Produce_Environment {
+            get {
+                return ResourceManager.GetString("Produce_Environment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Feed And Additive 的當地語系化字串。
+        /// </summary>
+        public static string Produce_FeedAndAdditive {
+            get {
+                return ResourceManager.GetString("Produce_FeedAndAdditive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Feeding And Batch 的當地語系化字串。
+        /// </summary>
+        public static string Produce_FeedingAndBatch {
+            get {
+                return ResourceManager.GetString("Produce_FeedingAndBatch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Health 的當地語系化字串。
+        /// </summary>
+        public static string Produce_Health {
+            get {
+                return ResourceManager.GetString("Produce_Health", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Med 的當地語系化字串。
+        /// </summary>
+        public static string Produce_Med {
+            get {
+                return ResourceManager.GetString("Produce_Med", resourceCulture);
             }
         }
         
@@ -412,7 +691,25 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 使用者 的當地語系化字串。
+        ///   查詢類似 Process 的當地語系化字串。
+        /// </summary>
+        public static string Traceability_Process {
+            get {
+                return ResourceManager.GetString("Traceability_Process", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Produce 的當地語系化字串。
+        /// </summary>
+        public static string Traceability_Produce {
+            get {
+                return ResourceManager.GetString("Traceability_Produce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 User 的當地語系化字串。
         /// </summary>
         public static string User {
             get {
@@ -421,7 +718,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 使用者設定 的當地語系化字串。
+        ///   查詢類似 User Setting 的當地語系化字串。
         /// </summary>
         public static string UserSetting {
             get {
@@ -430,7 +727,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 歡迎 的當地語系化字串。
+        ///   查詢類似 Welcome 的當地語系化字串。
         /// </summary>
         public static string Welcome {
             get {

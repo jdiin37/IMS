@@ -138,6 +138,24 @@
   <data name="AccountNo" xml:space="preserve">
     <value>AccountNo</value>
   </data>
+  <data name="BaseData_Customer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="BaseData_Expenses" xml:space="preserve">
+    <value>Expenses</value>
+  </data>
+  <data name="BaseData_FixedCost" xml:space="preserve">
+    <value>FixedCost</value>
+  </data>
+  <data name="BaseData_Income" xml:space="preserve">
+    <value>Income</value>
+  </data>
+  <data name="BaseData_Med" xml:space="preserve">
+    <value>Med</value>
+  </data>
+  <data name="BaseData_PigChange" xml:space="preserve">
+    <value>PigChange</value>
+  </data>
   <data name="BaseSheet" xml:space="preserve">
     <value>基本資料表單</value>
   </data>
@@ -148,43 +166,73 @@
     <value>分類項目</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
-    <value>修改密碼</value>
+    <value>Change Password</value>
   </data>
   <data name="Comm_Add" xml:space="preserve">
-    <value>新增</value>
+    <value>Add</value>
   </data>
   <data name="Comm_AddAccount" xml:space="preserve">
     <value>Add Account</value>
   </data>
   <data name="Comm_BackToList" xml:space="preserve">
-    <value>返回</value>
+    <value>BackToList</value>
   </data>
   <data name="Comm_Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>Cancek</value>
   </data>
   <data name="Comm_Delete" xml:space="preserve">
-    <value>刪除</value>
+    <value>Delete</value>
   </data>
   <data name="Comm_Details" xml:space="preserve">
-    <value>明細</value>
+    <value>Details</value>
   </data>
   <data name="Comm_Edit" xml:space="preserve">
-    <value>編輯</value>
+    <value>Edit</value>
+  </data>
+  <data name="Comm_Enter" xml:space="preserve">
+    <value>Enter</value>
   </data>
   <data name="Comm_Print" xml:space="preserve">
-    <value>列印</value>
+    <value>Print</value>
   </data>
   <data name="Comm_Save" xml:space="preserve">
-    <value>確定</value>
+    <value>Save</value>
   </data>
   <data name="Comm_Search" xml:space="preserve">
-    <value>查詢</value>
+    <value>Search</value>
   </data>
   <data name="Creater" xml:space="preserve">
     <value>Kuo,TsungHan</value>
   </data>
   <data name="Dropdown_Null" xml:space="preserve">
     <value>none</value>
+  </data>
+  <data name="EnvironmentData_Abnormal" xml:space="preserve">
+    <value>Abnormal</value>
+  </data>
+  <data name="EnvironmentData_Humidity" xml:space="preserve">
+    <value>Humidity</value>
+  </data>
+  <data name="EnvironmentData_Image" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="EnvironmentData_Temperature" xml:space="preserve">
+    <value>Temperature</value>
+  </data>
+  <data name="FarmData_Barn" xml:space="preserve">
+    <value>Barn</value>
+  </data>
+  <data name="FarmData_base" xml:space="preserve">
+    <value>Base</value>
+  </data>
+  <data name="FarmData_Land" xml:space="preserve">
+    <value>Land</value>
+  </data>
+  <data name="FarmData_License" xml:space="preserve">
+    <value>License</value>
+  </data>
+  <data name="Home" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="LangSys" xml:space="preserve">
     <value>Language</value>
@@ -195,11 +243,20 @@
   <data name="Logout" xml:space="preserve">
     <value>SingOut</value>
   </data>
+  <data name="Management_BaseData" xml:space="preserve">
+    <value>BaseData</value>
+  </data>
+  <data name="Management_EnvironmentData" xml:space="preserve">
+    <value>EnvironmentData</value>
+  </data>
+  <data name="Management_FarmData" xml:space="preserve">
+    <value>FarmData</value>
+  </data>
   <data name="MenuDashboard" xml:space="preserve">
-    <value>儀表板</value>
+    <value>Dashboard</value>
   </data>
   <data name="MenuHome" xml:space="preserve">
-    <value>首頁</value>
+    <value>Home</value>
   </data>
   <data name="MenuPigM" xml:space="preserve">
     <value>豬隻管理</value>
@@ -211,7 +268,16 @@
     <value>庫存</value>
   </data>
   <data name="MenuSys" xml:space="preserve">
-    <value>系統維護</value>
+    <value>System</value>
+  </data>
+  <data name="Model_DataAnalysis" xml:space="preserve">
+    <value>DataAnalysis</value>
+  </data>
+  <data name="Model_Management" xml:space="preserve">
+    <value>Management</value>
+  </data>
+  <data name="Model_Traceability" xml:space="preserve">
+    <value>Traceability</value>
   </data>
   <data name="Password" xml:space="preserve">
     <value>Password</value>
@@ -221,6 +287,33 @@
   </data>
   <data name="PigResumeMProduce" xml:space="preserve">
     <value>豬隻生產履歷</value>
+  </data>
+  <data name="Process_BigCut" xml:space="preserve">
+    <value>BigCut</value>
+  </data>
+  <data name="Process_Butcher" xml:space="preserve">
+    <value>Butcher</value>
+  </data>
+  <data name="Process_Package" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="Process_SmallCut" xml:space="preserve">
+    <value>SmallCut</value>
+  </data>
+  <data name="Produce_Environment" xml:space="preserve">
+    <value>Environment</value>
+  </data>
+  <data name="Produce_FeedAndAdditive" xml:space="preserve">
+    <value>Feed And Additive</value>
+  </data>
+  <data name="Produce_FeedingAndBatch" xml:space="preserve">
+    <value>Feeding And Batch</value>
+  </data>
+  <data name="Produce_Health" xml:space="preserve">
+    <value>Health</value>
+  </data>
+  <data name="Produce_Med" xml:space="preserve">
+    <value>Med</value>
   </data>
   <data name="Required" xml:space="preserve">
     <value>Required</value>
@@ -234,13 +327,19 @@
   <data name="SysTitle" xml:space="preserve">
     <value>Smart LiveStock</value>
   </data>
+  <data name="Traceability_Process" xml:space="preserve">
+    <value>Process</value>
+  </data>
+  <data name="Traceability_Produce" xml:space="preserve">
+    <value>Produce</value>
+  </data>
   <data name="User" xml:space="preserve">
-    <value>使用者</value>
+    <value>User</value>
   </data>
   <data name="UserSetting" xml:space="preserve">
-    <value>使用者設定</value>
+    <value>User Setting</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>歡迎</value>
+    <value>Welcome</value>
   </data>
 </root>
