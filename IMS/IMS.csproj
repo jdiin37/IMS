@@ -101,8 +101,12 @@
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.paper.min.css" />
+    <Content Include="Content\bootstrap.default.min.css" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.cerulean.min.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.journal.min.css" />
     <Content Include="Content\custom.css" />
     <Content Include="Content\select2-bootstrap.css" />
     <Content Include="Content\select2\select2.css" />
@@ -174,10 +178,9 @@
     <Content Include="Areas\Traceability\Views\web.config" />
     <Content Include="Areas\Traceability\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Traceability\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Traceability\Views\Produce\Index.cshtml" />
-    <Content Include="Areas\Traceability\Views\Process\Index.cshtml" />
     <Content Include="Areas\Management\Views\Home\Index.cshtml" />
     <Content Include="Areas\DataAnalysis\Views\Home\Index.cshtml" />
+    <Content Include="Content\bootstrap.readable.min.css" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -224,8 +227,6 @@
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Traceability\Controllers\ProcessController.cs" />
-    <Compile Include="Areas\Traceability\Controllers\ProduceController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Controllers\BaseController.cs" />
