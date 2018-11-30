@@ -4,5 +4,71 @@
     Layout = "~/Views/Shared/_DataAnalysisLayout.cshtml";
 }
 
-<h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
+<div class="row">
+    <div class="col-sm-6">
+        <br />
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@IMS.Resources.Resource.DataAnalysis_Classification</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <a href="@Url.Action("Index","Butcher",new { area="Traceability"})">K-Means</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","BigCut",new { area="Traceability"})">Self-Organizing Map</a>
+                </p>
+
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">@IMS.Resources.Resource.DataAnalysis_Cluster</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <a href="@Url.Action("Index","Health",new { area="Traceability"})">>C4.5</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","Environment",new { area="Traceability"})">K-Nearest Neighbor</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <br />
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <h3 class="panel-title">@IMS.Resources.Resource.DataAnalysis_Associative </h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <a href="@Url.Action("Index","Health",new { area="Traceability"})">Apriori</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","Environment",new { area="Traceability"})">COFI Tree</a>
+                </p>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">@IMS.Resources.Resource.DataAnalysis_Regression</h3>
+            </div>
+            <div class="panel-body">
+                <p>
+                    <a href="@Url.Action("Index","Health",new { area="Traceability"})">Simple Regression</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","Environment",new { area="Traceability"})">Multiple Regression</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","Med",new { area="Traceability"})">Linear Regression</a>
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>
 
