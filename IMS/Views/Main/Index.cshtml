@@ -2,114 +2,54 @@
 @{
     ViewBag.Title = IMS.Resources.Resource.MenuHome;   
 }
-<ol class="breadcrumb">
+@*<ol class="breadcrumb">
     <li class="active"><a href="@Url.Action("Index","Main")">@IMS.Resources.Resource.Home</a></li>
-</ol>
-<h2>一、整場防疫管理計畫（範例） </h2>
-<div class="row">
-    <div class="col-md-6">
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">（一） 猪場衛生管理 </h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    1. 嚴格管制人員及車輛進出猪場，如確需進入時車輛需駛經消毒池或以噴霧消毒始能 進入場內。消毒池需使用 3%鹼水或其他具有相同或更佳消毒效用之消毒劑，必要時 以 0.5~1%鹼水噴灑車輛、車台。嚴禁運猪人員進入猪舍內協助趕猪。
-                </p>
-                <p>
-                    2. 猪場應設置更衣室與淋浴室，工作人員應更換工作衣、膠鞋後，經消毒池進入場內 工作。消毒池需使用 3%鹼水或其他具有相同或更佳消毒效用之消毒劑，並注意經常保持有效的消毒液；同時嚴禁工作人員在外兼職。原則上禁止訪客進入場區，如因 業務需要（如獸醫人員），必須穿著防護衣、鞋及必要之消毒。
-                </p>
-                <p>
-                    3. 猪場保持乾燥，且依規定時程消毒，每週至少一次。消毒手續是猪欄有猪在養時可 先將糞尿沖洗乾淨，再以消毒劑進行噴霧消毒，其稀釋濃度請參照產品說明書；若為空欄者，先清洗乾淨再以 3%鹼水浸泡，或其他具有相同或更佳消毒效用之消毒劑 消毒，或以火焰消毒一次，並空置至少一週。
-                </p>
-                <p>
-                    4. 猪糞尿需經污水處理後符合國家標準始得放流。
-                </p>
-                <p>
-                    5. 胎衣、弱死仔猪及病死猪必須以化製等合法方法處理。
-                </p>
-                <p>
-                    6. 空地雜草修剪平整，水溝時常清洗；所有畜舍要嚴防鳥類飛入並定期捕殺野鼠；場 內不准飼養貓狗，外來貓狗應予驅離；同時經常誘殺蚊蟲、蒼蠅、蟑螂及蜘蛛等昆蟲。
-                </p>
-                <p>
-                     7. 出猪台、散裝飼料儲存桶應設在猪場邊緣，使運猪車及飼料車不需進入場內就可作 業。猪場應設有隔離舍，其位置和原有猪舍保持適當距離，以供新引進猪隻隔離使用。
-                </p>
-            </div>
-        </div>
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">（二） 猪隻免疫計畫 </h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    猪隻免疫是預防疾病良好的方法之一，疫苗分兩大類，即死毒（菌）與活毒（菌） 兩類。而常用的疫苗除了配合猪瘟及口蹄疫撲滅計畫施打必須使用的猪瘟（HC）及 口蹄疫（FMD）疫苗以外，其他常用的疫苗有假性狂犬病（PR）疫苗、日本腦炎（JE） 疫苗、丹毒（Ery）疫苗、萎縮性鼻炎（AR）疫苗等。疫苗保存及使用應依照其說明 書。
-                </p>
-                <p>
-                    1. 經產母猪的免疫：<br />
-                    經產母猪常用疫苗的免疫時間如圖一。<br />
-                 
-                        (1) 猪瘟疫苗：經產母猪每年免疫一次，空胎時注射。 <br />                  
-                        (2) 口蹄疫疫苗：分娩前 3~4 週補強注射一次。（配合政府口蹄疫防疫政策辦理）<br />
-                        (3) 猪丹毒疫苗：每胎離乳後配種前補強注射一次。 <br />
-                        (4) 日本腦炎疫苗：流行季節時，第二產母猪於離乳後配種前補強注射一次，以後免再注 射。<br />
-                        (5) 假性狂犬病疫苗：分娩前 3~4 週補強注射不活化疫苗一次。 <br />
-                        (6) 萎縮性鼻炎疫苗：每胎分娩前 6 週與 3 週各注射一次。<br />
-                </p>
-                <p>
-                    2. 更新種公、女猪的免疫： <br />
-                    更新種公、女猪常用疫苗的免疫時間如圖二。<br />
-                    (1) 猪瘟疫苗：配合猪瘟撲滅計畫，更新種公、女猪於配種前兩個月補強注射一次。<br />
-                    (2) 口蹄疫疫苗：配種前完成一次免疫，分娩前 3~4 週補強注射一次。（配合政府口蹄疫防 疫政策辦理）<br />
-                    (3) 猪丹毒疫苗：配種前完成一次免疫。<br />
-                    (4) 日本腦炎疫苗：配種前完成一次免疫。<br />
-                    (5) 假性狂犬病疫苗：配種前完成兩次免疫，間隔 3~4 週。分娩前 3~4 週補強注射不活化 疫苗一次。<br />
-                    (6) 萎縮性鼻炎疫苗：每胎分娩前 6 週與 3 週各注射一次。<br />
-                </p>
-                <p>
-                    3. 種公猪的免疫<br />
-                    (1) 猪瘟疫苗：每年補強注射一次。 <br />
-                    (2) 口蹄疫疫苗：每半年補強注射一次。（配合政府口蹄疫防疫政策辦理） <br />
-                    (3) 猪丹毒疫苗：每半年補強注射一次。<br />
-                    (4) 假性狂犬病疫苗：每半年補強注射一次。 <br />
-                    (5) 萎縮性鼻炎疫苗：每半年補強注射一次。<br />
-                </p>
-                <p>
-                    4. 仔猪、保育猪與肥育猪的免疫  <br />
-                    仔猪、保育猪與肥育猪常用疫苗的免疫時間如圖三。<br />
-                    (1) 猪瘟疫苗：母猪每年（空胎）補強一劑者，其生產仔猪（肉猪）於 6 週齡及 9 週齡各 施打一劑或依動物疫機關及試驗研究機關分析後推薦實施。 <br />
-                    (2) 口蹄疫疫苗：8~12 週齡注射一次，10~16 週再補強注射一次。台灣黑猪因生長較慢， 於六月齡時需再補強注射一次，惟應配合階段性停打疫苗措施執行免疫計畫。 <br />
-                    (3) 猪丹毒疫苗：6 週齡注射一次。 <br />
-                    (4) 假性狂犬病疫苗：視需要在 7~10 週齡時注射一次，3~4 週後補強注射一次。<br />
-                </p>                
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6">
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <h3 class="panel-title">（三） 猪隻驅蟲計畫  </h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    1. 內寄生蟲防治<br />
-                    猪場之內寄生蟲以蛔蟲及鞭蟲為主，控制內寄生蟲必須從衛生管理及用藥兩方面著 手，且必須考慮內寄生蟲種類、感染程度、生活史與環境等因素。 <br />
-                    (1) 空欄時用 3%鹼水清洗，猪舍地面破損時立即補平，水溝保持暢通以清除猪場內殘存之 蟲卵。 <br />
-                    (2) 母猪應於移入分娩舍前驅蟲及徹底清洗，公猪應每半年驅蟲一次。 <br />
-                    (3) 肉猪於移入生長猪舍後（約 20 公斤）應驅蟲一次。 <br />
-                    (4) 肉猪上市屠體檢查發現肝臟出現白斑的比率達 30%以上時應全場驅蟲。 <br />
-                    (5) 要徹底根絕內寄生蟲，必須全場猪隻每季定期驅蟲一次。<br />
-                    <br />
-                    2. 外寄生蟲防治<br />
-                    猪場的外寄生蟲以猪疥癬蟲及猪虱為主，控制方法如下： <br />
-                    (1) 母猪在移入分娩舍前徹底清洗及治療，肉猪及懷孕母猪每月噴殺蟲藥一次。<br />
-                    (2) 受到感染時，每隔 2 週噴殺蟲藥治療一次，連續執行 4 次，牆壁及器具應一併噴灑。<br />
-                </p>
-            </div>
-        </div>
-    </div>
+</ol>*@
+<div class="jumbotron">
+    <h1>@IMS.Resources.Resource.SysTitle</h1>
+    <p class="lead">何謂 @IMS.Resources.Resource.SysTitle ?</p>
+    <p><a href="#section2" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore &raquo;</a></p>
 </div>
-<div class="row">
-    <div class="col-md-12">
+<div class="row" id="section1">
+    <div class="col-md-4">
+        <h2>@IMS.Resources.Resource.Model_Management</h2>
+        <p>
+            管理資訊系統是一個以人為主導的，利用電腦硬體、軟體和網路裝置，進行資訊的收集、傳遞、儲存、加工、整理的系統，以提高組織的經營效率。 管理資訊系統是有別於一般的資訊系統，因為它們都是用來分析其它資訊系統在組織的業務活動中的應用
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
     </div>
-</div>
 
+    <div class="col-md-4">
+        <h2>@IMS.Resources.Resource.Model_Traceability</h2>
+        <p>在物流管理中，可追溯性是指沿著產銷供應鏈追蹤貨品位置、狀況等資料的能力。這種能力可以以一套批次號或流水號系統為基礎。可追溯性是建立物聯網的基礎。</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
+    </div>
+
+    <div class="col-md-4">
+        <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
+        <p>資料分析是一類統計方法，其主要特點是多維性和描述性。有些幾何方法有助於揭示不同的資料之間存在的關係，並繪製出統計資訊圖，以更簡潔的解釋這些資料中包含的主要資訊。其他一些用於收集資料，以便弄清哪些是同質的，從而更好地了解資料。</p>
+        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
+    </div>
+</div>
+<hr />
+<div class="row " id="section2">
+    <div class="col-md-6">
+        <h2>何謂 @IMS.Resources.Resource.SysTitle ?</h2>
+        <p>
+            &nbsp; &nbsp; 現今台灣豬場面臨的不只是飼養管理、飼料營養、疾病監控等技術上的議題，更需要良好的經營專長以及藉由資訊系統達到管理的能力，近年來資訊科技技術蓬勃發展，各項產業導入資訊科技已是常態現象，由中央畜產會每年統計的養豬報告顯示，目前台灣養豬場朝向大型少場發展，如導入有用且易用的資訊系統，運用資料分析等技術，勢必有助於養豬產業在知識上的累積及未來發展。
+        </p>
+        <br />
+        <p>
+            &nbsp; &nbsp; 台灣的豬場以屏東縣為例多以經驗方式養豬，在飼養過程中的數據仍須透過紙本記錄，不易管理及應用，因此透過資訊系統將豬隻的生產過程資訊化，除了能朝向無紙化發展，如能將累積的資料加以分析應用，也可提升產銷履歷的附加價值。
+        </p>
+    </div>
+    <div class="col-md-6">
+        <p class="btn-block btn btn-warning">生產</p>
+        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+        <p class="btn-block btn btn-info">加工</p>
+        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+        <p class="btn-block btn btn-success">分裝</p>
+        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+        <p class="btn-block btn btn-primary">回溯履歷</p>
+    </div>
+</div>

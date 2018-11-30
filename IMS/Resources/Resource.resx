@@ -342,6 +342,9 @@
   <data name="Welcome" xml:space="preserve">
     <value>Welcome</value>
   </data>
+  <data name="Comm_LearnMore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
   <data name="DataAnalysis_Associative" xml:space="preserve">
     <value>Associative</value>
   </data>

@@ -99,6 +99,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="400.html" />
+    <Content Include="404.html" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.spacelab.min.css" />
@@ -326,6 +328,7 @@
     <Content Include="Views\Shared\_DataAnalysisLayout.cshtml" />
     <Content Include="Views\Main\UserInfo.cshtml" />
     <Content Include="Views\Main\BoxMenu.cshtml" />
+    <Content Include="Views\Shared\exceptionError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

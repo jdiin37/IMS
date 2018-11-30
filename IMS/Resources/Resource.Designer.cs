@@ -286,6 +286,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Learn more 的當地語系化字串。
+        /// </summary>
+        public static string Comm_LearnMore {
+            get {
+                return ResourceManager.GetString("Comm_LearnMore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Print 的當地語系化字串。
         /// </summary>
         public static string Comm_Print {

@@ -342,6 +342,9 @@
   <data name="Welcome" xml:space="preserve">
     <value>歡迎</value>
   </data>
+  <data name="Comm_LearnMore" xml:space="preserve">
+    <value>了解更多</value>
+  </data>
   <data name="DataAnalysis_Associative" xml:space="preserve">
     <value>關聯法則</value>
   </data>

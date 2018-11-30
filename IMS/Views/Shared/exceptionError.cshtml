@@ -1,0 +1,15 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+<h1 class="text-danger">Error.</h1>
+<h2 class="text-danger">伺服器正在忙線中,請稍後再試....</h2>
+@*4.9-3取出ControllerName,ActionName及Exception.Message屬性*@
+<fieldset>
+    <legend>HandleErrorInfo</legend>
+    Controller: @Model.ControllerName <br />
+    Action: @Model.ActionName <br />
+    EXCEPTION: @Model.Exception.GetType().ToString() <br />
+    Message: @Model.Exception.Message
+</fieldset>

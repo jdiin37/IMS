@@ -82,7 +82,8 @@
 
 .menu-box280-btn:hover {
     /*border: 1px solid rgba(136,136,136,.1);*/
-    opacity: 0.8;
+    /*opacity: 0.8;*/
+    color:#2196f3
 }
 
 .menu-box280-btn:active {

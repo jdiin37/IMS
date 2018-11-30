@@ -8,7 +8,7 @@ namespace IMS
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new HandleErrorAttribute(){ View = "exceptionError"});
 
             filters.Add(new ValueReport()); //Log 
         }
