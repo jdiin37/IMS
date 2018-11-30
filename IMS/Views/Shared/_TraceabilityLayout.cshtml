@@ -60,7 +60,8 @@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="@Url.Action("Index","Main",new { area=""})"><span class="fa fa-home fa-lg">&nbsp;</span>@IMS.Resources.Resource.Home</a></li>
+                        @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
+                        @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
                     </ul>
                 </div>
 

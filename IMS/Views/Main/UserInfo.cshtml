@@ -1,0 +1,14 @@
+﻿<li class="dropdown">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+        <i class="fa fa-user-circle fa-lg" aria-hidden="true"></i>
+        @IMS.Resources.Resource.Welcome
+        ,aaa
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li><a href="#">@IMS.Resources.Resource.UserSetting</a></li>
+        <li><a href="#">@IMS.Resources.Resource.ChangePassword</a></li>
+        <li role="separator" class="divider"></li>
+        <li><a href="@Url.Action("Logout","Main",new { area=""})">@IMS.Resources.Resource.Logout</a></li>
+    </ul>
+</li>

@@ -30,6 +30,20 @@ namespace IMS.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        [ValueReport(IsCheck = false)]
+        public ActionResult BoxMenu()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        [ValueReport(IsCheck =false)]
+        public ActionResult UserInfo()
+        {
+            return PartialView();
+        }
+
 
     }
 }
