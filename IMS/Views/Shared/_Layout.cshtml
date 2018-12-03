@@ -30,7 +30,7 @@
         </div>*@
 
     <header>
-        <div class="navbar navbar-inverse">
+        <div class="navbar navbar-inverse" data-spy="affix" data-offset-top="0">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -109,6 +109,14 @@
                                 <li><a href="@Url.Action("Index","AccountLevel",new { area="Sys"})">@IMS.Resources.Resource.AccountLevelMgr</a></li>
                             </ul>
                         </li>
+
+                        <li>
+                            <a href="@Url.Action("ShowPaper","Main",new { area=""})">
+                                <i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i>
+                                ShowPaper
+                            </a>
+                        </li>
+
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
@@ -144,5 +152,6 @@
     <script src="~/Scripts/bootstrap-datepicker.js"></script>
     <script src="~/Scripts/locales/bootstrap-datepicker.zh-TW.min.js"></script>
     <script src="~/Scripts/select2/select2.min.js"></script>
+    @RenderSection("JS", required: false)
 </body>
 </html>

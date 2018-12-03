@@ -1,0 +1,130 @@
+﻿
+@{
+    ViewBag.Title = "ShowPapper";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    p {
+        font-size: 14px;
+        text-indent: 4em;
+    }
+
+    #SPYcontent div {
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    ul.nav-pills {
+        position: fixed;
+        top: 80px;
+    }
+</style>
+
+
+<body data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+    <div class="container">
+        <div class="row">
+            <nav class="col-sm-3" id="myScrollspy">
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#abstract">abstract</a></li>
+                    <li><a href="#ListofFigures">List of Figures</a></li>
+                    <li><a href="#ListofTables">List of Tables</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Section 1 <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#section10">Section 1</a></li>
+                            <li><a href="#section11">Section 1-1</a></li>
+                            <li><a href="#section12">Section 1-2</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div id="SPYcontent" class="col-sm-9">
+                <div id="abstract">
+                    <h4>abstract</h4>
+                    <p>
+                        台灣養豬產業從1970年代開始發展，一直到1990年代中葉達到鼎盛，隨後遭遇了口蹄疫事件及台灣加入WTO，我國在2018年前仍為口蹄疫及豬瘟等重大豬隻傳染病疫區，國內生鮮豬肉尚無法出口至國外，故養豬產業主要採取內需市場為主，農委會在2018年7月1日起全面停止注射口蹄疫疫苗，一年內若無新疫情，台灣可望擺脫長達21年口蹄疫區陰霾，台灣豬重返國際市場邁出一大步。為提升豬肉食品安全制度，本研究將以養豬產業為主建置一生產履歷系統，主要包含三大模組:(1)經營管理模組-提供養豬場透過資訊化進行豬場管理作業；(2)生產履歷模組-提供建置豬肉整體生產流程，建立有追溯性之生產履歷；(3)資料分析模組-提供資料分析方法進行預測及輔助決策。
+                    </p>
+                    <p class="text-center">
+                        關鍵字：生產履歷系統、養豬場、資料分析
+                    </p>
+                </div>
+                <div id="ListofFigures">
+                    <h4>List of Figures</h4>
+                    <ul>
+                        <li>圖1-1 研究流程圖</li>
+                        <li>圖2-1 豬肉產銷履歷資訊網</li>
+                        <li>圖2-2 線性回歸</li>
+                        <li>圖3-1 系統架構圖</li>
+                        <li>圖3-2 豬場基本資料架構	</li>
+                        <li>圖3-3 資料維護架構	</li>
+                        <li>圖3-4 環境數據架構	</li>
+                        <li>圖3-5 生產流程架構	</li>
+                        <li>圖3-6 加工流程架構	</li>
+                    </ul>
+                </div>
+                <div id="ListofTables">
+                    <h4>List of Tables</h4>
+                    <ul>
+                        <li>表2-1 2016年全世界主要養豬國家名稱及名稱一覽表	</li>
+                        <li>表2- 2 2015年丹麥與臺灣豬隻在養頭數之比較	</li>
+                        <li>表2-3 養豬場數與頭數變動分析	</li>
+                        <li>表2- 4養豬飼養場數及頭數規模別結構比(不含出清場) </li>
+                        <li>表2-5 2017年11月 主要縣市養豬頭數比較	</li>
+                    </ul>
+                </div>
+                <div id="section10">
+                    <h4>Section 1 - 緒論</h4>
+                    <p>
+
+                    </p>
+                </div>
+                <div id="section11">
+                    <h4>Section 1-1 研究背景與動機</h4>
+                    <p>
+                        豬肉為世界上食用肉品之大宗，世界許多國家也有發展養豬產業，台灣養豬產業從1970年代開始發展，一直到1990年代中葉達到鼎盛，隨後遭遇了遭遇了口蹄疫事件，以及台灣加入WTO，開放市場與其他國家肉品的競爭後，今日的養豬環境已和傳統環境不盡相同。我國在2018年前仍為口蹄疫及豬瘟等重大豬隻傳染病疫區，國內生鮮豬肉尚無法出口至國外，故養豬產業主要採取內需市場為主，外銷拓展為輔(李育才， 2016)。但在2018年7月1日起全面停止注射口蹄疫疫苗，一年內若無新疫情，台灣可望擺脫長達21年口蹄疫區陰霾，台灣豬重返國際市場邁出一大步。
+                    </p>
+                    <p>
+                        近年來食安問題層出不窮，消費者的食安意識提升，政府為了重振消費者對於食品的信心，制定了新的食安制度，在農產品食安方面提倡產銷履歷，如在國內市場已開放的形況下，國際安全標準勢必也將納入食安政策，保存豬隻生產過程中的生產資訊及每一階段的作業紀錄，建立可追溯之生產履歷，食安制度才能愈加落實。
+                    </p>
+                    <p>
+                        隨著資訊科技的快速發展，各行業用運資料分析技術已越來越常見，透過現代資料倉儲技術、線上分析處理技術、資料探勘和資料展現技術進行資料分析以實現商業價值甚至發展出新商業模式。
+                    </p>
+                </div>
+                <div id="section12">
+                    <h4>Section 1-2 研究目的</h4>
+                    <p>
+                        近年來食品安全逐漸受到重視，因此建置有追溯性之生產履歷，公開產地、生產過程之詳細記錄已十分必要，為了落實食品生產履歷制度，本研究期望藉由養豬業者，在豬隻生產過程中，將各項作業流程，透過資訊系統詳細紀錄，即可由系統中產生豬隻生產履歷，並藉由資料的收集，進行資料分析達到輔助決策及預測之目的，亦可減少豬場的人工抄寫作業。
+                    </p>
+                    <p>
+                        為達成上述之成果，本研究將以Web Base建置一套智慧型豬場管理平台，主要分成三大模組達成以下目標:
+                    </p>
+                    <h5>一、經營管理模組:</h5>
+                    <p>
+                        提供養豬場透過資訊化進行豬場管理作業，建置豬場各項基本資料維護，包含豬舍、豬隻、藥品、客戶等各項基本資料建檔作業，以達到資訊化經營管理目標。
+                    </p>
+                    <h5>二、生產履歷模組:</h5>
+                    <p>
+                        提供建置豬肉整體生產流程，建立有追溯性之生產履歷，紀錄生產過程各項作業紀錄，落實健康安全豬肉的生產，強化豬場飼養管理與疾病防疫的程序管理。
+                    </p>
+                    <h5>三、資料分析模組:</h5>
+                    <p>
+                        提供豬場進行各項資料分析，如飼料換肉率分析、疾病分析，以達到輔助決策及預測之目的。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+@section JS{
+    <script>
+        $(document).ready(function () {
+            console.log("ready!");
+            $('#SPYcontent').scrollspy();
+            $('#SPYcontent').find('div').addClass('well');
+        });
+    </script>
+}

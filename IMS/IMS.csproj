@@ -329,6 +329,7 @@
     <Content Include="Views\Main\UserInfo.cshtml" />
     <Content Include="Views\Main\BoxMenu.cshtml" />
     <Content Include="Views\Shared\exceptionError.cshtml" />
+    <Content Include="Views\Main\ShowPaper.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -21,6 +21,12 @@ namespace IMS.Controllers
         }
 
 
+        public ActionResult ShowPaper()
+        {
+            return View();
+        }
+
+
 
 
 
