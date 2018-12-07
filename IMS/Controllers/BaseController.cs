@@ -27,6 +27,47 @@ namespace IMS.Controllers
         }
         
 
+        public Guid CreateSessionID(string accountNo,DateTime deadLineTime)
+        {
+            Guid sessionGid = new Guid();
+            sessionGid = Guid.NewGuid();
+
+            AccountSession accountSession = new AccountSession
+            {
+                AccountNo = accountNo,
+                SessionGID = sessionGid,
+                CreDate = DateTime.Now,
+                DeadLineTime = deadLineTime
+            };
+
+            IMSdb.AccountSession.Add(accountSession);
+            IMSdb.SaveChanges();
+
+            return sessionGid;
+        }
+
+        public bool UpdateSessionID(string accountNo,Guid sessionGid)
+        {
+            
+            AccountSession accountSession = IMSdb.AccountSession.Where(m => m.AccountNo == accountNo && m.SessionGID == sessionGid &&m.DeadLineTime > DateTime.Now).FirstOrDefault();
+
+            if(accountSession != null)
+            {
+                accountSession.LastActionTime = DateTime.Now;
+                
+                IMSdb.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
+        }
+
+
+
+
         #region File Service
         protected ActionResult ImageNotFound()
         {

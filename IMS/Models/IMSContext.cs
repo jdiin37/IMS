@@ -31,6 +31,10 @@
 
         public virtual DbSet<ActionLog> ActionLog { get; set; }
         public virtual DbSet<RequestLog> RequestLog { get; set; }
+
+
+        public virtual DbSet<AccountSession> AccountSession { get; set; }
+
     }
 
     //public class MyEntity

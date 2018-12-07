@@ -1,76 +1,51 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    @*<link href="~/Content/bootstrap.theme.css" rel="stylesheet" type="text/css" />*@
-    @*<link href="~/Content/bootstrapCustom.css" rel="stylesheet" type="text/css" />*@
-    <link href="~/Content/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <link href="~/Content/select2/select2.min.css" rel="stylesheet" />
-    <link href="~/Content/select2-bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/custom.css" rel="stylesheet" />
-
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery.cookie.js"></script>
-    <script src="~/Scripts/base.js"></script>
-    <script>
-        function doIt(item, baseUrl) {
-            window.location.href = baseUrl + '?lang=' + item.value;
-        }
-    </script>
-</head>
-<body>
-    <div class="container" style="margin-top:32px">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>@IMS.Resources.Resource.SysTitle</h3>
-                        <form method="post" action="@Url.Action("Login")">
-                            <p>
-                                <label for="account">@IMS.Resources.Resource.Account</label>
-                                <input type="text" class="form-control" id="account">
-                            </p>
-                            <p>
-                                <label for="password">@IMS.Resources.Resource.Password</label>
-                                <input type="password" class="form-control" id="password">
-                            </p>
-                            <p>
-                                <label for="langSelect">@IMS.Resources.Resource.LangSys</label>
-                                <select class="form-control" id="i18n">
-                                    <option value="zh-TW">繁體中文</option>
-                                    <option value="en-US">English</option>
-                                </select>
-                                @ViewBag.langSys
-                            </p>
-                            <br />
-                            <p>
-                                <input type="submit" class="btn btn-primary" value=@IMS.Resources.Resource.Login />
-                                <input type="button" class="btn btn-default" value=@IMS.Resources.Resource.Cancel onclick="location.href='@Url.Action("Index")'" />
-                            </p>
-                        </form>
-                    </div>
-                </div>
+<div class="row" style="margin-top:32px;">
+    <div class="col-md-4 col-md-offset-4">
+        <div class="thumbnail">
+            <div class="caption">
+                <h3>@IMS.Resources.Resource.SysTitle</h3>
+                <form method="post" action="@Url.Action("Login")">
+                    @Html.AntiForgeryToken()
+                    <p class="form-group">
+                        <label for="account">@IMS.Resources.Resource.Account</label>
+                        <input type="text" class="form-control" id="account" name="account">
+                    </p>
+                    <p class="form-group">
+                        <label for="password">@IMS.Resources.Resource.Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </p>
+                    <p class="form-group">
+                        <label for="langSelect">@IMS.Resources.Resource.LangSys</label>
+                        <select class="form-control" id="i18n">
+                            <option value="zh-TW">繁體中文</option>
+                            <option value="en-US">English</option>
+                        </select>
+                        @ViewBag.langSys
+                    </p>
+                    <p class="form-group">
+                        <label>
+                            <input type="checkbox" id="login_remember" class="ace" name="remember" value="1" />
+                            <span class="lbl">@IMS.Resources.Resource.Login_RemeberMe</span>
+                        </label>
+                    </p>
+                    <p class="text-danger">@ViewBag.Msg</p>
+                    
+                    <p>
+                        <input type="submit" class="btn btn-primary" value=@IMS.Resources.Resource.Login />
+                        <input type="button" class="btn btn-default" value=@IMS.Resources.Resource.Cancel onclick="location.href='@Url.Action("Index")'" />
+                    </p>
+                </form>
             </div>
         </div>
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
-        </footer>
     </div>
-    
-</body>
-</html>
+</div>
+
+<script>
+    function doIt(item, baseUrl) {
+        window.location.href = baseUrl + '?lang=' + item.value;
+    }
+</script>

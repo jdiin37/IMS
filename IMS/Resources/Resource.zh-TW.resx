@@ -357,4 +357,7 @@
   <data name="DataAnalysis_Regression" xml:space="preserve">
     <value>迴歸分析</value>
   </data>
+  <data name="Login_RemeberMe" xml:space="preserve">
+    <value>記住我</value>
+  </data>
 </root>

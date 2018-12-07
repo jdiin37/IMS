@@ -61,6 +61,7 @@ namespace IMS.Areas.Sys.Controllers
             return View(account);
         }
 
+        
 
         public ActionResult Delete(int? seqNo)
         {

@@ -10,7 +10,9 @@ namespace IMS
         {
             filters.Add(new HandleErrorAttribute(){ View = "exceptionError"});
 
-            filters.Add(new ValueReport()); //Log 
+            filters.Add(new AuthFilter()); //Auth
+
+            //filters.Add(new ValueReport() { IsCheck = true }); //Log 
         }
         
     }

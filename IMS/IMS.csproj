@@ -246,6 +246,7 @@
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
+    <Compile Include="Controllers\AuthFilter.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\ValueReport.cs" />
     <Compile Include="Controllers\MainController.cs" />
@@ -302,10 +303,16 @@
     <Compile Include="Migrations\201811020845368_rwrrw.Designer.cs">
       <DependentUpon>201811020845368_rwrrw.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812070319258_add accountSessin.cs" />
+    <Compile Include="Migrations\201812070319258_add accountSessin.Designer.cs">
+      <DependentUpon>201812070319258_add accountSessin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountLevel.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\AccountSession.cs" />
     <Compile Include="Models\ActionLog.cs" />
+    <Compile Include="Models\Auth\CustomPrincipal.cs" />
     <Compile Include="Models\CategoryList.cs" />
     <Compile Include="Models\CategorySub.cs" />
     <Compile Include="Models\IMSContext.cs" />
@@ -344,6 +351,7 @@
     <Content Include="Views\Main\BoxMenu.cshtml" />
     <Content Include="Views\Shared\exceptionError.cshtml" />
     <Content Include="Views\Main\ShowPaper.cshtml" />
+    <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -403,6 +411,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201811020845368_rwrrw.resx">
       <DependentUpon>201811020845368_rwrrw.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812070319258_add accountSessin.resx">
+      <DependentUpon>201812070319258_add accountSessin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

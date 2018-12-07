@@ -357,4 +357,7 @@
   <data name="DataAnalysis_Regression" xml:space="preserve">
     <value>Regression</value>
   </data>
+  <data name="Login_RemeberMe" xml:space="preserve">
+    <value>RemeberMe</value>
+  </data>
 </root>

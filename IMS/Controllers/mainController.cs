@@ -6,8 +6,9 @@ using System.Web.Mvc;
 
 namespace IMS.Controllers
 {
-    public class MainController : Controller
+    public class MainController : BaseController
     {
+    
         // GET: Index
         public ActionResult Index()
         {

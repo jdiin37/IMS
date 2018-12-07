@@ -475,6 +475,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 RemeberMe 的當地語系化字串。
+        /// </summary>
+        public static string Login_RemeberMe {
+            get {
+                return ResourceManager.GetString("Login_RemeberMe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 SingOut 的當地語系化字串。
         /// </summary>
         public static string Logout {
