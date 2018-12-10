@@ -1,4 +1,5 @@
 ﻿using IMS.Models.Auth;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace IMS.Controllers
 {
@@ -22,28 +24,49 @@ namespace IMS.Controllers
             
         }
 
+
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
+            return CheckAuth(httpContext);
+        }
+
+        protected bool CheckAuth(HttpContextBase httpContext)
+        {
             bool result = false;
-          
-            if (httpContext.Request.Cookies != null)
+            HttpCookie authCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
             {
-                var accountID = httpContext.Request.Cookies["accountID"];
-                var sessionID = httpContext.Request.Cookies["sessionID"];
-                
-                if (accountID != null && sessionID != null)
+                try
                 {
-                    
-                    using (BaseController baseController = new BaseController())
+                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                    CustomPrincipalSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
+
+                    if (serializeModel.SessionGid != null)
                     {
-                        result = baseController.UpdateSessionID(accountID.Value.ToString(), new Guid(sessionID.Value.ToString()));
+                        using (BaseController baseController = new BaseController())
+                        {
+                            result = baseController.UpdateSessionID(serializeModel.ID, new Guid(serializeModel.SessionGid));
+                        }
                     }
 
+                    CustomPrincipal newUser = new CustomPrincipal(authTicket.Name);
+                    newUser.ID = serializeModel.ID;
+                    newUser.Name = serializeModel.Name;
+                    newUser.Email = serializeModel.Email;
+                    newUser.Level = serializeModel.Level;
+                    newUser.SessionGid = serializeModel.SessionGid;
+                    HttpContext.Current.User = newUser;
+                }
+                catch
+                {
+                    FormsAuthentication.SignOut();
+                    result = false;
                 }
             }
 
             return result;
         }
+        
 
     }
 }

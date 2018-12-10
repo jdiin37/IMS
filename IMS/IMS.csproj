@@ -255,6 +255,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="infrastructure\BaseViewPage.cs" />
     <Compile Include="Migrations\201810050914519_add sheetDisinfection.cs" />
     <Compile Include="Migrations\201810050914519_add sheetDisinfection.Designer.cs">
       <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
@@ -333,7 +334,9 @@
     <Compile Include="ViewModels\AccountVM.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\web.config" />
+    <Content Include="Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

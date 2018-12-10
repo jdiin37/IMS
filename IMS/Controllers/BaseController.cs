@@ -1,4 +1,5 @@
 ﻿using IMS.Models;
+using IMS.Models.Auth;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,12 +18,18 @@ namespace IMS.Controllers
             IMSdb = new IMSContext();
         }
 
-       
+
+
+        protected virtual new CustomPrincipal User
+        {
+            get { return HttpContext.User as CustomPrincipal; }
+        }
+        
         public Account CurrentUser
         {
             get
             {
-                return IMSdb.Account.First(m => m.AccountNo == "");
+                return IMSdb.Account.First(m => m.AccountNo == User.ID);
             }
         }
         

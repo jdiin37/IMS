@@ -11,7 +11,14 @@ namespace IMS.Models.Auth
         public IIdentity Identity { get; private set; }
         public bool IsInRole(string level)
         {
-            return true;
+            if(level == "root")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public CustomPrincipal(string Username)
@@ -23,6 +30,7 @@ namespace IMS.Models.Auth
         public string Email { get; set; }
         public string Name { get; set; }
         public string Level { get; set; }
+        public string SessionGid { get; set; }
     }
 
     public class CustomPrincipalSerializeModel
@@ -31,5 +39,6 @@ namespace IMS.Models.Auth
         public string Email { get; set; }
         public string Name { get; set; }
         public string Level { get; set; }
+        public string SessionGid { get; set; }
     }
 }

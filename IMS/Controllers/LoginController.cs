@@ -18,40 +18,11 @@ namespace IMS.Controllers
         [AllowAnonymous]
         public ActionResult Index(string lang,string msg)
         {
-            //清空所有 Session 資料
-            //Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
-            //Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            //Response.Cache.SetNoStore();
-
-            //Session.Abandon();
-            //Session.Clear();            
-            //FormsAuthentication.SignOut();
-
-            if (Request.Cookies["accountID"] != null)
-            {
-                var c = new HttpCookie("accountID");
-                c.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(c);
-            }
-            if (Request.Cookies["sessionID"] != null)
-            {
-                var c = new HttpCookie("sessionID");
-                c.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(c);
-            }
-
+            LogOut();
 
             ViewBag.Msg = msg;
 
-            if (lang == null)
-            {
-                return View();
-            }
-            else
-            {
-                ViewBag.lang = lang;
-                return View(lang);
-            }
+            return View();           
         }
 
         [HttpPost]
@@ -63,27 +34,34 @@ namespace IMS.Controllers
             var user = IMSdb.Account.Where(m => m.AccountNo == account && m.Password == password).FirstOrDefault();
             if (user != null)
             {
-                Guid sessionGid = new Guid();
-                if (remember == "1")
-                {
-                    sessionGid = CreateSessionID(user.AccountNo, DateTime.Now.AddDays(15));
-                    HttpCookie accountCookie = new HttpCookie("accountID", user.AccountNo) { Expires = DateTime.Now.AddDays(15), Path = "/" };
-                    HttpCookie sessionCookie = new HttpCookie("sessionID", sessionGid.ToString()) { Expires = DateTime.Now.AddDays(15), Path = "/" };
-                    Response.Cookies.Add(accountCookie);
-                    Response.Cookies.Add(sessionCookie);
-                }
-                else
-                {
-                    sessionGid = CreateSessionID(user.AccountNo, DateTime.Now.AddHours(3));
-                    HttpCookie accountCookie = new HttpCookie("accountID", user.AccountNo) { Expires = DateTime.Now.AddHours(3), Path = "/" };
-                    HttpCookie sessionCookie = new HttpCookie("sessionID", sessionGid.ToString()) { Expires = DateTime.Now.AddHours(3), Path = "/" };
-                    Response.Cookies.Add(accountCookie);
-                    Response.Cookies.Add(sessionCookie);
-                }
-                
-                //Session["sessionID"] = sessionGid.ToString();
-                //Session["accountID"] = user.AccountNo;
+                 
+                Guid sessionGid = new Guid(); //生成sessionGID
 
+                if (remember == "1")
+                    sessionGid = CreateSessionID(user.AccountNo, DateTime.Now.AddDays(15));
+                else
+                    sessionGid = CreateSessionID(user.AccountNo, DateTime.Now.AddHours(3));
+
+                CustomPrincipalSerializeModel serializeModel = new CustomPrincipalSerializeModel();
+
+                serializeModel.ID = user.AccountNo;
+                serializeModel.Name = user.AccountName;
+                serializeModel.Email = user.Email;
+                serializeModel.Level = user.Level;
+                serializeModel.SessionGid = sessionGid.ToString();
+
+                string userData = JsonConvert.SerializeObject(serializeModel);
+                FormsAuthenticationTicket authTicket = null;
+
+                if (remember == "1")
+                    authTicket = new FormsAuthenticationTicket(1, user.AccountName, DateTime.Now, DateTime.Now.AddDays(15), false, userData);
+                else
+                    authTicket = new FormsAuthenticationTicket(1, user.AccountName, DateTime.Now, DateTime.Now.AddHours(3), false, userData);
+
+                string encTicket = FormsAuthentication.Encrypt(authTicket);
+                HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket) { Expires = authTicket.Expiration, Path = "/" };
+                Response.Cookies.Add(faCookie);
+                
                 return RedirectToAction("Index","Main");
             }
             else
@@ -93,12 +71,24 @@ namespace IMS.Controllers
             
         }
 
-     
+        public void LogOut()
+        {
+            //清空所有 Session 資料
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
 
-        //public ActionResult ChangeLang(string lang)
-        //{
-        //    ViewBag.langSys = lang;
-        //    return RedirectToAction("Index");
-        //}
+            Session.Abandon();
+            Session.Clear();
+            FormsAuthentication.SignOut();
+
+            if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+            {
+                var c = new HttpCookie(FormsAuthentication.FormsCookieName);
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+        }
+        
     }
 }
