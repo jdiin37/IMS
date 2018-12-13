@@ -18,8 +18,7 @@ namespace IMS.Controllers
         [AllowAnonymous]
         public ActionResult Index(string lang,string msg)
         {
-            LogOut();
-
+            
             ViewBag.Msg = msg;
 
             return View();           
@@ -70,25 +69,6 @@ namespace IMS.Controllers
             }
             
         }
-
-        public void LogOut()
-        {
-            //清空所有 Session 資料
-            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
-            Response.Cache.SetCacheability(HttpCacheability.NoCache);
-            Response.Cache.SetNoStore();
-
-            Session.Abandon();
-            Session.Clear();
-            FormsAuthentication.SignOut();
-
-            if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
-            {
-                var c = new HttpCookie(FormsAuthentication.FormsCookieName);
-                c.Expires = DateTime.Now.AddDays(-1);
-                Response.Cookies.Add(c);
-            }
-        }
-        
+            
     }
 }

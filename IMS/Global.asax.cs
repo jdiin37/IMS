@@ -49,9 +49,12 @@ namespace IMS
 
             // HTTP-GET 的 modelbinding，依據改過calander的CurrentCulture為主
             //CustomModelBindersConfig.RegisterCustomModelBinders();
-            
+
         }
 
-        
+        protected void Application_AuthenticateRequest(object sender, EventArgs e)
+        {
+
+        }
     }
 }
