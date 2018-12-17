@@ -360,4 +360,7 @@
   <data name="Login_RemeberMe" xml:space="preserve">
     <value>記住我</value>
   </data>
+  <data name="Msg_LoginError" xml:space="preserve">
+    <value>帳號密碼有誤</value>
+  </data>
 </root>

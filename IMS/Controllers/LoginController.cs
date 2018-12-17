@@ -1,4 +1,5 @@
 ﻿using IMS.Models.Auth;
+using IMS.Resources;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -29,7 +30,8 @@ namespace IMS.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Login(string account,string password,string remember)
         {
-            
+
+            Logout();
             var user = IMSdb.Account.Where(m => m.AccountNo == account && m.Password == password).FirstOrDefault();
             if (user != null)
             {
@@ -61,11 +63,12 @@ namespace IMS.Controllers
                 HttpCookie faCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket) { Expires = authTicket.Expiration, Path = "/" };
                 Response.Cookies.Add(faCookie);
                 
+                
                 return RedirectToAction("Index","Main");
             }
             else
             {
-                return RedirectToAction("Index",new { msg = "帳號密碼有誤"});
+                return RedirectToAction("Index",new { msg = Resource.Msg_LoginError});
             }
             
         }

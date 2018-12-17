@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace IMS.Controllers
 {
@@ -17,9 +18,7 @@ namespace IMS.Controllers
         {
             IMSdb = new IMSContext();
         }
-
-
-
+        
         protected virtual new CustomPrincipal User
         {
             get { return HttpContext.User as CustomPrincipal; }
@@ -31,8 +30,7 @@ namespace IMS.Controllers
             {
                 return IMSdb.Account.First(m => m.AccountNo == User.ID);
             }
-        }
-        
+        }      
 
         public Guid CreateSessionID(string accountNo,DateTime deadLineTime)
         {
@@ -72,6 +70,55 @@ namespace IMS.Controllers
             
         }
 
+        public bool ClearSessionID(string accountNo, Guid sessionGid)
+        {
+
+            AccountSession accountSession = IMSdb.AccountSession.Where(m => m.AccountNo == accountNo && m.SessionGID == sessionGid && m.DeadLineTime > DateTime.Now).FirstOrDefault();
+
+
+            if (accountSession != null)
+            {
+                accountSession.DeadLineTime = DateTime.Now;
+                IMSdb.SaveChanges();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public void Logout()
+        {
+            //清空所有 Session 資料
+            Response.Cache.SetExpires(DateTime.UtcNow.AddMinutes(-1));
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
+            Response.Cache.SetNoStore();
+            
+            Session.Abandon();
+            Session.Clear();
+            FormsAuthentication.SignOut();
+
+            if (Request.Cookies[FormsAuthentication.FormsCookieName] != null)
+            {
+                var c = new HttpCookie(FormsAuthentication.FormsCookieName);
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+            if(User != null)
+            {
+                ClearSessionID(User.ID, new Guid(User.SessionGid));
+            }
+            
+        }
+
+
+        public ActionResult ToLogingPage()
+        {
+            Logout();
+            return RedirectToAction("Index", "Login");
+        }
 
 
 

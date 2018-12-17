@@ -16,12 +16,11 @@ namespace IMS.Controllers
         
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-           
-            base.OnAuthorization(filterContext);
-
+            
             if (filterContext.ActionDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true) || filterContext.ActionDescriptor.ControllerDescriptor.IsDefined(typeof(AllowAnonymousAttribute), true))
                 return;
             
+            base.OnAuthorization(filterContext);
 
         }
 
@@ -30,39 +29,18 @@ namespace IMS.Controllers
         {
             return CheckAuth(httpContext);
         }
-
+        
         protected bool CheckAuth(HttpContextBase httpContext)
         {
             bool result = false;
-            HttpCookie authCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
-            if (authCookie != null)
+            //HttpCookie authCookie = httpContext.Request.Cookies[FormsAuthentication.FormsCookieName];
+            var currentUser = HttpContext.Current.User as CustomPrincipal;
+            if (currentUser != null)
             {
-                try
-                {
-                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
-                    CustomPrincipalSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
-
-                    if (serializeModel.SessionGid != null)
-                    {
-                        using (BaseController baseController = new BaseController())
-                        {
-                            result = baseController.UpdateSessionID(serializeModel.ID, new Guid(serializeModel.SessionGid));
-                        }
-                    }
-
-                    CustomPrincipal newUser = new CustomPrincipal(authTicket.Name);
-                    newUser.ID = serializeModel.ID;
-                    newUser.Name = serializeModel.Name;
-                    newUser.Email = serializeModel.Email;
-                    newUser.Level = serializeModel.Level;
-                    newUser.SessionGid = serializeModel.SessionGid;
-                    HttpContext.Current.User = newUser;
-                }
-                catch
-                {
-                    FormsAuthentication.SignOut();
-                    result = false;
-                }
+                result = true;                
+            }else{
+                FormsAuthentication.SignOut();
+                result = false;
             }
 
             return result;

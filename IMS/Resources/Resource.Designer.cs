@@ -601,6 +601,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Account or Password Error 的當地語系化字串。
+        /// </summary>
+        public static string Msg_LoginError {
+            get {
+                return ResourceManager.GetString("Msg_LoginError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Password 的當地語系化字串。
         /// </summary>
         public static string Password {

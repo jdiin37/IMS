@@ -1,4 +1,7 @@
-﻿using System;
+﻿using IMS.Controllers;
+using IMS.Models.Auth;
+using Newtonsoft.Json;
+using System;
 using System.Globalization;
 using System.Net;
 using System.Threading;
@@ -6,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace IMS
 {
@@ -55,6 +59,46 @@ namespace IMS
         protected void Application_AuthenticateRequest(object sender, EventArgs e)
         {
 
+        }
+
+
+        protected void Application_PostAuthenticateRequest(Object sender, EventArgs e)
+        {
+            HttpCookie authCookie = Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                try
+                {
+                    FormsAuthenticationTicket authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                    CustomPrincipalSerializeModel serializeModel = JsonConvert.DeserializeObject<CustomPrincipalSerializeModel>(authTicket.UserData);
+
+                    if (serializeModel.SessionGid != null)
+                    {
+                        using (BaseController baseController = new BaseController())
+                        {
+                            if(!baseController.UpdateSessionID(serializeModel.ID, new Guid(serializeModel.SessionGid)))
+                            {
+                                //SessionID失效
+                                FormsAuthentication.SignOut();
+                                Response.Redirect("/Login");
+                            }                          
+                        }
+                    }
+
+                    CustomPrincipal newUser = new CustomPrincipal(authTicket.Name);
+                    newUser.ID = serializeModel.ID;
+                    newUser.Name = serializeModel.Name;
+                    newUser.Email = serializeModel.Email;
+                    newUser.Level = serializeModel.Level;
+                    newUser.SessionGid = serializeModel.SessionGid;
+                    HttpContext.Current.User = newUser;
+                }
+                catch
+                {
+                    FormsAuthentication.SignOut();
+                    Response.Redirect("/Login");
+                }
+            }
         }
     }
 }
