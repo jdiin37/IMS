@@ -43,6 +43,12 @@ namespace IMS.Controllers
             return PartialView();
         }
 
+        [ChildActionOnly]
+        [ValueReport(IsCheck = false)]
+        public ActionResult MapSite()
+        {
+            return PartialView();
+        }
 
     }
 }

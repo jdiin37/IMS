@@ -5,12 +5,6 @@
     ViewBag.Title = IMS.Resources.Resource.AccountMgr;
 }
 
-<ol class="breadcrumb">
-    <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
-    <li class="">@IMS.Resources.Resource.MenuSys</li>
-    <li class="active"><a href="@Url.Action("Index")">@IMS.Resources.Resource.AccountMgr</a></li>
-</ol>
-
 <h2>@ViewBag.LevelName</h2>
 
 <p>
@@ -22,7 +16,7 @@
         <div class="list-group">
             @foreach (var item in Model.accountLevels)
             {
-                @Html.ActionLink(item.LevelName, "Index", new { level = item.Level},new { @class = "list-group-item" })
+                @Html.ActionLink(item.LevelName, "Index", new { level = item.Level }, new { @class = "list-group-item" })
             }
         </div>
     </div>
@@ -42,7 +36,7 @@
                     Email
                 </th>
                 <th>
-                    
+
                 </th>
 
             </tr>

@@ -1,0 +1,38 @@
+﻿@{
+    var areaName = HttpContext.Current.Request.RequestContext.RouteData.DataTokens["area"];
+    var controllerName = HttpContext.Current.Request.RequestContext.RouteData.Values["controller"];
+    var actionName =  HttpContext.Current.Request.RequestContext.RouteData.Values["action"];
+}
+
+<ol class="breadcrumb">
+
+    <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
+
+    @if (areaName != null)
+    {
+        <li class="">@areaName.ToString()</li>
+        if (controllerName != null)
+        {
+            <li class=""><a href="@Url.Action("Index",controllerName.ToString(),new { area = areaName.ToString()})">@controllerName.ToString()</a></li>
+        }
+
+        if (actionName != null)
+        {
+            <li class="">@actionName.ToString()</li>
+        }
+    }
+    else
+    {
+        if (controllerName != null)
+        {
+            <li class=""><a href="@Url.Action("Index",controllerName.ToString())">@controllerName.ToString() </a></li>
+        }
+
+        if (actionName != null)
+        {
+            <li class="">@actionName.ToString() </li>
+        }
+    }
+
+
+</ol>

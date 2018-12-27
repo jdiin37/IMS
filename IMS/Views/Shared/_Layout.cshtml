@@ -58,6 +58,24 @@
                                 ShowPaper
                             </a>
                         </li>
+                        <li>
+                            <a href="#" onclick='showIntro("儲存成功");'>
+
+                                測試IntroModal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick='showConfirm("是否要確認?");'>
+
+                                測試ConfirmModal
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" onclick='showDelete("確定要刪除嗎?");'>
+
+                                測試DeleteModal
+                            </a>
+                        </li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -71,6 +89,7 @@
     </header>
 
     <section class="container" id="bodyContent">
+        @*@{Html.RenderAction("MapSite", "Main", new { area = "" });}*@
         @RenderBody()
     </section>
 
@@ -80,10 +99,77 @@
     </footer>
 
 
+    <!-- confirm Modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Modal title</h4>
+                </div>
+                <div class="modal-body">
+                    <p><span id="confirmMsg">One fine body&hellip;</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">確認</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- delete Modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal_delete">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <p><span id="deleteMsg">One fine body&hellip;</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger">刪除</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!-- intro Modal-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="modal_intro">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">系統訊息</h4>
+                </div>
+                <div class="modal-body">
+                    <p><span id="introMsg">系統訊息&hellip;</span></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery_setting")
+    <script>
+        function showConfirm(Msg) {
+            $('#confirmMsg').text(Msg);
+            $('#modal_confirm').modal('show');
+        }
+        function showDelete(Msg) {
+            $('#deleteMsg').text(Msg);
+            $('#modal_delete').modal('show');
+        }
+        function showIntro(Msg) {
+            $('#introMsg').text(Msg);
+            $('#modal_intro').modal('show');
+        }
+    </script>
 
     @RenderSection("JS", required: false)
+
 </body>
 </html>
