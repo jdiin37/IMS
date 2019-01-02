@@ -88,7 +88,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 權限等級 的當地語系化字串。
+        ///   查詢類似 AccountLevelMgr 的當地語系化字串。
         /// </summary>
         public static string AccountLevelMgr {
             get {
@@ -97,7 +97,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 使用者帳號 的當地語系化字串。
+        ///   查詢類似 AccountMgr 的當地語系化字串。
         /// </summary>
         public static string AccountMgr {
             get {
@@ -615,6 +615,24 @@ namespace IMS.Resources {
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 PigFarm 的當地語系化字串。
+        /// </summary>
+        public static string PigFarm {
+            get {
+                return ResourceManager.GetString("PigFarm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 PigFarmMgr 的當地語系化字串。
+        /// </summary>
+        public static string PigFarmMgr {
+            get {
+                return ResourceManager.GetString("PigFarmMgr", resourceCulture);
             }
         }
         

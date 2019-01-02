@@ -121,7 +121,7 @@
     <value>Account</value>
   </data>
   <data name="AccountLevelMgr" xml:space="preserve">
-    <value>權限等級</value>
+    <value>AccountLevelMgr</value>
   </data>
   <data name="AccountLevel_Level" xml:space="preserve">
     <value>權限等級</value>
@@ -130,7 +130,7 @@
     <value>權限名稱</value>
   </data>
   <data name="AccountMgr" xml:space="preserve">
-    <value>使用者帳號</value>
+    <value>AccountMgr</value>
   </data>
   <data name="AccountName" xml:space="preserve">
     <value>AccountName</value>
@@ -362,5 +362,11 @@
   </data>
   <data name="Msg_LoginError" xml:space="preserve">
     <value>Account or Password Error</value>
+  </data>
+  <data name="PigFarm" xml:space="preserve">
+    <value>PigFarm</value>
+  </data>
+  <data name="PigFarmMgr" xml:space="preserve">
+    <value>PigFarmMgr</value>
   </data>
 </root>

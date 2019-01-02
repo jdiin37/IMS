@@ -121,7 +121,7 @@
     <value>帳號</value>
   </data>
   <data name="AccountLevelMgr" xml:space="preserve">
-    <value>權限等級</value>
+    <value>權限等級維護</value>
   </data>
   <data name="AccountLevel_Level" xml:space="preserve">
     <value>權限等級</value>
@@ -130,7 +130,7 @@
     <value>權限名稱</value>
   </data>
   <data name="AccountMgr" xml:space="preserve">
-    <value>使用者帳號</value>
+    <value>使用者帳號維護</value>
   </data>
   <data name="AccountName" xml:space="preserve">
     <value>帳號名稱</value>
@@ -163,7 +163,7 @@
     <value>取消</value>
   </data>
   <data name="CategoryMgr" xml:space="preserve">
-    <value>分類項目</value>
+    <value>分類項目維護</value>
   </data>
   <data name="ChangePassword" xml:space="preserve">
     <value>修改密碼</value>
@@ -362,5 +362,11 @@
   </data>
   <data name="Msg_LoginError" xml:space="preserve">
     <value>帳號密碼有誤</value>
+  </data>
+  <data name="PigFarm" xml:space="preserve">
+    <value>豬場</value>
+  </data>
+  <data name="PigFarmMgr" xml:space="preserve">
+    <value>豬場維護</value>
   </data>
 </root>

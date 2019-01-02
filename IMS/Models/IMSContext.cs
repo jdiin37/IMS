@@ -35,6 +35,8 @@
 
         public virtual DbSet<AccountSession> AccountSession { get; set; }
 
+        public virtual DbSet<PigFarm> PigFarm { get; set; }
+
     }
 
     //public class MyEntity

@@ -14,7 +14,7 @@ namespace IMS.Comm
         /// <summary>
         /// 分頁值
         /// </summary>
-        public static int PageSize = 15;
+        public static int PageSize = 10;
 
         /// <summary>
         /// 拿取WebConfig AppSetting值
