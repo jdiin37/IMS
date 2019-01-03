@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = IMS.Resources.Resource.Model_Management;
-    String pigFarmId = Request.Cookies["pigFarmId"].Value;
+    String pigFarmId = Request.Cookies["pigFarmId"] == null? "": Request.Cookies["pigFarmId"].Value;
 }
 
 
