@@ -15,29 +15,39 @@ namespace IMS.Models
         [Required]
         public Guid PigFarmId { get; set; }
 
+        [DisplayName("負責人")]
         [StringLength(20)]
         public string OwnerName { get; set; }
 
+        [DisplayName("負責人生日")]
         public DateTime? OwnerBirth { get; set; }
 
+        [DisplayName("負責人住址")]
         public string OwnerAddress { get; set; }
 
+        [DisplayName("負責人電話")]
         [StringLength(20)]
         public string OwnerPhone { get; set; }
 
+        [DisplayName("負責人傳真")]
         [StringLength(20)]
         public string OwnerFax { get; set; }
 
+        [DisplayName("負責人教育程度")]
         public string OwnerEducation { get; set; }
 
+        [DisplayName("牧場名稱")]
         [StringLength(20)]
         public string FarmName { get; set; }
 
+        [DisplayName("牧場地址")]
         public string FarmAddress { get; set; }
 
+        [DisplayName("牧場電話")]
         [StringLength(20)]
         public string FarmPhone { get; set; }
 
+        [DisplayName("牧場傳真")]
         [StringLength(20)]
         public string FarmFax { get; set; }
 

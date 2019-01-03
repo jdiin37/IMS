@@ -223,6 +223,9 @@
     <Content Include="Areas\Sys\Views\PigFarm\Index.cshtml" />
     <Content Include="Areas\Sys\Views\PigFarm\Create.cshtml" />
     <Content Include="Areas\Sys\Views\PigFarm\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataBase\Create.cshtml" />
+    <Content Include="Areas\Management\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataBase\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -406,7 +409,6 @@
     <Folder Include="Areas\DataAnalysis\Models\" />
     <Folder Include="Areas\DataAnalysis\Views\Shared\" />
     <Folder Include="Areas\Management\Models\" />
-    <Folder Include="Areas\Management\Views\FarmDataBase\" />
     <Folder Include="Areas\Management\Views\Shared\" />
     <Folder Include="Areas\Sheet\Models\" />
     <Folder Include="Areas\Sheet\Views\Shared\" />

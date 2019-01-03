@@ -55,6 +55,7 @@ function doAjax(url, data, callback) {
 	});
 }
 
+
 jQuery(document).ready(function ($) {
 	if ($.cookie("sysLang")) {
 		$("#i18n").val($.cookie("sysLang"));
@@ -72,5 +73,14 @@ jQuery(document).ready(function ($) {
 		location.reload();
 	});
 
+	if ($.cookie("pigFarmId")) {
+		$("#PigFarm").val($.cookie("pigFarmId"));
+	}
 
+	$("#PigFarm").change(function () {
+		//alert(document.location.origin);
+		$.cookie("pigFarmId", $(this).val(), { path: '/', expires: 365 });
+		location.href = document.location.origin + "/Management/Home"
+	});
+	
 });

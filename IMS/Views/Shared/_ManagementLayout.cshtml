@@ -1,5 +1,6 @@
 ﻿@{
     ViewBag.Title = IMS.Resources.Resource.Model_Management;
+    String pigFarmId = Request.Cookies["pigFarmId"].Value;
 }
 
 <!DOCTYPE html>
@@ -107,7 +108,11 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery_setting")
 
+
+
     @RenderSection("JS", required: false)
 
-</body>
+
+
+    </body>
 </html>
