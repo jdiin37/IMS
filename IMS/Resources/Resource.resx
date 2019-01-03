@@ -363,6 +363,9 @@
   <data name="Msg_LoginError" xml:space="preserve">
     <value>Account or Password Error</value>
   </data>
+  <data name="Comm_View" xml:space="preserve">
+    <value>View</value>
+  </data>
   <data name="PigFarm" xml:space="preserve">
     <value>PigFarm</value>
   </data>

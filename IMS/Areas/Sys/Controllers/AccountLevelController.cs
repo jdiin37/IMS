@@ -12,10 +12,25 @@ namespace IMS.Areas.Sys.Controllers
     public class AccountLevelController : BaseController
     {
         // GET: Sys/AccountLevel
-        public ActionResult Index()
+        public ActionResult Index(string searchString)
         {
 
-            return View(IMSdb.AccountLevel.Where(m=>m.Status == "Y").ToList());
+            
+
+            ViewBag.CurrentFilter = searchString;
+
+
+            var accountLevels = IMSdb.AccountLevel.Where(m => m.Status == "Y");
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                accountLevels = accountLevels.Where(s => s.LevelName.Contains(searchString)
+                                       || s.Level.Contains(searchString));
+            }
+
+
+            return View(accountLevels.ToList());
         }
 
 

@@ -4,85 +4,181 @@
     Layout = "~/Views/Shared/_ManagementLayout.cshtml";
 }
 
-<div class="row">
-    請選擇豬場
-    <select class="form-control">...
-        <option></option>
-    </select>
-</div>
-<div class="row">
-    <div class="col-sm-4">
-        <br />
-        <div class="panel panel-success">
-            <div class="panel-heading">
-                <h3 class="panel-title">@IMS.Resources.Resource.Management_FarmData</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" href="#FarmData" >
+            <h3 class="panel-title">@IMS.Resources.Resource.Management_FarmData</h3>
+        </a>
+    </div>
+    <div class="panel-body collapse in" id="FarmData">
+        <div class="row">
+            <div class="col-sm-6" >
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_base
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <p>
-                    <a href="@Url.Action("Index","Health",new { area="Management"})">@IMS.Resources.Resource.FarmData_base</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Environment",new { area="Management"})">@IMS.Resources.Resource.FarmData_Land</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Med",new { area="Management"})">@IMS.Resources.Resource.FarmData_License</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","FeedAndAdditive",new { area="Management"})">@IMS.Resources.Resource.FarmData_Barn</a>
-                </p>
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_Land
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_License
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_Barn
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
 
-            </div>
         </div>
     </div>
-    <div class="col-sm-4">
-        <br />
-        <div class="panel panel-info">
-            <div class="panel-heading">
-                <h3 class="panel-title">@IMS.Resources.Resource.Management_EnvironmentData </h3>
-            </div>
-            <div class="panel-body">
-                <p>
-                    <a href="@Url.Action("Index","Butcher",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Abnormal</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","BigCut",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Temperature</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","SmallCut",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Humidity</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Package",new { area="Management"})">@IMS.Resources.Resource.EnvironmentData_Image</a>
-                </p>
-            </div>
-        </div>
+</div>
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <a data-toggle="collapse" href="#EnvironmentData">
+            <h3 class="panel-title">@IMS.Resources.Resource.Management_EnvironmentData </h3>
+        </a>
     </div>
-    <div class="col-sm-4">
-        <br />
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">@IMS.Resources.Resource.Management_BaseData </h3>
+    <div class="panel-body collapse in" id="EnvironmentData">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.EnvironmentData_Abnormal
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.EnvironmentData_Temperature
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.EnvironmentData_Humidity
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
+                    </div>
+                </div>
             </div>
-            <div class="panel-body">
-                <p>
-                    <a href="@Url.Action("Index","Butcher",new { area="Management"})">@IMS.Resources.Resource.BaseData_PigChange</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","BigCut",new { area="Management"})">@IMS.Resources.Resource.BaseData_Med</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","SmallCut",new { area="Management"})">@IMS.Resources.Resource.BaseData_FixedCost</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Package",new { area="Management"})">@IMS.Resources.Resource.BaseData_Customer</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Package",new { area="Management"})">@IMS.Resources.Resource.BaseData_Expenses</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Package",new { area="Management"})">@IMS.Resources.Resource.BaseData_Income</a>
-                </p>
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <img src="~/Images/Kite1.JPG" alt="..." />
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.EnvironmentData_Image
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            
+
+        </div>
+        
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <a data-toggle="collapse" href="#BaseData">
+            <h3 class="panel-title">@IMS.Resources.Resource.Management_BaseData </h3>
+        </a>
+    </div>
+    <div class="panel-body collapse in" id="BaseData">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_PigChange
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_Med
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_FixedCost
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_Customer
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_Expenses
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.BaseData_Income
+                        </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
             </div>
         </div>
+        
     </div>
 </div>
 

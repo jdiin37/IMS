@@ -27,16 +27,13 @@
         public virtual DbSet<Account> Account { get; set; }
         public virtual DbSet<AccountLevel> AccountLevel { get; set; }
 
-
-
         public virtual DbSet<ActionLog> ActionLog { get; set; }
         public virtual DbSet<RequestLog> RequestLog { get; set; }
-
 
         public virtual DbSet<AccountSession> AccountSession { get; set; }
 
         public virtual DbSet<PigFarm> PigFarm { get; set; }
-
+        public virtual DbSet<FarmDataBase> FarmDataBase { get; set; }
     }
 
     //public class MyEntity

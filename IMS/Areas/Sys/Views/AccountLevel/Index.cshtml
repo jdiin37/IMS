@@ -11,18 +11,22 @@
     <!-- Default panel contents -->
     
     <div class="panel-body">
-        <div class="row form-group">
-            <div class="col-sm-2">
-                <label class="control-label" for="searchKey">關鍵字</label>
-                <input class="form-control" id="searchKey" name="" value="">
+        @using (Html.BeginForm())
+        {
+            <div class="row form-group">
+
+                <div class="col-sm-2">
+                    <label class="control-label" for="SearchString">關鍵字</label>
+                    <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
+                </div>
+                <div class="col-sm-10 ">
+                    <br />
+                    <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
+                    @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add, "Create", "", new { Class = "btn btn-primary" })
+                </div>
             </div>
-            <div class="col-sm-10 ">
-                <br />
-                @*<input type="button" class="btn btn-success" id="btn_Search" value="@IMS.Resources.Resource.Comm_Search" />*@
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Add, "Create", "", new { Class = "btn btn-primary" })
-            </div>
-        </div>
+        }
     </div>
 
     <!-- Table -->

@@ -72,12 +72,35 @@
     </header>
 
     <section class="container" id="bodyContent">
+        <form class="form-inline">
+            <br />
+            <div class="input-group">
+                <label class="input-group-addon" for="PigFarm">@IMS.Resources.Resource.PigFarm</label>
+                @getDropDown.getPigFarm("PigFarm", "", false, true, false)
+            </div>
+        </form>
+        <hr />
         @RenderBody()
     </section>
 
     <hr />
     <footer class="container">
-        <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+        <div class="row">
+            <div class="col-sm-6">
+                <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+            </div>
+            <div class="col-sm-6">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="langSelect">@IMS.Resources.Resource.LangSys :</label>
+                        <select class="form-control" id="i18n" style="width:280px;">
+                            <option value="zh-TW">繁體中文</option>
+                            <option value="en-US">English</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
     </footer>
 
     @Scripts.Render("~/bundles/jquery")

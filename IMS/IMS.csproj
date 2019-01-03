@@ -263,6 +263,7 @@
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
     <Compile Include="Areas\DataAnalysis\Controllers\HomeController.cs" />
     <Compile Include="Areas\DataAnalysis\DataAnalysisAreaRegistration.cs" />
+    <Compile Include="Areas\Management\Controllers\FarmDataBaseController.cs" />
     <Compile Include="Areas\Management\Controllers\HomeController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
@@ -349,6 +350,7 @@
     <Compile Include="Models\Auth\CustomPrincipal.cs" />
     <Compile Include="Models\CategoryList.cs" />
     <Compile Include="Models\CategorySub.cs" />
+    <Compile Include="Models\FarmDataBase.cs" />
     <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\PigFarm.cs" />
     <Compile Include="Models\PigResume.cs" />
@@ -404,6 +406,7 @@
     <Folder Include="Areas\DataAnalysis\Models\" />
     <Folder Include="Areas\DataAnalysis\Views\Shared\" />
     <Folder Include="Areas\Management\Models\" />
+    <Folder Include="Areas\Management\Views\FarmDataBase\" />
     <Folder Include="Areas\Management\Views\Shared\" />
     <Folder Include="Areas\Sheet\Models\" />
     <Folder Include="Areas\Sheet\Views\Shared\" />

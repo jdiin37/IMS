@@ -322,6 +322,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 View 的當地語系化字串。
+        /// </summary>
+        public static string Comm_View {
+            get {
+                return ResourceManager.GetString("Comm_View", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Kuo,TsungHan 的當地語系化字串。
         /// </summary>
         public static string Creater {
