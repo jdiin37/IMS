@@ -19,7 +19,22 @@
                         <h3>
                             @IMS.Resources.Resource.FarmData_base
                         </h3>
+                        <hr />
+                        <div id="FarmDataBaseInfo" class="form-group">
+                            <div class="loader"></div>
+                        </div>
                         <p><a href="@Url.Action("Edit","FarmDataBase",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_License
+                        </h3>
+                        <div id="FarmDataLicenseInfo" class="form-group">
+                            <div class="loader"></div>
+                        </div>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -29,21 +44,12 @@
                         <h3>
                             @IMS.Resources.Resource.FarmData_Land
                         </h3>
+                        <div id="FarmDataLandInfo" class="form-group" >
+                            <div class="loader"></div>
+                        </div>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>
-                            @IMS.Resources.Resource.FarmData_License
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
@@ -189,29 +195,32 @@
 {
     <script>
 
-        function getBaseData() {
+        function getFarmDataBase() {
+            $('#FarmDataBaseInfo').empty();
+
             $.ajax({
-                type: "POST",
-                url: "@Url.Action("JsonData")",
-                data: $('#form1').serialize(),
+                type: "GET",
+                url: "@Url.Action("GetFarmDataBase", new { pigFarmId = pigFarmId})",
                 success: function (data) {
                     console.log(data);
-                    var id = $('<li>').html('ID=' + data.id);
-                    var title = $('<li>').html('Title=' + data.title);
-                    var description = $('<li>').html('Description=' + data.description);
-                    var createdDate = $('<li>').html('CreatedDate=' + new Date(parseInt(data.createdDate.replace('/Date(',''))));
-                    $('#result').append(id).append(title).append(description).append(createdDate);
-
-                    $('#photo').attr("src","@Url.Action("GetImage","Photos")"+"/"+$('#id').val());
+                    var id = $('<p>').html('負責人:' + data.OwnerName);
+                    var title = $('<p>').html('負責人地址:' + data.OwnerAddress);
+                    var description = $('<p>').html('牧場名稱:' + data.FarmName);
+                    var createdDate = $('<p>').html('牧場地址:' + data.FarmAddress);
+                    $('#FarmDataBaseInfo').append(id).append(title).append(description).append(createdDate);
+                    
                 }, error: function () {
-                    var error = $('<li>').html('not found');
-                    $('#result').append(error);
+                    var error = $('<li class="list-group-item">').html('not found');
+                    $('#FarmDataBaseInfo').append(error);
                 }
 
             });
 
         };
-        
+
+
+        getFarmDataBase();
+
     </script>
 
 }
