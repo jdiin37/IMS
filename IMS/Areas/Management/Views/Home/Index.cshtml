@@ -210,7 +210,7 @@
                     $('#FarmDataBaseInfo').append(id).append(title).append(description).append(createdDate);
                     
                 }, error: function () {
-                    var error = $('<li class="list-group-item">').html('not found');
+                    var error = $('<p>').html('Not Found');
                     $('#FarmDataBaseInfo').append(error);
                 }
 
