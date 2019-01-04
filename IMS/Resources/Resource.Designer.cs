@@ -205,6 +205,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 CategorySubMgr 的當地語系化字串。
+        /// </summary>
+        public static string CategorySubMgr {
+            get {
+                return ResourceManager.GetString("CategorySubMgr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Change Password 的當地語系化字串。
         /// </summary>
         public static string ChangePassword {

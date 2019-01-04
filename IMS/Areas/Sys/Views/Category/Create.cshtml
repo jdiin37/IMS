@@ -1,45 +1,36 @@
-﻿@model IMS.Models.AccountLevel
+﻿@model IMS.Models.Category
 
 @{
-    ViewBag.Title = IMS.Resources.Resource.Comm_Edit;
+    ViewBag.Title = IMS.Resources.Resource.Comm_Add;
 }
 
 <div class="page-header">
-    <h1>@IMS.Resources.Resource.Comm_Edit <small>@IMS.Resources.Resource.AccountLevel_Level</small></h1>
+    <h1>@IMS.Resources.Resource.Comm_Add <small>@IMS.Resources.Resource.CategoryMgr</small></h1>
 </div>
-@using (Html.BeginForm())
+@using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal well">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Level, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Level, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Level, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.LevelName, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.CategoryName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.LevelName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LevelName, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.CategoryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CategoryName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         @*<div class="form-group">
-            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
             @Html.LabelFor(model => model.CreDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.CreDate, new { htmlAttributes = new { @class = "form-control" } })
@@ -70,7 +61,11 @@
                 @Html.ValidationMessageFor(model => model.ModUser, "", new { @class = "text-danger" })
             </div>
         </div>*@
-
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <span class="text-danger">@ViewBag.Error</span>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
@@ -80,6 +75,3 @@
     </div>
 }
 
-@*<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>*@

@@ -1,0 +1,67 @@
+﻿@model IMS.ViewModels.CategoryVM
+
+
+@{
+    ViewBag.Title = IMS.Resources.Resource.CategorySubMgr;
+}
+
+<h2>@ViewBag.CategoryListName</h2>
+
+<p>
+    @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
+</p>
+
+<div class="row">
+    <div class="col-xs-3">
+        <div class="list-group">
+            @foreach (var item in Model.categoryLists)
+            {
+                @Html.ActionLink(item.CategoryName, "Index", new { categoryId = item.CategoryID }, new { @class = "list-group-item" })
+            }
+        </div>
+    </div>
+
+    <div class="col-xs-9">
+        <table class="table table-striped">
+
+            <tr>
+
+                <th>
+                    項目代號
+                </th>
+                <th>
+                    項目名稱
+                </th>
+                <th>
+                    建立日期
+                </th>
+                <th>
+
+                </th>
+
+            </tr>
+
+            @foreach (var item in Model.categorySubs)
+            {
+                <tr>
+
+                    <td>
+                        @item.SubValue
+                    </td>
+                    <td>
+                        @item.SubName
+                    </td>
+                    <td>
+                        @item.CreDate
+                    </td>
+                    <td>
+                        @Html.ActionLink("刪除", "Delete", new { SubId = item.ID }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
+                    </td>
+
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+

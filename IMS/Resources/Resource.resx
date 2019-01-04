@@ -372,4 +372,7 @@
   <data name="PigFarmMgr" xml:space="preserve">
     <value>PigFarmMgr</value>
   </data>
+  <data name="CategorySubMgr" xml:space="preserve">
+    <value>CategorySubMgr</value>
+  </data>
 </root>
