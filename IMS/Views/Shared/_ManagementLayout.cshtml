@@ -110,9 +110,26 @@
 
 
 
+    @{
+        <script>
+
+        if ($.cookie("pigFarmId")) {
+            $("#PigFarm").val($.cookie("pigFarmId"));
+        } else {
+            setPigFarmId($("#PigFarm").val());
+        }
+
+
+        $("#PigFarm").change(function () {
+            //alert(document.location.origin);
+            setPigFarmId($(this).val());
+            location.href = document.location.origin + "/Management/Home"
+        });
+                 
+        </script>
+    }
+
     @RenderSection("JS", required: false)
 
-
-
-    </body>
+</body>
 </html>

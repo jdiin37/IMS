@@ -14,6 +14,7 @@ namespace IMS.Areas.Management.Controllers
         // GET: Management/Home
         public ActionResult Index()
         {
+            ViewBag.pigFarmId = Request.Cookies["pigFarmId"].Value;
             return View();
         }
         

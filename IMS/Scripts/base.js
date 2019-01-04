@@ -56,6 +56,18 @@ function doAjax(url, data, callback) {
 }
 
 
+var PigFarmId = "";
+
+function setPigFarmId(val) {
+	$.cookie("pigFarmId", val, { path: '/', expires: 365 });
+	PigFarmId = val;
+}
+
+function getPigFarmId() {
+	return $.cookie("pigFarmId"); 
+}
+
+
 jQuery(document).ready(function ($) {
 	if ($.cookie("sysLang")) {
 		$("#i18n").val($.cookie("sysLang"));
@@ -73,14 +85,19 @@ jQuery(document).ready(function ($) {
 		location.reload();
 	});
 
-	if ($.cookie("pigFarmId")) {
-		$("#PigFarm").val($.cookie("pigFarmId"));
-	}
 
-	$("#PigFarm").change(function () {
-		//alert(document.location.origin);
-		$.cookie("pigFarmId", $(this).val(), { path: '/', expires: 365 });
-		location.href = document.location.origin + "/Management/Home"
-	});
+	//if ($.cookie("pigFarmId")) {
+	//	$("#PigFarm").val($.cookie("pigFarmId"));
+	//} else {
+	//	setPigFarmId($("#PigFarm").val());
+
+	//}
+
+	//$("#PigFarm").change(function () {
+	//	//alert(document.location.origin);
+	//	setPigFarmId($(this).val());
+	//	location.href = document.location.origin + "/Management/Home"
+	//});
+	
 	
 });

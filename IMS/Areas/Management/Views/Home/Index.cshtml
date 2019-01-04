@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = IMS.Resources.Resource.Model_Management;
-    String pigFarmId = Request.Cookies["pigFarmId"] == null? "": Request.Cookies["pigFarmId"].Value;
+    String pigFarmId = Request.Cookies["pigFarmId"] == null ? "" : Request.Cookies["pigFarmId"].Value;
 }
 
 
@@ -44,7 +44,7 @@
                         <h3>
                             @IMS.Resources.Resource.FarmData_Land
                         </h3>
-                        <div id="FarmDataLandInfo" class="form-group" >
+                        <div id="FarmDataLandInfo" class="form-group">
                             <div class="loader"></div>
                         </div>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
@@ -189,18 +189,14 @@
     </div>
 </div>
 
-
-
-@section JS
-{
+@section JS{
     <script>
-
         function getFarmDataBase() {
             $('#FarmDataBaseInfo').empty();
-
+            url = "@Url.Action("GetFarmDataBase")?pigFarmId=" + getPigFarmId();
             $.ajax({
                 type: "GET",
-                url: "@Url.Action("GetFarmDataBase", new { pigFarmId = pigFarmId})",
+                url: url,
                 success: function (data) {
                     console.log(data);
                     var id = $('<p>').html('負責人:' + data.OwnerName);
@@ -208,7 +204,7 @@
                     var description = $('<p>').html('牧場名稱:' + data.FarmName);
                     var createdDate = $('<p>').html('牧場地址:' + data.FarmAddress);
                     $('#FarmDataBaseInfo').append(id).append(title).append(description).append(createdDate);
-                    
+
                 }, error: function () {
                     var error = $('<p>').html('Not Found');
                     $('#FarmDataBaseInfo').append(error);
@@ -220,7 +216,5 @@
 
 
         getFarmDataBase();
-
     </script>
-
 }
