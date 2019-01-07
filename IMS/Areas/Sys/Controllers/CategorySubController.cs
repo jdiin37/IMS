@@ -12,14 +12,15 @@ namespace IMS.Areas.Sys.Controllers
     public class CategorySubController : BaseController
     {
         // GET: Sys/CategorySub
-        public ActionResult Index(string categoryId)
+        public ActionResult Index(string categoryId, string searchString)
         {
+            ViewBag.CurrentFilter = searchString;
 
             if (categoryId == null)
             {
                 categoryId = IMSdb.Category.FirstOrDefault().CategoryID;
             }
-
+            
             CategoryVM vm = new CategoryVM()
             {
                 categoryLists = IMSdb.Category.ToList(),
@@ -29,6 +30,16 @@ namespace IMS.Areas.Sys.Controllers
             ViewBag.CategoryId = categoryId;
 
             ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categoryId).FirstOrDefault().CategoryName + " 類別";
+
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+
+                vm.categorySubs = vm.categorySubs.Where(s => s.SubName.Contains(searchString)
+                                       || s.SubValue.Contains(searchString)).ToList();
+            }
+
 
             return View(vm);
         }
@@ -54,11 +65,20 @@ namespace IMS.Areas.Sys.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CategorySub categorySub)
         {
+            ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categorySub.CategoryID).FirstOrDefault().CategoryName;
+
             categorySub.CreDate = DateTime.Now;
             categorySub.CreUser = User.ID;
             
             if (ModelState.IsValid)
             {
+                if (IMSdb.CategorySub.Where(m=>m.SubValue == categorySub.SubValue) != null)
+                {
+                    ViewBag.Error = "項目編號重複";
+                    return View(categorySub);
+                }
+
+
                 IMSdb.CategorySub.Add(categorySub);
                 IMSdb.SaveChanges();
                 return RedirectToAction("Index", new { categoryId = categorySub.CategoryID });

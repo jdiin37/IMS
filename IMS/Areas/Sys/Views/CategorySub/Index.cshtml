@@ -7,10 +7,10 @@
 
 <h2>@ViewBag.CategoryListName</h2>
 
-<p>
+@*<p>
     @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
-</p>
-
+</p>*@
+<hr />
 <div class="row">
     <div class="col-xs-3">
         <div class="list-group">
@@ -22,46 +22,69 @@
     </div>
 
     <div class="col-xs-9">
-        <table class="table table-striped">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
 
-            <tr>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    <input id="categoryId" name="categoryId" value="@ViewBag.CategoryId" type="hidden" />
+                    <div class="row form-group">
 
-                <th>
-                    @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().SubValue)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().SubName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().CreDate)
-                </th>
-                <th>
+                        <div class="col-sm-3">
+                            <label class="control-label" for="SearchString">關鍵字</label>
+                            <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
+                        </div>
+                        <div class="col-sm-9 ">
+                            <br />
+                            <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
+                            @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
+                            @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+            <table class="table table-striped">
 
-                </th>
-
-            </tr>
-
-            @foreach (var item in Model.categorySubs)
-            {
                 <tr>
 
-                    <td>
-                        @item.SubValue
-                    </td>
-                    <td>
-                        @item.SubName
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreDate)
-                    </td>
-                    <td>
-                        @Html.ActionLink("刪除", "Delete", new { SubId = item.ID }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
-                    </td>
+                    <th>
+                        @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().SubValue)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().SubName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.categorySubs.FirstOrDefault().CreDate)
+                    </th>
+                    <th>
+
+                    </th>
 
                 </tr>
-            }
-        </table>
+
+                @foreach (var item in Model.categorySubs)
+                {
+                    <tr>
+
+                        <td>
+                            @item.SubValue
+                        </td>
+                        <td>
+                            @item.SubName
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink("刪除", "Delete", new { SubId = item.ID }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
     </div>
 
 </div>
-
