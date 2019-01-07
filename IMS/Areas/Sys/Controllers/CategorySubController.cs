@@ -42,6 +42,7 @@ namespace IMS.Areas.Sys.Controllers
             }
 
             ViewBag.CategoryId = categoryId;
+            ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categoryId).FirstOrDefault().CategoryName ;
 
             CategorySub newCategorySub = new CategorySub();
             newCategorySub.CategoryID = categoryId;
