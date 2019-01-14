@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = IMS.Resources.Resource.MenuSys;
+}
+
+<h2>@IMS.Resources.Resource.MenuSys</h2>
+
+<div class="list-group">
+    <a class="list-group-item" href="@Url.Action("Index","PigFarm",new { area="Sys"})">@IMS.Resources.Resource.PigFarmMgr</a>
+    <a class="list-group-item" href="@Url.Action("Index","Category",new { area="Sys"})">@IMS.Resources.Resource.CategoryMgr</a>
+    <a class="list-group-item" href="@Url.Action("Index","CategorySub",new { area="Sys"})">@IMS.Resources.Resource.CategorySubMgr</a>
+    <a class="list-group-item" href="@Url.Action("Index","AccountLevel",new { area="Sys"})">@IMS.Resources.Resource.AccountLevelMgr</a>
+    <a class="list-group-item" href="@Url.Action("Index","Account",new { area="Sys"})">@IMS.Resources.Resource.AccountMgr</a>
+</div>

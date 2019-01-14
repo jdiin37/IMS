@@ -7,7 +7,7 @@
 <div class="page-header">
     <h1>@IMS.Resources.Resource.Comm_Edit <small>@IMS.Resources.Resource.PigFarm</small></h1>
 </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit", "PigFarm", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         @Html.AntiForgeryToken()
 
@@ -22,6 +22,21 @@
                     @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhotoFile, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @if (Model.PhotoFile != null)
+                    {
+                        <img src="@Url.Action("GetImage","PigFarm",new { id=Model.Id ,area = "Sys"})" style="width:70%" />
+                        <hr />
+                    }
+
+                    <input id="Image" type="file" name="Image" class="form-control" />
+                </div>
+            </div>
+            
+
 
             @*<div class="form-group">
                 @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })

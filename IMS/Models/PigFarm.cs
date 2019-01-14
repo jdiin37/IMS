@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace IMS.Models
 {
@@ -14,6 +15,13 @@ namespace IMS.Models
         [DisplayName("豬場名稱")]
         [Required]
         public string Name { get; set; }
+
+        [MaxLength]
+        [DisplayName("照片")]
+        public byte[] PhotoFile { get; set; }
+
+        [HiddenInput(DisplayValue = false)]
+        public string ImageMimeType { get; set; }
 
         [StringLength(2)]
         [DefaultValue("Y")]

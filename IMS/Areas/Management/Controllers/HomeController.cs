@@ -33,5 +33,23 @@ namespace IMS.Areas.Management.Controllers
 
             return Json(farmDataBase, JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult GetFarmDataLand(Guid pigFarmId)
+        {
+            FarmDataLand farmDataLand = IMSdb.FarmDataLand.Where(m => m.PigFarmId == pigFarmId).FirstOrDefault();
+            if (Request.IsAjaxRequest())
+            {
+                if (farmDataLand == null)
+                {
+                    return Json(farmDataLand, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(farmDataLand, JsonRequestBehavior.AllowGet);  //將物件序列化JSON並回傳
+            }
+
+            return Json(farmDataLand, JsonRequestBehavior.AllowGet);
+        }
+
+
     }
 }

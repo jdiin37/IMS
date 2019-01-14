@@ -74,7 +74,7 @@
             List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A01").ToList();
             foreach (var item in list)
             {
-                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
             }
         }
     </select>
@@ -92,7 +92,7 @@
             List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A02").ToList();
             foreach (var item in list)
             {
-                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
             }
         }
     </select>
@@ -110,7 +110,7 @@
             List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A03").ToList();
             foreach (var item in list)
             {
-                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
             }
         }
     </select>
@@ -129,7 +129,7 @@
             List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A04").ToList();
             foreach (var item in list)
             {
-                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
             }
         }
     </select>

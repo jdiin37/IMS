@@ -10,16 +10,16 @@
 
     @if (areaName != null)
     {
-        <li class="">@areaName.ToString()</li>
+        <li class=""><a href="@Url.Action("Index","Home",new { area = areaName.ToString()})">@areaName.ToString() </a></li>
         if (controllerName != null)
         {
             <li class=""><a href="@Url.Action("Index",controllerName.ToString(),new { area = areaName.ToString()})">@controllerName.ToString()</a></li>
         }
 
-        if (actionName != null)
+        @*if (actionName != null)
         {
             <li class="">@actionName.ToString()</li>
-        }
+        }*@
     }
     else
     {
@@ -28,10 +28,10 @@
             <li class=""><a href="@Url.Action("Index",controllerName.ToString())">@controllerName.ToString() </a></li>
         }
 
-        if (actionName != null)
+        @*if (actionName != null)
         {
             <li class="">@actionName.ToString() </li>
-        }
+        }*@
     }
 
 

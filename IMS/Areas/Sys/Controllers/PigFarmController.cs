@@ -73,12 +73,21 @@ namespace IMS.Areas.Sys.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(PigFarm pigFarm)
+        public ActionResult Create(PigFarm pigFarm, HttpPostedFileBase image)
         {
             pigFarm.CreDate = DateTime.Now;
             pigFarm.CreUser = User.ID;
             if (ModelState.IsValid)
             {
+                //有post照片才做照片上傳的處理
+                if (image != null)
+                {
+                    pigFarm.ImageMimeType = image.ContentType;  //抓照片型態
+                    pigFarm.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
+                    image.InputStream.Read(pigFarm.PhotoFile, 0, image.ContentLength);
+                }
+
+
                 IMSdb.PigFarm.Add(pigFarm);
                 IMSdb.SaveChanges();
                 return RedirectToAction("Index");
@@ -111,7 +120,7 @@ namespace IMS.Areas.Sys.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(PigFarm pigFarm)
+        public ActionResult Edit(PigFarm pigFarm, HttpPostedFileBase image)
         {
             if (pigFarm == null)
             {
@@ -128,6 +137,16 @@ namespace IMS.Areas.Sys.Controllers
 
             if (ModelState.IsValid)
             {
+
+                //有post照片才做照片上傳的處理
+                if (image != null)
+                {
+                    item.ImageMimeType = image.ContentType;  //抓照片型態
+                    item.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
+                    image.InputStream.Read(item.PhotoFile, 0, image.ContentLength);
+                }
+
+
                 item.Name = pigFarm.Name;
                 item.ModDate = DateTime.Now;
                 item.ModUser = User.ID;
@@ -139,5 +158,15 @@ namespace IMS.Areas.Sys.Controllers
 
         }
 
+        
+        public FileContentResult GetImage(Guid? id)
+        {
+            PigFarm pigFarm = IMSdb.PigFarm.Find(id);
+
+            if (pigFarm != null)
+                return File(pigFarm.PhotoFile, pigFarm.ImageMimeType);
+            else
+                return null;
+        }
     }
 }

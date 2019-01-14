@@ -232,6 +232,7 @@
     <Content Include="Areas\Sys\Views\CategorySub\Create.cshtml" />
     <Content Include="Areas\Management\Views\FarmDataLand\Create.cshtml" />
     <Content Include="Areas\Management\Views\FarmDataLand\Edit.cshtml" />
+    <Content Include="Areas\Sys\Views\Home\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -281,6 +282,7 @@
     <Compile Include="Areas\Sys\Controllers\AccountLevelController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategorySubController.cs" />
+    <Compile Include="Areas\Sys\Controllers\HomeController.cs" />
     <Compile Include="Areas\Sys\Controllers\PigFarmController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />

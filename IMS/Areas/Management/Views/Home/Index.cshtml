@@ -44,6 +44,7 @@
                         <h3>
                             @IMS.Resources.Resource.FarmData_Land
                         </h3>
+                        <hr />
                         <div id="FarmDataLandInfo" class="form-group">
                             <div class="loader"></div>
                         </div>
@@ -192,13 +193,14 @@
 @section JS{
     <script>
         function getFarmDataBase() {
-            $('#FarmDataBaseInfo').empty();
+            
             url = "@Url.Action("GetFarmDataBase")?pigFarmId=" + getPigFarmId();
             $.ajax({
                 type: "GET",
                 url: url,
                 success: function (data) {
-                    console.log(data);
+                    $('#FarmDataBaseInfo').empty();
+                    //console.log(data);
                     var id = $('<p>').html('負責人:' + data.OwnerName);
                     var title = $('<p>').html('負責人地址:' + data.OwnerAddress);
                     var description = $('<p>').html('牧場名稱:' + data.FarmName);
@@ -206,6 +208,7 @@
                     $('#FarmDataBaseInfo').append(id).append(title).append(description).append(createdDate);
 
                 }, error: function () {
+                    $('#FarmDataBaseInfo').empty();
                     var error = $('<p>').html('Not Found');
                     $('#FarmDataBaseInfo').append(error);
                 }
@@ -214,7 +217,37 @@
 
         };
 
+        function getFarmDataLand() {
+            
+            url = "@Url.Action("GetFarmDataLand")?pigFarmId=" + getPigFarmId();
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    $('#FarmDataLandInfo').empty();
+                    //console.log(data);
+                    var LandNo = $('<p>').html('牧場土地地段:' + data.LandNo);
+                    var AreaSize = $('<p>').html('土地面積:' + data.AreaSize + ' 平方公尺');
+                    var LandProperty = $('<p>').html('土地產權:' + data.LandProperty);
+                    //var UseType = $('<p>').html('使用區分------');
+                    var UseIsCity = $('<p>').html('都市計畫土地:' + data.UseIsCity);
+                    var UseNonCity = $('<p>').html('非都市計畫土地:' + data.UseNonCity);
+                    var NonCityType = $('<p>').html('非都市土地用地類別:' + data.NonCityType);
+                    $('#FarmDataLandInfo').append(LandNo).append(AreaSize).append(LandProperty).append(UseIsCity).append(UseNonCity).append(NonCityType);
+
+                }, error: function () {
+                    $('#FarmDataLandInfo').empty();
+                    var error = $('<p>').html('Not Found');
+                    $('#FarmDataLandInfo').append(error);
+                }
+
+            });
+
+        };
+
+
 
         getFarmDataBase();
+        getFarmDataLand();
     </script>
 }
