@@ -21,7 +21,9 @@ namespace IMS.Models
 
         public string LandNo3 { get; set; }
 
-        public string Area { get; set; }
+        public string AreaSize { get; set; }
+        
+        public string SizeUnit { get; set; }
 
         public string Property { get; set; }
 
@@ -30,8 +32,6 @@ namespace IMS.Models
         public string UseNonCity { get; set; }
 
         public string NonCityType { get; set; }
-
-
 
 
         [StringLength(2)]

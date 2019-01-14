@@ -69,10 +69,12 @@ namespace IMS.Areas.Sys.Controllers
 
             categorySub.CreDate = DateTime.Now;
             categorySub.CreUser = User.ID;
-            
+            categorySub.SubValue = categorySub.CategoryID + "-" + categorySub.SubValue;
+
+
             if (ModelState.IsValid)
             {
-                if (IMSdb.CategorySub.Where(m=>m.SubValue == categorySub.SubValue) != null)
+                if (IMSdb.CategorySub.Where(m=>m.SubValue == categorySub.SubValue).Count() > 0)
                 {
                     ViewBag.Error = "項目編號重複";
                     return View(categorySub);
@@ -96,9 +98,12 @@ namespace IMS.Areas.Sys.Controllers
             {
                 return RedirectToAction("Index");
             }
+
+            ViewBag.CategoryId = categorySub.CategoryID;
+
             IMSdb.CategorySub.Remove(categorySub);
             IMSdb.SaveChanges();
-            return RedirectToAction("Index", new { categoryId = categorySub.CategoryID });
+            return RedirectToAction("Index", new { categoryId = ViewBag.CategoryId });
         }
 
     }
