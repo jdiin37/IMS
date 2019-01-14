@@ -29,14 +29,11 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            @IMS.Resources.Resource.FarmData_License
+                            豬場照片
                         </h3>
-                        <div id="FarmDataLicenseInfo" class="form-group">
-                            <div class="loader"></div>
-                        </div>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="width:70%" />
                     </div>
-                </div>
+                </div>              
             </div>
             <div class="col-sm-6">
                 <div class="thumbnail">
@@ -56,6 +53,17 @@
                         <h3>
                             @IMS.Resources.Resource.FarmData_Barn
                         </h3>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_License
+                        </h3>
+                        <div id="FarmDataLicenseInfo" class="form-group">
+                            <div class="loader"></div>
+                        </div>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
@@ -101,7 +109,6 @@
             </div>
             <div class="col-sm-6">
                 <div class="thumbnail">
-                    <img src="~/Images/Kite1.JPG" alt="..." />
                     <div class="caption">
                         <h3>
                             @IMS.Resources.Resource.EnvironmentData_Image

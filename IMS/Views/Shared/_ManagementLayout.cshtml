@@ -116,11 +116,7 @@
                 
             }
 
-            var imageUrl = "@Url.Action("GetImage", "PigFarm", new { area = "Sys" })/" + getPigFarmId();
-
-            $('body').css('background-image', 'url(' + imageUrl +')')
-            
-
+           
             $("#PigFarm").change(function () {
                 //alert(document.location.origin);
                 setPigFarmId($(this).val());
