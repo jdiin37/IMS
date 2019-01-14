@@ -145,6 +145,11 @@ namespace IMS.Areas.Sys.Controllers
                     item.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
                     image.InputStream.Read(item.PhotoFile, 0, image.ContentLength);
                 }
+                else
+                {
+                    item.ImageMimeType = null;
+                    item.PhotoFile = null;
+                }
 
 
                 item.Name = pigFarm.Name;
