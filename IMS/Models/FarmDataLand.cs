@@ -14,23 +14,29 @@ namespace IMS.Models
        
         [Required]
         public Guid PigFarmId { get; set; }
-        
+
+        [DisplayName("牧場土地地號")]
         public string LandNo { get; set; }
 
+        [DisplayName("牧場土地地號2")]
         public string LandNo2 { get; set; }
 
+        [DisplayName("牧場土地地號3")]
         public string LandNo3 { get; set; }
 
+        [DisplayName("土地面積")]
         public string AreaSize { get; set; }
-        
-        public string SizeUnit { get; set; }
 
-        public string Property { get; set; }
+        [DisplayName("土地產權")]
+        public string LandProperty { get; set; }
 
+        [DisplayName("都市計畫土地")]
         public string UseIsCity { get; set; }
 
+        [DisplayName("非都市計畫土地")]
         public string UseNonCity { get; set; }
 
+        [DisplayName("非都市土地用地類別")]
         public string NonCityType { get; set; }
 
 

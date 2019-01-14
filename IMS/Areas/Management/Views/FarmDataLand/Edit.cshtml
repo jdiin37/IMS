@@ -1,0 +1,134 @@
+﻿@model IMS.Models.FarmDataLand
+
+@{
+    ViewBag.Title = IMS.Resources.Resource.Comm_Edit;
+}
+
+<div class="page-header">
+    <h1>@IMS.Resources.Resource.Comm_Edit <small>@IMS.Resources.Resource.FarmData_Land</small></h1>
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal well">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.PigFarmId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PigFarmId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.PigFarmId, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LandNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LandNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LandNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LandNo2, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LandNo2, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LandNo2, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LandNo3, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.LandNo3, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.LandNo3, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AreaSize, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AreaSize, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.AreaSize, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LandProperty, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @getDropDown.getLandProperty("LandProperty", Model.LandProperty, false, true, false)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UseIsCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @getDropDown.getUseIsCity("UseIsCity", Model.UseIsCity, false, true, false)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.UseNonCity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @getDropDown.getUseNonCity("UseNonCity", Model.UseNonCity, false, true, false)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NonCityType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @getDropDown.getNonCityType("NonCityType", Model.NonCityType, false, true, false)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CreUser, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CreUser, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CreUser, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ModDate, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ModDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModUser, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ModUser, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ModUser, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
+                @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", "Home", new { area = "Management" }, new { Class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+

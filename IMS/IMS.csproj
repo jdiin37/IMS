@@ -230,6 +230,8 @@
     <Content Include="Areas\Sys\Views\Category\Create.cshtml" />
     <Content Include="Areas\Sys\Views\Category\Edit.cshtml" />
     <Content Include="Areas\Sys\Views\CategorySub\Create.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataLand\Create.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataLand\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -271,6 +273,7 @@
     <Compile Include="Areas\DataAnalysis\Controllers\HomeController.cs" />
     <Compile Include="Areas\DataAnalysis\DataAnalysisAreaRegistration.cs" />
     <Compile Include="Areas\Management\Controllers\FarmDataBaseController.cs" />
+    <Compile Include="Areas\Management\Controllers\FarmDataLandController.cs" />
     <Compile Include="Areas\Management\Controllers\HomeController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />

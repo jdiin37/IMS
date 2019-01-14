@@ -3,15 +3,14 @@
 @{
     ViewBag.Title = IMS.Resources.Resource.Comm_Add;
 }
-<h2>@IMS.Resources.Resource.Comm_Add</h2>
-
+<div class="page-header">
+    <h1>@IMS.Resources.Resource.Comm_Add <small>@IMS.Resources.Resource.FarmData_base</small></h1>
+</div>
     @using (Html.BeginForm()) 
     {
         @Html.AntiForgeryToken()
         
         <div class="form-horizontal well">
-            <h4>@IMS.Resources.Resource.FarmData_base</h4>
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             @*<div class="form-group">
                 @Html.LabelFor(model => model.PigFarmId, htmlAttributes: new { @class = "control-label col-md-2" })

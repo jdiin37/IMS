@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = IMS.Resources.Resource.Model_Management;
+    ViewBag.Title = IMS.Resources.Resource.Home;
     String pigFarmId = Request.Cookies["pigFarmId"] == null ? "" : Request.Cookies["pigFarmId"].Value;
 }
 
@@ -47,7 +47,7 @@
                         <div id="FarmDataLandInfo" class="form-group">
                             <div class="loader"></div>
                         </div>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
                 <div class="thumbnail">

@@ -98,38 +98,6 @@ namespace IMS.Areas.Management.Controllers
                 return View("Create", farmDataBase);
             }
         }
-
-
-        public ActionResult getData(Guid id)
-        {
-            var data = new
-            {
-                OwnerName = "",
-                OwnerAddress = "",
-                FarmName = "",
-                FarmAddress = ""
-            };
-
-            if (Request.IsAjaxRequest())
-            {
-                FarmDataBase farmDataBase = IMSdb.FarmDataBase.Find(id);
-                if (farmDataBase == null)
-                {
-                    return Json(data);
-                }
-
-                data = new
-                {
-                    OwnerName = farmDataBase.OwnerName,
-                    OwnerAddress = farmDataBase.OwnerAddress,
-                    FarmName = farmDataBase.FarmName,
-                    FarmAddress = farmDataBase.FarmAddress
-                };
-
-                return Json(data);  //將物件序列化JSON並回傳
-            }
-
-            return Json(data);
-        }
+      
     }
 }

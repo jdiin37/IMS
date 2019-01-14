@@ -61,3 +61,76 @@
         }
     </select>
 }
+
+//使用區分都市
+@helper getUseIsCity(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A01").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+            }
+        }
+    </select>
+}
+
+//使用區分非都市
+@helper getUseNonCity(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A02").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+            }
+        }
+    </select>
+}
+
+//非都市土地用地類別
+@helper getNonCityType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A03").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+            }
+        }
+    </select>
+}
+
+
+//使用區分都市
+@helper getLandProperty(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A04").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+            }
+        }
+    </select>
+}

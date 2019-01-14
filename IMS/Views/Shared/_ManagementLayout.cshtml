@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = IMS.Resources.Resource.Model_Management;
+    
     String pigFarmId = Request.Cookies["pigFarmId"] == null ? "" : Request.Cookies["pigFarmId"].Value;
 }
 
@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title </title>
+    <title>@ViewBag.Title - @IMS.Resources.Resource.Model_Management</title>
     <link rel="shortcut icon" href="~/favicon.ico">
     @Styles.Render("~/Content/css")
     @RenderSection("CSS", required: false)
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Management"})"><span class="fa fa-files-o">&nbsp;</span>@ViewBag.Title</a>
+                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Management"})"><span class="fa fa-files-o">&nbsp;</span>@IMS.Resources.Resource.Model_Management</a>
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="top_menu">
