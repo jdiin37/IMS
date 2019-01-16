@@ -134,3 +134,22 @@
         }
     </select>
 }
+
+
+//經營型態
+@helper getRunType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "B01").ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+            }
+        }
+    </select>
+}

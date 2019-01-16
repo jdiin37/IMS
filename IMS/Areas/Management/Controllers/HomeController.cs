@@ -50,6 +50,22 @@ namespace IMS.Areas.Management.Controllers
             return Json(farmDataLand, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetFarmDataLicense(Guid pigFarmId)
+        {
+            FarmDataLicense farmDataLicense = IMSdb.FarmDataLicense.Where(m => m.PigFarmId == pigFarmId).FirstOrDefault();
+            if (Request.IsAjaxRequest())
+            {
+                if (farmDataLicense == null)
+                {
+                    return Json(farmDataLicense, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(farmDataLicense, JsonRequestBehavior.AllowGet);  //將物件序列化JSON並回傳
+            }
+
+            return Json(farmDataLicense, JsonRequestBehavior.AllowGet);
+        }
+
 
     }
 }

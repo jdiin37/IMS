@@ -51,19 +51,20 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            @IMS.Resources.Resource.FarmData_Barn
+                            @IMS.Resources.Resource.FarmData_License
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <hr />
+                        <div id="FarmDataLicenseInfo" class="form-group">
+                            <div class="loader"></div>
+                        </div>
+                        <p><a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            @IMS.Resources.Resource.FarmData_License
+                            @IMS.Resources.Resource.FarmData_Barn
                         </h3>
-                        <div id="FarmDataLicenseInfo" class="form-group">
-                            <div class="loader"></div>
-                        </div>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
@@ -253,9 +254,34 @@
 
         };
 
+        function getFarmDataLicense() {
+            
+            url = "@Url.Action("GetFarmDataLicense")?pigFarmId=" + getPigFarmId();
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    $('#FarmDataLicenseInfo').empty();
+                    //console.log(data);
+                    var RunType = $('<p>').html('經營型態:' + data.RunType);
+                    $('#FarmDataLicenseInfo').append(RunType);
+
+                }, error: function () {
+                    $('#FarmDataLicenseInfo').empty();
+                    var error = $('<p>').html('Not Found');
+                    $('#FarmDataLicenseInfo').append(error);
+                }
+
+            });
+
+        };
+
+
+
 
 
         getFarmDataBase();
         getFarmDataLand();
+        getFarmDataLicense();
     </script>
 }

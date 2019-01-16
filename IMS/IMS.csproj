@@ -233,6 +233,9 @@
     <Content Include="Areas\Management\Views\FarmDataLand\Create.cshtml" />
     <Content Include="Areas\Management\Views\FarmDataLand\Edit.cshtml" />
     <Content Include="Areas\Sys\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataLicense\Edit.cshtml" />
+    <Content Include="Areas\Management\Views\FarmDataLicense\Create.cshtml" />
+    <Content Include="App_Code\getRadios.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -275,6 +278,7 @@
     <Compile Include="Areas\DataAnalysis\DataAnalysisAreaRegistration.cs" />
     <Compile Include="Areas\Management\Controllers\FarmDataBaseController.cs" />
     <Compile Include="Areas\Management\Controllers\FarmDataLandController.cs" />
+    <Compile Include="Areas\Management\Controllers\FarmDataLicenseController.cs" />
     <Compile Include="Areas\Management\Controllers\HomeController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
     <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
@@ -365,6 +369,7 @@
     <Compile Include="Models\CategorySub.cs" />
     <Compile Include="Models\FarmDataLand.cs" />
     <Compile Include="Models\FarmDataBase.cs" />
+    <Compile Include="Models\FarmDataLicense.cs" />
     <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\PigFarm.cs" />
     <Compile Include="Models\PigResume.cs" />
