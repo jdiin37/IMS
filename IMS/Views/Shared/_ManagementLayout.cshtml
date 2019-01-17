@@ -68,15 +68,7 @@
         </div>
     </header>
 
-    <section class="container" id="bodyContent">
-        <form class="form-inline">
-            <br />
-            <div class="input-group">
-                <label class="input-group-addon" for="PigFarm">@IMS.Resources.Resource.PigFarm</label>
-                @getDropDown.getPigFarm("PigFarm", "", false, true, false)
-            </div>
-        </form>
-        <hr />
+    <section class="container" id="bodyContent">       
         @RenderBody()
     </section>
 
@@ -84,6 +76,13 @@
     <footer class="container">
         <div class="row">
             <div class="col-sm-6">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <label class="input-group-addon" for="PigFarm">@IMS.Resources.Resource.PigFarm</label>
+                        @getDropDown.getPigFarm("selectPigFarm", "", false, true, false)
+                    </div>
+                </form>
+                <br />
                 <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
             </div>
             <div class="col-sm-6">
@@ -110,14 +109,14 @@
         <script>
 
             if ($.cookie("pigFarmId")) {
-                $("#PigFarm").val($.cookie("pigFarmId"));
+                $("#selectPigFarm").val($.cookie("pigFarmId"));
             } else {
-                setPigFarmId($("#PigFarm").val());
+                setPigFarmId($("#selectPigFarm").val());
 
             }
 
 
-            $("#PigFarm").change(function () {
+            $("#selectPigFarm").change(function () {
                 //alert(document.location.origin);
                 setPigFarmId($(this).val());
                 location.href = document.location.origin + "/Management/Home"

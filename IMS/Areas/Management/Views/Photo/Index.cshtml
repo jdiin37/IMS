@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = IMS.Resources.Resource.EnvironmentData_Image;
+}
+
+<div>
+
+    @*Menu:@Html.MvcSiteMap().Menu(false, false, true)
+        Current:@Html.MvcSiteMap().SiteMapPath()*@
+    <div class="page-header">
+        <h1>@IMS.Resources.Resource.EnvironmentData_Image <small>@Html.ActionLink("新增照片", "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-success" })</small></h1>
+    </div>
+
+
+    @Html.Action("_PhotoGallery", "Photo",new { pigFarmId = ViewBag.PigFarmId })  @*這一行是PartialView*@
+
+    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", "Home", new { area = "Management" }, new { Class = "btn btn-default" })
+
+</div>

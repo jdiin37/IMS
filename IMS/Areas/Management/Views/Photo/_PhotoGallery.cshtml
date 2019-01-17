@@ -1,0 +1,47 @@
+﻿@model IEnumerable<IMS.Models.Photo>
+
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                @if (item.PhotoFile != null)
+                {
+                    <img src="@Url.Action("GetImage","Photo",new { id=item.Id})" style="height:240px" />
+                }
+                    <div class="caption">
+                        <h3>『@item.Title』</h3>
+                        <p>建立者:@Html.DisplayFor(model => item.PostName)</p>
+                        <p>
+                            建立日期:@Html.DisplayFor(model => item.PostDate)
+                        </p>
+                        <p>
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Display", new { id = item.Id }, new { @class = "btn btn-primary" })
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.Id }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })
+                        </p>
+                    </div>
+            </div>
+        </div>
+        @*<h2>『@item.Title』</h2>
+
+        if (item.PhotoFile != null)
+        {
+            <img src="@Url.Action("GetImage","Photo",new { id=item.Id})" style="width:70%" />
+        }
+
+        <p>
+            建立者:@Html.DisplayFor(model => item.PostName)
+        </p>
+
+        <p>
+            建立日期:@Html.DisplayFor(model => item.PostDate)
+        </p>
+        <p>
+            @Html.ActionLink("顯示詳細資料", "Display", new { id = item.Id }) |
+            @Html.ActionLink("詳細資料byTitle", "DisplayByTitle", new { title = item.Title })
+        </p>
+        <hr />*@
+
+    }
+</div>

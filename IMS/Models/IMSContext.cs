@@ -36,6 +36,8 @@
         public virtual DbSet<FarmDataBase> FarmDataBase { get; set; }
         public virtual DbSet<FarmDataLand> FarmDataLand { get; set; }
         public virtual DbSet<FarmDataLicense> FarmDataLicense { get; set; }
+
+        public virtual DbSet<Photo> Photo { get; set; }
     }
 
     //public class MyEntity

@@ -87,6 +87,7 @@ namespace IMS.Areas.Management.Controllers
         {
 
             farmDataLicense.CreDate = DateTime.Now;
+            farmDataLicense.CreUser = User.ID;
             if (ModelState.IsValid)
             {
 

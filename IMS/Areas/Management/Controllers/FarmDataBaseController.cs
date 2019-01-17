@@ -73,8 +73,6 @@ namespace IMS.Areas.Management.Controllers
         {
 
             FarmDataBase newFarmDataBase = new FarmDataBase();
-            newFarmDataBase.CreDate = DateTime.Now; 
-            newFarmDataBase.CreUser = User.ID;
             newFarmDataBase.PigFarmId = pigFarmId;
 
             return View("Create", newFarmDataBase);
@@ -85,6 +83,7 @@ namespace IMS.Areas.Management.Controllers
         {
 
             farmDataBase.CreDate = DateTime.Now;
+            farmDataBase.CreUser = User.ID;
             if (ModelState.IsValid)
             {
 

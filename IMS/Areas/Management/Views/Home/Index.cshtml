@@ -4,7 +4,9 @@
     String pigFarmId = Request.Cookies["pigFarmId"] == null ? "" : Request.Cookies["pigFarmId"].Value;
 }
 
-
+<div class="page-header">
+    <h1 id="pigFarmName"><small>主頁面</small></h1>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">
         <a data-toggle="collapse" href="#FarmData">
@@ -13,6 +15,28 @@
     </div>
     <div class="panel-body collapse in" id="FarmData">
         <div class="row">
+            <div class="col-sm-6">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            豬場照片
+                        </h3>
+                        <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="height:360px;" />
+                    </div>
+                </div>              
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.FarmData_License
+                        </h3>
+                        <hr />
+                        <div id="FarmDataLicenseInfo" class="form-group">
+                            <div class="loader"></div>
+                        </div>
+                        <p><a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+            </div>
             <div class="col-sm-6">
                 <div class="thumbnail">
                     <div class="caption">
@@ -29,16 +53,6 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            豬場照片
-                        </h3>
-                        <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="width:70%" />
-                    </div>
-                </div>              
-            </div>
-            <div class="col-sm-6">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>
                             @IMS.Resources.Resource.FarmData_Land
                         </h3>
                         <hr />
@@ -46,18 +60,6 @@
                             <div class="loader"></div>
                         </div>
                         <p><a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
-                    </div>
-                </div>
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>
-                            @IMS.Resources.Resource.FarmData_License
-                        </h3>
-                        <hr />
-                        <div id="FarmDataLicenseInfo" class="form-group">
-                            <div class="loader"></div>
-                        </div>
-                        <p><a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
                 <div class="thumbnail">
@@ -92,15 +94,7 @@
                         
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
                     </div>
-                </div>
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>
-                            @IMS.Resources.Resource.EnvironmentData_Abnormal
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
-                    </div>
-                </div>               
+                </div>                           
             </div>
             <div class="col-sm-6">
                 <div class="thumbnail">
@@ -112,16 +106,30 @@
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
                     </div>
                 </div>
+            </div>
+            <div class="col-sm-12">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
                             @IMS.Resources.Resource.EnvironmentData_Image
+                            <small>最新兩筆</small>
+                        </h3>
+                        <p>
+                            @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
+                            @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = pigFarmId, number = 2 })  @*這一行是PartialView*@
+                        </p>
+                        <p><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                    </div>
+                </div>
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>
+                            @IMS.Resources.Resource.EnvironmentData_Abnormal
                         </h3>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
-
 
         </div>
 
@@ -204,6 +212,9 @@
     
 
     <script>
+        let pigFarmName = $('#selectPigFarm option:selected').text();
+        $('#pigFarmName').text(pigFarmName);
+
         function renderChart() {
             Highcharts.chart('chart_Temperature', {
 
