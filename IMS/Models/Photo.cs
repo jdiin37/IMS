@@ -67,6 +67,10 @@ namespace IMS.Models
         //1.2.1 override  IsValid 加入自訂規則
         public override bool IsValid(object value)
         {
+            if(value == null)
+            {
+                return false;
+            }
             return (value.ToString().Length >= 2) ? true : false;
         }
     }

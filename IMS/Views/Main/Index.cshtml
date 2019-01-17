@@ -7,32 +7,31 @@
 </ol>*@
 <div class="jumbotron">
     <h1>@IMS.Resources.Resource.SysTitle</h1>
-    <p class="lead">何謂 @IMS.Resources.Resource.SysTitle ?</p>
-    <p><a href="#section2" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore &raquo;</a></p>
+    <p class="lead"></p>
+    <p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore &raquo;</a></p>
 </div>
 <div class="row" id="section1">
     <div class="col-md-4">
         <h2>@IMS.Resources.Resource.Model_Management</h2>
         <p>
-            管理資訊系統是一個以人為主導的，利用電腦硬體、軟體和網路裝置，進行資訊的收集、傳遞、儲存、加工、整理的系統，以提高組織的經營效率。 管理資訊系統是有別於一般的資訊系統，因為它們都是用來分析其它資訊系統在組織的業務活動中的應用
         </p>
         <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
     </div>
 
     <div class="col-md-4">
         <h2>@IMS.Resources.Resource.Model_Traceability</h2>
-        <p>在物流管理中，可追溯性是指沿著產銷供應鏈追蹤貨品位置、狀況等資料的能力。這種能力可以以一套批次號或流水號系統為基礎。可追溯性是建立物聯網的基礎。</p>
+        <p></p>
         <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
     </div>
 
     <div class="col-md-4">
         <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
-        <p>資料分析是一類統計方法，其主要特點是多維性和描述性。有些幾何方法有助於揭示不同的資料之間存在的關係，並繪製出統計資訊圖，以更簡潔的解釋這些資料中包含的主要資訊。其他一些用於收集資料，以便弄清哪些是同質的，從而更好地了解資料。</p>
+        <p></p>
         <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
     </div>
 </div>
-<hr />
-<div class="row " id="section2">
+
+@*<div class="row " id="section2">
     <div class="col-md-6">
         <h2>何謂 @IMS.Resources.Resource.SysTitle ?</h2>
         <p>
@@ -52,4 +51,4 @@
         <p class="text-center"><span class="fa fa-arrow-down"></span></p>
         <p class="btn-block btn btn-primary">回溯履歷</p>
     </div>
-</div>
+</div>*@
