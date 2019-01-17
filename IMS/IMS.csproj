@@ -241,6 +241,7 @@
     <Content Include="Scripts\highchart\export-data.js" />
     <Content Include="Scripts\highchart\exporting.js" />
     <Content Include="Scripts\highchart\highcharts.js" />
+    <Content Include="Scripts\highchart\series-label.js" />
     <Content Include="Scripts\select2\i18n\en.js" />
     <Content Include="Scripts\select2\i18n\es.js" />
     <Content Include="Scripts\select2\i18n\zh-CN.js" />

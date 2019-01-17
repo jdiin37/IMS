@@ -86,29 +86,32 @@
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            @IMS.Resources.Resource.EnvironmentData_Abnormal
+                            @IMS.Resources.Resource.EnvironmentData_Temperature
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <div id="chart_Temperature" style="width:100%; height:400px;"></div>
+                        
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
                     </div>
                 </div>
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
-                            @IMS.Resources.Resource.EnvironmentData_Temperature
+                            @IMS.Resources.Resource.EnvironmentData_Abnormal
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
-                </div>
+                </div>               
+            </div>
+            <div class="col-sm-6">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
                             @IMS.Resources.Resource.EnvironmentData_Humidity
                         </h3>
+                        <div id="chart_Humidity" style="width:100%; height:400px;"></div>
                         <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a></p>
                     </div>
                 </div>
-            </div>
-            <div class="col-sm-6">
                 <div class="thumbnail">
                     <div class="caption">
                         <h3>
@@ -197,10 +200,151 @@
 
     </div>
 </div>
-
 @section JS{
+    
+
     <script>
+        function renderChart() {
+            Highcharts.chart('chart_Temperature', {
+
+                title: {
+                    text: '近期各場溫度'
+                },
+
+                subtitle: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    //categories: ['Apples', 'Bananas', 'Oranges'],
+                    gridLineWidth: 1,
+                    title: {
+                        text: '時間'
+                    },
+                    type: 'datetime',
+                    tickInterval: 3600*1000
+                },
+                yAxis: {
+                    title: {
+                        text: '溫度 攝氏'
+                    }
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        pointStart: Date.UTC(2019, 1, 19,8),
+                        pointInterval: 3600 * 1000 // one hour
+                    }
+                },
+
+                series: [{
+                    name: 'A場',
+                    data: [27, 30, 31, 32, 31.4, 30, 29.1, 26]
+                }, {
+                    name: 'B場',
+                    data: [26, 28, 30, 31, 33.4, 29, 28, 24]
+                }, {
+                    name: 'C場',
+                    data: [26.5, 27.6, 33, 30, 32.1, 31, 27.1, 25]
+                }],
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+
+            Highcharts.chart('chart_Humidity', {
+
+                title: {
+                    text: '近期各場濕度'
+                },
+
+                subtitle: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                yAxis: {
+                    title: {
+                        text: '濕度 %'
+                    }
+                },
+                xAxis: {
+                    title: {
+                        text: '時間'
+                    },
+                    type: 'datetime',
+                    tickInterval: 3600 * 1000
+                },
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'middle'
+                },
+
+                plotOptions: {
+                    series: {
+                        label: {
+                            connectorAllowed: false
+                        },
+                        pointStart: Date.UTC(2019, 1, 19, 8),
+                        pointInterval: 3600 * 1000 // one hour
+                    }
+                },
+
+                series: [{
+                    name: 'A場',
+                    data: [46, 47, 44, 46, 49, 50, 52, 54]
+                }, {
+                    name: 'B場',
+                    data: [51, 53, 54, 56, 57, 51, 50, 52]
+                }, {
+                    name: 'C場',
+                    data: [40, 45, 47, 51, 55.1, 50, 48, 45]
+                }],
+
+                responsive: {
+                    rules: [{
+                        condition: {
+                            maxWidth: 500
+                        },
+                        chartOptions: {
+                            legend: {
+                                layout: 'horizontal',
+                                align: 'center',
+                                verticalAlign: 'bottom'
+                            }
+                        }
+                    }]
+                }
+
+            });
+        }
         
+
         function getFarmDataBase() {
             
             url = "@Url.Action("GetFarmDataBase")?pigFarmId=" + getPigFarmId();
@@ -275,13 +419,10 @@
             });
 
         };
-
-
-
-
-
+        
         getFarmDataBase();
         getFarmDataLand();
         getFarmDataLicense();
+        renderChart();
     </script>
 }

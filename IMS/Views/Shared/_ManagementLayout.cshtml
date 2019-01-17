@@ -103,26 +103,26 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery_setting")
-
+    @Scripts.Render("~/bundles/highchart")
 
 
     @{
         <script>
-          
+
             if ($.cookie("pigFarmId")) {
                 $("#PigFarm").val($.cookie("pigFarmId"));
             } else {
-                setPigFarmId($("#PigFarm").val());           
-                
+                setPigFarmId($("#PigFarm").val());
+
             }
 
-           
+
             $("#PigFarm").change(function () {
                 //alert(document.location.origin);
                 setPigFarmId($(this).val());
                 location.href = document.location.origin + "/Management/Home"
             });
-                 
+
         </script>
     }
 

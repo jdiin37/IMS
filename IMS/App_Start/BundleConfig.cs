@@ -24,7 +24,8 @@ namespace IMS
             bundles.Add(new ScriptBundle("~/bundles/jquery_setting").Include(
                 "~/Scripts/base.js"));
 
-
+            bundles.Add(new ScriptBundle("~/bundles/highchart").Include(
+                "~/Scripts/highchart/highcharts.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
