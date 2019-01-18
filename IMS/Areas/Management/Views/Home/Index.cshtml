@@ -114,10 +114,13 @@
                             @IMS.Resources.Resource.EnvironmentData_Image
                             <small>最新兩筆</small>
                         </h3>
-                        <p>
-                            @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
-                            @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = pigFarmId, number = 2 })  @*這一行是PartialView*@
-                        </p>
+                        @if(pigFarmId != "")
+                        {
+                            <p>
+                                @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
+                                @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = pigFarmId, number = 2 })  @*這一行是PartialView*@
+                            </p>
+                        }
                         <p><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>

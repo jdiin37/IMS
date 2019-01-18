@@ -12,7 +12,7 @@ namespace IMS.Areas.Management.Controllers
     public class PhotoController : BaseController
     {
         // GET: Management/Photo
-        public ActionResult Index(Guid? pigFarmId)
+        public ActionResult Index(Guid? pigFarmId, string searchString ="")
         {
             if (pigFarmId == null)
             {
@@ -21,6 +21,7 @@ namespace IMS.Areas.Management.Controllers
 
 
             ViewBag.PigFarmId = pigFarmId;
+            ViewBag.CurrentFilter = searchString;
 
             return View();
         }
@@ -101,15 +102,22 @@ namespace IMS.Areas.Management.Controllers
                 return null;
         }
 
-        public ActionResult _PhotoGallery(Guid pigFarmId,int number = 0)
+        public ActionResult _PhotoGallery(Guid pigFarmId,string searchString ="", int number = 0)
         {
             List<Photo> photos;
 
             if (number == 0)
             {
                 //Lambda
-                photos = IMSdb.Photo.Where(m=>m.PigFarmId == pigFarmId).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
-                //LINQ
+                if (searchString == "")
+                {
+                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
+                }
+                else
+                {
+                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId && m.Title.Contains(searchString)).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
+                }
+                    //LINQ
                 //photos = (from p in context.Photos
                 //          orderby p.CreatedDate descending, p.PhotoID ascending
                 //          select p).ToList();
@@ -125,10 +133,10 @@ namespace IMS.Areas.Management.Controllers
                 //photos = context.Photos.OrderByDescending(p => p.CreatedDate).ThenBy(p => p.PhotoID).Take(number).ToList();
                 //LINQ
                 photos = (from p in IMSdb.Photo
-                          where p.PigFarmId == pigFarmId
-                          orderby p.PostDate descending, p.Title ascending
-                          select p).Take(number).ToList();
-
+                            where p.PigFarmId == pigFarmId
+                            orderby p.PostDate descending, p.Title ascending
+                            select p).Take(number).ToList();
+                
                 //SQL
                 //select top 2 * from photo 
                 //order by CreatedDate desc, PhotoID

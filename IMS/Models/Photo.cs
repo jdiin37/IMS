@@ -37,8 +37,8 @@ namespace IMS.Models
         public string Description { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        [DisplayName("建立日期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd }", ApplyFormatInEditMode = true)]
+        [DisplayName("發表日期")]
         public DateTime PostDate { get; set; }
 
         [Required]
