@@ -35,6 +35,7 @@ namespace IMS.Areas.Management.Controllers
         
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult EditPigFarmPic(PigFarm pigFarm, HttpPostedFileBase image)
         {
             if (pigFarm == null)

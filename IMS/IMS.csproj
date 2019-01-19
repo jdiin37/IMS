@@ -241,6 +241,8 @@
     <Content Include="Areas\Management\Views\Photo\_PhotoGallery.cshtml" />
     <Content Include="Areas\Management\Views\Photo\Display.cshtml" />
     <Content Include="Areas\Management\Views\Home\EditPigFarmPic.cshtml" />
+    <Content Include="Areas\Sys\Views\CategorySub\Edit.cshtml" />
+    <Content Include="Areas\Sys\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />

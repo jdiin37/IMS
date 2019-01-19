@@ -7,6 +7,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using IMS.Comm;
+using System.Net;
 
 namespace IMS.Areas.Sys.Controllers
 {
@@ -73,6 +74,54 @@ namespace IMS.Areas.Sys.Controllers
             IMSdb.Account.Remove(account);
             IMSdb.SaveChanges();
             return RedirectToAction("Index", new { level = account.Level });
+        }
+
+        public ActionResult Edit(int? seqNo)
+        {
+            if (seqNo == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var account = IMSdb.Account.Find(seqNo);
+
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(account);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(Account account)
+        {
+            if (account == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            var item = IMSdb.Account.Find(account.SeqNo);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                item.AccountName = account.AccountName;
+                item.Email = account.Email;
+                item.ModUser = User.ID;
+                item.ModDate = DateTime.Now;
+                IMSdb.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(account);
+
         }
     }
 }

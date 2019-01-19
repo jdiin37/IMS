@@ -81,6 +81,7 @@
                             @Html.DisplayFor(modelItem => item.CreDate)
                         </td>
                         <td>
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { SubId = item.ID }, new { Class = "btn btn-success" }) |
                             @Html.ActionLink("刪除", "Delete", new { SubId = item.ID }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
                         </td>
 

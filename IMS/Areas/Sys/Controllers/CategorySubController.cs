@@ -4,6 +4,7 @@ using IMS.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -105,6 +106,55 @@ namespace IMS.Areas.Sys.Controllers
             IMSdb.SaveChanges();
             return RedirectToAction("Index", new { categoryId = ViewBag.CategoryId });
         }
+
+        public ActionResult Edit(int? SubId)
+        {
+            if (SubId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var categorySub = IMSdb.CategorySub.Find(SubId);
+
+            if (categorySub == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(categorySub);
+         
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(CategorySub categorySub)
+        {
+            if (categorySub == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            var item = IMSdb.CategorySub.Where(m => m.ID == categorySub.ID).FirstOrDefault();
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                item.SubName = categorySub.SubName;
+                item.ModUser = User.ID;
+                item.ModDate = DateTime.Now;
+                IMSdb.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(categorySub);
+
+        }
+
+
 
     }
 }
