@@ -3,8 +3,8 @@ using IMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
-using System.Web.Http;
 using System.Web.Mvc;
 
 namespace IMS.Areas.Management.Controllers
@@ -17,7 +17,67 @@ namespace IMS.Areas.Management.Controllers
             //ViewBag.pigFarmId = Request.Cookies["pigFarmId"].Value;
             return View();
         }
+
+        public ActionResult EditPigFarmPic(Guid? pigFarmId)
+        {
+            if (pigFarmId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            PigFarm item = IMSdb.PigFarm.Where(m => m.Id == pigFarmId).FirstOrDefault();
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+            return View(item);
+        }
         
+
+        [HttpPost]
+        public ActionResult EditPigFarmPic(PigFarm pigFarm, HttpPostedFileBase image)
+        {
+            if (pigFarm == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            var item = IMSdb.PigFarm.Where(m => m.Id == pigFarm.Id).FirstOrDefault();
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                //有post照片才做照片上傳的處理
+                if (image != null)
+                {
+                    item.ImageMimeType = image.ContentType;  //抓照片型態
+                    item.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
+                    image.InputStream.Read(item.PhotoFile, 0, image.ContentLength);
+                }
+                else
+                {
+                    item.ImageMimeType = null;
+                    item.PhotoFile = null;
+                }
+
+
+                item.Name = pigFarm.Name;
+                item.ModDate = DateTime.Now;
+                item.ModUser = User.ID;
+                IMSdb.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(pigFarm);
+
+        }
+
         public ActionResult GetFarmDataBase(Guid pigFarmId)
         {
             FarmDataBase farmDataBase = IMSdb.FarmDataBase.Where(m => m.PigFarmId ==pigFarmId).FirstOrDefault();

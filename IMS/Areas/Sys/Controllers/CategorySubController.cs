@@ -29,7 +29,7 @@ namespace IMS.Areas.Sys.Controllers
 
             ViewBag.CategoryId = categoryId;
 
-            ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categoryId).FirstOrDefault().CategoryName + " 類別";
+            ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categoryId).FirstOrDefault().CategoryName;
 
 
 

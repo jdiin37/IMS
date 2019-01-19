@@ -20,17 +20,17 @@ namespace IMS.Areas.Sys.Controllers
             ViewBag.CurrentFilter = searchString;
 
 
-            var accountLevels = IMSdb.AccountLevel.Where(m => m.Status == "Y");
+            var accountLevels = IMSdb.AccountLevel.Where(m => m.Status == "Y").OrderByDescending(m=>m.Level).ToList();
 
             if (!String.IsNullOrEmpty(searchString))
             {
 
                 accountLevels = accountLevels.Where(s => s.LevelName.Contains(searchString)
-                                       || s.Level.Contains(searchString));
+                                       || s.Level.Contains(searchString)).OrderByDescending(m => m.Level).ToList();
             }
 
 
-            return View(accountLevels.ToList());
+            return View(accountLevels);
         }
 
 

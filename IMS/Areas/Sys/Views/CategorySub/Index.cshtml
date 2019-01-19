@@ -5,41 +5,45 @@
     ViewBag.Title = IMS.Resources.Resource.CategorySubMgr;
 }
 
-<h2>@ViewBag.CategoryListName</h2>
+<h2>類別 : @ViewBag.CategoryListName</h2>
 
 @*<p>
     @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
 </p>*@
 <hr />
 <div class="row">
-    <div class="col-xs-3">
+    @*<div class="col-xs-3">
         <div class="list-group">
             @foreach (var item in Model.categoryLists)
             {
                 @Html.ActionLink(item.CategoryName, "Index", new { categoryId = item.CategoryID }, new { @class = "list-group-item" })
             }
         </div>
-    </div>
+    </div>*@
 
-    <div class="col-xs-9">
+    <div class="col-xs-12">
         <div class="panel panel-default">
             <!-- Default panel contents -->
 
             <div class="panel-body">
+
                 @using (Html.BeginForm())
                 {
                     <input id="categoryId" name="categoryId" value="@ViewBag.CategoryId" type="hidden" />
                     <div class="row form-group">
-
+                        <div class="col-sm-3">
+                            <label class="control-label" for="CategoryDDl">類別</label>
+                            @getDropDown.getCategory("CategoryDDl", ViewBag.CategoryId, false, true, false)
+                        </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="SearchString">關鍵字</label>
                             <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
                         </div>
-                        <div class="col-sm-9 ">
+                        <div class="col-sm-6 ">
                             <br />
                             <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
                             @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
-                            @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
+                            @Html.ActionLink("新增子項", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
                         </div>
                     </div>
                 }
@@ -88,3 +92,29 @@
     </div>
 
 </div>
+
+@section JS{
+    
+    <script>
+        $("#CategoryDDl").change(function () {
+
+            var url = '@Url.Action("Index", "CategorySub")?categoryId=' + $(this).val()
+
+            window.location = url;
+            //$.ajax({
+            //    // edit to add steve's suggestion.
+            //    //url: "/ControllerName/ActionName",
+            //    url: url,
+            //    success: function (data) {
+            //        // your data could be a View or Json or what ever you returned in your action method 
+            //        // parse your data here
+            //        alert(data);
+            //    }
+            //});
+
+        });
+
+
+    </script>    
+    
+}

@@ -5,14 +5,14 @@
     ViewBag.Title = IMS.Resources.Resource.AccountMgr;
 }
 
-<h2>@ViewBag.LevelName</h2>
+<h2>層級 : @ViewBag.LevelName</h2>
 
 <p>
     @Html.ActionLink(IMS.Resources.Resource.Comm_AddAccount, "Create", "", new { Class = "btn btn-primary" })
 </p>
 
 <div class="row">
-    <div class="col-xs-3">
+    <div class="col-sm-3">
         <div class="list-group">
             @foreach (var item in Model.accountLevels)
             {
@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="col-xs-9">
+    <div class="col-sm-9">
         <table class="table table-striped">
 
             <tr>

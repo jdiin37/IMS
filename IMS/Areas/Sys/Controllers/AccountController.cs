@@ -22,12 +22,12 @@ namespace IMS.Areas.Sys.Controllers
 
             AccountVM vm = new AccountVM()
             {
-                accountLevels = IMSdb.AccountLevel.Where(m=>m.Status == "Y").ToList(),
-                accounts = IMSdb.Account.Where(m => m.Level == level).ToList()
+                accountLevels = IMSdb.AccountLevel.Where(m=>m.Status == "Y").OrderBy(m=>m.LevelName).ToList(),
+                accounts = IMSdb.Account.Where(m => m.Level == level).OrderBy(m => m.AccountNo).ToList()
             };
 
 
-            ViewBag.LevelName = IMSdb.AccountLevel.Where(m => m.Level == level).FirstOrDefault().LevelName + " 層級";
+            ViewBag.LevelName = IMSdb.AccountLevel.Where(m => m.Level == level).FirstOrDefault().LevelName;
 
             return View(vm);
         }

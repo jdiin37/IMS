@@ -44,6 +44,26 @@
     </select>
 }
 
+
+//code類別
+@helper getCategory(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+    string requriedStr = "", multiple = "";
+    requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+    multiple = hasMultiple ? "multiple" : "";
+    <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+        @{
+            IMS.Models.IMSContext IMSdb = new IMS.Models.IMSContext();
+            List<IMS.Models.Category> list = IMSdb.Category.ToList();
+            foreach (var item in list)
+            {
+                <option value="@item.CategoryID" @(item.CategoryID.ToString() == val ? "selected" : "")>@item.CategoryName</option>
+            }
+        }
+    </select>
+}
+
+
 //豬場下拉
 @helper getPigFarm(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
