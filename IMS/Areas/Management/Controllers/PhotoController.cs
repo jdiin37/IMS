@@ -12,7 +12,7 @@ namespace IMS.Areas.Management.Controllers
     public class PhotoController : BaseController
     {
         // GET: Management/Photo
-        public ActionResult Index(Guid? pigFarmId, string searchString ="")
+        public ActionResult Index(Guid? pigFarmId, string searchString ="",int currentPage = 1)
         {
             if (pigFarmId == null)
             {
@@ -22,6 +22,7 @@ namespace IMS.Areas.Management.Controllers
 
             ViewBag.PigFarmId = pigFarmId;
             ViewBag.CurrentFilter = searchString;
+            ViewBag.CurrentPage = currentPage;
 
             return View();
         }
@@ -102,16 +103,23 @@ namespace IMS.Areas.Management.Controllers
                 return null;
         }
 
-        public ActionResult _PhotoGallery(Guid pigFarmId,string searchString ="", int number = 0)
+        public ActionResult _PhotoGallery(Guid pigFarmId,string searchString ="", int number = 0, int currentPage = 1)
         {
             List<Photo> photos;
+
+            int pageItem = 9;
+
+            int skipNum = (currentPage - 1) * pageItem;
+
+            ViewBag.ItemSize = IMSdb.Photo.Count();
+            ViewBag.currentPage = currentPage;
 
             if (number == 0)
             {
                 //Lambda
                 if (searchString == "")
                 {
-                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
+                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).Skip(skipNum).Take(pageItem).ToList();
                 }
                 else
                 {

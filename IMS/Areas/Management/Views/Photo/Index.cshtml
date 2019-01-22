@@ -1,6 +1,11 @@
 ﻿
 @{
     ViewBag.Title = IMS.Resources.Resource.EnvironmentData_Image;
+
+    string CurrentFilter = ViewBag.CurrentFilter;
+    int CurrentPage = ViewBag.CurrentPage;
+
+       
 }
 
 <div>
@@ -9,15 +14,16 @@
         Current:@Html.MvcSiteMap().SiteMapPath()*@
     <div class="row">
         <div class="col-sm-9">
-            <h1>@IMS.Resources.Resource.EnvironmentData_Image <small>@Html.ActionLink("新增照片", "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-success" })</small>
-            </h1>       
+            <h1>
+                @IMS.Resources.Resource.EnvironmentData_Image <small>@Html.ActionLink("新增照片", "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-success" })</small>
+            </h1>
         </div>
         <div class="col-sm-3">
             <div class="form-inline">
                 <br />
                 @using (Html.BeginForm())
                 {
-                    <input class="form-control" id="SearchString" name="SearchString" value="@ViewBag.CurrentFilter" placeholder="Search" style="width:200px;">                    
+                    <input class="form-control" id="SearchString" name="SearchString" value="@ViewBag.CurrentFilter" placeholder="Search" style="width:200px;">
                     <button type="submit" class="btn btn-success"><i class="fa fa-search"></i> </button>
                 }
             </div>
@@ -25,27 +31,27 @@
     </div>
     <hr />
 
-    @Html.Action("_PhotoGallery", "Photo",new { pigFarmId = ViewBag.PigFarmId, searchString = ViewBag.CurrentFilter })  @*這一行是PartialView*@
-
+    @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = ViewBag.PigFarmId, searchString = CurrentFilter, currentPage = CurrentPage })  @*這一行是PartialView*@
+    
     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", "Home", new { area = "Management" }, new { Class = "btn btn-default" })
 
 </div>
 
 
 @*@section JS{
-    <script>
-        $('#SearchString').keypress(function (e) {
-            if (e.which == 13) {
-                dofilter($(this).val());
-                //alert('aaa');
-                return false;    //<---- Add this line
+        <script>
+            $('#SearchString').keypress(function (e) {
+                if (e.which == 13) {
+                    dofilter($(this).val());
+                    //alert('aaa');
+                    return false;    //<---- Add this line
+                }
+            });
+
+
+            function dofilter(val) {
+                alert(val);
             }
-        });
 
-
-        function dofilter(val) {
-            alert(val);
-        }
-
-    </script>
-}*@
+        </script>
+    }*@
