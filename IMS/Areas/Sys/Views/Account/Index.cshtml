@@ -16,7 +16,14 @@
         <div class="list-group">
             @foreach (var item in Model.accountLevels)
             {
-                @Html.ActionLink(item.LevelName, "Index", new { level = item.Level }, new { @class = "list-group-item" })
+                if (item.Level == ViewBag.Level)
+                {
+                    @Html.ActionLink(item.LevelName, "Index", new { level = item.Level }, new { @class = "list-group-item active" })
+                }
+                else
+                {
+                    @Html.ActionLink(item.LevelName, "Index", new { level = item.Level }, new { @class = "list-group-item" })
+                }
             }
         </div>
     </div>

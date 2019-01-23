@@ -57,39 +57,43 @@
 
 
 </div>
-<nav aria-label="Page navigation">
-    <ul class="pagination">
 
-        @if (currentPage > 1)
-        {
-            <li>
-                <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = pageCount - 1})" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-        }
+@if(ViewBag.number == 0 && ViewBag.searchString == "")
+{
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
 
-
-        @for (int i = 1; i <= pageCount; i++)
-        {
-            if(currentPage == i)
+            @if (currentPage > 1)
             {
-                <li class="active"><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = i})">@i</a></li>
+                <li>
+                    <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = pageCount - 1})" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
             }
-            else
+
+
+            @for (int i = 1; i <= pageCount; i++)
             {
-                <li><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = i})">@i</a></li>
+                if(currentPage == i)
+                {
+                    <li class="active"><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = i})">@i</a></li>
+                }
+                else
+                {
+                    <li><a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = i})">@i</a></li>
+                }
             }
-        }
 
-        @if (currentPage < pageCount)
-        {
-            <li>
-                <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = currentPage + 1})" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        }
+            @if (currentPage < pageCount)
+            {
+                <li>
+                    <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId = ViewBag.PigFarmId, searchString = "", currentPage = currentPage + 1})" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            }
 
-    </ul>
-</nav>
+        </ul>
+    </nav>
+}

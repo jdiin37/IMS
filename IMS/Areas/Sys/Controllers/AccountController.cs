@@ -27,7 +27,7 @@ namespace IMS.Areas.Sys.Controllers
                 accounts = IMSdb.Account.Where(m => m.Level == level).OrderBy(m => m.AccountNo).ToList()
             };
 
-
+            ViewBag.Level = level;
             ViewBag.LevelName = IMSdb.AccountLevel.Where(m => m.Level == level).FirstOrDefault().LevelName;
 
             return View(vm);

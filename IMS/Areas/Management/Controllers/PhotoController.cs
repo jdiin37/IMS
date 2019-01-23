@@ -113,8 +113,10 @@ namespace IMS.Areas.Management.Controllers
 
             ViewBag.ItemSize = IMSdb.Photo.Count();
             ViewBag.currentPage = currentPage;
+            ViewBag.number = number;
+            ViewBag.searchString = searchString;
 
-            if (number == 0)
+            if (number == 0) //無指定每頁筆數
             {
                 //Lambda
                 if (searchString == "")
@@ -123,7 +125,9 @@ namespace IMS.Areas.Management.Controllers
                 }
                 else
                 {
-                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId && m.Title.Contains(searchString)).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
+                    photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId && (m.Title.Contains(searchString) 
+                    || m.Description.Contains(searchString) 
+                    || m.PostName.Contains(searchString))).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
                 }
                     //LINQ
                 //photos = (from p in context.Photos
