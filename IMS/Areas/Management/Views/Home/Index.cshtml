@@ -20,7 +20,7 @@
                     <div class="caption">
                         <h3>
                             <b>豬場照片</b>
-                            <a href="@Url.Action("EditPigFarmPic","Home",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("EditPigFarmPic","Home",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                         <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="height:360px; width:100%" />
                     </div>
@@ -30,7 +30,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.FarmData_License</b>
-                            <a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                         <div id="FarmDataLicenseInfo" class="form-group">
                             <div class="loader"></div>
@@ -43,7 +43,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.FarmData_base</b>
-                            <a href="@Url.Action("Edit","FarmDataBase",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Edit","FarmDataBase",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                         <div id="FarmDataBaseInfo" class="form-group">
                             <div class="loader"></div>
@@ -56,7 +56,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.FarmData_Land</b>
-                            <a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                         <div id="FarmDataLandInfo" class="form-group">
                             <div class="loader"></div>
@@ -68,7 +68,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.FarmData_Barn</b>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                         <div id="FarmDataBarn" class="form-group">
                             <div class="loader"></div>
@@ -94,7 +94,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.EnvironmentData_Temperature</b>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_View</a>
                         </h3>
                         <div id="chart_Temperature" style="width:100%; height:400px;"></div>
                         
@@ -106,7 +106,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.EnvironmentData_Humidity</b>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-success">@IMS.Resources.Resource.Comm_View</a>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_View</a>
                         </h3>
                         <div id="chart_Humidity" style="width:100%; height:400px;"></div>
                     </div>
@@ -118,7 +118,7 @@
                         <h3>
                             <b>@IMS.Resources.Resource.EnvironmentData_Image</b>
                             <small>最新兩筆</small>
-                            <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-primary"> @IMS.Resources.Resource.EnvironmentData_Image 維護</a>
                         </h3>
                         @if(pigFarmId != "")
                         {
@@ -133,7 +133,7 @@
                     <div class="caption">
                         <h3>
                             <b>@IMS.Resources.Resource.EnvironmentData_Abnormal</b>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a>
                         </h3>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_PigChange
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -168,7 +168,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_Med
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -178,7 +178,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_FixedCost
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -188,7 +188,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_Customer
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -198,7 +198,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_Expenses
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>
@@ -208,7 +208,7 @@
                         <h3>
                             @IMS.Resources.Resource.BaseData_Income
                         </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-info">@IMS.Resources.Resource.Comm_Edit</a></p>
+                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Edit</a></p>
                     </div>
                 </div>
             </div>

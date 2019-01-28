@@ -111,10 +111,12 @@ namespace IMS.Areas.Management.Controllers
 
             int skipNum = (currentPage - 1) * pageItem;
 
+
             ViewBag.ItemSize = IMSdb.Photo.Count();
             ViewBag.currentPage = currentPage;
             ViewBag.number = number;
             ViewBag.searchString = searchString;
+
 
             if (number == 0) //無指定每頁筆數
             {
@@ -122,14 +124,18 @@ namespace IMS.Areas.Management.Controllers
                 if (searchString == "")
                 {
                     photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).Skip(skipNum).Take(pageItem).ToList();
+
                 }
                 else
                 {
                     photos = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId && (m.Title.Contains(searchString) 
                     || m.Description.Contains(searchString) 
                     || m.PostName.Contains(searchString))).OrderByDescending(p => p.PostDate).ThenBy(p => p.Title).ToList();
+                    ViewBag.ItemSize = photos.Count();
+                    photos = photos.Skip(skipNum).Take(pageItem).ToList();
                 }
-                    //LINQ
+                
+                //LINQ
                 //photos = (from p in context.Photos
                 //          orderby p.CreatedDate descending, p.PhotoID ascending
                 //          select p).ToList();
