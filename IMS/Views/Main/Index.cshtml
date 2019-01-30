@@ -8,29 +8,34 @@
 <div class="jumbotron">
     <h1>@IMS.Resources.Resource.SysTitle</h1>
     <p class="lead"></p>
-    <p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore &raquo;</a></p>
+    <p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore ></a></p>
 </div>
 <div class="row" id="section1">
-    <div class="col-md-4">
-        <h2>@IMS.Resources.Resource.Model_Management</h2>
-        <p>
-        </p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
+    <div class="col-md-6">
+        <div class="jumbotron text-center" >
+            <h2>@IMS.Resources.Resource.Model_Management</h2>
+            <p>
+            </p>
+            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
+        </div>
     </div>
 
-    <div class="col-md-4">
-        <h2>@IMS.Resources.Resource.Model_Traceability</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
-    </div>
+    <div class="col-md-6">
+        <div class="jumbotron text-center">
+            <h2>@IMS.Resources.Resource.Model_Traceability</h2>
+            <p></p>
+            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
 
-    <div class="col-md-4">
-        <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
-        <p></p>
-        <p><a class="btn btn-default" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter &raquo;</a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="jumbotron text-center">
+            <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
+            <p></p>
+            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
+        </div>
     </div>
 </div>
-
 @*<div class="row " id="section2">
     <div class="col-md-6">
         <h2>何謂 @IMS.Resources.Resource.SysTitle ?</h2>
