@@ -4,25 +4,53 @@
     ViewBag.Title = IMS.Resources.Resource.Comm_Details;
 }
 
-<div class="page-header">
-    <h1>『@Model.Title 』 <small>@Model.Description</small></h1>
-</div>
+<h1><b>@Model.Title </b> </h1>
 
 
+<img src="@Url.Action("GetImage","Photo",new { id = Model.Id })" class="img-responsive img-rounded" />
 
-    <img src="@Url.Action("GetImage","Photo",new { id = Model.Id })" class="img-responsive img-rounded" />
+<h4>
+    @Html.DisplayFor(model => model.Description)
+</h4>
+<div>
 
-    <p>
-        @Html.DisplayFor(model => model.Description)
-    </p>
     <p>
         @Html.DisplayNameFor(model => model.PostName):
         @Html.DisplayFor(model => model.PostName)
     </p>
+</div>
+<div>
     <p>
         @Html.DisplayNameFor(model => model.PostDate):
         @Html.DisplayFor(model => model.PostDate)
     </p>
+
+</div>
+@*<div class="row">
+    <div class="col-xs-3">
+        <h4 class="pull-right">
+            @Html.DisplayNameFor(model => model.PostName):
+
+        </h4>
+    </div>
+    <div class="col-xs-9">
+        <h4>
+            @Html.DisplayFor(model => model.PostName)
+        </h4>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-3">
+        <h4 class="pull-right">
+            @Html.DisplayNameFor(model => model.PostDate):
+        </h4>
+    </div>
+    <div class="col-xs-9">
+        <h4>
+            @Html.DisplayFor(model => model.PostDate)
+        </h4>
+    </div>
+</div>*@
 
 @* 7.4 加入@Html.Action***************************************************** *@
 @*@Html.Action("_CommentsForPhoto", "Comments", new { PhotoID = Model.PhotoID })*@

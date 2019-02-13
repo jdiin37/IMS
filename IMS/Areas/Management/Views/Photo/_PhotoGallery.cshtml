@@ -27,7 +27,7 @@
                     <img src="@Url.Action("GetImage","Photo",new { id=item.Id})" style="height:240px" />
                 }
                 <div class="caption">
-                    <h3>『@item.Title』</h3>
+                    <h3><b>@item.Title </b></h3>
                     <p>建立者:@Html.DisplayFor(model => item.PostName)</p>
                     <p>
                         建立日期:@Html.DisplayFor(model => item.PostDate)

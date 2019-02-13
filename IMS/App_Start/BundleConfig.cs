@@ -29,6 +29,7 @@ namespace IMS
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.min.css",
+                      "~/Content/bootstrap-theme.min.css",
                       "~/Content/font-awesome.min.css",
                       "~/Content/datepicker/bootstrap-datepicker.min.css",
                       "~/Content/custom.css",
