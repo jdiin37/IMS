@@ -12,18 +12,20 @@
 
     @*Menu:@Html.MvcSiteMap().Menu(false, false, true)
         Current:@Html.MvcSiteMap().SiteMapPath()*@
-    
+
     @using (Html.BeginForm())
     {
         <div class="row form-group">
-            <div class="col-sm-5">
+            <div class="col-sm-6">
                 <h1>
                     @IMS.Resources.Resource.EnvironmentData_Image
                     <small>
+                        <input type="hidden" name="currentPage" value="1" id="currentPage" />
+                        @Html.ActionLink("新增照片", "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-primary" })
                     </small>
                 </h1>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-6">
                 <br />
                 <div class="form-group">
                     <div class="pull-right">
@@ -35,22 +37,14 @@
                 </div>
                 <br />
             </div>
-            <div class="col-sm-3">
-                <br />
-                <div class="pull-right">
-                    <input type="hidden" name="currentPage" value="1" id="currentPage" />
-                    @Html.ActionLink("新增照片", "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-primary" })
-                    @Html.ActionLink("回到豬場管理頁", "Index", "Home", new { area = "Management" }, new { Class = "btn btn-default" })
-                </div>
-            </div>
         </div>
-            
+
     }
-    <hr />
 
     @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = ViewBag.PigFarmId, searchString = CurrentFilter, currentPage = CurrentPage })  @*這一行是PartialView*@
-    
 
+    <hr />
+    @Html.ActionLink("回到豬場管理頁", "Index", "Home", new { area = "Management" }, new { Class = "btn btn-default" })
 </div>
 
 

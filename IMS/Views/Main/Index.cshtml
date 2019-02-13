@@ -5,14 +5,14 @@
 @*<ol class="breadcrumb">
     <li class="active"><a href="@Url.Action("Index","Main")">@IMS.Resources.Resource.Home</a></li>
 </ol>*@
-<div class="jumbotron">
+<div class="jumbotron text-center">
     <h1>@IMS.Resources.Resource.SysTitle</h1>
     <p class="lead"></p>
     <p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore ></a></p>
 </div>
 <div class="row" id="section1">
     <div class="col-md-6">
-        <div class="jumbotron text-center" >
+        <div class="jumbotron text-center">
             <h2>@IMS.Resources.Resource.Model_Management</h2>
             <p>
             </p>
@@ -33,6 +33,13 @@
             <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
             <p></p>
             <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="jumbotron text-center">
+            <h2>@IMS.Resources.Resource.MenuSys</h2>
+            <p></p>
+            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Sys"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
         </div>
     </div>
 </div>

@@ -45,15 +45,32 @@ function doAjax(url, data, callback) {
 		type: "post",
 		data: AddAntiForgeryToken(data),
 		success: function (result) {
-
 			callback(result);
 		},
 		error: function () {
-
 			alert("Unauthorized");
 		}
 	});
 }
+
+function doAjax(url, data, callback, callback_1) {
+	$.ajax({
+		url: url,
+		type: "post",
+		data: AddAntiForgeryToken(data),
+		success: function (result) {
+			!!callback && callback(result);
+		},
+		error: function () {
+			alert("Unauthorized");
+			//window.location.href = "/Logon/";
+		}
+	}).done(!!callback_1 && callback_1);
+}
+
+
+
+
 
 
 var PigFarmId = "";
