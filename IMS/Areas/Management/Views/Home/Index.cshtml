@@ -24,7 +24,7 @@
                         <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="height:360px; width:100%" />
                         <a href="@Url.Action("EditPigFarmPic","Home",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
                     </div>
-                </div>     
+                </div>
                 <br />
                 <div class="">
                     <div class="caption text-center">
@@ -97,9 +97,9 @@
                         </h3>
                         <div id="chart_Temperature" style="width:100%; height:400px;"></div>
                         <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
-                        
+
                     </div>
-                </div>                           
+                </div>
             </div>
             <div class="col-sm-6">
                 <div class="">
@@ -121,14 +121,27 @@
                         <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
                     </div>
                 </div>
-                <hr />
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="panel panel-success">
+    <div class="panel-heading text-center">
+        <a data-toggle="collapse" href="#PhotoData">
+            <h3 class="panel-title">@IMS.Resources.Resource.EnvironmentData_Image </h3>
+        </a>
+    </div>
+    <div class="panel-body collapse in" id="PhotoData">
+        <div class="row">
+            <div class="col-sm-12">
+                
                 <div class="">
                     <div class="caption text-center">
                         <h3>
-                            <b>@IMS.Resources.Resource.EnvironmentData_Image</b>
-                            <small>最新三筆</small>
+                            <b>最新三筆</b>
                         </h3>
-                        @if(pigFarmId != "")
+                        @if (pigFarmId != "")
                         {
                             <p>
                                 @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
@@ -139,9 +152,7 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 
@@ -218,7 +229,7 @@
     </div>
 </div>
 @section JS{
-    
+
 
     <script>
         let pigFarmName = $('#selectPigFarm option:selected').text();
@@ -363,10 +374,10 @@
 
             });
         }
-        
+
 
         function getFarmDataBase() {
-            
+
             url = "@Url.Action("GetFarmDataBase")?pigFarmId=" + getPigFarmId();
             $.ajax({
                 type: "GET",
@@ -391,7 +402,7 @@
         };
 
         function getFarmDataLand() {
-            
+
             url = "@Url.Action("GetFarmDataLand")?pigFarmId=" + getPigFarmId();
             $.ajax({
                 type: "GET",
@@ -419,7 +430,7 @@
         };
 
         function getFarmDataLicense() {
-            
+
             url = "@Url.Action("GetFarmDataLicense")?pigFarmId=" + getPigFarmId();
             $.ajax({
                 type: "GET",
@@ -464,7 +475,7 @@
 
         };
 
-        
+
         getFarmDataBase();
         getFarmDataLand();
         getFarmDataLicense();

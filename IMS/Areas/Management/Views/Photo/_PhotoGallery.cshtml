@@ -33,7 +33,7 @@
                         建立日期:@Html.DisplayFor(model => item.PostDate)
                     </p>
                     <p>
-                        @Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Display", new { id = item.Id }, new { @class = "btn btn-info" })
+                        @Html.ActionLink(IMS.Resources.Resource.Comm_Details + " >", "Display", new { id = item.Id }, new { @class = "btn btn-link" })
                         @*@Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.Id }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })*@
 
                     </p>
