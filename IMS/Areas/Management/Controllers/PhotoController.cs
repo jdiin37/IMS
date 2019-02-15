@@ -112,7 +112,7 @@ namespace IMS.Areas.Management.Controllers
             int skipNum = (currentPage - 1) * pageItem;
 
 
-            ViewBag.ItemSize = IMSdb.Photo.Count();
+            ViewBag.ItemSize = IMSdb.Photo.Where(m => m.PigFarmId == pigFarmId).Count();
             ViewBag.currentPage = currentPage;
             ViewBag.number = number;
             ViewBag.searchString = searchString;
