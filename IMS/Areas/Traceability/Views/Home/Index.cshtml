@@ -3,7 +3,86 @@
     ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
 }
 
+<br />
+@*<div class="panel panel-default">
+    <div class="panel-heading">
+        <h4>
+            <span class="glyphicon glyphicon-search"></span> 查詢生產履歷 
+        </h4>
+    </div>
+    <div class="panel-body">
+    </div>
+</div>*@
+<form class="form-horizontal  alert alert-success" >
+    <br />
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="email">生產履歷編號:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="email" placeholder="輸入查詢編號">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">品項名稱:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="pwd" placeholder="輸入查詢名稱">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 查詢</button>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 清除</button>
+            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 新增</button>
+        </div>
+    </div>
+</form>
+
+<hr />
+
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">查詢結果</div>
+
+    <!-- Table -->
+    <table class="table">
+        <tr>
+
+            <th>
+                <b>#</b>
+            </th>
+            <th>
+                <b>生產履歷編號</b>
+            </th>
+            <th>
+                <b>品項名稱</b>
+            </th>
+            <th>
+                <b>建立日期</b>
+            </th>
+
+        </tr>
+    </table>
+</div>
+
 <div class="row">
+    <div class="col-sm-6">
+        <div class="jumbotron text-center">
+            <a href="@Url.Action("Index","Home",new { area="Management"})" class="btn btn-lg btn-link">
+                <span class="fa fa-files-o"></span> @IMS.Resources.Resource.Model_Management >
+            </a>
+        </div>        
+    </div>
+    <div class="col-sm-6">
+        <div class="jumbotron text-center">
+            <a href="@Url.Action("Index","Home",new { area="DataAnalysis"})" class="btn btn-lg btn-link">
+                <span class="fa fa-database"></span> @IMS.Resources.Resource.Model_DataAnalysis >
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    
     <div class="col-sm-6">
         <br />
         <div class="panel panel-success">
@@ -26,7 +105,7 @@
                 <p>
                     <a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a>
                 </p>
-                
+
             </div>
         </div>
     </div>
@@ -49,7 +128,7 @@
                 <p>
                     <a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a>
                 </p>
-                
+
             </div>
         </div>
     </div>
