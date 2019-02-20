@@ -381,6 +381,15 @@
   <data name="TraceCode" xml:space="preserve">
     <value>TraceCode</value>
   </data>
+  <data name="TraceCreate" xml:space="preserve">
+    <value>TraceCreate</value>
+  </data>
+  <data name="TraceEdit" xml:space="preserve">
+    <value>TraceEdit</value>
+  </data>
+  <data name="WorkBasicMgr" xml:space="preserve">
+    <value>WorkBasicMgr</value>
+  </data>
   <data name="WorkCode" xml:space="preserve">
     <value>WorkCode</value>
   </data>
@@ -389,6 +398,9 @@
   </data>
   <data name="WorkDate" xml:space="preserve">
     <value>WorkDate</value>
+  </data>
+  <data name="WorkProcess" xml:space="preserve">
+    <value>WorkProcess</value>
   </data>
   <data name="WorkType" xml:space="preserve">
     <value>WorkType</value>

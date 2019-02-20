@@ -65,32 +65,24 @@
 </div>
 
 <div class="row">
-    <div class="col-sm-6">
-        <div class="jumbotron text-center">
-            <a href="@Url.Action("Index","Home",new { area="Management"})" class="btn btn-lg btn-link">
-                <span class="fa fa-files-o"></span> @IMS.Resources.Resource.Model_Management >
-            </a>
-        </div>        
-    </div>
-    <div class="col-sm-6">
-        <div class="jumbotron text-center">
-            <a href="@Url.Action("Index","Home",new { area="DataAnalysis"})" class="btn btn-lg btn-link">
-                <span class="fa fa-database"></span> @IMS.Resources.Resource.Model_DataAnalysis >
-            </a>
-        </div>
-    </div>
-</div>
-
-<div class="row">
     
-    <div class="col-sm-6">
+    <div class="col-sm-12">
         <br />
-        <div class="panel panel-success">
+        <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">@IMS.Resources.Resource.Traceability_Produce</h3>
+                <h3 class="panel-title">
+                    現有 @IMS.Resources.Resource.WorkProcess 
+                    <span class="pull-right">
+                        <a href="@Url.Action("Index","WorkBasic")" class="btn btn-default">
+                            <span class="glyphicon glyphicon-cog"></span> @IMS.Resources.Resource.WorkBasicMgr
+                        </a>
+                    </span>
+                </h3>
+                <br />
+                
             </div>
             <div class="panel-body">
-                <p>
+                @*<p>
                     <a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a>
                 </p>
                 <p>
@@ -105,11 +97,23 @@
                 <p>
                     <a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a>
                 </p>
-
+                <hr />
+                <p>
+                    <a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a>
+                </p>
+                <p>
+                    <a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a>
+                </p>*@
             </div>
         </div>
     </div>
-    <div class="col-sm-6">
+    @*<div class="col-sm-6">
         <br />
         <div class="panel panel-info">
             <div class="panel-heading">
@@ -131,6 +135,22 @@
 
             </div>
         </div>
-    </div>
+    </div>*@
 </div>
 
+<div class="row">
+    <div class="col-sm-6">
+        <div class="jumbotron text-center">
+            <a href="@Url.Action("Index","Home",new { area="Management"})" class="btn btn-lg btn-link">
+                <span class="fa fa-files-o"></span> @IMS.Resources.Resource.Model_Management >
+            </a>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="jumbotron text-center">
+            <a href="@Url.Action("Index","Home",new { area="DataAnalysis"})" class="btn btn-lg btn-link">
+                <span class="fa fa-database"></span> @IMS.Resources.Resource.Model_DataAnalysis >
+            </a>
+        </div>
+    </div>
+</div>

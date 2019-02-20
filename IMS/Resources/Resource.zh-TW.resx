@@ -381,6 +381,15 @@
   <data name="TraceCode" xml:space="preserve">
     <value>生產履歷編號</value>
   </data>
+  <data name="TraceCreate" xml:space="preserve">
+    <value>新增生產履歷</value>
+  </data>
+  <data name="TraceEdit" xml:space="preserve">
+    <value>修改生產履歷</value>
+  </data>
+  <data name="WorkBasicMgr" xml:space="preserve">
+    <value>作業流程維護</value>
+  </data>
   <data name="WorkCode" xml:space="preserve">
     <value>作業編號</value>
   </data>
@@ -389,6 +398,9 @@
   </data>
   <data name="WorkDate" xml:space="preserve">
     <value>作業日期</value>
+  </data>
+  <data name="WorkProcess" xml:space="preserve">
+    <value>作業流程</value>
   </data>
   <data name="WorkType" xml:space="preserve">
     <value>作業種類</value>

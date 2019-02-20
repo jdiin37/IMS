@@ -826,6 +826,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 TraceCreate 的當地語系化字串。
+        /// </summary>
+        public static string TraceCreate {
+            get {
+                return ResourceManager.GetString("TraceCreate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TraceEdit 的當地語系化字串。
+        /// </summary>
+        public static string TraceEdit {
+            get {
+                return ResourceManager.GetString("TraceEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 User 的當地語系化字串。
         /// </summary>
         public static string User {
@@ -853,6 +871,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 WorkBasicMgr 的當地語系化字串。
+        /// </summary>
+        public static string WorkBasicMgr {
+            get {
+                return ResourceManager.GetString("WorkBasicMgr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 WorkCode 的當地語系化字串。
         /// </summary>
         public static string WorkCode {
@@ -876,6 +903,15 @@ namespace IMS.Resources {
         public static string WorkDate {
             get {
                 return ResourceManager.GetString("WorkDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkProcess 的當地語系化字串。
+        /// </summary>
+        public static string WorkProcess {
+            get {
+                return ResourceManager.GetString("WorkProcess", resourceCulture);
             }
         }
         

@@ -1,0 +1,105 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<IMS.Models.WorkBasic>
+
+@{
+    ViewBag.Title = IMS.Resources.Resource.WorkBasicMgr;
+}
+
+<h2>@IMS.Resources.Resource.WorkBasicMgr</h2>
+<hr />
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            <div class="row form-group">
+
+                <div class="col-sm-2">
+                    <label class="control-label" for="SearchString">關鍵字</label>
+                    <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
+                </div>
+                <div class="col-sm-10 ">
+                    <br />
+                    <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
+                    @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Process, "Create", "", new { Class = "btn btn-primary" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Produce, "Create", "", new { Class = "btn btn-info" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", "Home", new { }, new { Class = "btn btn-default" })
+                </div>
+            </div>
+        }
+    </div>
+    @{
+        var WorkCode = Html.DisplayNameFor(model => model.FirstOrDefault().WorkCode);
+        var CreateDate = Html.DisplayNameFor(model => model.FirstOrDefault().CreDate);
+    }
+    <!-- Table -->
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @*@Html.DisplayNameFor(model => model.Name)*@
+                @Html.ActionLink(WorkCode.ToString(), "Index", new { sortOrder = ViewBag.CodeSortParm })
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().WorkType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().WorkContent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FirstOrDefault().CreUser)
+            </th>
+            <th>
+                @Html.ActionLink(CreateDate.ToString(), "Index", new { sortOrder = ViewBag.DateSortParm })
+            </th>
+            <th></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkType)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkContent)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreDate)
+                </td>
+
+                <td>
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.SeqNo }, new { Class = "btn btn-success" }) |
+                    @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+
+    </table>
+
+
+    @if (Model.Count() < 1)
+    {
+        <div class="well well-sm" style="width:100%">
+            <p class="text-center text-warning">查無資料</p>
+        </div>
+    }
+
+
+    <br />
+    <div class="text-center">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+</div>
+

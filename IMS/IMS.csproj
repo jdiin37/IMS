@@ -252,6 +252,7 @@
     <Content Include="Areas\Management\Views\Home\EditPigFarmPic.cshtml" />
     <Content Include="Areas\Sys\Views\CategorySub\Edit.cshtml" />
     <Content Include="Areas\Sys\Views\Account\Edit.cshtml" />
+    <Content Include="Areas\Traceability\Views\WorkBasic\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -460,7 +461,6 @@
     <Folder Include="Areas\Sys\Models\" />
     <Folder Include="Areas\Traceability\Models\" />
     <Folder Include="Areas\Traceability\Views\Shared\" />
-    <Folder Include="Areas\Traceability\Views\WorkBasic\" />
     <Folder Include="Images\ico\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>

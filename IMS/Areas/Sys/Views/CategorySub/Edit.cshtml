@@ -75,7 +75,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
-                @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { }, new { Class = "btn btn-default" })
+                @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { categoryId= Model.CategoryID }, new { Class = "btn btn-default" })
             </div>
         </div>
     </div>
