@@ -36,7 +36,7 @@ namespace IMS.Areas.Management.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPigFarmPic(PigFarm pigFarm, HttpPostedFileBase image)
+        public ActionResult EditPigFarmPic(PigFarm pigFarm, HttpPostedFileBase image,string DelFlag)
         {
             if (pigFarm == null)
             {
@@ -63,8 +63,11 @@ namespace IMS.Areas.Management.Controllers
                 }
                 else
                 {
-                    item.ImageMimeType = null;
-                    item.PhotoFile = null;
+                    if(DelFlag != null)
+                    {
+                        item.ImageMimeType = null;
+                        item.PhotoFile = null;
+                    }
                 }
 
 

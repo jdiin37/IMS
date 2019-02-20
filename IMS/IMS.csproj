@@ -162,6 +162,7 @@
     <Content Include="Content\dataTables.bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\Report.css" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -171,6 +172,8 @@
     <Content Include="Images\Kite2.JPG" />
     <Content Include="Images\Kite3.JPG" />
     <Content Include="Images\Kite4.JPG" />
+    <Content Include="Images\Loading.gif" />
+    <Content Include="Images\no_image_found.jpg" />
     <Content Include="Images\system\智慧型畜牧場管理平台-養豬產業.jpg" />
     <Content Include="Images\system\生產履歷-加工流程.jpg" />
     <Content Include="Images\system\生產履歷-生產流程.jpg" />
@@ -305,6 +308,7 @@
     <Compile Include="Areas\Sys\Controllers\PigFarmController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
     <Compile Include="Controllers\AuthFilter.cs" />
@@ -374,7 +378,14 @@
     <Compile Include="Migrations\201901020504171_PigFarm.Designer.cs">
       <DependentUpon>201901020504171_PigFarm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902200835053_addWorkTrace.cs" />
+    <Compile Include="Migrations\201902200835053_addWorkTrace.Designer.cs">
+      <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\TraceDetail.cs" />
+    <Compile Include="Models\TraceMaster.cs" />
+    <Compile Include="Models\WorkBasic.cs" />
     <Compile Include="Models\AccountLevel.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\AccountSession.cs" />
@@ -449,6 +460,7 @@
     <Folder Include="Areas\Sys\Models\" />
     <Folder Include="Areas\Traceability\Models\" />
     <Folder Include="Areas\Traceability\Views\Shared\" />
+    <Folder Include="Areas\Traceability\Views\WorkBasic\" />
     <Folder Include="Images\ico\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
@@ -494,6 +506,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901020504171_PigFarm.resx">
       <DependentUpon>201901020504171_PigFarm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902200835053_addWorkTrace.resx">
+      <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

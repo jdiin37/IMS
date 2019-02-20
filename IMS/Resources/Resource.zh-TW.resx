@@ -375,4 +375,22 @@
   <data name="CategorySubMgr" xml:space="preserve">
     <value>類別項目維護</value>
   </data>
+  <data name="Memo" xml:space="preserve">
+    <value>備註</value>
+  </data>
+  <data name="TraceCode" xml:space="preserve">
+    <value>生產履歷編號</value>
+  </data>
+  <data name="WorkCode" xml:space="preserve">
+    <value>作業編號</value>
+  </data>
+  <data name="WorkContent" xml:space="preserve">
+    <value>作業內容</value>
+  </data>
+  <data name="WorkDate" xml:space="preserve">
+    <value>作業日期</value>
+  </data>
+  <data name="WorkType" xml:space="preserve">
+    <value>作業種類</value>
+  </data>
 </root>

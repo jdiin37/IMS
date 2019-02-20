@@ -375,4 +375,22 @@
   <data name="CategorySubMgr" xml:space="preserve">
     <value>CategorySubMgr</value>
   </data>
+  <data name="Memo" xml:space="preserve">
+    <value>Memo</value>
+  </data>
+  <data name="TraceCode" xml:space="preserve">
+    <value>TraceCode</value>
+  </data>
+  <data name="WorkCode" xml:space="preserve">
+    <value>WorkCode</value>
+  </data>
+  <data name="WorkContent" xml:space="preserve">
+    <value>WorkContent</value>
+  </data>
+  <data name="WorkDate" xml:space="preserve">
+    <value>WorkDate</value>
+  </data>
+  <data name="WorkType" xml:space="preserve">
+    <value>WorkType</value>
+  </data>
 </root>

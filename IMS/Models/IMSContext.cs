@@ -38,6 +38,10 @@
         public virtual DbSet<FarmDataLicense> FarmDataLicense { get; set; }
 
         public virtual DbSet<Photo> Photo { get; set; }
+
+        public virtual DbSet<WorkBasic> WorkBasic { get; set; }
+        public virtual DbSet<TraceMaster> TraceMaster { get; set; }
+        public virtual DbSet<TraceDetail> TraceDetail { get; set; }
     }
 
     //public class MyEntity

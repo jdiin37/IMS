@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using IMS.Comm;
+using System.IO;
 
 namespace IMS.Areas.Sys.Controllers
 {
@@ -170,9 +171,25 @@ namespace IMS.Areas.Sys.Controllers
             PigFarm pigFarm = IMSdb.PigFarm.Find(id);
 
             if (pigFarm != null)
-                return File(pigFarm.PhotoFile, pigFarm.ImageMimeType);
+            {
+                if(pigFarm.PhotoFile == null)
+                {
+                    string path = "~/Images/no_image_found.jpg";
+                    byte[] imgdata = System.IO.File.ReadAllBytes(Server.MapPath(path));
+
+                    return File(imgdata, "image/jpeg");
+                }
+                else
+                {
+                    return File(pigFarm.PhotoFile, pigFarm.ImageMimeType);
+                }
+            }
             else
+            {
                 return null;
+            }
+
+
         }
     }
 }

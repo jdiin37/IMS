@@ -538,6 +538,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Memo 的當地語系化字串。
+        /// </summary>
+        public static string Memo {
+            get {
+                return ResourceManager.GetString("Memo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Dashboard 的當地語系化字串。
         /// </summary>
         public static string MenuDashboard {
@@ -808,6 +817,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 TraceCode 的當地語系化字串。
+        /// </summary>
+        public static string TraceCode {
+            get {
+                return ResourceManager.GetString("TraceCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 User 的當地語系化字串。
         /// </summary>
         public static string User {
@@ -831,6 +849,42 @@ namespace IMS.Resources {
         public static string Welcome {
             get {
                 return ResourceManager.GetString("Welcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkCode 的當地語系化字串。
+        /// </summary>
+        public static string WorkCode {
+            get {
+                return ResourceManager.GetString("WorkCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkContent 的當地語系化字串。
+        /// </summary>
+        public static string WorkContent {
+            get {
+                return ResourceManager.GetString("WorkContent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkDate 的當地語系化字串。
+        /// </summary>
+        public static string WorkDate {
+            get {
+                return ResourceManager.GetString("WorkDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkType 的當地語系化字串。
+        /// </summary>
+        public static string WorkType {
+            get {
+                return ResourceManager.GetString("WorkType", resourceCulture);
             }
         }
     }
