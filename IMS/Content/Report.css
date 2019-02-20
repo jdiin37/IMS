@@ -1,0 +1,282 @@
+﻿/* space: 6px */
+* {
+    font-size: 0px;
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+span, p, th, td {
+    font-size: 10px;
+}
+
+h1 {
+    font-size: 16px;
+}
+
+h2 {
+    font-size: 14px;
+}
+
+h3 {
+    font-size: 12px;
+}
+
+button {
+    cursor: pointer;
+}
+
+.floatWrapper {
+    overflow: auto;
+}
+
+.col_12 {
+    width: 100%;
+}
+
+.col_10 {
+    width: 91.65%;
+}
+
+.col_10 {
+    width: 83.33%;
+}
+
+.col_9 {
+    width: 75%;
+}
+
+.col_8 {
+    width: 66.66%;
+}
+
+.col_7 {
+    width: 58.33%;
+}
+
+.col_6 {
+    width: 50%;
+}
+
+.col_5 {
+    width: 41.65%;
+}
+
+.col_4 {
+    width: 33.33%;
+}
+
+.col_3 {
+    width: 25%;
+}
+
+.col_2 {
+    width: 16.66%;
+}
+
+.col_1 {
+    width: 8.33%;
+}
+
+.printBtn {
+    margin: 12px;
+    padding: 6px 12px;
+    border: solid 1px #000;
+    border-radius: 6px;
+    font-size: 18px;
+}
+
+    .printBtn:hover {
+        background-color: #ddd;
+    }
+
+.printBlock {
+    border: 1px solid #000;
+    padding: 12px;
+    margin: 6px;
+    position: relative;
+}
+
+.headerBlock .logoImg, .headerBlock .photoImg, .headerBlock .title, .headerBlock > div {
+    display: inline-block;
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.headerBlock .title {
+    margin-left: 8px;
+}
+
+.headerBlock .logoImg {
+    width: 55px;
+}
+
+    .headerBlock .logoImg img {
+        width: 100%;
+    }
+
+.headerBlock .photoImg {
+    width: 80px;
+}
+
+    .headerBlock .photoImg img {
+        width: 100%;
+    }
+
+.contentBlock {
+    /*border-top: 1px solid #000;
+  border-bottom: 1px solid #000;*/
+    margin-top: 4px;
+    padding: 3px 0px 0PX;
+    padding-bottom: 4px;
+}
+
+    .contentBlock > div {
+        font-size: 12px;
+        display: inline-block;
+        /*border-top: 1px solid #000;*/
+        vertical-align: top;
+        line-height: 1.42857143;
+    }
+
+
+    /*.contentBlock .title {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+  width:16%;
+}
+
+.contentBlock .content {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: top;
+  width:82%;
+}*/
+
+
+
+    .contentBlock .label {
+        font-size: 12px;
+        font-weight: bold;
+        line-height: 1.6;
+    }
+
+    .contentBlock .dividerLine {
+        margin-bottom: 3px;
+        display: block;
+    }
+
+    .contentBlock .fontLg {
+        font-size: 20px;
+    }
+
+    .contentBlock .rxContent {
+        padding: 4px;
+        padding-top: 0px;
+    }
+
+    .contentBlock .signBlock {
+        padding-bottom: 30px;
+    }
+
+    .contentBlock .rightBorder {
+        border-left: 1px solid #000;
+        padding-left: 4px;
+    }
+
+    .contentBlock .barcodeImg {
+        text-align: center;
+        padding: 2px;
+    }
+
+        .contentBlock .barcodeImg img {
+            width: 120px;
+        }
+
+
+    .contentBlock table {
+        width: 100%;
+        border: 1px solid #000;
+    }
+
+        .contentBlock table th {
+            border-bottom: 1px solid #000;
+        }
+
+        .contentBlock table th, .contentBlock table td {
+            text-align: left;
+            vertical-align: top;
+        }
+
+hr {
+    border: 0;
+    border-top: 3px solid #eee;
+    border-top-color: cornflowerblue;
+}
+
+.ckb {
+    border: 1px solid black;
+    min-width: 12px;
+    min-height: 12px;
+    display: inline-block;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.underline-xs, .underline-s, .underline-m, .underline-l {
+    margin-left: 4px;
+    margin-right: 4px;
+    border-bottom: 1px solid black;
+    display: inline-block;
+    text-align: center;
+}
+
+    .underline-xs::before, .underline-s::before, .underline-m::before, .underline-l::before {
+        content: "\00a0";
+    }
+
+
+.underline-xs {
+    width: 10%;
+    max-width: 10%;
+}
+
+.underline-s {
+    width: 40%;
+    max-width: 40%;
+}
+
+.underline-m {
+    width: 60%;
+    max-width: 60%;
+}
+
+.underline-l {
+    width: 80%;
+    max-width: 80%;
+}
+
+.underline-dot-s {
+    border-bottom: 1px dotted black;
+    width: 40%;
+    max-width: 40%;
+    display: inline-block;
+}
+
+
+@media print {
+    @page {
+        /*margin: 10px;*/
+    }
+
+    .print-none {
+        display: none;
+    }
+
+    .printBlock-noBorder {
+        border: none;
+        padding: 0;
+        margin: 0;
+    }
+}
