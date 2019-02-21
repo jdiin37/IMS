@@ -15,11 +15,18 @@ namespace IMS.Models
         [MaxLength(20, ErrorMessage = "長度不得超過12"),MinLength(4, ErrorMessage = "長度不得小於4")]
         [Display(Name = "WorkCode", ResourceType = typeof(Resources.Resource))]
         public string WorkCode { get; set; }
-        
+
+        [Display(Name = "WorkClass", ResourceType = typeof(Resources.Resource))]
+        [StringLength(20)]
+        public string WorkClass { get; set; }
+
+
         [Display(Name = "WorkType", ResourceType = typeof(Resources.Resource))]
+        [StringLength(20)]
         public string WorkType { get; set; }
 
         [Display(Name = "WorkContent", ResourceType = typeof(Resources.Resource))]
+        [DataType(DataType.MultilineText), StringLength(400)]
         [Required]
         public string WorkContent { get; set; }
 

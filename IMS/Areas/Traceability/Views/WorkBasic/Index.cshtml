@@ -23,8 +23,8 @@
                     <br />
                     <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
                     @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Process, "Create", "", new { Class = "btn btn-primary" })
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Produce, "Create", "", new { Class = "btn btn-info" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Produce, "CreateProduce", "", new { Class = "btn btn-info" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Add + IMS.Resources.Resource.Traceability_Process, "Create", "", new { Class = "btn btn-warning" })
                     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", "Home", new { }, new { Class = "btn btn-default" })
                 </div>
             </div>
@@ -75,9 +75,9 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.SeqNo }, new { Class = "btn btn-success" }) |
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { seqNo = item.SeqNo }, new { Class = "btn btn-success" }) |
                     @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })
                 </td>
             </tr>
         }

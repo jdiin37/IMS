@@ -45,22 +45,25 @@
 
     <!-- Table -->
     <table class="table">
-        <tr>
+        <thead>
+            <tr>
+                <th>
+                    <b>#</b>
+                </th>
+                <th>
+                    <b>生產履歷編號</b>
+                </th>
+                <th>
+                    <b>品項名稱</b>
+                </th>
+                <th>
+                    <b>建立日期</b>
+                </th>
+            </tr>
+        </thead>
+        <tbody >
 
-            <th>
-                <b>#</b>
-            </th>
-            <th>
-                <b>生產履歷編號</b>
-            </th>
-            <th>
-                <b>品項名稱</b>
-            </th>
-            <th>
-                <b>建立日期</b>
-            </th>
-
-        </tr>
+        </tbody>
     </table>
 </div>
 
@@ -70,46 +73,76 @@
         <br />
         <div class="panel panel-info">
             <div class="panel-heading">
-                <h3 class="panel-title">
+                <h2 class="panel-title">
                     現有 @IMS.Resources.Resource.WorkProcess 
+                    <small>最新10筆</small>
                     <span class="pull-right">
                         <a href="@Url.Action("Index","WorkBasic")" class="btn btn-default">
                             <span class="glyphicon glyphicon-cog"></span> @IMS.Resources.Resource.WorkBasicMgr
                         </a>
                     </span>
-                </h3>
+                </h2>
                 <br />
                 
             </div>
             <div class="panel-body">
+                <table class="table table-responsive table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                <b>#</b>
+                            </th>
+                            <th>
+                                <b>作業編號</b>
+                            </th>
+                            <th>
+                                <b>作業種類</b>
+                            </th>
+                            <th>
+                                <b>作業內容</b>
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody id="worklist">
+
+                    </tbody>
+                    <tfoot id="worklistfoot">
+
+                    </tfoot>
+                </table>
+
+
+
+
                 @*<p>
-                    <a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a>
-                </p>
-                <hr />
-                <p>
-                    <a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a>
-                </p>
-                <p>
-                    <a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a>
-                </p>*@
+            <a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a>
+        </p>
+        <hr />
+        <p>
+            <a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a>
+        </p>
+        <p>
+            <a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a>
+        </p>*@
             </div>
         </div>
     </div>
@@ -154,3 +187,43 @@
         </div>
     </div>
 </div>
+
+@section JS{
+    <script>
+        function getWorkList() {
+
+            url = "@Url.Action("GetWorkList")";
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    $('#worklist').empty();
+                    console.log(data);
+                    $.each(data, function (index, item) {
+                        if (index >= 10) {
+                            return false;
+                        }
+                        var tr = $('<tr>').html('<td>' + (index+1) + '</td>'
+                            + '<td>' + item.WorkCode + '</td>'
+                            + '<td>' + item.WorkType + '</td>'
+                            + '<td>' + item.WorkContent + '</td>');
+                        $('#worklist').append(tr);
+                    });
+                    
+     
+                }, error: function () {
+                    $('#worklist').empty();
+                    var error = $('<p>').html('Not Found');
+                    $('#worklist').append(error);
+                }
+
+            });
+
+        };
+
+        getWorkList();
+    </script>
+    
+    
+    
+    }

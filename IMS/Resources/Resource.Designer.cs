@@ -880,6 +880,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 WorkClass 的當地語系化字串。
+        /// </summary>
+        public static string WorkClass {
+            get {
+                return ResourceManager.GetString("WorkClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 WorkCode 的當地語系化字串。
         /// </summary>
         public static string WorkCode {

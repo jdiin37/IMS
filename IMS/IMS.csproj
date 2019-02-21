@@ -253,6 +253,8 @@
     <Content Include="Areas\Sys\Views\CategorySub\Edit.cshtml" />
     <Content Include="Areas\Sys\Views\Account\Edit.cshtml" />
     <Content Include="Areas\Traceability\Views\WorkBasic\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\WorkBasic\EditProduce.cshtml" />
+    <Content Include="Areas\Traceability\Views\WorkBasic\CreateProduce.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -383,6 +385,18 @@
     <Compile Include="Migrations\201902200835053_addWorkTrace.Designer.cs">
       <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201902210627582_111.cs" />
+    <Compile Include="Migrations\201902210627582_111.Designer.cs">
+      <DependentUpon>201902210627582_111.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210741383_222.cs" />
+    <Compile Include="Migrations\201902210741383_222.Designer.cs">
+      <DependentUpon>201902210741383_222.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201902210934469_333.cs" />
+    <Compile Include="Migrations\201902210934469_333.Designer.cs">
+      <DependentUpon>201902210934469_333.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TraceDetail.cs" />
     <Compile Include="Models\TraceMaster.cs" />
@@ -509,6 +523,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201902200835053_addWorkTrace.resx">
       <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210627582_111.resx">
+      <DependentUpon>201902210627582_111.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210741383_222.resx">
+      <DependentUpon>201902210741383_222.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201902210934469_333.resx">
+      <DependentUpon>201902210934469_333.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -12,13 +12,21 @@ namespace IMS.Models
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(20, ErrorMessage = "長度不得超過12"),MinLength(4, ErrorMessage = "長度不得小於4")]
+        [MaxLength(20, ErrorMessage = "長度不得超過20"),MinLength(4, ErrorMessage = "長度不得小於4")]
         [Display(Name = "TraceNo", ResourceType = typeof(Resources.Resource))]
         public string TraceNo { get; set; }
         
         [Display(Name = "PigFarm", ResourceType = typeof(Resources.Resource))]
         public string PigFarmId { get; set; }
-        
+
+        [DisplayName("其他檢驗標章")]
+        public string Remark { get; set; }
+
+        [DisplayName("包裝日期")]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime? PkgDate { get; set; }
+
+
         [StringLength(2)]
         public string Status { get; set; }
 

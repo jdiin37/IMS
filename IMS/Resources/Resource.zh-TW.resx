@@ -390,6 +390,9 @@
   <data name="WorkBasicMgr" xml:space="preserve">
     <value>作業流程維護</value>
   </data>
+  <data name="WorkClass" xml:space="preserve">
+    <value>作業流程類別</value>
+  </data>
   <data name="WorkCode" xml:space="preserve">
     <value>作業編號</value>
   </data>

@@ -15,7 +15,12 @@ namespace IMS.Models
         public string TraceNo { get; set; }
         
         [Display(Name = "WorkCode", ResourceType = typeof(Resources.Resource))]
+        [StringLength(20)]
         public string WorkCode { get; set; }
+
+        [Display(Name = "WorkMemo", ResourceType = typeof(Resources.Resource))]
+        public string WorkMemo { get; set; }
+
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]

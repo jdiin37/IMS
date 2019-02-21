@@ -390,6 +390,9 @@
   <data name="WorkBasicMgr" xml:space="preserve">
     <value>WorkBasicMgr</value>
   </data>
+  <data name="WorkClass" xml:space="preserve">
+    <value>WorkClass</value>
+  </data>
   <data name="WorkCode" xml:space="preserve">
     <value>WorkCode</value>
   </data>
