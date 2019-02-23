@@ -655,6 +655,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Choose PigFarm 的當地語系化字串。
+        /// </summary>
+        public static string PigFarmChoose {
+            get {
+                return ResourceManager.GetString("PigFarmChoose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 PigFarmMgr 的當地語系化字串。
         /// </summary>
         public static string PigFarmMgr {

@@ -103,10 +103,14 @@
         <div class="row">
             <div class="col-sm-6">
                 <form class="form-inline">
-                    <div class="input-group">
-                        <label class="input-group-addon" for="PigFarm">@IMS.Resources.Resource.PigFarm</label>
+                    <div class="form-group">
+                        <label for="PigFarm">@IMS.Resources.Resource.PigFarmChoose:</label>
                         @getDropDown.getPigFarm("selectPigFarm", "", false, true, false)
                     </div>
+                    @*<div class="input-group">
+                        <label class="input-group-addon" for="PigFarm">@IMS.Resources.Resource.PigFarmChoose</label>
+                        @getDropDown.getPigFarm("selectPigFarm", "", false, true, false)
+                    </div>*@
                 </form>
                 <br />
                 <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>

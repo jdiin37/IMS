@@ -408,4 +408,7 @@
   <data name="WorkType" xml:space="preserve">
     <value>WorkType</value>
   </data>
+  <data name="PigFarmChoose" xml:space="preserve">
+    <value>Choose PigFarm</value>
+  </data>
 </root>

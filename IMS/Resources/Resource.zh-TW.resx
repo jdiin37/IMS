@@ -408,4 +408,7 @@
   <data name="WorkType" xml:space="preserve">
     <value>作業種類</value>
   </data>
+  <data name="PigFarmChoose" xml:space="preserve">
+    <value>切換豬場</value>
+  </data>
 </root>
