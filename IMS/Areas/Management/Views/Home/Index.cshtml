@@ -7,72 +7,123 @@
 <div class="">
     <h1><span id="pigFarmName"></span></h1>
 </div>
-<div class="panel panel-default">
-    <div class="panel-heading text-center">
-        <a data-toggle="collapse" href="#FarmData">
-            <h3 class="panel-title">@IMS.Resources.Resource.Management_FarmData</h3>
-        </a>
-    </div>
-    <div class="panel-body collapse in" id="FarmData">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>豬場照片</b>
-                        </h3>
-                        <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="height:360px; width:100%" />
-                        <a href="@Url.Action("EditPigFarmPic","Home",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+<div id="section1">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <a data-toggle="collapse" href="#FarmData">
+                <h3 class="panel-title">@IMS.Resources.Resource.Management_FarmData</h3>
+            </a>
+        </div>
+        <div class="panel-body collapse in" id="FarmData">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>豬場照片</b>
+                            </h3>
+                            <img src="@Url.Action("GetImage","PigFarm",new { id=pigFarmId ,area = "Sys"})" style="height:360px; width:100%" />
+                            <a href="@Url.Action("EditPigFarmPic","Home",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.FarmData_License</b>
+                            </h3>
+                            <div id="FarmDataLicenseInfo" class="form-group">
+                                <div class="loader"></div>
+                            </div>
+                            <a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                        </div>
                     </div>
                 </div>
-                <br />
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.FarmData_License</b>
-                        </h3>
-                        <div id="FarmDataLicenseInfo" class="form-group">
-                            <div class="loader"></div>
-                        </div>
-                        <a href="@Url.Action("Edit","FarmDataLicense",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.FarmData_base</b>
-                        </h3>
-                        <div id="FarmDataBaseInfo" class="form-group">
-                            <div class="loader"></div>
-                        </div>
-                        <a href="@Url.Action("Edit","FarmDataBase",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                <div class="col-sm-6">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.FarmData_base</b>
+                            </h3>
+                            <div id="FarmDataBaseInfo" class="form-group">
+                                <div class="loader"></div>
+                            </div>
+                            <a href="@Url.Action("Edit","FarmDataBase",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
 
+                        </div>
+                    </div>
+                    <br />
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.FarmData_Land</b>
+                            </h3>
+                            <div id="FarmDataLandInfo" class="form-group">
+                                <div class="loader"></div>
+                            </div>
+                            <a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.FarmData_Barn</b>
+                            </h3>
+                            <div id="FarmDataBarn" class="form-group">
+                                <div class="loader"></div>
+                            </div>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                        </div>
                     </div>
                 </div>
-                <br />
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.FarmData_Land</b>
-                        </h3>
-                        <div id="FarmDataLandInfo" class="form-group">
-                            <div class="loader"></div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div id="section2">
+    <div class="panel panel-info">
+        <div class="panel-heading text-center">
+            <a data-toggle="collapse" href="#EnvironmentData">
+                <h3 class="panel-title">@IMS.Resources.Resource.Management_EnvironmentData </h3>
+            </a>
+        </div>
+        <div class="panel-body collapse in" id="EnvironmentData">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.EnvironmentData_Temperature</b>
+                            </h3>
+                            <div id="chart_Temperature" style="width:100%; height:400px;"></div>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
+
                         </div>
-                        <a href="@Url.Action("Edit","FarmDataLand",new { area="Management", pigFarmId=pigFarmId})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
                     </div>
                 </div>
-                <br />
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.FarmData_Barn</b>
-                        </h3>
-                        <div id="FarmDataBarn" class="form-group">
-                            <div class="loader"></div>
+                <div class="col-sm-6">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.EnvironmentData_Humidity</b>
+                            </h3>
+                            <div id="chart_Humidity" style="width:100%; height:400px;"></div>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
                         </div>
-                        <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>@IMS.Resources.Resource.EnvironmentData_Abnormal</b>
+                            </h3>
+                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,74 +132,31 @@
     </div>
 </div>
 
-<div class="panel panel-info">
-    <div class="panel-heading text-center">
-        <a data-toggle="collapse" href="#EnvironmentData">
-            <h3 class="panel-title">@IMS.Resources.Resource.Management_EnvironmentData </h3>
-        </a>
-    </div>
-    <div class="panel-body collapse in" id="EnvironmentData">
-        <div class="row">
-            <div class="col-sm-6">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.EnvironmentData_Temperature</b>
-                        </h3>
-                        <div id="chart_Temperature" style="width:100%; height:400px;"></div>
-                        <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
-
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.EnvironmentData_Humidity</b>
-                        </h3>
-                        <div id="chart_Humidity" style="width:100%; height:400px;"></div>
-                        <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>@IMS.Resources.Resource.EnvironmentData_Abnormal</b>
-                        </h3>
-                        <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
-                    </div>
-                </div>
-            </div>
+<div id="section3">
+    <div class="panel panel-success">
+        <div class="panel-heading text-center">
+            <a data-toggle="collapse" href="#PhotoData">
+                <h3 class="panel-title">@IMS.Resources.Resource.EnvironmentData_Image </h3>
+            </a>
         </div>
-
-    </div>
-</div>
-<div class="panel panel-success">
-    <div class="panel-heading text-center">
-        <a data-toggle="collapse" href="#PhotoData">
-            <h3 class="panel-title">@IMS.Resources.Resource.EnvironmentData_Image </h3>
-        </a>
-    </div>
-    <div class="panel-body collapse in" id="PhotoData">
-        <div class="row">
-            <div class="col-sm-12">
+        <div class="panel-body collapse in" id="PhotoData">
+            <div class="row">
+                <div class="col-sm-12">
                 
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            <b>最新三筆</b>
-                        </h3>
-                        @if (pigFarmId != "")
-                        {
-                            <p>
-                                @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
-                                @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = pigFarmId, number = 3 })  @*這一行是PartialView*@
-                            </p>
-                        }
-                        <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-primary">@IMS.Resources.Resource.Comm_Enter ></a>
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                <b>最新三筆</b>
+                            </h3>
+                            @if (pigFarmId != "")
+                            {
+                                <p>
+                                    @*//3.12  修改View(Home/Index),使用 _PhotoGallery Action輸入number參數*@
+                                    @Html.Action("_PhotoGallery", "Photo", new { pigFarmId = pigFarmId, number = 3 })  @*這一行是PartialView*@
+                                </p>
+                            }
+                            <a href="@Url.Action("Index","Photo",new { area="Management",pigFarmId=pigFarmId})" class="btn btn-primary">@IMS.Resources.Resource.Comm_Enter ></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -156,77 +164,80 @@
     </div>
 </div>
 
-<div class="panel panel-default">
-    <div class="panel-heading text-center">
-        <a data-toggle="collapse" href="#BaseData">
-            <h3 class="panel-title">@IMS.Resources.Resource.Management_BaseData </h3>
-        </a>
-    </div>
-    <div class="panel-body collapse in" id="BaseData">
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_PigChange
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_Med
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_FixedCost
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_Customer
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_Expenses
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="">
-                    <div class="caption text-center">
-                        <h3>
-                            @IMS.Resources.Resource.BaseData_Income
-                        </h3>
-                        <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
-                    </div>
-                </div>
-            </div>
+<div id="section4">
+    <div class="panel panel-default">
+        <div class="panel-heading text-center">
+            <a data-toggle="collapse" href="#BaseData">
+                <h3 class="panel-title">@IMS.Resources.Resource.Management_BaseData </h3>
+            </a>
         </div>
+        <div class="panel-body collapse in" id="BaseData">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_PigChange
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_Med
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_FixedCost
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_Customer
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_Expenses
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="">
+                        <div class="caption text-center">
+                            <h3>
+                                @IMS.Resources.Resource.BaseData_Income
+                            </h3>
+                            <p><a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-warning">@IMS.Resources.Resource.Comm_Enter ></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        </div>
     </div>
+
 </div>
 @section JS{
 

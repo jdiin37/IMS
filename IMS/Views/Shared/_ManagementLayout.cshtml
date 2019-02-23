@@ -9,8 +9,31 @@
     @Styles.Render("~/Content/css")
     @RenderSection("CSS", required: false)
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
+    <style>
+        /*body {
+            position: relative;
+        }*/
+
+        #section1 {
+            padding-top: 50px;
+        }
+
+        #section2 {
+            padding-top: 50px;
+        }
+
+        #section3 {
+            padding-top: 50px;
+        }
+
+        #section4 {
+            padding-top: 50px;
+        }
+
+       
+    </style>
 </head>
-<body>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
     <header>
         <div class="navbar navbar-default navbar-fixed-top">
             <div class="container">
@@ -24,8 +47,11 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="top_menu">
-
-                        <li class="dropdown">
+                        <li><a href="#section1">@IMS.Resources.Resource.Management_FarmData</a></li>
+                        <li><a href="#section2">@IMS.Resources.Resource.Management_EnvironmentData</a></li>
+                        <li><a href="#section3">@IMS.Resources.Resource.EnvironmentData_Image</a></li>
+                        <li><a href="#section4">@IMS.Resources.Resource.Management_BaseData</a></li>
+                        @*<li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Management_FarmData <span class="caret"></span></a>
                             <ul class="dropdown-menu">
                                 <li><a href="@Url.Action("Index","Base",new { area="Management"})">@IMS.Resources.Resource.FarmData_base</a></li>
@@ -55,7 +81,7 @@
                                 <li><a href="@Url.Action("Index","Expenses",new { area="Management"})">@IMS.Resources.Resource.BaseData_Expenses</a></li>
                                 <li><a href="@Url.Action("Index","Income",new { area="Management"})">@IMS.Resources.Resource.BaseData_Income</a></li>
                             </ul>
-                        </li>
+                        </li>*@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
