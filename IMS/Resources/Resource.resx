@@ -411,4 +411,10 @@
   <data name="PigFarmChoose" xml:space="preserve">
     <value>Choose PigFarm</value>
   </data>
+  <data name="PkgDate" xml:space="preserve">
+    <value>PkgDate</value>
+  </data>
+  <data name="TraceNo" xml:space="preserve">
+    <value>TraceNo</value>
+  </data>
 </root>

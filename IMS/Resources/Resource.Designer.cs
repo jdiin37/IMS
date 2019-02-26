@@ -691,6 +691,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 PkgDate 的當地語系化字串。
+        /// </summary>
+        public static string PkgDate {
+            get {
+                return ResourceManager.GetString("PkgDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 BigCut 的當地語系化字串。
         /// </summary>
         public static string Process_BigCut {
@@ -849,6 +858,15 @@ namespace IMS.Resources {
         public static string TraceEdit {
             get {
                 return ResourceManager.GetString("TraceEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TraceNo 的當地語系化字串。
+        /// </summary>
+        public static string TraceNo {
+            get {
+                return ResourceManager.GetString("TraceNo", resourceCulture);
             }
         }
         

@@ -255,6 +255,7 @@
     <Content Include="Areas\Traceability\Views\WorkBasic\Index.cshtml" />
     <Content Include="Areas\Traceability\Views\WorkBasic\EditProduce.cshtml" />
     <Content Include="Areas\Traceability\Views\WorkBasic\CreateProduce.cshtml" />
+    <Content Include="Areas\Traceability\Views\Trace\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -311,6 +312,7 @@
     <Compile Include="Areas\Sys\Controllers\PigFarmController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\TraceController.cs" />
     <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
@@ -399,6 +401,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TraceDetail.cs" />
+    <Compile Include="Models\SeqNo.cs" />
     <Compile Include="Models\TraceMaster.cs" />
     <Compile Include="Models\WorkBasic.cs" />
     <Compile Include="Models\AccountLevel.cs" />
@@ -430,6 +433,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountVM.cs" />
+    <Compile Include="ViewModels\TraceVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
   </ItemGroup>
   <ItemGroup>

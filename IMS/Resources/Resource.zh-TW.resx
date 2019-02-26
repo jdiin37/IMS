@@ -411,4 +411,10 @@
   <data name="PigFarmChoose" xml:space="preserve">
     <value>切換豬場</value>
   </data>
+  <data name="PkgDate" xml:space="preserve">
+    <value>包裝日期</value>
+  </data>
+  <data name="TraceNo" xml:space="preserve">
+    <value>生產履歷編號</value>
+  </data>
 </root>

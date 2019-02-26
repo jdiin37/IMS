@@ -42,6 +42,8 @@
         public virtual DbSet<WorkBasic> WorkBasic { get; set; }
         public virtual DbSet<TraceMaster> TraceMaster { get; set; }
         public virtual DbSet<TraceDetail> TraceDetail { get; set; }
+
+        public virtual DbSet<SeqNo> SeqNo { get; set; }
     }
 
     //public class MyEntity

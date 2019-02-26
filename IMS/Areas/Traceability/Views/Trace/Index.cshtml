@@ -1,0 +1,44 @@
+﻿@model IMS.ViewModels.TraceVM
+
+
+@{
+    ViewBag.Title = IMS.Resources.Resource.TraceNo +"-" + Model.traceMaster.TraceNo;
+}
+
+<style>
+    .underline-b {
+        border: 0;
+        border-bottom: 3px solid #eee;
+        border-bottom-color: cornflowerblue;
+        letter-spacing: 4px;
+    }
+
+    .underline-a {
+        border: 0;
+        border-bottom: 2px solid #eee;
+        border-bottom-color: gray;
+    }
+</style>
+
+
+<h3 class="">@IMS.Resources.Resource.TraceNo - @Model.traceMaster.TraceNo</h3>
+
+<div class="text-center">
+    <h3 class="underline-b"><b>履歷資訊</b></h3>
+    
+</div>
+
+<div class="text-center">
+    <h3 class="underline-b"><b>詳細履歷資訊</b></h3>
+
+</div>
+
+<div class="text-center">
+    <h3 class="underline-b"><b>詳細生產紀錄</b></h3>
+
+</div>
+
+<div class="text-center">
+    <h3 class="underline-b"><b>詳細加工資訊</b></h3>
+
+</div>

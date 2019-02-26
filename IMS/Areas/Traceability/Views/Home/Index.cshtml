@@ -16,22 +16,22 @@
 <form class="form-horizontal  alert alert-success" >
     <br />
     <div class="form-group">
-        <label class="control-label col-sm-2" for="email">生產履歷編號:</label>
+        <label class="control-label col-sm-2" for="traceNo">@IMS.Resources.Resource.TraceNo:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="email" placeholder="輸入查詢編號">
+            <input type="text" class="form-control" id="traceNo" placeholder="輸入查詢編號">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">品項名稱:</label>
+        <label class="control-label col-sm-2" for="pkgDate">@IMS.Resources.Resource.PkgDate:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="pwd" placeholder="輸入查詢名稱">
+            <input type="text" class="form-control" id="pkgDate" placeholder="輸入包裝日期">
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 查詢</button>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 清除</button>
-            <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 新增</button>
+            <a href="@Url.Action("Index","Trace")" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 新增</a>
         </div>
     </div>
 </form>

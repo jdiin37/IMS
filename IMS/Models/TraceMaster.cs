@@ -22,7 +22,7 @@ namespace IMS.Models
         [DisplayName("其他檢驗標章")]
         public string Remark { get; set; }
 
-        [DisplayName("包裝日期")]
+        [Display(Name = "PkgDate", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? PkgDate { get; set; }
 
