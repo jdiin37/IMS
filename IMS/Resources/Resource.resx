@@ -417,4 +417,16 @@
   <data name="TraceNo" xml:space="preserve">
     <value>TraceNo</value>
   </data>
+  <data name="TraceInfo" xml:space="preserve">
+    <value>TraceInfo</value>
+  </data>
+  <data name="TraceInfoDetail" xml:space="preserve">
+    <value>TraceInfoDetail</value>
+  </data>
+  <data name="TraceProcess" xml:space="preserve">
+    <value>TraceProcess</value>
+  </data>
+  <data name="TraceProduce" xml:space="preserve">
+    <value>TraceProduce</value>
+  </data>
 </root>

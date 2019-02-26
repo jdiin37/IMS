@@ -862,11 +862,47 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 TraceInfo 的當地語系化字串。
+        /// </summary>
+        public static string TraceInfo {
+            get {
+                return ResourceManager.GetString("TraceInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TraceInfoDetail 的當地語系化字串。
+        /// </summary>
+        public static string TraceInfoDetail {
+            get {
+                return ResourceManager.GetString("TraceInfoDetail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 TraceNo 的當地語系化字串。
         /// </summary>
         public static string TraceNo {
             get {
                 return ResourceManager.GetString("TraceNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TraceProcess 的當地語系化字串。
+        /// </summary>
+        public static string TraceProcess {
+            get {
+                return ResourceManager.GetString("TraceProcess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TraceProduce 的當地語系化字串。
+        /// </summary>
+        public static string TraceProduce {
+            get {
+                return ResourceManager.GetString("TraceProduce", resourceCulture);
             }
         }
         

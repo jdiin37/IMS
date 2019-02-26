@@ -21,7 +21,7 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal well">
+    <div class="form-horizontal alert alert-info">
         <legend>@IMS.Resources.Resource.SheetDisinfection</legend>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })

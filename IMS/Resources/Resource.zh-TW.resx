@@ -417,4 +417,16 @@
   <data name="TraceNo" xml:space="preserve">
     <value>生產履歷編號</value>
   </data>
+  <data name="TraceInfo" xml:space="preserve">
+    <value>履歷資訊</value>
+  </data>
+  <data name="TraceInfoDetail" xml:space="preserve">
+    <value>詳細履歷資訊</value>
+  </data>
+  <data name="TraceProcess" xml:space="preserve">
+    <value>詳細加工資訊</value>
+  </data>
+  <data name="TraceProduce" xml:space="preserve">
+    <value>詳細生產紀錄</value>
+  </data>
 </root>
