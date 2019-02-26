@@ -84,6 +84,9 @@
                         </li>*@
 
                     </ul>
+                    @*<ul class="nav navbar-nav" id="top_menu_back">
+                        <li><a href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_BackToList 管理頁面</a></li>
+                    </ul>*@
                     <ul class="nav navbar-nav navbar-right">
                         @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
                         @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
@@ -151,6 +154,11 @@
                 setPigFarmId($(this).val());
                 location.href = document.location.origin + "/Management/Home"
             });
+
+            var control = "@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()";
+            if (control != "Home") {
+                $("#top_menu").hide();
+            } ;
 
         </script>
     }
