@@ -1,0 +1,33 @@
+﻿
+@model IEnumerable<IMS.Models.TraceDetail>
+
+@using (Ajax.BeginForm("_ProduceForTrace", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "producs-tool", HttpMethod = "Post" }))
+{
+    <div id="producs-tool">
+        <div class="well">
+            @Html.Action("_CreateATraceDetail", new { traceNo = ViewBag.TraceNo })
+       
+            @foreach (var item in Model)
+            {
+
+                @*7.3 在/Shared/_CommentsForPhoto.cshtml加入IEnumerable<T>及foreach (var item in Model){}*@
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4>@item.SeqNo</h4>
+                    </div>
+                    <div class="panel-body">
+                        @*<p>@Html.Raw(Html.DisplayFor(Model => item.Body).ToString().Replace("\n", "<br>"))</p>
+                        <div class="text-right">
+                            回覆人:@item.UserName
+                        </div>*@
+                    </div>
+                    @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
+                    <div class="panel-footer">
+                        @Html.ActionLink("刪除", "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
+                    </div>
+                </div>
+            }
+    </div>
+    </div>
+
+}

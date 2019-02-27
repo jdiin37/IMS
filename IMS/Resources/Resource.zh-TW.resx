@@ -429,4 +429,7 @@
   <data name="TraceProduce" xml:space="preserve">
     <value>詳細生產紀錄</value>
   </data>
+  <data name="WorkMemo" xml:space="preserve">
+    <value>作業備註</value>
+  </data>
 </root>

@@ -450,7 +450,8 @@
                     $('#FarmDataLicenseInfo').empty();
                     //console.log(data);
                     var RunType = $('<p>').html('<label>經營型態</label>:' + data.RunType);
-                    $('#FarmDataLicenseInfo').append(RunType);
+                    var FarmLicenseNo = $('<p>').html('<label>牧場登記證字號</label>:' + data.FarmLicenseNo);
+                    $('#FarmDataLicenseInfo').append(RunType).append(FarmLicenseNo);
 
                 }, error: function () {
                     $('#FarmDataLicenseInfo').empty();

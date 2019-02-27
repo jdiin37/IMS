@@ -429,4 +429,7 @@
   <data name="TraceProduce" xml:space="preserve">
     <value>TraceProduce</value>
   </data>
+  <data name="WorkMemo" xml:space="preserve">
+    <value>WorkMemo</value>
+  </data>
 </root>

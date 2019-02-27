@@ -2,7 +2,7 @@
 
 
 @{
-    ViewBag.Title = IMS.Resources.Resource.Comm_Add + " "+ IMS.Resources.Resource.TraceNo +"-" + Model.traceMaster.TraceNo;
+    ViewBag.Title = IMS.Resources.Resource.Comm_Add + " " + IMS.Resources.Resource.TraceNo + "-" + Model.traceMaster.TraceNo;
 }
 
 <style>
@@ -21,7 +21,7 @@
 </style>
 
 
-<h3 class="">@IMS.Resources.Resource.TraceNo - @Model.traceMaster.TraceNo</h3>
+<h3 class=""><b>@IMS.Resources.Resource.TraceNo - @Model.traceMaster.TraceNo </b></h3>
 <div class="row">
     <div class="col-sm-4">
         <div class="jumbotron text-center">
@@ -66,22 +66,112 @@
         </div>
     </div>
 </div>
-<div class="text-center">
+
+<div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceInfo</b></h3>
-    
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="@Url.Action("GetImage","PigFarm",new { id=Model.traceMaster.PigFarmId ,area = "Sys"})" class="img-thumbnail" style="height:360px; width:100%" />
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label for="PigFarm">@IMS.Resources.Resource.PigFarmChoose:</label>
+                @getDropDown.getPigFarm("selectPigFarm", Model.traceMaster.PigFarmId, false, true, false)
+            </div>
+            <div id="TraceInfo" class="form-group">
+                @*<div class="loader"></div>*@
+            </div>
+            <hr />
+            <div id="TraceInfo2" class="form-group">
+                <p><label>包裝日期</label>：</p>
+                <p><label>住所</label>：</p>
+            </div>
+        </div>
+    </div>
 </div>
 
-<div class="text-center">
-    <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceInfoDetail</b></h3>
-
+<div class="">
+    <h3 class="underline-b "><b>@IMS.Resources.Resource.TraceInfoDetail</b></h3>
+    <div id="TraceInfoDetail" class="form-group">
+        @*<div class="loader"></div>*@
+    </div>
+    <div id="TraceInfoDetail2" class="form-group">
+        <p><label>契約獸醫師</label>：</p>
+        <p><label>住所</label>：</p>
+    </div>
 </div>
 
-<div class="text-center">
+<div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceProduce</b></h3>
-
+    @Html.Action("_ProduceForTrace","Trace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
-<div class="text-center">
+<div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceProcess</b></h3>
-
+    @Html.Action("_ProcessForTrace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
+
+@section JS{
+    <script>
+        
+
+
+        $("#selectPigFarm").change(function () {
+
+            var url = "@Url.Action("Index")?pigFarmId=" + $(this).val();
+
+            location.href = url;
+        });
+
+        function getFarmDataLicense(pigFarmId) {
+
+            var url = "@Url.Action("GetFarmDataLicense", "Home", new { area = "Management" })?pigFarmId=" + pigFarmId;
+            return $.ajax({
+                type: "GET",
+                url: url
+            });
+
+        };
+        
+        function getFarmDataBase(pigFarmId) {
+
+            var url = "@Url.Action("GetFarmDataBase","Home",new { area="Management"})?pigFarmId=" + pigFarmId;
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    $('#TraceInfo,#TraceInfoDetail').empty();
+                    //console.log(data);
+                    var a = $('<p>').html('<label>產品名稱</label>：' + "豬肉");
+                    var b = $('<p>').html('<label>農產品經營業者</label>：' + data.FarmName);
+                    var c = $('<p>').html('<label>簡稱</label>：' + data.FarmName);
+                    var d = $('<p>').html('<label>生產者姓名</label>：' + data.OwnerName);
+                    var e = $('<p>').html('<label>產地</label>：' + data.FarmAddress);
+                    $('#TraceInfo').append(a).append(b).append(c).append(d).append(e);
+
+                    var farmName = $('<p>').html('<label class="control-label">畜牧場名稱</label>：' + data.FarmName);
+                    var productOwner = $('<p>').html('<label>畜主或負責人</label>：' + data.OwnerName);
+                    var productAddress = $('<p>').html('<label>住所</label>：' + data.FarmAddress);
+                    $('#TraceInfoDetail').append(farmName).append(productOwner).append(productAddress);
+
+                    $.when(getFarmDataLicense(pigFarmId)).done(function (data) {
+                        if (data) {
+                            var FarmLicenseNo = $('<p>').html('<label>牧場登記證字號</label>：' + data.FarmLicenseNo);
+                            $('#TraceInfoDetail').append(FarmLicenseNo);
+                        }
+                    });
+
+
+                }, error: function () {
+                    $('#TraceInfo,#TraceInfoDetai').empty();
+                    var error = $('<p>').html('Not Found');
+                    $('#TraceInfo,#TraceInfoDetai').append(error);
+                }
+
+            });
+
+        };
+
+        getFarmDataBase("@Model.traceMaster.PigFarmId");
+    </script>
+}

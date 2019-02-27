@@ -979,6 +979,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 WorkMemo 的當地語系化字串。
+        /// </summary>
+        public static string WorkMemo {
+            get {
+                return ResourceManager.GetString("WorkMemo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 WorkProcess 的當地語系化字串。
         /// </summary>
         public static string WorkProcess {
