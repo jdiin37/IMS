@@ -24,6 +24,7 @@ namespace IMS.Models
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [Display(Name = "WorkDate", ResourceType = typeof(Resources.Resource))]
         public DateTime WorkDate { get; set; }
 
         [DisplayName("新增人員")]

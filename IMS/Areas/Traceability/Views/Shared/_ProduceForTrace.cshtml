@@ -6,7 +6,7 @@
     <div id="producs-tool">
         <div class="well">
             @Html.Action("_CreateATraceDetail", new { traceNo = ViewBag.TraceNo })
-       
+            
             @foreach (var item in Model)
             {
 
@@ -17,9 +17,9 @@
                     </div>
                     <div class="panel-body">
                         @*<p>@Html.Raw(Html.DisplayFor(Model => item.Body).ToString().Replace("\n", "<br>"))</p>
-                        <div class="text-right">
-                            回覆人:@item.UserName
-                        </div>*@
+                    <div class="text-right">
+                        回覆人:@item.UserName
+                    </div>*@
                     </div>
                     @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
                     <div class="panel-footer">
@@ -27,7 +27,7 @@
                     </div>
                 </div>
             }
-    </div>
+        </div>
     </div>
 
 }

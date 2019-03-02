@@ -70,6 +70,16 @@ namespace IMS.Areas.Traceability.Controllers
                 IMSdb.TraceDetail.Add(traceDetail);
                 IMSdb.SaveChanges();
             }
+            else
+            {
+                
+                var message = string.Join(" | ", ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage));
+
+
+                TempData["ProduceErr"] = message;
+            }
 
             var produces = from c in IMSdb.TraceDetail
                            where c.TraceNo == traceNo
