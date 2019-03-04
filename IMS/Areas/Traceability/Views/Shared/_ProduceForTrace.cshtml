@@ -1,32 +1,62 @@
 ﻿
 @model IEnumerable<IMS.Models.TraceDetail>
 
-@using (Ajax.BeginForm("_ProduceForTrace", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "producs-tool", HttpMethod = "Post" }))
+@using (Ajax.BeginForm("_ProduceForTrace", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "produces-tool", HttpMethod = "Post" }))
 {
-    <div id="producs-tool">
-        <div class="well">
-            @Html.Action("_CreateATraceDetail", new { traceNo = ViewBag.TraceNo })
+    <div id="produces-tool">
+        <div class="well row">
+            <div class="col-sm-6">
+                @Html.Action("_CreateATraceDetail", new { traceNo = ViewBag.TraceNo })
+            </div>
             
-            @foreach (var item in Model)
-            {
+            <div id="produces" class="col-sm-6" style="border-left:3px solid #e5e5e5;">
+                
+                @foreach (var item in Model)
+                {
 
-                @*7.3 在/Shared/_CommentsForPhoto.cshtml加入IEnumerable<T>及foreach (var item in Model){}*@
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>@item.SeqNo</h4>
+                    @*7.3 在/Shared/_CommentsForPhoto.cshtml加入IEnumerable<T>及foreach (var item in Model){}*@
+                    <div class="panel panel-info">
+                        <div class="panel-heading clearfix">
+                            <div class="panel-title pull-left panel-tool">
+                                <h4>@item.WorkDate.ToString("yyyy/MM/dd")</h4>
+                            </div>
+                            <div class="btn-group pull-right">
+                                @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "DeleteTraceDetail", new { seqNo = item.SeqNo }, new { @class = "btn btn-default", onclick = "return confirm('您確定要刪除嗎??')" })
+
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FirstOrDefault().WorkType, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
+                                <div class="col-md-9">
+                                    <p>@item.WorkType</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
+                                <div class="col-md-9">
+                                    <p>@item.WorkContent</p>
+                                </div>
+                            </div>
+                            @if (item.WorkMemo != null)
+                            {
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.FirstOrDefault().WorkMemo, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
+                                    <div class="col-md-9">
+                                        <p>@item.WorkMemo</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                        @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
+                        @*<div class="panel-footer">
+                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
+                </div>*@
                     </div>
-                    <div class="panel-body">
-                        @*<p>@Html.Raw(Html.DisplayFor(Model => item.Body).ToString().Replace("\n", "<br>"))</p>
-                    <div class="text-right">
-                        回覆人:@item.UserName
-                    </div>*@
-                    </div>
-                    @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
-                    <div class="panel-footer">
-                        @Html.ActionLink("刪除", "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
-                    </div>
-                </div>
-            }
+                }
+
+            </div>
+
         </div>
     </div>
 

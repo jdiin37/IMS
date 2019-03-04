@@ -129,6 +129,29 @@ namespace IMS.Controllers
         }
         #endregion
 
+        #region Get SeqNo
+        protected String GetTraceNo()
+        {
+            var lastNo = IMSdb.SeqNo.Where(m => m.Name == "TraceNo").FirstOrDefault();
+            DateTime lastDate = lastNo.ModDate;
 
+            
+
+            if(DateTime.Today > lastDate)
+            {
+                lastNo.CurrentValue = 0 + lastNo.IncrementValue;
+            }
+            else
+            {
+                lastNo.CurrentValue = lastNo.CurrentValue + lastNo.IncrementValue;
+            }
+            
+            lastNo.ModDate = DateTime.Now;
+            IMSdb.SaveChanges();
+            
+            return DateTime.Today.ToString("yyyyMMdd") + lastNo.CurrentValue.ToString("000");
+
+        }
+        #endregion
     }
 }

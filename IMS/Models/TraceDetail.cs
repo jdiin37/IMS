@@ -18,7 +18,24 @@ namespace IMS.Models
         [StringLength(20)]
         public string WorkCode { get; set; }
 
+        [Display(Name = "WorkClass", ResourceType = typeof(Resources.Resource))]
+        [StringLength(20)]
+        public string WorkClass { get; set; }
+
+
+        [Display(Name = "WorkType", ResourceType = typeof(Resources.Resource))]
+        [StringLength(20)]
+        public string WorkType { get; set; }
+
+        [Display(Name = "WorkContent", ResourceType = typeof(Resources.Resource))]
+        [DataType(DataType.MultilineText), StringLength(400)]
+        [Required]
+        public string WorkContent { get; set; }
+
+
+
         [Display(Name = "WorkMemo", ResourceType = typeof(Resources.Resource))]
+        [DataType(DataType.MultilineText), StringLength(400)]
         public string WorkMemo { get; set; }
 
 

@@ -296,7 +296,7 @@
     <Content Include="Areas\Traceability\Views\WorkBasic\Index.cshtml" />
     <Content Include="Areas\Traceability\Views\WorkBasic\EditProduce.cshtml" />
     <Content Include="Areas\Traceability\Views\WorkBasic\CreateProduce.cshtml" />
-    <Content Include="Areas\Traceability\Views\Trace\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\Trace\CreateEdit.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_ProduceForTrace.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_ProcessForTrace.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_CreateATraceDetail.cshtml" />

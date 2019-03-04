@@ -103,7 +103,7 @@
 
 <div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceProduce</b></h3>
-    @Html.Action("_ProduceForTrace","Trace", new { traceNo = Model.traceMaster.TraceNo })
+    @Html.Action("_ProduceForTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
 <div class="">
@@ -111,14 +111,21 @@
     @Html.Action("_ProcessForTrace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
+<div class="btn-group pull-right">
+    @Html.ActionLink("暫存", "TempTrace", new { }, new { @class = "btn btn-info" })
+    @Html.ActionLink("完成", "CreateTrace", new { }, new { @class = "btn btn-success" })
+    @Html.ActionLink("取消", "TempTrace", new { }, new { @class = "btn btn-default" })
+</div>
+
+
 @section JS{
     <script>
-        
+
 
 
         $("#selectPigFarm").change(function () {
 
-            var url = "@Url.Action("Index")?pigFarmId=" + $(this).val();
+            var url = "@Url.Action("CreateEdit")?traceNo=" +@Model.traceMaster.TraceNo +"&pigFarmId=" + $(this).val();
 
             location.href = url;
         });
@@ -132,7 +139,7 @@
             });
 
         };
-        
+
         function getFarmDataBase(pigFarmId) {
 
             var url = "@Url.Action("GetFarmDataBase","Home",new { area="Management"})?pigFarmId=" + pigFarmId;
