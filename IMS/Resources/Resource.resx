@@ -432,4 +432,10 @@
   <data name="WorkMemo" xml:space="preserve">
     <value>WorkMemo</value>
   </data>
+  <data name="CreDate" xml:space="preserve">
+    <value>CreDate</value>
+  </data>
+  <data name="CreUser" xml:space="preserve">
+    <value>CreUser</value>
+  </data>
 </root>

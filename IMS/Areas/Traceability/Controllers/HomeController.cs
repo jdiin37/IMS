@@ -5,17 +5,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using IMS.Comm;
 
 namespace IMS.Areas.Traceability.Controllers
 {
     public class HomeController : BaseController
     {
         // GET: Traceability/Home
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View();
+            var traceMasters = getTraceMasters("");
+
+
+            int pageNumber = (page ?? 1);
+
+            return View(traceMasters.ToPagedList(pageNumber, Config.PageSize));
         }
 
+        private List<TraceMaster> getTraceMasters(string status)
+        {
+            if(status == "")
+            {
+                return IMSdb.TraceMaster.Select(m=>m).OrderByDescending(m=>m.TraceNo).ToList();
+            }
+            else
+            {
+                return IMSdb.TraceMaster.Where(m => m.Status == status).OrderByDescending(m => m.TraceNo).ToList();
+            }
+        }
+        
         public ActionResult GetWorkList()
         {
             var workList = IMSdb.WorkBasic.Where(m => m.Status != "N").OrderBy(m=>m.WorkCode).ToList();

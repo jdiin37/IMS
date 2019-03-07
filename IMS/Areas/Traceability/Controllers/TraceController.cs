@@ -48,20 +48,20 @@ namespace IMS.Areas.Traceability.Controllers
 
             if (traceNo == null)
             {
-                TraceMaster traceMaster = new TraceMaster()
+                TraceMaster newTraceMaster = new TraceMaster()
                 {
                     TraceNo = GetTraceNo(),
                     CreDate = DateTime.Now,
                     CreUser = User.ID,              
                     Status = "T",
                  };
-                vm.traceMaster = traceMaster;
+                vm.traceMaster = newTraceMaster;
 
                 //豬場ID
                 vm.pigFarm = IMSdb.PigFarm.Where(m => m.Status == "Y").FirstOrDefault();
                 vm.traceMaster.PigFarmId = vm.pigFarm.Id.ToString();
 
-                AddTempTraceMaster(traceMaster);
+                AddTempTraceMaster(vm.traceMaster);
 
             }
             else
@@ -88,12 +88,50 @@ namespace IMS.Areas.Traceability.Controllers
             return RedirectToAction("Index");
         }
 
-
-
         public ActionResult Index()
         {
             return RedirectToAction("Index","Home",new { area = "Traceability"});
         }
+
+        public ActionResult TempTrace(string traceNo)
+        {
+            if (traceNo != null)
+            {
+                var traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
+                SaveTraceMaster(traceMaster, "T");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult DoneTrace(string traceNo)
+        {
+            if (traceNo != null)
+            {
+                var traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
+                SaveTraceMaster(traceMaster, "Y");
+            }
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Delete(int? seqNo)
+        {
+            TraceMaster item = IMSdb.TraceMaster.Find(seqNo);
+            if (item == null)
+            {
+                return RedirectToAction("Index");
+            }
+            //delete Master
+            IMSdb.TraceMaster.Remove(item);
+
+            //delete Details
+            var details = IMSdb.TraceDetail.Where(m => m.TraceNo == item.TraceNo);
+            IMSdb.TraceDetail.RemoveRange(details);
+
+            IMSdb.SaveChanges();
+            return RedirectToAction("Index");
+
+        }
+
 
 
         [ChildActionOnly]//無法在瀏覽器上用URL存取此action
@@ -143,6 +181,7 @@ namespace IMS.Areas.Traceability.Controllers
 
             return PartialView("_ProduceForTrace",produces.ToList());
         }
+        
 
         public PartialViewResult _CreateATraceDetail(string traceNo)
         {

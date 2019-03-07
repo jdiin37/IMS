@@ -349,6 +349,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 CreDate 的當地語系化字串。
+        /// </summary>
+        public static string CreDate {
+            get {
+                return ResourceManager.GetString("CreDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 CreUser 的當地語系化字串。
+        /// </summary>
+        public static string CreUser {
+            get {
+                return ResourceManager.GetString("CreUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Associative 的當地語系化字串。
         /// </summary>
         public static string DataAnalysis_Associative {

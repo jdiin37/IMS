@@ -40,6 +40,7 @@ namespace IMS.Models
 
 
         [Required]
+        [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         [Display(Name = "WorkDate", ResourceType = typeof(Resources.Resource))]
         public DateTime WorkDate { get; set; }

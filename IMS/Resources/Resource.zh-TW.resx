@@ -432,4 +432,10 @@
   <data name="WorkMemo" xml:space="preserve">
     <value>作業備註</value>
   </data>
+  <data name="CreDate" xml:space="preserve">
+    <value>建立日期</value>
+  </data>
+  <data name="CreUser" xml:space="preserve">
+    <value>建立人員</value>
+  </data>
 </root>
