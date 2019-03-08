@@ -15,6 +15,10 @@ namespace IMS.Areas.Management.Controllers
         public ActionResult Index()
         {
             //ViewBag.pigFarmId = Request.Cookies["pigFarmId"].Value;
+            if(Request.Cookies["pigFarmId"] == null)
+            {
+                ViewBag.pigFarmId = IMSdb.PigFarm.Select(z=>z.Id).FirstOrDefault().ToString();
+            }
             return View();
         }
 
