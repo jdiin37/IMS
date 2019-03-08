@@ -24,6 +24,7 @@ namespace IMS.Areas.Traceability.Controllers
 
             ViewBag.sdate = sdate?.ToString("yyyy-MM-dd") ;
             ViewBag.edate = edate?.ToString("yyyy-MM-dd");
+            ViewBag.status = status;
 
             var traceMasters = getTraceMasters(traceNo, sdate, edate, status);
 
