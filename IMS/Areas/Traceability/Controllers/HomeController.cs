@@ -13,9 +13,19 @@ namespace IMS.Areas.Traceability.Controllers
     public class HomeController : BaseController
     {
         // GET: Traceability/Home
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, string traceNo,DateTime? sdate,DateTime? edate,string status)
         {
-            var traceMasters = getTraceMasters("");
+            if (!(sdate != null && edate != null) && !(sdate == null && edate == null))
+            {
+                TempData["Err"] = "請輸入完整的日期起迄日";
+            }
+
+            ViewBag.traceNo = traceNo;
+
+            ViewBag.sdate = sdate?.ToString("yyyy-MM-dd") ;
+            ViewBag.edate = edate?.ToString("yyyy-MM-dd");
+
+            var traceMasters = getTraceMasters(traceNo, sdate, edate, status);
 
 
             int pageNumber = (page ?? 1);
@@ -23,16 +33,32 @@ namespace IMS.Areas.Traceability.Controllers
             return View(traceMasters.ToPagedList(pageNumber, Config.PageSize));
         }
 
-        private List<TraceMaster> getTraceMasters(string status)
+        private IEnumerable<TraceMaster> getTraceMasters(string traceNo,DateTime? sdate, DateTime? edate, string status)
         {
-            if(status == "")
+            IEnumerable<TraceMaster> lists ;
+
+
+            if (sdate != null && edate != null)
             {
-                return IMSdb.TraceMaster.Select(m=>m).OrderByDescending(m=>m.TraceNo).ToList();
+                lists = IMSdb.TraceMaster.Where(x=>x.CreDate >= sdate && x.CreDate <= edate).Select(m => m).OrderByDescending(m => m.TraceNo);
             }
             else
             {
-                return IMSdb.TraceMaster.Where(m => m.Status == status).OrderByDescending(m => m.TraceNo).ToList();
+                lists = IMSdb.TraceMaster.Select(z=>z).OrderByDescending(m => m.TraceNo);
             }
+
+
+            if (status != null && status != "")
+            {
+                lists = lists.Where(x=>x.Status == status);
+            }
+
+            if(traceNo != null && traceNo != "")
+            {
+                lists = lists.Where(x => x.TraceNo.Contains(traceNo));
+            }
+
+            return lists.ToList();
         }
         
         public ActionResult GetWorkList()

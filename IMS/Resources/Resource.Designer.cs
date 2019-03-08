@@ -241,6 +241,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 All 的當地語系化字串。
+        /// </summary>
+        public static string Comm_All {
+            get {
+                return ResourceManager.GetString("Comm_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 BackToList 的當地語系化字串。
         /// </summary>
         public static string Comm_BackToList {
@@ -273,6 +282,15 @@ namespace IMS.Resources {
         public static string Comm_Details {
             get {
                 return ResourceManager.GetString("Comm_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Done 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Done {
+            get {
+                return ResourceManager.GetString("Comm_Done", resourceCulture);
             }
         }
         
@@ -327,6 +345,15 @@ namespace IMS.Resources {
         public static string Comm_Search {
             get {
                 return ResourceManager.GetString("Comm_Search", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Temp 的當地語系化字串。
+        /// </summary>
+        public static string Comm_Temp {
+            get {
+                return ResourceManager.GetString("Comm_Temp", resourceCulture);
             }
         }
         
@@ -813,6 +840,15 @@ namespace IMS.Resources {
         public static string SheetDisinfection {
             get {
                 return ResourceManager.GetString("SheetDisinfection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Status 的當地語系化字串。
+        /// </summary>
+        public static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
             }
         }
         

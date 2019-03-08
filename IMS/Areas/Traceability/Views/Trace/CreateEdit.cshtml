@@ -112,8 +112,8 @@
 </div>
 
 <div class="btn-group pull-right">
-    @Html.ActionLink("暫存", "TempTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-info" })
-    @Html.ActionLink("完成", "DoneTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-success" })
+    @Html.ActionLink(IMS.Resources.Resource.Comm_Temp, "TempTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-info" })
+    @Html.ActionLink(IMS.Resources.Resource.Comm_Done, "DoneTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-success" })
     @Html.ActionLink("取消", "Index","Home", new { }, new { @class = "btn btn-default" })
 </div>
 

@@ -12,25 +12,41 @@
     <div class="form-group">
         <label class="control-label col-sm-2" for="traceNo">@IMS.Resources.Resource.TraceNo:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" id="traceNo" placeholder="輸入查詢編號">
+            <input type="text" class="form-control" id="traceNo" name="traceNo" placeholder="輸入查詢編號" value="@ViewBag.traceNo">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="CreDate_s">@IMS.Resources.Resource.CreDate (起):</label>
+        <label class="control-label col-sm-2" for="sdate">@IMS.Resources.Resource.CreDate (起):</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" id="CreDate_s" name="CreDate_s" placeholder="起">
+            <input type="date" class="form-control" id="sdate" name="sdate" placeholder="起" value="@ViewBag.sdate">
         </div>
     </div>
     <div class="form-group">
-        <label class="control-label col-sm-2" for="CreDate_e">@IMS.Resources.Resource.CreDate (訖):</label>
+        <label class="control-label col-sm-2" for="edate">@IMS.Resources.Resource.CreDate (訖):</label>
         <div class="col-sm-10">
-            <input type="date" class="form-control" id="CreDate_e" name="CreDate_e" placeholder="起">
+            <input type="date" class="form-control" id="edate" name="edate" placeholder="起" value="@ViewBag.edate">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="status">@IMS.Resources.Resource.Status :</label>
+        <div class="col-sm-10">
+            <label class="radio-inline">
+                @*<input type="radio" name="status" id="inlineRadio1" value=""> @IMS.Resources.Resource.Comm_All*@
+                @Html.RadioButton("status", "")@IMS.Resources.Resource.Comm_All
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButton("status", "T")@IMS.Resources.Resource.Comm_Temp
+            </label>
+            <label class="radio-inline">
+                @Html.RadioButton("status", "Y")@IMS.Resources.Resource.Comm_Done
+            </label>
         </div>
     </div>
     <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
+            <p class="text-danger">@TempData["Err"]</p>
             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 查詢</button>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> 清除</button>
+            <a href="@Url.Action("Index")" class="btn btn-default"><span class="glyphicon glyphicon-plus"></span> 清除</a>
             <a href="@Url.Action("CreateEdit","Trace")" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span> 新增</a>
         </div>
     </div>

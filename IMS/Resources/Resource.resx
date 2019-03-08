@@ -438,4 +438,16 @@
   <data name="CreUser" xml:space="preserve">
     <value>CreUser</value>
   </data>
+  <data name="Comm_All" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Comm_Done" xml:space="preserve">
+    <value>Done</value>
+  </data>
+  <data name="Comm_Temp" xml:space="preserve">
+    <value>Temp</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
 </root>
