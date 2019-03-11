@@ -23,6 +23,9 @@
                     <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
                     @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
                     @Html.ActionLink(IMS.Resources.Resource.Comm_Add, "Create", "", new { Class = "btn btn-primary" })
+                    <span class="text-danger">
+                        @TempData["Msg"]
+                    </span>
                 </div>
             </div>
         }

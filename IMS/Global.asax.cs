@@ -1,7 +1,9 @@
 ﻿using IMS.Controllers;
+using IMS.DAL;
 using IMS.Models.Auth;
 using Newtonsoft.Json;
 using System;
+using System.Data.Entity;
 using System.Globalization;
 using System.Net;
 using System.Threading;
@@ -18,6 +20,9 @@ namespace IMS
     {
         protected void Application_Start()
         {
+
+            //Database.SetInitializer(new IMSDBInitializer());
+
             AreaRegistration.RegisterAllAreas();
 
             GlobalConfiguration.Configure(WebApiConfig.Register);
@@ -25,6 +30,7 @@ namespace IMS
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
 
         }
 
@@ -87,6 +93,12 @@ namespace IMS
                             }                          
                         }
                     }
+                    else
+                    {
+                        FormsAuthentication.SignOut();
+                        Response.Redirect("/Login");
+                    }
+
 
                     CustomPrincipal newUser = new CustomPrincipal(authTicket.Name);
                     newUser.ID = serializeModel.ID;

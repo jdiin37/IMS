@@ -1,4 +1,5 @@
-﻿using IMS.Models;
+﻿using IMS.DAL;
+using IMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,7 @@ namespace IMS.Controllers
 
         void LogValues(RouteData routeData)
         {
-            using (IMSContext Db = new IMSContext())
+            using (IMSDBContext Db = new IMSDBContext())
             {
                 var areaName = routeData.DataTokens["area"] == null ? "N/A" : routeData.DataTokens["area"];
                 var controllerName = routeData.Values["controller"];
@@ -47,7 +48,7 @@ namespace IMS.Controllers
 
         void RequestLog()
         {
-            using (IMSContext Db = new IMSContext())
+            using (IMSDBContext Db = new IMSDBContext())
             {
                 var ip = HttpContext.Current.Request.ServerVariables["Local_Addr"];
                 var host = HttpContext.Current.Request.ServerVariables["Server_Name"];

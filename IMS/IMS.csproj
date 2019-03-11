@@ -251,11 +251,9 @@
     <Content Include="Areas\Sys\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Sys\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Sys\Views\Category\Index.cshtml" />
-    <Content Include="Areas\Sheet\Views\web.config" />
     <Content Include="Areas\Dashboard\Views\web.config" />
     <Content Include="Areas\Dashboard\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Dashboard\Views\Main\Index.cshtml" />
-    <Content Include="Areas\Sheet\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Sys\Views\Account\Index.cshtml" />
     <Content Include="Areas\Sys\Views\AccountLevel\Index.cshtml" />
     <Content Include="Areas\Sys\Views\AccountLevel\Create.cshtml" />
@@ -353,7 +351,6 @@
     <Compile Include="Areas\Management\Controllers\HomeController.cs" />
     <Compile Include="Areas\Management\Controllers\PhotoController.cs" />
     <Compile Include="Areas\Management\ManagementAreaRegistration.cs" />
-    <Compile Include="Areas\Sheet\SheetAreaRegistration.cs" />
     <Compile Include="Areas\Sys\Controllers\AccountController.cs" />
     <Compile Include="Areas\Sys\Controllers\AccountLevelController.cs" />
     <Compile Include="Areas\Sys\Controllers\CategoryController.cs" />
@@ -371,84 +368,13 @@
     <Compile Include="Controllers\ValueReport.cs" />
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
-    <Compile Include="Areas\Sheet\Controllers\SheetDisinfectionController.cs" />
     <Compile Include="Controllers\WebApi\testController.cs" />
+    <Compile Include="DAL\IMSDBContext.cs" />
+    <Compile Include="DAL\IMSDBInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="infrastructure\BaseViewPage.cs" />
-    <Compile Include="Migrations\201810050914519_add sheetDisinfection.cs" />
-    <Compile Include="Migrations\201810050914519_add sheetDisinfection.Designer.cs">
-      <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810090818473_Add Category.cs" />
-    <Compile Include="Migrations\201810090818473_Add Category.Designer.cs">
-      <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810291001482_Add Account.cs" />
-    <Compile Include="Migrations\201810291001482_Add Account.Designer.cs">
-      <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810300301126_Add ActionLog.cs" />
-    <Compile Include="Migrations\201810300301126_Add ActionLog.Designer.cs">
-      <DependentUpon>201810300301126_Add ActionLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201810300335088_Add RequestLog.cs" />
-    <Compile Include="Migrations\201810300335088_Add RequestLog.Designer.cs">
-      <DependentUpon>201810300335088_Add RequestLog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811010604250_Add AccountLevel.cs" />
-    <Compile Include="Migrations\201811010604250_Add AccountLevel.Designer.cs">
-      <DependentUpon>201811010604250_Add AccountLevel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020720162_modify.cs" />
-    <Compile Include="Migrations\201811020720162_modify.Designer.cs">
-      <DependentUpon>201811020720162_modify.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020758118_Modify Account.cs" />
-    <Compile Include="Migrations\201811020758118_Modify Account.Designer.cs">
-      <DependentUpon>201811020758118_Modify Account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020809537_Modify account2.cs" />
-    <Compile Include="Migrations\201811020809537_Modify account2.Designer.cs">
-      <DependentUpon>201811020809537_Modify account2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020817010_modify_account.cs" />
-    <Compile Include="Migrations\201811020817010_modify_account.Designer.cs">
-      <DependentUpon>201811020817010_modify_account.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020828330_modifyAccount3.cs" />
-    <Compile Include="Migrations\201811020828330_modifyAccount3.Designer.cs">
-      <DependentUpon>201811020828330_modifyAccount3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201811020845368_rwrrw.cs" />
-    <Compile Include="Migrations\201811020845368_rwrrw.Designer.cs">
-      <DependentUpon>201811020845368_rwrrw.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201812070319258_add accountSessin.cs" />
-    <Compile Include="Migrations\201812070319258_add accountSessin.Designer.cs">
-      <DependentUpon>201812070319258_add accountSessin.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901020504171_PigFarm.cs" />
-    <Compile Include="Migrations\201901020504171_PigFarm.Designer.cs">
-      <DependentUpon>201901020504171_PigFarm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902200835053_addWorkTrace.cs" />
-    <Compile Include="Migrations\201902200835053_addWorkTrace.Designer.cs">
-      <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902210627582_111.cs" />
-    <Compile Include="Migrations\201902210627582_111.Designer.cs">
-      <DependentUpon>201902210627582_111.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902210741383_222.cs" />
-    <Compile Include="Migrations\201902210741383_222.Designer.cs">
-      <DependentUpon>201902210741383_222.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201902210934469_333.cs" />
-    <Compile Include="Migrations\201902210934469_333.Designer.cs">
-      <DependentUpon>201902210934469_333.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\TraceDetail.cs" />
     <Compile Include="Models\SeqNo.cs" />
@@ -464,7 +390,6 @@
     <Compile Include="Models\FarmDataLand.cs" />
     <Compile Include="Models\FarmDataBase.cs" />
     <Compile Include="Models\FarmDataLicense.cs" />
-    <Compile Include="Models\IMSContext.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\PigFarm.cs" />
     <Compile Include="Models\PigResume.cs" />
@@ -496,9 +421,6 @@
     <Content Include="Views\Main\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Main\NavMenu.cshtml" />
-    <Content Include="Areas\Sheet\Views\SheetDisinfection\Index.cshtml" />
-    <Content Include="Areas\Sheet\Views\SheetDisinfection\Create.cshtml" />
-    <Content Include="Areas\Sheet\Views\SheetDisinfection\Edit.cshtml" />
     <Content Include="Views\Shared\_ManagementLayout.cshtml" />
     <Content Include="Views\Shared\_TraceabilityLayout.cshtml" />
     <Content Include="Views\Shared\_DataAnalysisLayout.cshtml" />
@@ -523,68 +445,12 @@
     <Folder Include="Areas\DataAnalysis\Views\Shared\" />
     <Folder Include="Areas\Management\Models\" />
     <Folder Include="Areas\Management\Views\Shared\" />
-    <Folder Include="Areas\Sheet\Models\" />
-    <Folder Include="Areas\Sheet\Views\Shared\" />
     <Folder Include="Areas\Sys\Models\" />
     <Folder Include="Areas\Traceability\Models\" />
     <Folder Include="Images\ico\" />
     <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201810050914519_add sheetDisinfection.resx">
-      <DependentUpon>201810050914519_add sheetDisinfection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810090818473_Add Category.resx">
-      <DependentUpon>201810090818473_Add Category.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810291001482_Add Account.resx">
-      <DependentUpon>201810291001482_Add Account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810300301126_Add ActionLog.resx">
-      <DependentUpon>201810300301126_Add ActionLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201810300335088_Add RequestLog.resx">
-      <DependentUpon>201810300335088_Add RequestLog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811010604250_Add AccountLevel.resx">
-      <DependentUpon>201811010604250_Add AccountLevel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020720162_modify.resx">
-      <DependentUpon>201811020720162_modify.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020758118_Modify Account.resx">
-      <DependentUpon>201811020758118_Modify Account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020809537_Modify account2.resx">
-      <DependentUpon>201811020809537_Modify account2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020817010_modify_account.resx">
-      <DependentUpon>201811020817010_modify_account.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020828330_modifyAccount3.resx">
-      <DependentUpon>201811020828330_modifyAccount3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201811020845368_rwrrw.resx">
-      <DependentUpon>201811020845368_rwrrw.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201812070319258_add accountSessin.resx">
-      <DependentUpon>201812070319258_add accountSessin.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901020504171_PigFarm.resx">
-      <DependentUpon>201901020504171_PigFarm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902200835053_addWorkTrace.resx">
-      <DependentUpon>201902200835053_addWorkTrace.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902210627582_111.resx">
-      <DependentUpon>201902210627582_111.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902210741383_222.resx">
-      <DependentUpon>201902210741383_222.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902210934469_333.resx">
-      <DependentUpon>201902210934469_333.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Resource.zh-TW.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resource.zh-TW1.Designer.cs</LastGenOutput>

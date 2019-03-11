@@ -19,7 +19,17 @@ namespace IMS.Areas.Sys.Controllers
 
             if (categoryId == null)
             {
-                categoryId = IMSdb.Category.FirstOrDefault().CategoryID;
+                if(IMSdb.Category.Any())
+                {
+
+                    categoryId = IMSdb.Category.FirstOrDefault().CategoryID;
+
+                }
+                else
+                {
+                    TempData["Msg"] = "請先建立類別";
+                    return RedirectToAction("Index","Category");
+                }
             }
             
             CategoryVM vm = new CategoryVM()

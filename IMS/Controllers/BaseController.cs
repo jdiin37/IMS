@@ -1,4 +1,5 @@
-﻿using IMS.Models;
+﻿using IMS.DAL;
+using IMS.Models;
 using IMS.Models.Auth;
 using System;
 using System.Collections.Generic;
@@ -11,12 +12,12 @@ namespace IMS.Controllers
 {
     public class BaseController : Controller
     {
-        protected IMSContext IMSdb;
+        protected IMSDBContext IMSdb;
 
         public BaseController()
             : base()
         {
-            IMSdb = new IMSContext();
+            IMSdb = new IMSDBContext();
         }
         
         protected virtual new CustomPrincipal User
