@@ -298,6 +298,8 @@
     <Content Include="Areas\Traceability\Views\Shared\_ProduceForTrace.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_ProcessForTrace.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_CreateATraceDetail.cshtml" />
+    <Content Include="Areas\Traceability\Views\Shared\_CreateATraceDetail2.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigBasic\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -359,6 +361,7 @@
     <Compile Include="Areas\Sys\Controllers\PigFarmController.cs" />
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\PigBasicController.cs" />
     <Compile Include="Areas\Traceability\Controllers\TraceController.cs" />
     <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
@@ -376,6 +379,7 @@
     </Compile>
     <Compile Include="infrastructure\BaseViewPage.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\PigBasic.cs" />
     <Compile Include="Models\TraceDetail.cs" />
     <Compile Include="Models\SeqNo.cs" />
     <Compile Include="Models\TraceMaster.cs" />

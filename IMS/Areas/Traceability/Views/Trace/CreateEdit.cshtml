@@ -108,7 +108,7 @@
 
 <div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceProcess</b></h3>
-    @Html.Action("_ProcessForTrace", new { traceNo = Model.traceMaster.TraceNo })
+    @Html.Action("_ProcessForTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
 <div class="btn-group pull-right">

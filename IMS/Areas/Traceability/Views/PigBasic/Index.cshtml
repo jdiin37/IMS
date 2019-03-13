@@ -1,0 +1,121 @@
+﻿@model IEnumerable<IMS.Models.PigBasic>
+
+@{
+    ViewBag.Title = IMS.Resources.Resource.PigPM;
+}
+
+<h2>豬隻列表</h2>
+
+@*<p>
+        @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
+    </p>*@
+<hr />
+<div class="row">
+    @*<div class="col-xs-3">
+            <div class="list-group">
+                @foreach (var item in Model.categoryLists)
+                {
+                    @Html.ActionLink(item.CategoryName, "Index", new { categoryId = item.CategoryID }, new { @class = "list-group-item" })
+                }
+            </div>
+        </div>*@
+
+    <div class="col-xs-12">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+
+            <div class="panel-body">
+
+                @using (Html.BeginForm())
+                {
+                    <input id="pigFramId" name="pigFramId" value="@ViewBag.PigFarmId" type="hidden" />
+                    <div class="row form-group">
+                        <div class="col-sm-3">
+                            <label class="control-label" for="CategoryDDl">養豬場</label>
+                            @getDropDown.getPigFarm("PigFramDDl", ViewBag.PigFarmId, false, true, false)
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="control-label" for="SearchString">關鍵字</label>
+                            <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
+                        </div>
+                        <div class="col-sm-6 ">
+                            <br />
+                            <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
+                            @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
+                            @Html.ActionLink("新增豬隻", "Create", new { pigFramId = ViewBag.PigFarmId }, new { Class = "btn btn-primary" })
+                        </div>
+                    </div>
+                }
+            </div>
+            <table class="table table-striped">
+
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.PigNo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PigType)                        
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CreDate)
+                    </th>
+                    <th>
+
+                    </th>
+
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @item.PigNo
+                        </td>
+                        <td>
+                            @item.PigType
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.CreDate)
+                        </td>
+                        <td>
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { seqNo = item.SeqNo }, new { Class = "btn btn-success" }) |
+                            @Html.ActionLink("刪除", "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
+                        </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+@section JS{
+
+    <script>
+        $("#PigFramDDl").change(function () {
+
+            var url = '@Url.Action("Index")?pigFramId=' + $(this).val()
+
+            window.location = url;
+            //$.ajax({
+            //    // edit to add steve's suggestion.
+            //    //url: "/ControllerName/ActionName",
+            //    url: url,
+            //    success: function (data) {
+            //        // your data could be a View or Json or what ever you returned in your action method
+            //        // parse your data here
+            //        alert(data);
+            //    }
+            //});
+
+        });
+
+
+    </script>
+
+}
+

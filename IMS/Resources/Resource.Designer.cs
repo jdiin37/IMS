@@ -223,6 +223,60 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 生產日 的當地語系化字串。
+        /// </summary>
+        public static string ChildBirthDate {
+            get {
+                return ResourceManager.GetString("ChildBirthDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 生產頭數 的當地語系化字串。
+        /// </summary>
+        public static string ChildCnt {
+            get {
+                return ResourceManager.GetString("ChildCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 生產死仔數 的當地語系化字串。
+        /// </summary>
+        public static string ChildDeadCnt {
+            get {
+                return ResourceManager.GetString("ChildDeadCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 生產活仔數 的當地語系化字串。
+        /// </summary>
+        public static string ChildLiveCnt {
+            get {
+                return ResourceManager.GetString("ChildLiveCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 離乳頭數 的當地語系化字串。
+        /// </summary>
+        public static string ChildWeaningCnt {
+            get {
+                return ResourceManager.GetString("ChildWeaningCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 離乳日期 的當地語系化字串。
+        /// </summary>
+        public static string ChildWeaningDate {
+            get {
+                return ResourceManager.GetString("ChildWeaningDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Add 的當地語系化字串。
         /// </summary>
         public static string Comm_Add {
@@ -511,6 +565,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 首配 的當地語系化字串。
+        /// </summary>
+        public static string FirstMating {
+            get {
+                return ResourceManager.GetString("FirstMating", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 初配日齡 的當地語系化字串。
+        /// </summary>
+        public static string FirstMatingAge {
+            get {
+                return ResourceManager.GetString("FirstMatingAge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Home 的當地語系化字串。
         /// </summary>
         public static string Home {
@@ -579,6 +651,15 @@ namespace IMS.Resources {
         public static string Management_FarmData {
             get {
                 return ResourceManager.GetString("Management_FarmData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 交配日 的當地語系化字串。
+        /// </summary>
+        public static string MatingDate {
+            get {
+                return ResourceManager.GetString("MatingDate", resourceCulture);
             }
         }
         
@@ -682,11 +763,38 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 胎次 的當地語系化字串。
+        /// </summary>
+        public static string Parity {
+            get {
+                return ResourceManager.GetString("Parity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Password 的當地語系化字串。
         /// </summary>
         public static string Password {
             get {
                 return ResourceManager.GetString("Password", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 生日 的當地語系化字串。
+        /// </summary>
+        public static string PigBirth {
+            get {
+                return ResourceManager.GetString("PigBirth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 父 的當地語系化字串。
+        /// </summary>
+        public static string PigDad {
+            get {
+                return ResourceManager.GetString("PigDad", resourceCulture);
             }
         }
         
@@ -718,6 +826,78 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 曾祖父 的當地語系化字串。
+        /// </summary>
+        public static string PigGGrandDad {
+            get {
+                return ResourceManager.GetString("PigGGrandDad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 曾祖母 的當地語系化字串。
+        /// </summary>
+        public static string PigGGrandMom {
+            get {
+                return ResourceManager.GetString("PigGGrandMom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 祖父 的當地語系化字串。
+        /// </summary>
+        public static string PigGrandDad {
+            get {
+                return ResourceManager.GetString("PigGrandDad", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 祖母 的當地語系化字串。
+        /// </summary>
+        public static string PigGrandMom {
+            get {
+                return ResourceManager.GetString("PigGrandMom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 公豬編號 的當地語系化字串。
+        /// </summary>
+        public static string PigMNo {
+            get {
+                return ResourceManager.GetString("PigMNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 母 的當地語系化字串。
+        /// </summary>
+        public static string PigMom {
+            get {
+                return ResourceManager.GetString("PigMom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 耳號 的當地語系化字串。
+        /// </summary>
+        public static string PigNo {
+            get {
+                return ResourceManager.GetString("PigNo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 豬隻生產紀錄 的當地語系化字串。
+        /// </summary>
+        public static string PigPM {
+            get {
+                return ResourceManager.GetString("PigPM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 豬隻履歷管理 的當地語系化字串。
         /// </summary>
         public static string PigResumeM {
@@ -732,6 +912,15 @@ namespace IMS.Resources {
         public static string PigResumeMProduce {
             get {
                 return ResourceManager.GetString("PigResumeMProduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 品種 的當地語系化字串。
+        /// </summary>
+        public static string PigType {
+            get {
+                return ResourceManager.GetString("PigType", resourceCulture);
             }
         }
         
@@ -831,6 +1020,15 @@ namespace IMS.Resources {
         public static string Required {
             get {
                 return ResourceManager.GetString("Required", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 同胎 的當地語系化字串。
+        /// </summary>
+        public static string SameParity {
+            get {
+                return ResourceManager.GetString("SameParity", resourceCulture);
             }
         }
         
@@ -943,6 +1141,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 生產(產銷)履歷 的當地語系化字串。
+        /// </summary>
+        public static string TracePM {
+            get {
+                return ResourceManager.GetString("TracePM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 TraceProcess 的當地語系化字串。
         /// </summary>
         public static string TraceProcess {
@@ -975,6 +1182,15 @@ namespace IMS.Resources {
         public static string UserSetting {
             get {
                 return ResourceManager.GetString("UserSetting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 離乳日齡 的當地語系化字串。
+        /// </summary>
+        public static string WeaningAge {
+            get {
+                return ResourceManager.GetString("WeaningAge", resourceCulture);
             }
         }
         

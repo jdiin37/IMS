@@ -139,7 +139,7 @@ namespace IMS.Areas.Traceability.Controllers
         {
             
             var produces = from c in IMSdb.TraceDetail
-                           where c.TraceNo == traceNo
+                           where c.TraceNo == traceNo && c.WorkClass == "produce"
                            orderby c.WorkDate descending
                            select c;
             
@@ -172,7 +172,7 @@ namespace IMS.Areas.Traceability.Controllers
             }
 
             var produces = from c in IMSdb.TraceDetail
-                           where c.TraceNo == traceNo
+                           where c.TraceNo == traceNo && c.WorkClass == "produce"
                            orderby c.WorkDate descending
                            select c;
                            
@@ -185,13 +185,17 @@ namespace IMS.Areas.Traceability.Controllers
 
         public PartialViewResult _CreateATraceDetail(string traceNo)
         {
-            TraceDetail newTraceDetail = new TraceDetail();
-            newTraceDetail.TraceNo = traceNo;
-
+            
             ViewBag.TraceNo = traceNo;
             return PartialView("_CreateATraceDetail");
         }
 
+        public PartialViewResult _CreateATraceDetail2(string traceNo)
+        {
+            
+            ViewBag.TraceNo = traceNo;
+            return PartialView("_CreateATraceDetail2");
+        }
 
         public ActionResult DeleteTraceDetail(int seqNo)
         {
@@ -210,12 +214,47 @@ namespace IMS.Areas.Traceability.Controllers
         {
             
             var processes = from c in IMSdb.TraceDetail
-                           where c.TraceNo == traceNo
+                           where c.TraceNo == traceNo && c.WorkClass =="process"
+                           orderby c.WorkDate descending
                            select c;
             
             ViewBag.TraceNo = traceNo;
 
             return PartialView(processes.ToList());
+        }
+
+        [HttpPost]
+        public PartialViewResult _ProcessForTrace(TraceDetail traceDetail, string traceNo)
+        {
+            if (ModelState.IsValid)
+            {
+                traceDetail.CreDate = DateTime.Now;
+                traceDetail.CreUser = User.ID;
+                traceDetail.WorkClass = "process";
+                traceDetail.Status = "Y";
+                IMSdb.TraceDetail.Add(traceDetail);
+                IMSdb.SaveChanges();
+            }
+            else
+            {
+
+                var message = string.Join(" | ", ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage));
+
+
+                TempData["ProcessErr"] = message;
+            }
+
+            var process = from c in IMSdb.TraceDetail
+                           where c.TraceNo == traceNo && c.WorkClass == "process"
+                           orderby c.WorkDate descending
+                           select c;
+
+
+            ViewBag.TraceNo = traceNo;
+
+            return PartialView("_ProcessForTrace", process.ToList());
         }
 
     }

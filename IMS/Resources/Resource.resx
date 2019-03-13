@@ -450,4 +450,76 @@
   <data name="Status" xml:space="preserve">
     <value>Status</value>
   </data>
+  <data name="ChildBirthDate" xml:space="preserve">
+    <value>生產日</value>
+  </data>
+  <data name="ChildCnt" xml:space="preserve">
+    <value>生產頭數</value>
+  </data>
+  <data name="ChildDeadCnt" xml:space="preserve">
+    <value>生產死仔數</value>
+  </data>
+  <data name="ChildLiveCnt" xml:space="preserve">
+    <value>生產活仔數</value>
+  </data>
+  <data name="ChildWeaningCnt" xml:space="preserve">
+    <value>離乳頭數</value>
+  </data>
+  <data name="ChildWeaningDate" xml:space="preserve">
+    <value>離乳日期</value>
+  </data>
+  <data name="FirstMating" xml:space="preserve">
+    <value>首配</value>
+  </data>
+  <data name="FirstMatingAge" xml:space="preserve">
+    <value>初配日齡</value>
+  </data>
+  <data name="MatingDate" xml:space="preserve">
+    <value>交配日</value>
+  </data>
+  <data name="Parity" xml:space="preserve">
+    <value>胎次</value>
+  </data>
+  <data name="PigBirth" xml:space="preserve">
+    <value>生日</value>
+  </data>
+  <data name="PigDad" xml:space="preserve">
+    <value>父</value>
+  </data>
+  <data name="PigGGrandDad" xml:space="preserve">
+    <value>曾祖父</value>
+  </data>
+  <data name="PigGGrandMom" xml:space="preserve">
+    <value>曾祖母</value>
+  </data>
+  <data name="PigGrandDad" xml:space="preserve">
+    <value>祖父</value>
+  </data>
+  <data name="PigGrandMom" xml:space="preserve">
+    <value>祖母</value>
+  </data>
+  <data name="PigMNo" xml:space="preserve">
+    <value>公豬編號</value>
+  </data>
+  <data name="PigMom" xml:space="preserve">
+    <value>母</value>
+  </data>
+  <data name="PigNo" xml:space="preserve">
+    <value>耳號</value>
+  </data>
+  <data name="PigPM" xml:space="preserve">
+    <value>豬隻生產紀錄</value>
+  </data>
+  <data name="PigType" xml:space="preserve">
+    <value>品種</value>
+  </data>
+  <data name="SameParity" xml:space="preserve">
+    <value>同胎</value>
+  </data>
+  <data name="TracePM" xml:space="preserve">
+    <value>生產(產銷)履歷</value>
+  </data>
+  <data name="WeaningAge" xml:space="preserve">
+    <value>離乳日齡</value>
+  </data>
 </root>
