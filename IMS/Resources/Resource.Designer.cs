@@ -844,6 +844,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 PigBaseData 的當地語系化字串。
+        /// </summary>
+        public static string PigBaseData {
+            get {
+                return ResourceManager.GetString("PigBaseData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 生日 的當地語系化字串。
         /// </summary>
         public static string PigBirth {

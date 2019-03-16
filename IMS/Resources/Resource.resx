@@ -549,4 +549,7 @@
   <data name="WeaningDate" xml:space="preserve">
     <value>離乳日期</value>
   </data>
+  <data name="PigBaseData" xml:space="preserve">
+    <value>PigBaseData</value>
+  </data>
 </root>

@@ -110,7 +110,7 @@
                             <div class="input-group-addon">
                                 @Html.DisplayNameFor(model => model.PigBirth)
                             </div>
-                            @Html.EditorFor(model => model.PigBirth, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.PigBirth, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
                         </div>
                         @Html.ValidationMessageFor(model => model.PigBirth, "", new { @class = "text-danger" })
                     </div>
@@ -194,7 +194,7 @@
                             <div class="input-group-addon">
                                 @Html.DisplayNameFor(model => model.FirstBreeding)
                             </div>
-                            @Html.EditorFor(model => model.FirstBreeding, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.FirstBreeding, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
                         </div>
                         @Html.ValidationMessageFor(model => model.FirstBreeding, "", new { @class = "text-danger" })
                     </div>
@@ -248,3 +248,13 @@
     </div>
 }
 
+@section JS{
+    <script> 
+        $(function () { 
+            $('.datetimepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                      
+            }); 
+        }); 
+    </script>
+}

@@ -1,0 +1,38 @@
+﻿
+@model IEnumerable<IMS.Models.FarrowingRecord>
+
+@using (Ajax.BeginForm("_Farrowing", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post" }))
+{
+    <div id="farrowing-tool">
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                @*@Html.Action("_CreateAFarrowing", new { traceNo = ViewBag.TraceNo })*@
+            </tr>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @item.FarrowingDate
+                </td>
+                <td>
+                    @item.FarrowingDate
+                </td>
+                <td>
+                    @item.FarrowingDate
+                </td>
+            </tr>
+            }
+        </tbody>
+      </table>
+        
+    </div>
+
+}

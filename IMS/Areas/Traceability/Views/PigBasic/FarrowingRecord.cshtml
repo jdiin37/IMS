@@ -4,7 +4,241 @@
     ViewBag.Title = "FarrowingRecord";
 }
 
-<h2>FarrowingRecord</h2>
+<style>
+    .underline-b {
+        border: 0;
+        border-bottom: 3px solid #eee;
+        border-bottom-color: cornflowerblue;
+        letter-spacing: 4px;
+    }
+
+    .underline-a {
+        border: 0;
+        border-bottom: 2px solid #eee;
+        border-bottom-color: gray;
+    }
+</style>
+
+<h3 class=""><b>@IMS.Resources.Resource.PigNo - @Model.PigNo </b></h3>
+
+<h3 class="underline-b ">
+    <b>@IMS.Resources.Resource.PigBaseData</b>
+</h3>
+
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.GID)
+    @Html.HiddenFor(model => model.PigFarmId)
+    <div class="alert alert-info">
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigNo)
+
+                        </div>
+                        @Html.EditorFor(model => model.PigNo, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigNo, "", new { @class = "text-danger" })
+                    <span class="text-danger">
+                        @ViewBag.ErrMsg
+                    </span>
+
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigType)
+                        </div>
+                        @Html.EditorFor(model => model.PigType, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigType, "", new { @class = "text-danger" })
+                </div>
+                @*<div class="col-sm-6">
+                        <div class="btn-group pull-right">
+                            <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
+                        </div>
+                    </div>*@
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.CommentBody)
+                        </div>
+                        @Html.EditorFor(model => model.CommentBody, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CommentBody, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.CommentFront)
+                        </div>
+                        @Html.EditorFor(model => model.CommentFront, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CommentFront, "", new { @class = "text-danger" })
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.CommentEnd)
+                        </div>
+                        @Html.EditorFor(model => model.CommentEnd, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CommentEnd, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.CommentSum)
+                        </div>
+                        @Html.EditorFor(model => model.CommentSum, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.CommentSum, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigBirth)
+                        </div>
+                        @Html.EditorFor(model => model.PigBirth, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigBirth, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigDad)
+                        </div>
+                        @Html.EditorFor(model => model.PigDad, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigDad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.Parity)
+                        </div>
+                        @Html.EditorFor(model => model.Parity, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Parity, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigMom)
+                        </div>
+                        @Html.EditorFor(model => model.PigMom, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigMom, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigGrandDad)
+                        </div>
+                        @Html.EditorFor(model => model.PigGrandDad, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigGrandDad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.SameParity)
+                        </div>
+                        @Html.EditorFor(model => model.SameParity, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.SameParity, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigGrandMom)
+                        </div>
+                        @Html.EditorFor(model => model.PigGrandMom, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigGrandMom, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigGGrandDad)
+                        </div>
+                        @Html.EditorFor(model => model.PigGGrandDad, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigGGrandDad, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-12">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.FirstBreeding)
+                        </div>
+                        @Html.EditorFor(model => model.FirstBreeding, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.FirstBreeding, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.FirstBreedingAge)
+                        </div>
+                        @Html.EditorFor(model => model.FirstBreedingAge, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.FirstBreedingAge, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-sm-3 col-sm-offset-3">
+                    <div class="input-group">
+                        <div class="input-group-addon">
+                            @Html.DisplayNameFor(model => model.PigGGrandMom)
+                        </div>
+                        @Html.EditorFor(model => model.PigGGrandMom, new { htmlAttributes = new { @class = "form-control", ReadOnly = "true" } })
+                    </div>
+                    @Html.ValidationMessageFor(model => model.PigGGrandMom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<h3 class="underline-b ">
+    <b>@IMS.Resources.Resource.FarrowingRecord</b>
+</h3>
+@Html.Action("_FarrowingRecord", "PigBasic", new { gid = Model.GID })
+
 
 <div class="btn-group pull-right">
     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { }, new { @class = "btn btn-default" })

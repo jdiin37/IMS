@@ -182,5 +182,21 @@ namespace IMS.Areas.Traceability.Controllers
             return View(item);
         }
 
+
+        [ChildActionOnly]//無法在瀏覽器上用URL存取此action
+        public PartialViewResult _FarrowingRecord(Guid pigGid)
+        {
+
+            var farrowingRecords = from c in IMSdb.FarrowingRecord
+                                   where c.PigGid == pigGid 
+                                   orderby c.FarrowingDate descending
+                                   select c;
+
+            ViewBag.PigGid = pigGid;
+
+            return PartialView(farrowingRecords.ToList());
+        }
+
+
     }
 }

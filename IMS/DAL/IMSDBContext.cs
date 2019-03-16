@@ -42,6 +42,8 @@ namespace IMS.DAL
         public DbSet<TraceDetail> TraceDetail { get; set; }
 
         public DbSet<PigBasic> PigBasic { get; set; }
+        public DbSet<FarrowingRecord> FarrowingRecord { get; set; }
+
 
         public DbSet<SeqNo> SeqNo { get; set; }
     }

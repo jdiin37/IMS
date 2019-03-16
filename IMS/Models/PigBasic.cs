@@ -44,9 +44,9 @@ namespace IMS.Models
         [Display(Name = "CommentSum", ResourceType = typeof(Resources.Resource))]
         public string CommentSum { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "PigBirth", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? PigBirth { get; set; }
 
         [Display(Name = "PigDad", ResourceType = typeof(Resources.Resource))]
@@ -73,9 +73,9 @@ namespace IMS.Models
         [Display(Name = "SameParity", ResourceType = typeof(Resources.Resource))]
         public string SameParity { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "FirstBreeding", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? FirstBreeding { get; set; }
 
         [Display(Name = "FirstBreedingAge", ResourceType = typeof(Resources.Resource))]
