@@ -10,11 +10,11 @@ namespace IMS.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        public Guid SeqNo { get; set; }
+        public Guid GID { get; set; }
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(20, ErrorMessage = "長度不得超過12"), MinLength(4, ErrorMessage = "長度不得小於4")]
+        [MaxLength(20, ErrorMessage = "長度不得超過12")]
         [Display(Name = "PigNo", ResourceType = typeof(Resources.Resource))]
         public string PigNo { get; set; }
 
@@ -44,6 +44,7 @@ namespace IMS.Models
         [Display(Name = "CommentSum", ResourceType = typeof(Resources.Resource))]
         public string CommentSum { get; set; }
 
+        [DataType(DataType.Date)]
         [Display(Name = "PigBirth", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? PigBirth { get; set; }
@@ -72,9 +73,13 @@ namespace IMS.Models
         [Display(Name = "SameParity", ResourceType = typeof(Resources.Resource))]
         public string SameParity { get; set; }
 
-        [Display(Name = "FirstMating", ResourceType = typeof(Resources.Resource))]
-        public string FirstMating { get; set; }
+        [DataType(DataType.Date)]
+        [Display(Name = "FirstBreeding", ResourceType = typeof(Resources.Resource))]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        public DateTime? FirstBreeding { get; set; }
 
+        [Display(Name = "FirstBreedingAge", ResourceType = typeof(Resources.Resource))]
+        public int FirstBreedingAge { get; set; }
 
         [StringLength(2)]
         [DefaultValue("Y")]

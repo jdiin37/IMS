@@ -1,4 +1,5 @@
 ﻿using IMS.Controllers;
+using IMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,18 +27,10 @@ namespace IMS.Areas.Traceability.Controllers
                     return RedirectToAction("Index", "PigFarm", new { area = "Sys" });
                 }
             }
-
-            //CategoryVM vm = new CategoryVM()
-            //{
-            //    categoryLists = IMSdb.Category.ToList(),
-            //    categorySubs = IMSdb.CategorySub.Where(m => m.CategoryID == categoryId).ToList()
-            //};
-
+            
             var Pigs = IMSdb.PigBasic.Where(m => m.PigFarmId == pigFarmId && m.Status == "Y").ToList();
 
             ViewBag.PigFarmId = pigFarmId;
-            //ViewBag.CategoryListName = IMSdb.Category.Where(m => m.CategoryID == categoryId).FirstOrDefault().CategoryName;
-
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -47,5 +40,147 @@ namespace IMS.Areas.Traceability.Controllers
 
             return View(Pigs);
         }
+
+        public ActionResult Create(Guid pigFarmId)
+        {
+            if (pigFarmId == null)
+            {
+                return HttpNotFound();
+            }
+
+            ViewBag.PigFarmId = pigFarmId;
+            ViewBag.PigFarmName = IMSdb.PigFarm.Where(m => m.Id == pigFarmId).FirstOrDefault().Name;
+
+            PigBasic newPigBasic = new PigBasic();
+            newPigBasic.PigFarmId = pigFarmId.ToString();
+
+            return View("Create", newPigBasic);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(PigBasic pigBasic)
+        {
+            pigBasic.CreDate = DateTime.Now;
+            pigBasic.CreUser = User.ID;
+            pigBasic.Status = "Y";
+
+            if (IMSdb.PigBasic.Where(m => m.PigNo == pigBasic.PigNo).Any())
+            {
+                ViewBag.ErrMsg = "編號重複";
+                return View(pigBasic);
+            }
+
+            if (ModelState.IsValid)
+            {
+
+                IMSdb.PigBasic.Add(pigBasic);
+                IMSdb.SaveChanges();
+                return RedirectToAction("Index", new { pigFarmId = pigBasic.PigFarmId });
+            }
+
+            return View(pigBasic);
+        }
+
+        public ActionResult Edit(Guid pigGid)
+        {
+            if (pigGid == null)
+            {
+                return HttpNotFound();
+            }
+
+            PigBasic pigBasic = IMSdb.PigBasic.Find(pigGid);
+            ViewBag.PigFarmId = pigBasic.PigFarmId;
+            ViewBag.PigFarmName = IMSdb.PigFarm.Where(m => m.Id.ToString() == pigBasic.PigFarmId).FirstOrDefault().Name;
+            
+            return View("Edit", pigBasic);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PigBasic pigBasic)
+        {
+            if (pigBasic == null)
+            {
+                return HttpNotFound();
+            }
+
+            PigBasic item = IMSdb.PigBasic.Find(pigBasic.GID);
+
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                item.ModDate = DateTime.Now;
+                item.CreUser = User.ID;
+
+                item.PigBirth = pigBasic.PigBirth;
+                item.Parity = pigBasic.Parity;
+                item.PigDad = pigBasic.PigDad;
+                item.PigMom = pigBasic.PigMom;
+                item.PigGrandDad = pigBasic.PigGrandDad;
+                item.PigGrandMom = pigBasic.PigGrandMom;
+                item.PigGGrandDad = pigBasic.PigGGrandDad;
+                item.PigGGrandMom = pigBasic.PigGGrandMom;
+
+                item.PigType = pigBasic.PigType;
+                item.SameParity = pigBasic.SameParity;
+                item.CommentBody = pigBasic.CommentBody;
+                item.CommentFront = pigBasic.CommentFront;
+                item.CommentEnd = pigBasic.CommentEnd;
+                item.CommentSum = pigBasic.CommentSum;
+
+                item.FirstBreeding = pigBasic.FirstBreeding;
+                item.FirstBreedingAge = pigBasic.FirstBreedingAge;
+                IMSdb.SaveChanges();
+                return RedirectToAction("Index", new { pigFarmId = item.PigFarmId });
+            }
+            
+            return View(pigBasic);
+        }
+
+
+        public ActionResult Delete(Guid pigGid)
+        {
+            if (pigGid == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            PigBasic item = IMSdb.PigBasic.Find(pigGid);
+            if (item == null)
+            {
+                return RedirectToAction("Index");
+            }
+            item.Status = "D";
+            //IMSdb.PigBasic.Remove(item);
+            IMSdb.SaveChanges();
+            return RedirectToAction("Index", new { pigFarmId = item.PigFarmId });
+
+        }
+
+
+
+        public ActionResult FarrowingRecord(Guid pigGid)
+        {
+            if (pigGid == null)
+            {
+                return HttpNotFound();
+            }
+
+
+            PigBasic item = IMSdb.PigBasic.Find(pigGid);
+            if (item == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(item);
+        }
+
     }
 }

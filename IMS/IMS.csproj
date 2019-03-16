@@ -300,6 +300,9 @@
     <Content Include="Areas\Traceability\Views\Shared\_CreateATraceDetail.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_CreateATraceDetail2.cshtml" />
     <Content Include="Areas\Traceability\Views\PigBasic\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigBasic\Create.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigBasic\Edit.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigBasic\FarrowingRecord.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -379,6 +382,7 @@
     </Compile>
     <Compile Include="infrastructure\BaseViewPage.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\FarrowingRecord.cs" />
     <Compile Include="Models\PigBasic.cs" />
     <Compile Include="Models\TraceDetail.cs" />
     <Compile Include="Models\SeqNo.cs" />

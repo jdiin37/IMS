@@ -35,14 +35,14 @@
                             @getDropDown.getPigFarm("PigFramDDl", ViewBag.PigFarmId, false, true, false)
                         </div>
                         <div class="col-sm-3">
-                            <label class="control-label" for="SearchString">關鍵字</label>
+                            <label class="control-label" for="SearchString">@Html.DisplayNameFor(model => model.PigNo)</label>
                             <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
                         </div>
                         <div class="col-sm-6 ">
                             <br />
-                            <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-success" />
+                            <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-default" />
                             @*@Html.ActionLink(IMS.Resources.Resource.Comm_Search, "Search", "", new { Class = "btn btn-success" })*@
-                            @Html.ActionLink("新增豬隻", "Create", new { pigFramId = ViewBag.PigFarmId }, new { Class = "btn btn-primary" })
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_CreatePig, "Create", new { pigFarmId = ViewBag.PigFarmId }, new { Class = "btn btn-primary" })
                         </div>
                     </div>
                 }
@@ -80,8 +80,9 @@
                             @Html.DisplayFor(modelItem => item.CreDate)
                         </td>
                         <td>
-                            @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { seqNo = item.SeqNo }, new { Class = "btn btn-success" }) |
-                            @Html.ActionLink("刪除", "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { pigGid = item.GID }, new { Class = "btn btn-success" }) |
+                            @Html.ActionLink(IMS.Resources.Resource.FarrowingRecord, "FarrowingRecord", new { pigGid = item.GID }, new { Class = "btn btn-warning" }) |
+                            @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { pigGid = item.GID }, new { onclick = "return confirm('確定要刪除嗎??')", @class = "btn btn-danger" })
                         </td>
 
                     </tr>
@@ -98,7 +99,7 @@
     <script>
         $("#PigFramDDl").change(function () {
 
-            var url = '@Url.Action("Index")?pigFramId=' + $(this).val()
+            var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
 
             window.location = url;
             //$.ajax({
