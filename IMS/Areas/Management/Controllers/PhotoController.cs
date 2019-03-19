@@ -80,6 +80,11 @@ namespace IMS.Areas.Management.Controllers
                     photo.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
                     image.InputStream.Read(photo.PhotoFile, 0, image.ContentLength);
                 }
+                else
+                {
+                    TempData["err"] = "請選擇圖片";
+                    return View("Create", photo);
+                }
                 IMSdb.Photo.Add(photo);
                 IMSdb.SaveChanges();
                 return RedirectToAction("Index",new { pigFarmId  = photo.PigFarmId});

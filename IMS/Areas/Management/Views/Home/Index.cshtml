@@ -4,6 +4,12 @@
     String pigFarmId = ViewBag.pigFarmId;
 }
 
+<style>
+    .col-xs-6 {
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+</style>
 @*<div class="">
     <h1><span id="pigFarmName"></span></h1>
 </div>*@
@@ -122,7 +128,43 @@
                             <h3>
                                 <b>@IMS.Resources.Resource.EnvironmentData_Abnormal</b>
                             </h3>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>
+                            <div class="form-group">
+                                <table class="table table-condensed text-center" style="max-width:526px;" align="center" id="envAbnormal">
+                                    <thead>
+                                        <tr>
+                                            <th ></th>
+                                            <th>最低</th>
+                                            <th>最高</th>
+                                            <th>異常提醒</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="text-left">
+                                        <tr>
+                                            <td>溫度</td>
+                                            <td><input type="number" step="0.1" class="form-control" value="20.5" /></td>
+                                            <td><input type="number" step="0.1" class="form-control" value="37.5" /></td>
+                                            <td><input type="checkbox" /></td>
+                                        </tr>
+                                        <tr>
+                                            <td>濕度</td>
+                                            <td><input type="number" step="0.1" class="form-control" value="30.0" /></td>
+                                            <td><input type="number" step="0.1" class="form-control" value="90.0" /></td>
+                                            <td><input type="checkbox" /></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default" id="btnEdit01">
+                                        <li class="fa fa-pencil-square-o"></li>
+                                        &nbsp;@IMS.Resources.Resource.Comm_Edit
+                                    </button>
+                                    <button type="button" class="btn btn-default" id="btnSave01">
+                                        <li class="fa fa-floppy-o"></li>
+                                        &nbsp;@IMS.Resources.Resource.Comm_Save
+                                    </button>
+                                </div>
+                            </div>
+                            @*<a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-link">@IMS.Resources.Resource.Comm_Edit ></a>*@
                         </div>
                     </div>
                 </div>
@@ -290,13 +332,13 @@
                 },
 
                 series: [{
-                    name: 'A場',
+                    name: '分娩舍',
                     data: [27, 30, 31, 32, 31.4, 30, 29.1, 26]
                 }, {
-                    name: 'B場',
+                    name: '保育舍',
                     data: [26, 28, 30, 31, 33.4, 29, 28, 24]
                 }, {
-                    name: 'C場',
+                    name: '母豬舍',
                     data: [26.5, 27.6, 33, 30, 32.1, 31, 27.1, 25]
                 }],
 
@@ -358,13 +400,13 @@
                 },
 
                 series: [{
-                    name: 'A場',
+                    name: '分娩舍',
                     data: [46, 47, 44, 46, 49, 50, 52, 54]
                 }, {
-                    name: 'B場',
+                    name: '保育舍',
                     data: [51, 53, 54, 56, 57, 51, 50, 52]
                 }, {
-                    name: 'C場',
+                    name: '母豬舍',
                     data: [40, 45, 47, 51, 55.1, 50, 48, 45]
                 }],
 
@@ -396,10 +438,10 @@
                 success: function (data) {
                     $('#FarmDataBaseInfo').empty();
                     //console.log(data);
-                    var id = $('<p>').html('<label>負責人</label>:' + data.OwnerName);
-                    var title = $('<p>').html('<label>負責人地址</label>:' + data.OwnerAddress);
-                    var description = $('<p>').html('<label>牧場名稱</label>:' + data.FarmName);
-                    var createdDate = $('<p>').html('<label>牧場地址</label>:' + data.FarmAddress);
+                    var id = $('<p class="row">').append('<label class="col-xs-6 text-right">負責人:</label>').append('<span class="col-xs-6 text-left">' + data.OwnerName + '</span>');
+                    var title = $('<p class="row">').append('<label class="col-xs-6 text-right">負責人地址:</label>').append('<span class="col-xs-6 text-left">' + data.OwnerAddress + '</span>');
+                    var description = $('<p class="row">').append('<label class="col-xs-6 text-right">牧場名稱:</label>').append('<span class="col-xs-6 text-left">' + data.FarmName + '</span>');
+                    var createdDate = $('<p class="row">').append('<label class="col-xs-6 text-right">牧場地址:</label>').append('<span class="col-xs-6 text-left">' + data.FarmAddress + '</span>');
                     $('#FarmDataBaseInfo').append(id).append(title).append(description).append(createdDate);
 
                 }, error: function () {
@@ -421,13 +463,15 @@
                 success: function (data) {
                     $('#FarmDataLandInfo').empty();
                     //console.log(data);
-                    var LandNo = $('<p>').html('<label>牧場土地地段</label>:' + data.LandNo);
-                    var AreaSize = $('<p>').html('<label>土地面積</label>:' + data.AreaSize + ' 平方公尺');
-                    var LandProperty = $('<p>').html('<label>土地產權</label>:' + data.LandProperty);
+                    var LandNo = $('<p class="row">').append('<label class="col-xs-6 text-right">牧場土地地段:</label>').append('<span class="col-xs-6 text-left">' + data.LandNo + '</span>');
+                    var AreaSize = $('<p class="row">').append('<label class="col-xs-6 text-right">土地面積:</label>').append('<span class="col-xs-6 text-left">' + data.AreaSize + ' 平方公尺</span>');
+                    //var LandProperty = $('<p class="row">').html('<label class="col-xs-6 text-right">土地產權:</label>' + data.LandProperty);
+                    var LandProperty = $('<p class="row">').append('<label class="col-xs-6 text-right">土地產權:</label>').append('<span class="col-xs-6 text-left">' + data.LandProperty + '</span>' );
+
                     //var UseType = $('<p>').html('使用區分------');
-                    var UseIsCity = $('<p>').html('<label>都市計畫土地</label>:' + data.UseIsCity);
-                    var UseNonCity = $('<p>').html('<label>非都市計畫土地</label>:' + data.UseNonCity);
-                    var NonCityType = $('<p>').html('<label>非都市土地用地類別</label>:' + data.NonCityType);
+                    var UseIsCity = $('<p class="row">').append('<label class="col-xs-6 text-right">都市計畫土地:</label>').append('<span class="col-xs-6 text-left">' + data.UseIsCity + '</span>' );
+                    var UseNonCity = $('<p class="row">').append('<label class="col-xs-6 text-right">非都市計畫土地:</label>').append('<span class="col-xs-6 text-left">' + data.UseNonCity + '</span>' );
+                    var NonCityType = $('<p class="row">').append('<label class="col-xs-6 text-right">非都市土地用地類別:</label>').append('<span class="col-xs-6 text-left">' + data.NonCityType + '</span>' );
                     $('#FarmDataLandInfo').append(LandNo).append(AreaSize).append(LandProperty).append(UseIsCity).append(UseNonCity).append(NonCityType);
 
                 }, error: function () {
@@ -449,8 +493,8 @@
                 success: function (data) {
                     $('#FarmDataLicenseInfo').empty();
                     //console.log(data);
-                    var RunType = $('<p>').html('<label>經營型態</label>:' + data.RunType);
-                    var FarmLicenseNo = $('<p>').html('<label>牧場登記證字號</label>:' + data.FarmLicenseNo);
+                    var RunType = $('<p class="row">').append('<label class="col-xs-6 text-right">經營型態:</label>').append('<span class="col-xs-6 text-left">' + data.RunType + '</span>');
+                    var FarmLicenseNo = $('<p class="row">').append('<label class="col-xs-6 text-right">牧場登記證字號:</label>').append('<span class="col-xs-6 text-left">' + data.FarmLicenseNo + '</span>');
                     $('#FarmDataLicenseInfo').append(RunType).append(FarmLicenseNo);
 
                 }, error: function () {
@@ -493,5 +537,26 @@
         getFarmDataLicense();
         getFarmDataBarn();
         renderChart();
+
+        function init() {
+            $('#envAbnormal :input').attr("disabled", true);
+            $('#btnEdit01').attr("disabled", false);
+            $('#btnSave01').attr("disabled", true);
+
+            $("#btnEdit01").click(function () {
+                $('#btnEdit01').attr("disabled", true);
+                $('#btnSave01').attr("disabled", false);
+                $('#envAbnormal :input').attr("disabled", false);
+            });
+
+            $("#btnSave01").click(function () {
+                $('#btnEdit01').attr("disabled", false);
+                $('#btnSave01').attr("disabled", true);
+                $('#envAbnormal :input').attr("disabled", true);
+            });
+        }
+
+        init();
+
     </script>
 }

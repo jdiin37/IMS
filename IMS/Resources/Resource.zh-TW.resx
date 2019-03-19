@@ -196,7 +196,7 @@
     <value>列印</value>
   </data>
   <data name="Comm_Save" xml:space="preserve">
-    <value>確定</value>
+    <value>儲存</value>
   </data>
   <data name="Comm_Search" xml:space="preserve">
     <value>查詢</value>

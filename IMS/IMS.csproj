@@ -286,7 +286,7 @@
     <Content Include="App_Code\getRadios.cshtml" />
     <Content Include="Areas\Management\Views\Photo\Index.cshtml" />
     <Content Include="Areas\Management\Views\Photo\Create.cshtml" />
-    <Content Include="Areas\Management\Views\Photo\_PhotoGallery.cshtml" />
+    <Content Include="Areas\Management\Views\Shared\_PhotoGallery.cshtml" />
     <Content Include="Areas\Management\Views\Photo\Display.cshtml" />
     <Content Include="Areas\Management\Views\Home\EditPigFarmPic.cshtml" />
     <Content Include="Areas\Sys\Views\CategorySub\Edit.cshtml" />
@@ -453,7 +453,6 @@
     <Folder Include="Areas\DataAnalysis\Models\" />
     <Folder Include="Areas\DataAnalysis\Views\Shared\" />
     <Folder Include="Areas\Management\Models\" />
-    <Folder Include="Areas\Management\Views\Shared\" />
     <Folder Include="Areas\Sys\Models\" />
     <Folder Include="Areas\Traceability\Models\" />
     <Folder Include="Images\ico\" />
