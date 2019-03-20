@@ -961,7 +961,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 豬隻生產紀錄 的當地語系化字串。
+        ///   查詢類似 豬隻生產履歷 的當地語系化字串。
         /// </summary>
         public static string PigPM {
             get {
@@ -1213,7 +1213,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 生產(產銷)履歷 的當地語系化字串。
+        ///   查詢類似 仔豬成長履歷 的當地語系化字串。
         /// </summary>
         public static string TracePM {
             get {

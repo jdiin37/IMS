@@ -15,7 +15,7 @@ namespace IMS.Models
         [Required]
         public Guid PigGid { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "BreedingDate", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? BreedingDate { get; set; }
@@ -23,7 +23,7 @@ namespace IMS.Models
         [Display(Name = "BoarNo", ResourceType = typeof(Resources.Resource))]
         public string BoarNo { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "FarrowingDate", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? FarrowingDate { get; set; }
@@ -41,7 +41,7 @@ namespace IMS.Models
         [Display(Name = "WeaningCnt", ResourceType = typeof(Resources.Resource))]
         public int WeaningCnt { get; set; }
 
-        [DataType(DataType.Date)]
+        //[DataType(DataType.Date)]
         [Display(Name = "WeaningDate", ResourceType = typeof(Resources.Resource))]
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? WeaningDate { get; set; }

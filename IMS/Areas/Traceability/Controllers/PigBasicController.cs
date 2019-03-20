@@ -197,6 +197,14 @@ namespace IMS.Areas.Traceability.Controllers
             return PartialView(farrowingRecords.ToList());
         }
 
+        public PartialViewResult _CreateAFarrowing(Guid pigGid)
+        {
+
+            ViewBag.PigGid = pigGid;
+
+            return PartialView("_CreateAFarrowing");
+        }
+
 
     }
 }

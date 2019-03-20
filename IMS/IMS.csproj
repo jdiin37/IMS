@@ -304,6 +304,7 @@
     <Content Include="Areas\Traceability\Views\PigBasic\Edit.cshtml" />
     <Content Include="Areas\Traceability\Views\PigBasic\FarrowingRecord.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_FarrowingRecord.cshtml" />
+    <Content Include="Areas\Traceability\Views\Shared\_CreateAFarrowing.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />

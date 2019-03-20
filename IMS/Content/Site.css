@@ -15,6 +15,14 @@ body {
     padding-top: 7.5px;
 }*/
 
+.btn-circle {
+    width: 40px;
+    height: 40px;
+    line-height: 40px; /* adjust line height to align vertically*/
+    padding: 0;
+    border-radius: 50%;
+}
+
 .navbar-custom {
     /*background-color:#229922;*/
     background-color:#337ab7;

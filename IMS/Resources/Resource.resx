@@ -529,7 +529,7 @@
     <value>耳號</value>
   </data>
   <data name="PigPM" xml:space="preserve">
-    <value>豬隻生產紀錄</value>
+    <value>豬隻生產履歷</value>
   </data>
   <data name="PigType" xml:space="preserve">
     <value>品種</value>
@@ -538,7 +538,7 @@
     <value>同胎</value>
   </data>
   <data name="TracePM" xml:space="preserve">
-    <value>生產(產銷)履歷</value>
+    <value>仔豬成長履歷</value>
   </data>
   <data name="WeaningAge" xml:space="preserve">
     <value>離乳日齡</value>

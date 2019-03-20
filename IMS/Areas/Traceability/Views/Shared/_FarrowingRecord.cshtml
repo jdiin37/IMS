@@ -7,14 +7,25 @@
         <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th rowspan="2">@IMS.Resources.Resource.BreedingDate</th>
+                <th rowspan="2">@IMS.Resources.Resource.BoarNo</th>                
+                <th colspan="4">生產</th>
+                <th colspan="3">離乳</th>
+            </tr>
+            <tr>
+                <th>@IMS.Resources.Resource.FarrowingDate</th>
+                <th>@IMS.Resources.Resource.BornCnt</th>
+                <th>@IMS.Resources.Resource.BornAliveCnt</th>
+                <th>@IMS.Resources.Resource.BornDeadCnt</th>
+                <th>@IMS.Resources.Resource.WeaningCnt</th>
+                <th>@IMS.Resources.Resource.WeaningDate</th>
+                <th>@IMS.Resources.Resource.WeaningAge</th>
+
             </tr>
         </thead>
         <tbody>
             <tr>
-                @*@Html.Action("_CreateAFarrowing", new { traceNo = ViewBag.TraceNo })*@
+                @Html.Action("_CreateAFarrowing", new { traceNo = ViewBag.TraceNo })
             </tr>
             @foreach (var item in Model)
             {

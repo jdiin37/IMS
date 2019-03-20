@@ -19,13 +19,12 @@
     }
 </style>
 
-<h3 class=""><b>@IMS.Resources.Resource.PigNo - @Model.PigNo </b></h3>
-
-<h3 class="underline-b ">
-    <b>@IMS.Resources.Resource.PigBaseData</b>
+<h3 class="">
+    <b>@IMS.Resources.Resource.PigNo - @Model.PigNo </b> 
+    <button id="slide_basedata" class=" btn btn-info btn-circle" >收合</button>
 </h3>
 
-<div class="form-horizontal">
+<div class="form-horizontal" id="div_basedata">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.GID)
     @Html.HiddenFor(model => model.PigFarmId)
@@ -234,12 +233,27 @@
         </div>
     </div>
 </div>
-<h3 class="underline-b ">
+<h3 class="">
     <b>@IMS.Resources.Resource.FarrowingRecord</b>
 </h3>
 @Html.Action("_FarrowingRecord", "PigBasic", new { gid = Model.GID })
 
 
 <div class="btn-group pull-right">
-    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { }, new { @class = "btn btn-default" })
+    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
 </div>
+
+@section JS{
+    <script>
+        $(function () {
+            $("#slide_basedata").click(function () {
+                $("#div_basedata").slideToggle("slow");
+            });
+            $('.datetimepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                orientation: 'bottom',
+                language :'zh-TW'
+            });
+        });
+    </script>
+}
