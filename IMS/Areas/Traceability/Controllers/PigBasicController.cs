@@ -197,6 +197,43 @@ namespace IMS.Areas.Traceability.Controllers
             return PartialView(farrowingRecords.ToList());
         }
 
+        [HttpPost]
+        public ActionResult _FarrowingRecord(FarrowingRecord farrowingRecord, Guid pigGid)
+        {
+            if (ModelState.IsValid)
+            {
+                farrowingRecord.PigGid = pigGid;
+                farrowingRecord.CreDate = DateTime.Now;
+                farrowingRecord.CreUser = User.ID;
+                farrowingRecord.Status = "Y";
+                IMSdb.FarrowingRecord.Add(farrowingRecord);
+                IMSdb.SaveChanges();
+            }
+            else
+            {
+
+                var message = string.Join("", ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage));
+
+
+                //TempData["Err"] = message;
+
+                return JavaScript("showIntro('" + message  + "')");
+            }
+
+            var farrowingRecords = from c in IMSdb.FarrowingRecord
+                           where c.PigGid == pigGid 
+                           orderby c.CreDate 
+                           select c;
+
+
+            ViewBag.PigGid = pigGid;
+
+            return PartialView("_FarrowingRecord", farrowingRecords.ToList());
+        }
+
+
         public PartialViewResult _CreateAFarrowing(Guid pigGid)
         {
 

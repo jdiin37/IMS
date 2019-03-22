@@ -34,11 +34,11 @@
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav" id="top_menu">
                         @*<li>
-                            <a href="@Url.Action("Index","Main",new { area="Dashboard"})">
-                                <i class="fa fa-dashboard fa-lg" aria-hidden="true"></i>
-                                @IMS.Resources.Resource.MenuDashboard
-                            </a>
-                        </li>*@
+                                <a href="@Url.Action("Index","Main",new { area="Dashboard"})">
+                                    <i class="fa fa-dashboard fa-lg" aria-hidden="true"></i>
+                                    @IMS.Resources.Resource.MenuDashboard
+                                </a>
+                            </li>*@
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -55,29 +55,29 @@
                         </li>
 
                         @*<li>
-                            <a href="@Url.Action("ShowPaper","Main",new { area=""})">
-                                <i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i>
-                                ShowPaper
-                            </a>
-                        </li>*@
+                                <a href="@Url.Action("ShowPaper","Main",new { area=""})">
+                                    <i class="fa fa-paper-plane fa-lg" aria-hidden="true"></i>
+                                    ShowPaper
+                                </a>
+                            </li>*@
                         @*<li>
-                            <a href="#" onclick='showIntro("儲存成功");'>
+                                <a href="#" onclick='showIntro("儲存成功");'>
 
-                                測試IntroModal
-                            </a>
-                        </li>*@
+                                    測試IntroModal
+                                </a>
+                            </li>*@
                         @*<li>
-                            <a href="#" onclick='showConfirm("是否要確認?");'>
+                                <a href="#" onclick='showConfirm("是否要確認?");'>
 
-                                測試ConfirmModal
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" onclick='showDelete("確定要刪除嗎?");'>
+                                    測試ConfirmModal
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" onclick='showDelete("確定要刪除嗎?");'>
 
-                                測試DeleteModal
-                            </a>
-                        </li>*@
+                                    測試DeleteModal
+                                </a>
+                            </li>*@
 
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
@@ -108,85 +108,23 @@
                         <select class="form-control" id="i18n" style="width:280px;">
                             <option value="zh-TW">繁體中文</option>
                             <option value="en-US">English</option>
-                        </select>                     
+                        </select>
                     </div>
                 </form>
             </div>
         </div>
-        
+
     </footer>
 
 
-    <!-- confirm Modal-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Modal title</h4>
-                </div>
-                <div class="modal-body">
-                    <p><span id="confirmMsg">One fine body&hellip;</span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">確認</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- delete Modal-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal_delete">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <p><span id="deleteMsg">One fine body&hellip;</span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger">刪除</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!-- intro Modal-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="modal_intro">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">系統訊息</h4>
-                </div>
-                <div class="modal-body">
-                    <p><span id="introMsg">系統訊息&hellip;</span></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+
 
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery_setting")
-    <script>
-        function showConfirm(Msg) {
-            $('#confirmMsg').text(Msg);
-            $('#modal_confirm').modal('show');
-        }
-        function showDelete(Msg) {
-            $('#deleteMsg').text(Msg);
-            $('#modal_delete').modal('show');
-        }
-        function showIntro(Msg) {
-            $('#introMsg').text(Msg);
-            $('#modal_intro').modal('show');
-        }
-    </script>
 
+    @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
     @RenderSection("JS", required: false)
 
 </body>

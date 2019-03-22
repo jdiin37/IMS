@@ -21,10 +21,10 @@
 
 <h3 class="">
     <b>@IMS.Resources.Resource.PigNo - @Model.PigNo </b> 
-    <button id="slide_basedata" class=" btn btn-info btn-circle" >收合</button>
+    <button id="slide_basedata" class=" btn btn-info btn-circle" >明細</button>
 </h3>
 
-<div class="form-horizontal" id="div_basedata">
+<div class="form-horizontal" id="div_basedata" style="display:none;">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.GID)
     @Html.HiddenFor(model => model.PigFarmId)
@@ -245,9 +245,34 @@
 
 @section JS{
     <script>
+        //function init() {
+        //    $('.editRow :input').attr("disabled", true);
+        //    $('.btnEdit').attr("disabled", false);
+        //    $('.btnSave').attr("disabled", true);
+        //}
+
+        //init();
+
+        //function EditMod() {
+        //    $('.editRow :input').attr("disabled", false);
+        //    $('.btnEdit').attr("disabled", true);
+        //    $('.btnSave').attr("disabled", false);
+        //}
+
+        //function NotEditMod() {
+        //    $('.editRow :input').attr("disabled", true);
+        //    $('.btnEdit').attr("disabled", false);
+        //    $('.btnSave').attr("disabled", true);
+        //}
+
+
+
+
+
         $(function () {
+            
             $("#slide_basedata").click(function () {
-                $("#div_basedata").slideToggle("slow");
+                $("#div_basedata").slideToggle("");
             });
             $('.datetimepicker').datepicker({
                 format: 'yyyy/mm/dd',

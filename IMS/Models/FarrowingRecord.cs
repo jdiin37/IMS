@@ -17,8 +17,8 @@ namespace IMS.Models
 
         //[DataType(DataType.Date)]
         [Display(Name = "BreedingDate", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
-        public DateTime? BreedingDate { get; set; }
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
+        public DateTime BreedingDate { get; set; }
 
         [Display(Name = "BoarNo", ResourceType = typeof(Resources.Resource))]
         public string BoarNo { get; set; }
@@ -30,16 +30,16 @@ namespace IMS.Models
 
 
         [Display(Name = "BornCnt", ResourceType = typeof(Resources.Resource))]
-        public int BornCnt { get; set; }
+        public int? BornCnt { get; set; }
 
         [Display(Name = "BornAliveCnt", ResourceType = typeof(Resources.Resource))]
-        public int BornAliveCnt { get; set; }
+        public int? BornAliveCnt { get; set; }
 
         [Display(Name = "BornDeadCnt", ResourceType = typeof(Resources.Resource))]
-        public int BornDeadCnt { get; set; }
+        public int? BornDeadCnt { get; set; }
 
         [Display(Name = "WeaningCnt", ResourceType = typeof(Resources.Resource))]
-        public int WeaningCnt { get; set; }
+        public int? WeaningCnt { get; set; }
 
         //[DataType(DataType.Date)]
         [Display(Name = "WeaningDate", ResourceType = typeof(Resources.Resource))]
@@ -47,7 +47,7 @@ namespace IMS.Models
         public DateTime? WeaningDate { get; set; }
 
         [Display(Name = "WeaningAge", ResourceType = typeof(Resources.Resource))]
-        public int WeaningAge { get; set; }
+        public int? WeaningAge { get; set; }
 
 
         [StringLength(2)]

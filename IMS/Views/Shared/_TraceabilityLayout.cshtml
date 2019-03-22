@@ -29,25 +29,25 @@
                     <ul class="nav navbar-nav" id="top_menu">
 
                         @*<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Produce <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a></li>
-                                <li><a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a></li>
-                                <li><a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a></li>
-                                <li><a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a></li>
-                                <li><a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a></li>
-                            </ul>
-                        </li>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Produce <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a></li>
+                                    <li><a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a></li>
+                                    <li><a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a></li>
+                                    <li><a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a></li>
+                                    <li><a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a></li>
+                                </ul>
+                            </li>
 
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Process <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a></li>
-                                <li><a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a></li>
-                                <li><a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a></li>
-                                <li><a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a></li>
-                            </ul>
-                        </li>*@
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Process <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a></li>
+                                    <li><a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a></li>
+                                    <li><a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a></li>
+                                    <li><a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a></li>
+                                </ul>
+                            </li>*@
                         <li class="">
                             <a href="@Url.Action("Index","Home")">
                                 <span class=""></span> @IMS.Resources.Resource.TracePM
@@ -61,10 +61,10 @@
                         </li>
 
                         @*<li class="">
-                            <a href="@Url.Action("Index","WorkBasic")">
-                                <span class=""></span> @IMS.Resources.Resource.TracePM
-                            </a>
-                        </li>*@
+                                <a href="@Url.Action("Index","WorkBasic")">
+                                    <span class=""></span> @IMS.Resources.Resource.TracePM
+                                </a>
+                            </li>*@
 
 
                     </ul>
@@ -106,6 +106,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/jquery_setting")
 
+    @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
     @RenderSection("JS", required: false)
 
 </body>

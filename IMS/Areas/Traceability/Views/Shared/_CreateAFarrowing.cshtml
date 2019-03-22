@@ -41,7 +41,10 @@
             @Html.ValidationMessageFor(model => model.WeaningAge, "", new { @class = "text-danger" })
         </td>
         <td width="20px;">
-            <input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />
+            <button type="submit" class="btn btn-info">
+                <li class="fa fa-plus"></li>
+            </button>
+            @*<input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />*@
         </td>
     </tr>
 }

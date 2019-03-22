@@ -1,7 +1,7 @@
 ﻿
 @model IEnumerable<IMS.Models.FarrowingRecord>
 
-@using (Ajax.BeginForm("_Farrowing", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post" }))
+@using (Ajax.BeginForm("_FarrowingRecord", new { pigGid = ViewBag.PigGid }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post" }))
 {
     <div id="farrowing-tool">
         <table class="table table-bordered">
@@ -24,23 +24,54 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                @Html.Action("_CreateAFarrowing", new { traceNo = ViewBag.TraceNo })
-            </tr>
+
             @foreach (var item in Model)
             {
-            <tr>
-                <td>
-                    @item.FarrowingDate
-                </td>
-                <td>
-                    @item.FarrowingDate
-                </td>
-                <td>
-                    @item.FarrowingDate
-                </td>
-            </tr>
+                <tr class="text-center">
+                    <td>
+                        @item.BreedingDate.ToString("yyyy-MM-dd")
+                    </td>
+                    <td>
+                        @item.BoarNo
+                    </td>
+                    <td>
+                        @item.FarrowingDate
+                    </td>
+                    <td>
+                        @item.BornCnt
+                    </td>
+                    <td>
+                        @item.BornAliveCnt
+                    </td>
+                    <td>
+                        @item.BornDeadCnt
+                    </td>
+                    <td>
+                        @item.WeaningCnt
+                    </td>
+                    <td>
+                        @item.WeaningDate
+                    </td>
+                    <td>
+                        @item.WeaningAge
+                    </td>
+                    <td>
+                        @*<button type="button" class="btn btn-link btnEdit" id="btnEdit01" onclick="EditMod()">
+                            <li class="fa fa-pencil-square-o"></li>
+                        </button>
+                        <button type="button" class="btn btn-link btnSave" id="btnSave01" onclick="NotEditMod()">
+                            <li class="fa fa-floppy-o"></li>
+                        </button>*@
+                        <button type="button" class="btn btn-danger"  onclick="RemoveRow()">
+                            <li class="fa fa-remove"></li>
+                        </button>
+                    </td>
+                </tr>
+
             }
+            <tr>
+                @Html.Action("_CreateAFarrowing", new { pigGid = ViewBag.PigGid })
+            </tr>
         </tbody>
       </table>
         

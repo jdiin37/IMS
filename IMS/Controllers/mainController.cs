@@ -23,6 +23,7 @@ namespace IMS.Controllers
 
         
 
+
         [ChildActionOnly]
         public ActionResult NavMenu()
         {
@@ -46,6 +47,12 @@ namespace IMS.Controllers
         [ChildActionOnly]
         [ValueReport(IsCheck = false)]
         public ActionResult MapSite()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult ModalTemp()
         {
             return PartialView();
         }
