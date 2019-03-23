@@ -3,8 +3,9 @@
 
 @using (Ajax.BeginForm("_FarrowingRecord", new { pigGid = ViewBag.PigGid }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post" }))
 {
+    
     <div id="farrowing-tool">
-        <table class="table table-bordered">
+        <table class="table table-bordered bg-success">
         <thead>
             <tr>
                 <th rowspan="2">@IMS.Resources.Resource.BreedingDate</th>
@@ -24,9 +25,10 @@
             </tr>
         </thead>
         <tbody>
-
+            
             @foreach (var item in Model)
             {
+                
                 <tr class="text-center">
                     <td>
                         @item.BreedingDate.ToString("yyyy-MM-dd")
@@ -57,18 +59,22 @@
                     </td>
                     <td>
                         @*<button type="button" class="btn btn-link btnEdit" id="btnEdit01" onclick="EditMod()">
-                            <li class="fa fa-pencil-square-o"></li>
-                        </button>
-                        <button type="button" class="btn btn-link btnSave" id="btnSave01" onclick="NotEditMod()">
-                            <li class="fa fa-floppy-o"></li>
-                        </button>*@
-                        <button type="button" class="btn btn-danger"  onclick="RemoveRow()">
-                            <li class="fa fa-remove"></li>
-                        </button>
+                        <li class="fa fa-pencil-square-o"></li>
+                    </button>
+                    <button type="button" class="btn btn-link btnSave" id="btnSave01" onclick="NotEditMod()">
+                        <li class="fa fa-floppy-o"></li>
+                    </button>*@
+                        @*<button type="button" class="btn btn-danger"  onclick = "return confirm('確定要刪除嗎??')">
+                        <li class="fa fa-remove"></li>
+                    </button>*@
+                        <a href="@Url.Action("DeleteRecord", new { farrowingRecordGid = item.GID, pigGid = ViewBag.PigGid })" class="btn btn-danger" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
+                            
+                        @*<button type="submit" class="btn btn-danger" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></button>*@
                     </td>
                 </tr>
-
+                
             }
+
             <tr>
                 @Html.Action("_CreateAFarrowing", new { pigGid = ViewBag.PigGid })
             </tr>
@@ -76,5 +82,5 @@
       </table>
         
     </div>
-
+    
 }

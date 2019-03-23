@@ -3,6 +3,7 @@ using IMS.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -15,17 +16,27 @@ namespace IMS.Areas.Traceability.Controllers
         {
             ViewBag.CurrentFilter = searchString;
 
+            
             if (pigFarmId == null)
             {
-                if (IMSdb.PigFarm.Where(x => x.Status == "Y").Any())
+                if (Request.Cookies["pigFarmId"] == null)
                 {
-                    pigFarmId = IMSdb.PigFarm.Where(x => x.Status == "Y").FirstOrDefault().Id.ToString();
+                    if (IMSdb.PigFarm.Where(x => x.Status == "Y").Any())
+                    {
+                        pigFarmId = IMSdb.PigFarm.Where(x => x.Status == "Y").FirstOrDefault().Id.ToString();
+                        ViewBag.PigFarmId = pigFarmId;
+                    }
+                    else
+                    {
+                        TempData["Msg"] = "請先建立養豬場";
+                        return RedirectToAction("Index", "PigFarm", new { area = "Sys" });
+                    }
                 }
                 else
                 {
-                    TempData["Msg"] = "請先建立養豬場";
-                    return RedirectToAction("Index", "PigFarm", new { area = "Sys" });
+                    pigFarmId = Request.Cookies["pigFarmId"].Value;
                 }
+                
             }
             
             var Pigs = IMSdb.PigBasic.Where(m => m.PigFarmId == pigFarmId && m.Status == "Y").ToList();
@@ -188,8 +199,8 @@ namespace IMS.Areas.Traceability.Controllers
         {
 
             var farrowingRecords = from c in IMSdb.FarrowingRecord
-                                   where c.PigGid == pigGid 
-                                   orderby c.FarrowingDate descending
+                                   where c.PigGid == pigGid && c.Status == "Y"
+                                   orderby c.BreedingDate 
                                    select c;
 
             ViewBag.PigGid = pigGid;
@@ -198,8 +209,9 @@ namespace IMS.Areas.Traceability.Controllers
         }
 
         [HttpPost]
-        public ActionResult _FarrowingRecord(FarrowingRecord farrowingRecord, Guid pigGid)
+        public ActionResult _FarrowingRecord(FarrowingRecord farrowingRecord, Guid pigGid,bool isDelete = false)
         {
+            
             if (ModelState.IsValid)
             {
                 farrowingRecord.PigGid = pigGid;
@@ -221,10 +233,11 @@ namespace IMS.Areas.Traceability.Controllers
 
                 return JavaScript("showIntro('" + message  + "')");
             }
+            
 
             var farrowingRecords = from c in IMSdb.FarrowingRecord
-                           where c.PigGid == pigGid 
-                           orderby c.CreDate 
+                           where c.PigGid == pigGid && c.Status == "Y"
+                           orderby c.BreedingDate 
                            select c;
 
 
@@ -242,6 +255,36 @@ namespace IMS.Areas.Traceability.Controllers
             return PartialView("_CreateAFarrowing");
         }
 
+        
+        public ActionResult DeleteRecord(Guid farrowingRecordGid, Guid pigGid)
+        {
+            FarrowingRecord farrowingRecord = IMSdb.FarrowingRecord.Find(farrowingRecordGid);
+            if (farrowingRecord == null)
+            {
+                new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                farrowingRecord.Status = "D";
+                IMSdb.SaveChanges();
+
+            }
+
+            //var farrowingRecords = from c in IMSdb.FarrowingRecord
+            //                       where c.PigGid == pigGid && c.Status == "Y"
+            //                       orderby c.BreedingDate
+            //                       select c;
+
+
+            //ViewBag.PigGid = pigGid;
+
+            //return PartialView("_FarrowingRecord", farrowingRecords.ToList());
+
+
+            ViewBag.PigGid = pigGid;
+
+            return RedirectToAction("FarrowingRecord", new { pigGid = pigGid });
+        }
 
     }
 }

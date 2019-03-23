@@ -32,7 +32,7 @@
                     <div class="row form-group">
                         <div class="col-sm-3">
                             <label class="control-label" for="CategoryDDl">養豬場</label>
-                            @getDropDown.getPigFarm("PigFramDDl", ViewBag.PigFarmId, false, true, false)
+                            @getDropDown.getPigFarm("PigFramDDl", "", false, true, false)
                         </div>
                         <div class="col-sm-3">
                             <label class="control-label" for="SearchString">@Html.DisplayNameFor(model => model.PigNo)</label>
@@ -97,10 +97,18 @@
 @section JS{
 
     <script>
+        if ($.cookie("pigFarmId")) {
+            $("#PigFramDDl").val($.cookie("pigFarmId"));
+        } else {
+            setPigFarmId($("#PigFramDDl").val());
+
+        }
+
+
         $("#PigFramDDl").change(function () {
 
+            setPigFarmId($(this).val());
             var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
-
             window.location = url;
             //$.ajax({
             //    // edit to add steve's suggestion.
