@@ -265,7 +265,48 @@
         //    $('.btnSave').attr("disabled", true);
         //}
 
+        function editMod(obj) {
+            //$('tr').removeClass('active');
 
+
+            var $obj = $(obj);
+            var $tr = $($obj.parents("tr"));
+            console.log($tr);
+            
+            //$tr.addClass("active");
+            //$tr.find('td:eq(0)').text();
+
+            $tr.find('td').each(function (index) {
+                if (index < $tr.find('td').length -1) {
+                    var val = $(this).text().trim();
+                    var editInput = $('<input class="form-control">').attr({
+                        type: "text",
+                    });
+                    editInput.val(val);
+                    $(this).html("").append(editInput);
+                }
+                
+            });
+            //alert();
+        }
+
+
+        function noteditMod(obj) {
+
+            var $obj = $(obj);
+            var $tr = $($obj.parents("tr"));
+
+            $tr.find('td').each(function (index) {
+                if (index < $tr.find('td').length - 1) {
+                    var val = $(this).find('input').val().trim();
+                    var display = $('<span>');
+                    display.text(val);
+                    $(this).html("").append(display);
+                }
+            });
+
+
+        }
 
 
 
