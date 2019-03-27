@@ -266,27 +266,29 @@
         //}
 
         function editMod(obj) {
-            //$('tr').removeClass('active');
 
 
             var $obj = $(obj);
             var $tr = $($obj.parents("tr"));
             console.log($tr);
-            
-            //$tr.addClass("active");
-            //$tr.find('td:eq(0)').text();
 
             $tr.find('td').each(function (index) {
                 if (index < $tr.find('td').length -1) {
                     var val = $(this).text().trim();
                     var editInput = $('<input class="form-control">').attr({
                         type: "text",
-                    });
+                    });;
+                    if (index == 0 || index == 2 || index == 7) {
+                        editInput.addClass('datetimepicker');
+                    } 
                     editInput.val(val);
                     $(this).html("").append(editInput);
                 }
                 
             });
+            $('.btnEdit').attr("disabled", true);
+            $('.btnSave').attr("disabled", false);
+            setDatepicker();
             //alert();
         }
 
@@ -295,6 +297,16 @@
 
             var $obj = $(obj);
             var $tr = $($obj.parents("tr"));
+
+            $.ajax({
+                type: "PUT",
+                url: "api/FarrowingRecord/" + $('#id').val(),
+                data: $tr.serialize(),
+                success: function (data) {
+                    console.log(data);
+
+                }
+            });
 
             $tr.find('td').each(function (index) {
                 if (index < $tr.find('td').length - 1) {
@@ -306,20 +318,26 @@
             });
 
 
+
+            $('.btnEdit').attr("disabled", false);
+            $('.btnSave').attr("disabled", true);
+
         }
 
-
+        function setDatepicker() {
+            $('.datetimepicker').datepicker({
+                format: 'yyyy/mm/dd',
+                orientation: 'bottom',
+                language: 'zh-TW'
+            });
+        }
 
         $(function () {
             
             $("#slide_basedata").click(function () {
                 $("#div_basedata").slideToggle("");
             });
-            $('.datetimepicker').datepicker({
-                format: 'yyyy/mm/dd',
-                orientation: 'bottom',
-                language :'zh-TW'
-            });
+            setDatepicker();
         });
     </script>
 }

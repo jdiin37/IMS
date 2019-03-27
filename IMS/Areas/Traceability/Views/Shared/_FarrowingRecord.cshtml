@@ -37,7 +37,7 @@
                         @item.BoarNo
                     </td>
                     <td>
-                        @item.FarrowingDate
+                        @(item.FarrowingDate.HasValue?item.FarrowingDate.Value.ToString("yyyy-MM-dd") : string.Empty)
                     </td>
                     <td>
                         @item.BornCnt
@@ -52,22 +52,22 @@
                         @item.WeaningCnt
                     </td>
                     <td>
-                        @item.WeaningDate
+                        @(item.WeaningDate.HasValue ? item.WeaningDate.Value.ToString("yyyy-MM-dd") : string.Empty)
                     </td>
                     <td>
                         @item.WeaningAge
                     </td>
                     <td>
-                        <button type="button" class="btn btn-link " id="btnEdit01" onclick="editMod(this)">
+                        <button type="button" class="btn-link btnEdit" id="btnEdit01" onclick="editMod(this)">
                         <li class="fa fa-pencil-square-o"></li>
                     </button>
-                    <button type="button" class="btn btn-link" id="btnSave01" onclick="noteditMod(this)">
+                    <button type="button" class="btn-link btnSave" id="btnSave01" onclick="noteditMod(this)">
                         <li class="fa fa-floppy-o"></li>
                     </button>
                         @*<button type="button" class="btn btn-danger"  onclick = "return confirm('確定要刪除嗎??')">
                         <li class="fa fa-remove"></li>
                     </button>*@
-                        <a href="@Url.Action("DeleteRecord", new { farrowingRecordGid = item.GID, pigGid = ViewBag.PigGid })" class="btn btn-link bt" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
+                        <a href="@Url.Action("DeleteRecord", new { farrowingRecordGid = item.GID, pigGid = ViewBag.PigGid })" class=" btn-link " onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
                             
                         @*<button type="submit" class="btn btn-danger" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></button>*@
                     </td>

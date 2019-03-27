@@ -25,7 +25,7 @@ namespace IMS.Models
 
         //[DataType(DataType.Date)]
         [Display(Name = "FarrowingDate", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? FarrowingDate { get; set; }
 
 
@@ -43,7 +43,7 @@ namespace IMS.Models
 
         //[DataType(DataType.Date)]
         [Display(Name = "WeaningDate", ResourceType = typeof(Resources.Resource))]
-        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
         public DateTime? WeaningDate { get; set; }
 
         [Display(Name = "WeaningAge", ResourceType = typeof(Resources.Resource))]
