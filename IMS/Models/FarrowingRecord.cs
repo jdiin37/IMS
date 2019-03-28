@@ -49,6 +49,8 @@ namespace IMS.Models
         [Display(Name = "WeaningAge", ResourceType = typeof(Resources.Resource))]
         public int? WeaningAge { get; set; }
 
+        [Display(Name = "Memo", ResourceType = typeof(Resources.Resource))]
+        public string Memo { get; set; }
 
         [StringLength(2)]
         [DefaultValue("Y")]

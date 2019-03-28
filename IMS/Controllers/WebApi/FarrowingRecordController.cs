@@ -59,6 +59,7 @@ namespace IMS.Controllers.WebApi
           item.BornDeadCnt = farrowingRecord.BornDeadCnt;
           item.WeaningDate = farrowingRecord.WeaningDate;
           item.WeaningCnt = farrowingRecord.WeaningCnt;
+          item.Memo = farrowingRecord.Memo;
 
           item.WeaningAge = farrowingRecord.WeaningAge;
           IMSdb.SaveChanges();

@@ -205,7 +205,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 生產活仔數 的當地語系化字串。
+        ///   查詢類似 活仔數 的當地語系化字串。
         /// </summary>
         public static string BornAliveCnt {
             get {
@@ -223,7 +223,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 生產死仔數 的當地語系化字串。
+        ///   查詢類似 死仔數 的當地語系化字串。
         /// </summary>
         public static string BornDeadCnt {
             get {

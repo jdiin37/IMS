@@ -457,13 +457,13 @@
     <value>公豬品種</value>
   </data>
   <data name="BornAliveCnt" xml:space="preserve">
-    <value>生產活仔數</value>
+    <value>活仔數</value>
   </data>
   <data name="BornCnt" xml:space="preserve">
     <value>生產頭數</value>
   </data>
   <data name="BornDeadCnt" xml:space="preserve">
-    <value>生產死仔數</value>
+    <value>死仔數</value>
   </data>
   <data name="BreedingDate" xml:space="preserve">
     <value>交配日</value>
