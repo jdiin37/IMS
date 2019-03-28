@@ -1,25 +1,26 @@
 ﻿
 @model IEnumerable<IMS.Models.FarrowingRecord>
 
-@using (Ajax.BeginForm("_FarrowingRecord", new { pigGid = ViewBag.PigGid }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post" }))
+@using (Ajax.BeginForm("_FarrowingRecord", new { pigGid = ViewBag.PigGid }, new AjaxOptions { UpdateTargetId = "farrowing-tool", HttpMethod = "Post",
+  OnSuccess = "setDatepicker();" }))
 {
 
   <div id="farrowing-tool">
     <table class="table table-bordered bg-success">
       <thead>
         <tr>
-          <th rowspan="2">@IMS.Resources.Resource.BreedingDate</th>
+          <th rowspan="2" width="120px;">@IMS.Resources.Resource.BreedingDate</th>
           <th rowspan="2">@IMS.Resources.Resource.BoarNo</th>
           <th colspan="4">生產</th>
           <th colspan="3">離乳</th>
         </tr>
         <tr>
-          <th>@IMS.Resources.Resource.FarrowingDate</th>
+          <th width="120px;">@IMS.Resources.Resource.FarrowingDate</th>
           <th>@IMS.Resources.Resource.BornCnt</th>
           <th>@IMS.Resources.Resource.BornAliveCnt</th>
           <th>@IMS.Resources.Resource.BornDeadCnt</th>
           <th>@IMS.Resources.Resource.WeaningCnt</th>
-          <th>@IMS.Resources.Resource.WeaningDate</th>
+          <th width="120px;">@IMS.Resources.Resource.WeaningDate</th>
           <th>@IMS.Resources.Resource.WeaningAge</th>
 
         </tr>
@@ -58,10 +59,10 @@
               @item.WeaningAge
             </td>
             <td>
-              <button type="button" class="btn-link btnEdit" id="btnEdit01" onclick="editMod(this)">
+              <button type="button" class="btn-link btnEdit btn" id="btnEdit" style="padding:0 8px 0 0px;" onclick="editMod(this)">
                 <li class="fa fa-pencil-square-o"></li>
               </button>
-              <button type="button" class="btn-link btnSave" id="btnSave01" onclick="noteditMod(this)">
+              <button type="button" class="btn-link btnSave btn" id="btnSave" style="padding:0 8px 0 0px;" onclick="noteditMod(this)">
                 <li class="fa fa-floppy-o"></li>
               </button>
               @*<button type="button" class="btn btn-danger"  onclick = "return confirm('確定要刪除嗎??')">
@@ -77,6 +78,7 @@
 
         <tr>
           @Html.Action("_CreateAFarrowing", new { pigGid = ViewBag.PigGid })
+          
         </tr>
       </tbody>
     </table>

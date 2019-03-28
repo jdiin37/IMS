@@ -245,11 +245,10 @@
 
 @section JS{
   <script>
-    //function init() {
-    //    $('.editRow :input').attr("disabled", true);
-    //    $('.btnEdit').attr("disabled", false);
-    //    $('.btnSave').attr("disabled", true);
-    //}
+    function init() {
+        $('.btnEdit').attr("disabled", false);
+        $('.btnSave').attr("disabled", true);
+    }
 
     //init();
 
@@ -288,7 +287,7 @@
 
       });
       $('.btnEdit').attr("disabled", true);
-      $('.btnSave').attr("disabled", false);
+      $tr.find('.btnSave').attr("disabled", false);
       setDatepicker();
       //alert();
     }
@@ -332,7 +331,7 @@
     }
 
     $(function () {
-
+      init();
       $("#slide_basedata").click(function () {
         $("#div_basedata").slideToggle("");
       });
