@@ -4,7 +4,7 @@
 @using (Ajax.BeginForm("_ProduceForTrace", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "produces-tool", HttpMethod = "Post" }))
 {
     <div id="produces-tool">
-        <div class="well row">
+        <div class="row alert alert-link" style="background-color:white;">
             <div class="col-sm-6">
                 @Html.Action("_CreateATraceDetail", new { traceNo = ViewBag.TraceNo })
             </div>

@@ -305,6 +305,7 @@
     <Content Include="Areas\Traceability\Views\PigBasic\FarrowingRecord.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_FarrowingRecord.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_CreateAFarrowing.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigletGrow\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -367,6 +368,7 @@
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
     <Compile Include="Areas\Traceability\Controllers\PigBasicController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\PigletGrowController.cs" />
     <Compile Include="Areas\Traceability\Controllers\TraceController.cs" />
     <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
@@ -420,6 +422,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountVM.cs" />
+    <Compile Include="ViewModels\PigletGrow.cs" />
     <Compile Include="ViewModels\TraceVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
   </ItemGroup>

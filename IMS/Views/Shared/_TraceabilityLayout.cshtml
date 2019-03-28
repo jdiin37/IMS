@@ -1,113 +1,118 @@
 ﻿@*@{
-    ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
-}*@
+      ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+  }*@
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title </title>
-    <link rel="shortcut icon" href="~/favicon.ico">
-    @Styles.Render("~/Content/css")
-    @RenderSection("CSS", required: false)
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title </title>
+  <link rel="shortcut icon" href="~/favicon.ico">
+  @Styles.Render("~/Content/css")
+  @RenderSection("CSS", required: false)
+  <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <header>
-        <div class="navbar navbar-custom navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Traceability"})"><span class="fa fa-id-card-o">&nbsp;</span>@IMS.Resources.Resource.Model_Traceability</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" id="top_menu">
-
-                        @*<li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Produce <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a></li>
-                                    <li><a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a></li>
-                                    <li><a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a></li>
-                                    <li><a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a></li>
-                                    <li><a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Process <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a></li>
-                                    <li><a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a></li>
-                                    <li><a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a></li>
-                                    <li><a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a></li>
-                                </ul>
-                            </li>*@
-                        <li class="">
-                            <a href="@Url.Action("Index","Home")">
-                                <span class=""></span> @IMS.Resources.Resource.TracePM
-                            </a>
-                        </li>
-
-                        <li class="">
-                            <a href="@Url.Action("Index","PigBasic")">
-                                <span class=""></span> @IMS.Resources.Resource.PigPM
-                            </a>
-                        </li>
-
-                        @*<li class="">
-                                <a href="@Url.Action("Index","WorkBasic")">
-                                    <span class=""></span> @IMS.Resources.Resource.TracePM
-                                </a>
-                            </li>*@
-
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
-                        @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
-                    </ul>
-                </div>
-
-            </div>
+  <header>
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="Traceability"})"><span class="fa fa-id-card-o">&nbsp;</span>@IMS.Resources.Resource.Model_Traceability</a>
         </div>
-    </header>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" id="top_menu">
 
-    <section class="container" id="bodyContent">
-        @RenderBody()
-    </section>
+            @*<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Produce <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","Health",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Health</a></li>
+                      <li><a href="@Url.Action("Index","Environment",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Environment</a></li>
+                      <li><a href="@Url.Action("Index","Med",new { area="Traceability"})">@IMS.Resources.Resource.Produce_Med</a></li>
+                      <li><a href="@Url.Action("Index","FeedAndAdditive",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedAndAdditive</a></li>
+                      <li><a href="@Url.Action("Index","FeedingAndBatch",new { area="Traceability"})">@IMS.Resources.Resource.Produce_FeedingAndBatch</a></li>
+                  </ul>
+              </li>
 
-    <hr />
-    <footer class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
-            </div>
-            <div class="col-sm-6">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="langSelect">@IMS.Resources.Resource.LangSys :</label>
-                        <select class="form-control" id="i18n" style="width:280px;">
-                            <option value="zh-TW">繁體中文</option>
-                            <option value="en-US">English</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.Traceability_Process <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","Butcher",new { area="Traceability"})">@IMS.Resources.Resource.Process_Butcher</a></li>
+                      <li><a href="@Url.Action("Index","BigCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_BigCut</a></li>
+                      <li><a href="@Url.Action("Index","SmallCut",new { area="Traceability"})">@IMS.Resources.Resource.Process_SmallCut</a></li>
+                      <li><a href="@Url.Action("Index","Package",new { area="Traceability"})">@IMS.Resources.Resource.Process_Package</a></li>
+                  </ul>
+              </li>*@
+            <li class="">
+              <a href="@Url.Action("Index","Home")">
+                <span class=""></span> @IMS.Resources.Resource.TracePM
+              </a>
+            </li>
+
+            <li class="">
+              <a href="@Url.Action("Index","PigBasic")">
+                <span class=""></span> @IMS.Resources.Resource.PigPM
+              </a>
+            </li>
+
+            <li class="">
+              <a href="@Url.Action("Index","PigletGrow")">
+                <span class=""></span> @IMS.Resources.Resource.TracePM
+              </a>
+            </li>
+            @*<li class="">
+                  <a href="@Url.Action("Index","WorkBasic")">
+                      <span class=""></span> @IMS.Resources.Resource.TracePM
+                  </a>
+              </li>*@
+
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
+            @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
+          </ul>
         </div>
-    </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jquery_setting")
+      </div>
+    </div>
+  </header>
 
-    @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
-    @RenderSection("JS", required: false)
+  <section class="container" id="bodyContent">
+    @RenderBody()
+  </section>
+
+  <hr />
+  <footer class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+      </div>
+      <div class="col-sm-6">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="langSelect">@IMS.Resources.Resource.LangSys :</label>
+            <select class="form-control" id="i18n" style="width:280px;">
+              <option value="zh-TW">繁體中文</option>
+              <option value="en-US">English</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  @Scripts.Render("~/bundles/jquery")
+  @Scripts.Render("~/bundles/bootstrap")
+  @Scripts.Render("~/bundles/jquery_setting")
+
+  @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
+  @RenderSection("JS", required: false)
 
 </body>
 </html>

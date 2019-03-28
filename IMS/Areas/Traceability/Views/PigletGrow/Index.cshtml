@@ -1,0 +1,78 @@
+﻿
+@using PagedList.Mvc;
+@model PagedList.IPagedList<IMS.ViewModels.PigletGrow>
+
+@{
+  ViewBag.Title = "Index";
+}
+
+<h2>豬隻成長履歷</h2>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-info">
+      <!-- Default panel contents -->
+      <div class="panel-heading">查詢結果</div>
+
+      <!-- Table -->
+      <table class="table table-hover table-striped table-responsive">
+        <thead class="text-center">
+          <tr>
+            <th>
+              <b>生產日期(起)</b>
+            </th>
+            <th>
+              <b>生產日期(訖)</b>
+            </th>
+            <th>
+              <b>仔豬數量</b>
+            </th>
+            <th>
+              <b>成長履歷</b>
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>
+                @Html.DisplayFor(m => item.BornDate_s).ToString()
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.BornDate_e).ToString()
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.PigletCnt).ToString()
+              </td>
+              <td>
+                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEdit", "Trace", new { traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd") }, new { Class = "btn btn-success" })
+              </td>
+
+
+            </tr>
+          }
+        </tbody>
+      </table>
+      @if (Model.Count() < 1)
+      {
+        <div class="well well-sm" style="width:100%">
+          <p class="text-center text-warning">查無資料</p>
+        </div>
+      }
+
+
+      <br />
+      <div class="text-center">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page,traceNo = ViewBag.traceNo, sdate = ViewBag.sdate, edate = ViewBag.edate, status = ViewBag.status }))
+      </div>
+    </div>
+  </div>
+</div>
+
