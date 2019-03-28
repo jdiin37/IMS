@@ -3,49 +3,50 @@
 
 @using (Html.BeginForm())
 {
-    <tr>
-        <td>
-            @Html.EditorFor(model => model.BreedingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
-            @Html.ValidationMessageFor(model => model.BreedingDate, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.BoarNo, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BoarNo, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.FarrowingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
-            @Html.ValidationMessageFor(model => model.FarrowingDate, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.BornCnt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BornCnt, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.BornAliveCnt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BornAliveCnt, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.BornDeadCnt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.BornDeadCnt, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.WeaningCnt, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.WeaningCnt, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.WeaningDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
-            @Html.ValidationMessageFor(model => model.WeaningDate, "", new { @class = "text-danger" })
-        </td>
-        <td>
-            @Html.EditorFor(model => model.WeaningAge, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.WeaningAge, "", new { @class = "text-danger" })
-        </td>
-        <td width="120px;">
-            <button type="submit" class="btn btn-info">
-                <li class="fa fa-plus"></li>
-            </button>
-            @*<input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />*@
-        </td>
-    </tr>
+  <tr>
+    <td>
+      @Html.EditorFor(model => model.BreedingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
+      @Html.ValidationMessageFor(model => model.BreedingDate, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.BoarNo, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.BoarNo, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.FarrowingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
+      @Html.ValidationMessageFor(model => model.FarrowingDate, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.BornCnt, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.BornCnt, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.BornAliveCnt, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.BornAliveCnt, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.BornDeadCnt, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.BornDeadCnt, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.WeaningCnt, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.WeaningCnt, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.WeaningDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
+      @Html.ValidationMessageFor(model => model.WeaningDate, "", new { @class = "text-danger" })
+    </td>
+    <td>
+      @Html.EditorFor(model => model.WeaningAge, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.WeaningAge, "", new { @class = "text-danger" })
+    </td>
+    <td width="120px;">
+      <button type="submit" class="btn btn-info">
+        <li class="fa fa-plus"></li>
+      </button>
+      @*<input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />*@
+    </td>
+  </tr>
 }
 
+      

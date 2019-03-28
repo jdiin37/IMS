@@ -11,41 +11,41 @@ using System.Web.Http;
 
 namespace IMS.Controllers.WebApi
 {
-    public class BaseApiController : ApiController
+  public class BaseApiController : ApiController
+  {
+    protected IMSDBContext IMSdb;
+
+    public BaseApiController()
+        : base()
     {
-        protected IMSDBContext IMSdb;
-
-        public BaseApiController()
-            : base()
-        {
-            IMSdb = new IMSDBContext();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (IMSdb != null)
-                {
-                    IMSdb.Dispose();
-                    IMSdb = null;
-                }
-            }
-            base.Dispose(disposing);
-        }
-
-
-        protected virtual new CustomPrincipal User
-        {
-            get { return base.User as CustomPrincipal; }
-        }
-
-        public Account CurrentUser
-        {
-            get
-            {
-                return IMSdb.Account.First(m => m.AccountNo == User.ID);
-            }
-        }
+      IMSdb = new IMSDBContext();
     }
+
+    protected override void Dispose(bool disposing)
+    {
+      if (disposing)
+      {
+        if (IMSdb != null)
+        {
+          IMSdb.Dispose();
+          IMSdb = null;
+        }
+      }
+      base.Dispose(disposing);
+    }
+
+
+    protected virtual new CustomPrincipal User
+    {
+      get { return base.User as CustomPrincipal; }
+    }
+
+    public Account CurrentUser
+    {
+      get
+      {
+        return IMSdb.Account.First(m => m.AccountNo == User.ID);
+      }
+    }
+  }
 }
