@@ -3,7 +3,7 @@
 @model PagedList.IPagedList<IMS.ViewModels.PigletGrow>
 
 @{
-  ViewBag.Title = "Index";
+  ViewBag.Title = "批次豬隻成長履歷";
 }
 
 <h2>豬隻成長履歷</h2>
@@ -12,16 +12,16 @@
   <div class="col-sm-12">
     <div class="panel panel-info">
       <!-- Default panel contents -->
-      <div class="panel-heading">查詢結果</div>
+      @*<div class="panel-heading">查詢結果</div>*@
 
       <!-- Table -->
       <table class="table table-hover table-striped table-responsive">
         <thead class="text-center">
           <tr>
-            <th>
+            <th width="120px">
               <b>生產日期(起)</b>
             </th>
-            <th>
+            <th width="120px">
               <b>生產日期(訖)</b>
             </th>
             <th>
@@ -29,9 +29,6 @@
             </th>
             <th>
               <b>成長履歷</b>
-            </th>
-            <th>
-
             </th>
           </tr>
         </thead>

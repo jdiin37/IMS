@@ -26,19 +26,43 @@ namespace IMS.Areas.Traceability.Controllers
         new PigletGrow
         {
           BornDate_s = new DateTime(2018,01,01),
-          BornDate_e = new DateTime(2018,01,08),
+          BornDate_e = new DateTime(2018,01,31),
           PigletCnt = 120,
         },
         new PigletGrow
         {
-          BornDate_s = new DateTime(2018,01,09),
-          BornDate_e = new DateTime(2018,01,16),
+          BornDate_s = new DateTime(2018,02,01),
+          BornDate_e = new DateTime(2018,02,28),
           PigletCnt = 114,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,03,01),
+          BornDate_e = new DateTime(2018,03,31),
+          PigletCnt = 134,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,04,01),
+          BornDate_e = new DateTime(2018,04,30),
+          PigletCnt = 128,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,05,01),
+          BornDate_e = new DateTime(2018,05,31),
+          PigletCnt = 94,
         },
       };
       
       return list.ToList();
 
     }
+
+    //重做一個 成長履歷 不要用之前的
+    //public ActionResult CreatePigGrow()
+    //{
+
+    //}
   }
 }
