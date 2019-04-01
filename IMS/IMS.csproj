@@ -306,6 +306,9 @@
     <Content Include="Areas\Traceability\Views\Shared\_FarrowingRecord.cshtml" />
     <Content Include="Areas\Traceability\Views\Shared\_CreateAFarrowing.cshtml" />
     <Content Include="Areas\Traceability\Views\PigletGrow\Index.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigletGrow\CreateEditTrace.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigletGrow\_TraceDetails.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigletGrow\_CreateTraceDetail.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />

@@ -185,6 +185,19 @@ textarea {
     animation: spin 2s linear infinite;
 }
 
+.underline-b {
+  border: 0;
+  border-bottom: 3px solid #eee;
+  border-bottom-color: cornflowerblue;
+  letter-spacing: 4px;
+}
+
+.underline-a {
+  border: 0;
+  border-bottom: 2px solid #eee;
+  border-bottom-color: gray;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);

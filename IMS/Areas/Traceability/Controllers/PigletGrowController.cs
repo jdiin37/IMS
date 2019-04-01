@@ -1,4 +1,6 @@
 ﻿using IMS.Comm;
+using IMS.Controllers;
+using IMS.Models;
 using IMS.ViewModels;
 using PagedList;
 using System;
@@ -9,11 +11,33 @@ using System.Web.Mvc;
 
 namespace IMS.Areas.Traceability.Controllers
 {
-  public class PigletGrowController : Controller
+  public class PigletGrowController : BaseController
   {
     // GET: Traceability/PigletGrow
-    public ActionResult Index(int? page)
+    public ActionResult Index(string pigFarmId,int? page)
     {
+
+      if (pigFarmId == null)
+      {
+        if (Request.Cookies["pigFarmId"] == null)
+        {
+          if (IMSdb.PigFarm.Where(x => x.Status == "Y").Any())
+          {
+            pigFarmId = IMSdb.PigFarm.Where(x => x.Status == "Y").FirstOrDefault().Id.ToString();
+            ViewBag.PigFarmId = pigFarmId;
+          }
+          else
+          {
+            TempData["Msg"] = "請先建立養豬場";
+            return RedirectToAction("Index", "PigFarm", new { area = "Sys" });
+          }
+        }
+        else
+        {
+          pigFarmId = Request.Cookies["pigFarmId"].Value;
+        }
+
+      }
       var list = getPigletGrows();
 
       int pageNumber = (page ?? 1);
@@ -60,9 +84,94 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     //重做一個 成長履歷 不要用之前的
-    //public ActionResult CreatePigGrow()
-    //{
+    public ActionResult CreateEditTrace(string traceNo)
+    {
+      ViewBag.TraceNo = traceNo;
 
-    //}
+      TraceMaster traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
+
+      if (traceMaster == null)
+      {
+        traceMaster = new TraceMaster()
+        {
+          TraceNo = traceNo,
+          PigFarmId = Request.Cookies["pigFarmId"].Value,
+          CreDate = DateTime.Now,
+          CreUser = User.ID,
+          Status = "T",
+        };
+
+        AddTempTraceMaster(traceMaster);
+      }
+
+      return View(traceMaster);
+
+
+    }
+
+    [ChildActionOnly]//無法在瀏覽器上用URL存取此action
+    public PartialViewResult _TraceDetails(string traceNo)
+    {
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate descending
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView(produces.ToList());
+    }
+
+    [HttpPost]
+    public ActionResult _TraceDetails(TraceDetail traceDetail, string traceNo)
+    {
+      if (ModelState.IsValid)
+      {
+        traceDetail.CreDate = DateTime.Now;
+        traceDetail.CreUser = User.ID;
+        traceDetail.Status = "Y";
+        IMSdb.TraceDetail.Add(traceDetail);
+        IMSdb.SaveChanges();
+      }
+      else
+      {
+
+        var message = string.Join("", ModelState.Values
+        .SelectMany(v => v.Errors)
+        .Select(e => e.ErrorMessage));
+
+
+        //TempData["Err"] = message;
+
+        return JavaScript("showIntro('" + message + "')");
+      }
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo 
+                     orderby c.WorkDate descending
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView("_TraceDetails", produces.ToList());
+    }
+
+
+    public PartialViewResult _CreateTraceDetail(string traceNo)
+    {
+
+      ViewBag.TraceNo = traceNo;
+      return PartialView("_CreateTraceDetail");
+    }
+
+    #region Method
+    public TraceMaster AddTempTraceMaster(TraceMaster traceMaster)
+    {
+      IMSdb.TraceMaster.Add(traceMaster);
+      IMSdb.SaveChanges();
+      return traceMaster;
+    }
+    #endregion
   }
 }

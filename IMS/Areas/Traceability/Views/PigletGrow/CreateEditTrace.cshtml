@@ -1,0 +1,18 @@
+﻿@model IMS.Models.TraceMaster
+
+@{
+  ViewBag.Title = "CreateEditTrace";
+}
+
+
+@Html.Action("_TraceDetails", new { traceNo = Model.TraceNo })
+
+
+
+
+@section JS{
+  <script>
+    function refresh() {
+    }
+  </script>
+}

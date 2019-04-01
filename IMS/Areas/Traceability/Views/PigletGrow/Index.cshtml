@@ -13,12 +13,32 @@
     <div class="panel panel-info">
       <!-- Default panel contents -->
       @*<div class="panel-heading">查詢結果</div>*@
+      <div class="panel-body">
 
+        @using (Html.BeginForm())
+        {
+          <input id="pigFramId" name="pigFramId" value="@ViewBag.PigFarmId" type="hidden" />
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <label class="control-label" for="CategoryDDl">養豬場</label>
+              @getDropDown.getPigFarm("PigFramDDl", "", false, true, false)
+            </div>
+            <div class="col-sm-3">
+              <label class="control-label" for="SearchString">關鍵字</label>
+              <input class="form-control" id="SearchString" name="SearchString" value=@ViewBag.CurrentFilter>
+            </div>
+            <div class="col-sm-6 ">
+              <br />
+              <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-default" />
+            </div>
+          </div>
+        }
+      </div>
       <!-- Table -->
       <table class="table table-hover table-striped table-responsive">
         <thead class="text-center">
           <tr>
-            <th width="120px">
+            <th width="120px"> 
               <b>生產日期(起)</b>
             </th>
             <th width="120px">
@@ -46,7 +66,7 @@
                 @Html.DisplayFor(m => item.PigletCnt).ToString()
               </td>
               <td>
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEdit", "Trace", new { traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd") }, new { Class = "btn btn-success" })
+                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd") }, new { Class = "btn btn-success" })
               </td>
 
 
@@ -73,3 +93,26 @@
   </div>
 </div>
 
+@section JS{
+
+  <script>
+        if ($.cookie("pigFarmId")) {
+            $("#PigFramDDl").val($.cookie("pigFarmId"));
+        } else {
+            setPigFarmId($("#PigFramDDl").val());
+
+        }
+
+
+        $("#PigFramDDl").change(function () {
+
+            setPigFarmId($(this).val());
+            var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
+            window.location = url;
+
+        });
+
+
+  </script>
+
+}
