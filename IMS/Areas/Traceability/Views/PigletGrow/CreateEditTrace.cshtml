@@ -7,16 +7,18 @@
 
 <h2>
   <b>@IMS.Resources.Resource.TracePM</b>
-  <small>@Model.TraceNo
+  <small>
+    @Model.TraceNo
     @if (Model.Status == "S")
     {
       <span class="label label-success">已出貨</span>
+      @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })
     }
     else
     {
       <span class="label label-warning">未出貨</span>
     }
-  
+
   </small>
 
   @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default pull-right" })
@@ -39,7 +41,42 @@
           $('#FeedTool').hide();
         }
       });
+
+      $('#ckb-danger').change(function () {
+        if ($(this).is(":checked")) {
+          $('.panel-danger').parent().show();
+          return;
+        }
+        $('.panel-danger').parent().hide();
+      });
+
+      $('#ckb-warning').change(function () {
+        if ($(this).is(":checked")) {
+          $('.panel-warning').parent().show();
+          return;
+        }
+        $('.panel-warning').parent().hide();
+      });
+
+      $('#ckb-success').change(function () {
+        if ($(this).is(":checked")) {
+          $('.panel-success').parent().show();
+          return;
+        }
+        $('.panel-success').parent().hide();
+      });
+
+      $('#ckb-info').change(function () {
+        if ($(this).is(":checked")) {
+          $('.panel-info').parent().show();
+          return;
+        }
+        $('.panel-info').parent().hide();
+      });
     }
+    
+
+
     $(function () {
       init();
     });

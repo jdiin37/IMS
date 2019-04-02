@@ -23,10 +23,12 @@
     </div>
 
     <h4>作業紀錄
-      <div class="btn-group pull-right">
-        <button type="button" class="btn btn-primary">Apple</button>
-        <button type="button" class="btn btn-primary">Samsung</button>
-        <button type="button" class="btn btn-primary">Sony</button>
+
+      <div class="pull-right">
+        <label class="checkbox-inline bg-warning myCheckBox"><input type="checkbox" value="" id="ckb-warning" checked>飼料</label>
+        <label class="checkbox-inline bg-success myCheckBox"><input type="checkbox" value="" id="ckb-success" checked>投藥</label>
+        <label class="checkbox-inline bg-danger myCheckBox"><input type="checkbox" value="" id="ckb-danger" checked>疫苗</label>
+        <label class="checkbox-inline bg-info myCheckBox"><input type="checkbox" value="" id="ckb-info" checked>其他</label>
       </div>
     </h4>
     <hr class="underline-b" />
@@ -34,14 +36,14 @@
     <div class="row">
       @foreach (var item in Model)
       {
-        string cssClass = "panel-default";
+        string cssClass = "panel-info";
         if (item.WorkType == "飼料")
         {
           cssClass = "panel-warning";
         }
         else if (item.WorkType == "出生")
         {
-          cssClass = "panel-info";
+          cssClass = "panel-default";
         }
         else if (item.WorkType == "投藥")
         {

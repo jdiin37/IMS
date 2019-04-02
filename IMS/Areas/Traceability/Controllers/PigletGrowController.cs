@@ -101,7 +101,22 @@ namespace IMS.Areas.Traceability.Controllers
           Status = "T",
         };
 
+       
+        TraceDetail traceDetail = new TraceDetail()
+        {
+          TraceNo = traceNo,
+          WorkType = "出生",
+          WorkContent = "出生",
+          CreDate = DateTime.Now,
+          CreUser = User.ID,
+          Status = "Y",
+          WorkDate = new DateTime(int.Parse(traceNo.Substring(0, 4)), int.Parse(traceNo.Substring(4, 2)), int.Parse(traceNo.Substring(6, 2))),
+          WorkDate_end = new DateTime(int.Parse(traceNo.Substring(8, 4)), int.Parse(traceNo.Substring(12, 2)), int.Parse(traceNo.Substring(14, 2))),
+        };
+
         AddTempTraceMaster(traceMaster);
+        AddTraceDetail(traceDetail);
+
       }
 
       return View(traceMaster);
@@ -182,6 +197,14 @@ namespace IMS.Areas.Traceability.Controllers
       IMSdb.TraceMaster.Add(traceMaster);
       IMSdb.SaveChanges();
       return traceMaster;
+    }
+
+
+    public TraceDetail AddTraceDetail(TraceDetail traceDetail)
+    {
+      IMSdb.TraceDetail.Add(traceDetail);
+      IMSdb.SaveChanges();
+      return traceDetail;
     }
     #endregion
   }

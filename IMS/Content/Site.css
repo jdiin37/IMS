@@ -198,6 +198,11 @@ textarea {
   border-bottom-color: gray;
 }
 
+.myCheckBox {
+  padding: 4px 8px 4px 26px;
+  border-radius: 4px;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
