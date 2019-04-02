@@ -115,7 +115,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var produces = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -149,7 +149,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var produces = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo 
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;

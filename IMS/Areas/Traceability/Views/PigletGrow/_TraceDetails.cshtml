@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<IMS.Models.TraceDetail>
-@using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post" }))
+@using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post",OnSuccess= "init();" }))
 {
   <div id="traceDetail-tool">
     <div class="row">
@@ -9,59 +9,84 @@
 
       </div>
       <div class="col-md-4">
-        <h3>
+        <h3>詳細資料</h3>
+        <h4>
           目前日齡:156 天
-        </h3>
-        <h3>
+        </h4>
+        <h4>
           目前豬舍:保育舍
-        </h3>
-        <h3>
+        </h4>
+        <h4>
           總飼料量:46kg
-        </h3>
+        </h4>
       </div>
     </div>
 
+    <h4>作業紀錄
+      <div class="btn-group pull-right">
+        <button type="button" class="btn btn-primary">Apple</button>
+        <button type="button" class="btn btn-primary">Samsung</button>
+        <button type="button" class="btn btn-primary">Sony</button>
+      </div>
+    </h4>
     <hr class="underline-b" />
 
     <div class="row">
       @foreach (var item in Model)
       {
+        string cssClass = "panel-default";
+        if (item.WorkType == "飼料")
+        {
+          cssClass = "panel-warning";
+        }
+        else if (item.WorkType == "出生")
+        {
+          cssClass = "panel-info";
+        }
+        else if (item.WorkType == "投藥")
+        {
+          cssClass = "panel-success";
+        }
+        else if (item.WorkType == "疫苗")
+        {
+          cssClass = "panel-danger";
+        }
+        else if (item.WorkType == "生產出貨")
+        {
+          cssClass = "panel-primary";
+        }
 
         @*7.3 在/Shared/_CommentsForPhoto.cshtml加入IEnumerable<T>及foreach (var item in Model){}*@
         <div class="col-md-4 col-sm-6">
-          <div class="panel panel-info">
+          <div class="panel @cssClass">
             <div class="panel-heading clearfix">
               <div class="panel-title pull-left panel-tool">
-                <h4>@item.WorkDate.ToString("yyyy/MM/dd")</h4>
+                <h4>@item.WorkType <span>@item.WorkDate.ToString("yyyy/MM/dd") @if (item.WorkDate_end.HasValue) { <span>-</span> @item.WorkDate_end.Value.ToString("yyyy/MM/dd") }</span></h4>
               </div>
               <div class="btn-group pull-right">
                 @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "DeleteTraceDetail", new { seqNo = item.SeqNo }, new { @class = "btn btn-default", onclick = "return confirm('您確定要刪除嗎??')" })
 
               </div>
             </div>
-            <div class="panel-body">
-              <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().WorkType, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
-                <div class="col-md-6">
-                  <p>@item.WorkType</p>
-                </div>
-              </div>
-              <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
-                <div class="col-md-6">
-                  <p>@item.WorkContent</p>
-                </div>
-              </div>
+            <div class="panel-body" style="min-height:120px;">
+              @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
+              <span>:@item.WorkContent</span>
+
               @if (item.WorkMemo != null)
               {
-                <div class="form-group">
-                  @Html.LabelFor(model => model.FirstOrDefault().WorkMemo, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
-                  <div class="col-md-6">
-                    <p>@item.WorkMemo</p>
-                  </div>
-                </div>
+                <br />
+                @Html.LabelFor(model => model.FirstOrDefault().WorkMemo, htmlAttributes: new { @class = "control-label" })
+                <span>:@item.WorkMemo</span>
+              }
+
+              @if (item.FeedValue != null)
+              {
+                <br />
+                @Html.LabelFor(model => model.FirstOrDefault().FeedValue, htmlAttributes: new { @class = "control-label" })
+                <span>:@item.FeedValue kg</span>
               }
             </div>
+
             @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
             @*<div class="panel-footer">
                   @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })

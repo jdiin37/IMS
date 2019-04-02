@@ -637,6 +637,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 FeedUnit 的當地語系化字串。
+        /// </summary>
+        public static string FeedUnit {
+            get {
+                return ResourceManager.GetString("FeedUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 FeedValue 的當地語系化字串。
+        /// </summary>
+        public static string FeedValue {
+            get {
+                return ResourceManager.GetString("FeedValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 首配 的當地語系化字串。
         /// </summary>
         public static string FirstBreeding {
@@ -1335,6 +1353,15 @@ namespace IMS.Resources {
         public static string WorkDate {
             get {
                 return ResourceManager.GetString("WorkDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkDate_end 的當地語系化字串。
+        /// </summary>
+        public static string WorkDate_end {
+            get {
+                return ResourceManager.GetString("WorkDate_end", resourceCulture);
             }
         }
         

@@ -552,4 +552,13 @@
   <data name="PigBaseData" xml:space="preserve">
     <value>PigBaseData</value>
   </data>
+  <data name="FeedUnit" xml:space="preserve">
+    <value>FeedUnit</value>
+  </data>
+  <data name="FeedValue" xml:space="preserve">
+    <value>FeedValue</value>
+  </data>
+  <data name="WorkDate_end" xml:space="preserve">
+    <value>WorkDate_end</value>
+  </data>
 </root>

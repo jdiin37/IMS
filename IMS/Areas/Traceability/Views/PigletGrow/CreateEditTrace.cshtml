@@ -1,8 +1,26 @@
 ﻿@model IMS.Models.TraceMaster
 
 @{
-  ViewBag.Title = "CreateEditTrace";
+  ViewBag.Title = IMS.Resources.Resource.TracePM + Model.TraceNo;
 }
+
+
+<h2>
+  <b>@IMS.Resources.Resource.TracePM</b>
+  <small>@Model.TraceNo
+    @if (Model.Status == "S")
+    {
+      <span class="label label-success">已出貨</span>
+    }
+    else
+    {
+      <span class="label label-warning">未出貨</span>
+    }
+  
+  </small>
+
+  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default pull-right" })
+</h2>
 
 
 @Html.Action("_TraceDetails", new { traceNo = Model.TraceNo })
@@ -12,7 +30,18 @@
 
 @section JS{
   <script>
-    function refresh() {
+    function init() {
+      $('input[type=radio][name=WorkType]').change(function () {
+
+        if (this.value == '飼料') {
+          $('#FeedTool').show();
+        } else {
+          $('#FeedTool').hide();
+        }
+      });
     }
+    $(function () {
+      init();
+    });
   </script>
 }

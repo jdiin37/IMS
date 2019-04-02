@@ -552,4 +552,13 @@
   <data name="PigBaseData" xml:space="preserve">
     <value>豬隻基本資料</value>
   </data>
+  <data name="FeedUnit" xml:space="preserve">
+    <value>單位</value>
+  </data>
+  <data name="FeedValue" xml:space="preserve">
+    <value>飼料量</value>
+  </data>
+  <data name="WorkDate_end" xml:space="preserve">
+    <value>作業日期(迄)</value>
+  </data>
 </root>
