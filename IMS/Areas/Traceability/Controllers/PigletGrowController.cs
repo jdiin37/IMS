@@ -165,6 +165,17 @@ namespace IMS.Areas.Traceability.Controllers
       return PartialView("_CreateTraceDetail");
     }
 
+    public ActionResult DeleteTraceDetail(int seqNo)
+    {
+
+      TraceDetail traceDetail = IMSdb.TraceDetail.Find(seqNo);
+
+      IMSdb.TraceDetail.Remove(traceDetail);
+      IMSdb.SaveChanges();
+
+      return RedirectToAction("CreateEditTrace", new { traceNo = traceDetail.TraceNo });
+    }
+
     #region Method
     public TraceMaster AddTempTraceMaster(TraceMaster traceMaster)
     {

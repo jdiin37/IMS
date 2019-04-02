@@ -81,7 +81,7 @@ namespace IMS.Controllers.WebApi
     }
 
     // DELETE: api/FarrowingRecord/5
-    public void Delete(Guid gid)
+    public void Delete(Guid id)
     {
     }
   }

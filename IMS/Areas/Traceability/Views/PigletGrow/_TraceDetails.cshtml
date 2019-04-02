@@ -41,22 +41,22 @@
             </div>
             <div class="panel-body">
               <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().WorkType, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
-                <div class="col-md-9">
+                @Html.LabelFor(model => model.FirstOrDefault().WorkType, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
+                <div class="col-md-6">
                   <p>@item.WorkType</p>
                 </div>
               </div>
               <div class="form-group">
-                @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
-                <div class="col-md-9">
+                @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
+                <div class="col-md-6">
                   <p>@item.WorkContent</p>
                 </div>
               </div>
               @if (item.WorkMemo != null)
               {
                 <div class="form-group">
-                  @Html.LabelFor(model => model.FirstOrDefault().WorkMemo, htmlAttributes: new { @class = "control-label col-md-3 text-right" })
-                  <div class="col-md-9">
+                  @Html.LabelFor(model => model.FirstOrDefault().WorkMemo, htmlAttributes: new { @class = "control-label col-md-6 text-right" })
+                  <div class="col-md-6">
                     <p>@item.WorkMemo</p>
                   </div>
                 </div>
