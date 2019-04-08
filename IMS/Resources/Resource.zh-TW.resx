@@ -430,7 +430,7 @@
     <value>詳細生產紀錄</value>
   </data>
   <data name="WorkMemo" xml:space="preserve">
-    <value>作業備註</value>
+    <value>備註說明</value>
   </data>
   <data name="CreDate" xml:space="preserve">
     <value>建立日期</value>
@@ -556,7 +556,7 @@
     <value>單位</value>
   </data>
   <data name="FeedValue" xml:space="preserve">
-    <value>飼料量</value>
+    <value>飼料量(kg)</value>
   </data>
   <data name="WorkDate_end" xml:space="preserve">
     <value>作業日期(迄)</value>

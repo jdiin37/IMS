@@ -556,7 +556,7 @@
     <value>FeedUnit</value>
   </data>
   <data name="FeedValue" xml:space="preserve">
-    <value>FeedValue</value>
+    <value>FeedValue(kg)</value>
   </data>
   <data name="WorkDate_end" xml:space="preserve">
     <value>WorkDate_end</value>

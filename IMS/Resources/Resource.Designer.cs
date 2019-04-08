@@ -646,7 +646,7 @@ namespace IMS.Resources {
         }
         
         /// <summary>
-        ///   查詢類似 FeedValue 的當地語系化字串。
+        ///   查詢類似 FeedValue(kg) 的當地語系化字串。
         /// </summary>
         public static string FeedValue {
             get {

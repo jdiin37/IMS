@@ -1,10 +1,17 @@
 ﻿@model IEnumerable<IMS.Models.TraceDetail>
 
-@{ 
+@{
   string thisTraceNo = ViewBag.TraceNo;
-  
-  }
-@using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post",OnSuccess= "init();" }))
+  double avgWeight = 96.3;
+  int pigCnt = 116;
+  double sumWeight = avgWeight * pigCnt;
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
+  bool isOut = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Any();
+
+}
+
+@using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post", OnSuccess = "init();" }))
 {
   <div id="traceDetail-tool">
     <div class="row">
@@ -16,29 +23,74 @@
       <div class="col-md-4">
         <h3>詳細資料</h3>
         <h4>
-          目前日齡:
-          @{
+          豬隻數量:
+          <span>@pigCnt</span>
+        </h4>
 
-            IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-            DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
+        @{
+          if (isOut)
+          {
+            <h4>
+              出貨日齡:
+              @{
+                DateTime outDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Select(m => m.WorkDate).FirstOrDefault();
+                var outdaysAge = (outDate - bornDate).TotalDays;
 
-            var daysAge = (DateTime.Today - bornDate).TotalDays;
+                <span>@outdaysAge 天</span>
+              }
 
-            <span>@daysAge 天</span>
+            </h4>
+            <h4>
+              出貨平均重量(kg):@avgWeight
+            </h4>
+            <h4>
+              總重量(kg):@sumWeight
 
+            </h4>
+            
+            }
+          else
+          {
+            <h4>
+              目前日齡:
+              @{
+
+                var daysAge = (DateTime.Today - bornDate).TotalDays;
+
+                <span>@daysAge 天</span>
+
+              }
+            </h4>
+            <h4>
+              目前豬舍:
+              <label class="radio-inline"><input type="radio" name="optradio" checked>分娩舍</label>
+              <label class="radio-inline"><input type="radio" name="optradio">保育舍</label>
+              <label class="radio-inline"><input type="radio" name="optradio">肉豬舍</label>
+            </h4>
           }
-        </h4>
-        <h4>
-          目前豬舍:保育舍
-        </h4>
+        }
+
         <h4>
           總飼料量:
           @{
 
-            var feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
+            double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
 
-            <span>@feedSum kg</span> 
-            
+            <span>@feedSum kg</span>
+
+          }
+        </h4>
+        <h4>
+          飼料換肉率:
+          @{
+            if(feedSum != null)
+            {
+
+              var feedToMeat = (sumWeight / feedSum);
+              
+              <span>@Convert.ToDouble(feedToMeat).ToString("0.00") kg</span>
+            }
+
           }
         </h4>
       </div>
@@ -88,10 +140,21 @@
           <div class="panel @cssClass">
             <div class="panel-heading clearfix">
               <div class="panel-title pull-left panel-tool">
-                <h4>@item.WorkType <span>@item.WorkDate.ToString("yyyy/MM/dd") @if (item.WorkDate_end.HasValue) { <span>-</span> @item.WorkDate_end.Value.ToString("yyyy/MM/dd") }</span></h4>
+                <p><b>@item.WorkType</b> </p>
+                <sma class="pull-left">
+                  @item.WorkDate.ToString("yyyy/MM/dd") @if (item.WorkDate_end.HasValue)
+                {<span>-</span> @item.WorkDate_end.Value.ToString("yyyy/MM/dd")}
+                </sma>
               </div>
               <div class="btn-group pull-right">
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "DeleteTraceDetail", new { seqNo = item.SeqNo }, new { @class = "btn btn-default", onclick = "return confirm('您確定要刪除嗎??')" })
+                <button type="button" class="btn-default btnEdit btn" id="btnEdit"  onclick="editMod(this)">
+                  <li class="fa fa-pencil-square-o"></li>
+                </button>
+                <button type="button" class="btn-default btnSave btn" id="btnSave"  onclick="noteditMod(this)">
+                  <li class="fa fa-floppy-o"></li>
+                </button><a href="@Url.Action("DeleteTraceDetail", new { seqNo = item.SeqNo })" class="btn btn-default "  onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
+
+                @*@Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "DeleteTraceDetail", new { seqNo = item.SeqNo }, new { @class = "btn btn-default", onclick = "return confirm('您確定要刪除嗎??')" })*@
 
               </div>
             </div>

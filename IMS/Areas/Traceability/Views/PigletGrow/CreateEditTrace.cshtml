@@ -2,6 +2,7 @@
 
 @{
   ViewBag.Title = IMS.Resources.Resource.TracePM + Model.TraceNo;
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
 
 
@@ -9,7 +10,7 @@
   <b>@IMS.Resources.Resource.TracePM</b>
   <small>
     @Model.TraceNo
-    @if (Model.Status == "S")
+    @if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "生產出貨").Any())
     {
       <span class="label label-success">已出貨</span>
       @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })

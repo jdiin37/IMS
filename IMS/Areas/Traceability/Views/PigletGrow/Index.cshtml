@@ -4,6 +4,7 @@
 
 @{
   ViewBag.Title = "批次豬隻成長履歷";
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
 
 <h2>豬隻成長履歷</h2>
@@ -38,7 +39,7 @@
       <table class="table table-hover table-striped table-responsive">
         <thead class="text-center">
           <tr>
-            <th width="120px"> 
+            <th width="120px">
               <b>生產日期(起)</b>
             </th>
             <th width="120px">
@@ -48,6 +49,9 @@
               <b>仔豬數量</b>
             </th>
             <th>
+              <b>出貨狀態</b>
+            </th>
+            <th>
               <b>成長履歷</b>
             </th>
           </tr>
@@ -55,6 +59,7 @@
         <tbody>
           @foreach (var item in Model)
           {
+            string traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd");
             <tr>
               <td>
                 @Html.DisplayFor(m => item.BornDate_s).ToString()
@@ -66,7 +71,17 @@
                 @Html.DisplayFor(m => item.PigletCnt).ToString()
               </td>
               <td>
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd") }, new { Class = "btn btn-success" })
+                @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "生產出貨").Any())
+                {
+                  <span class="label label-success">已出貨</span>
+                }
+                else
+                {
+                  <span class="label label-warning">未出貨</span>
+                }
+              </td>
+              <td>
+                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = traceNo }, new { Class = "btn btn-success" })
               </td>
 
 

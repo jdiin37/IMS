@@ -77,6 +77,12 @@ namespace IMS.Areas.Traceability.Controllers
           BornDate_e = new DateTime(2018,05,31),
           PigletCnt = 94,
         },
+         new PigletGrow
+        {
+          BornDate_s = new DateTime(2019,02,01),
+          BornDate_e = new DateTime(2019,02,28),
+          PigletCnt = 113,
+        },
       };
       
       return list.ToList();
