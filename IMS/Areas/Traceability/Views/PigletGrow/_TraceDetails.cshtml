@@ -1,4 +1,9 @@
 ﻿@model IEnumerable<IMS.Models.TraceDetail>
+
+@{ 
+  string thisTraceNo = ViewBag.TraceNo;
+  
+  }
 @using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post",OnSuccess= "init();" }))
 {
   <div id="traceDetail-tool">
@@ -11,13 +16,30 @@
       <div class="col-md-4">
         <h3>詳細資料</h3>
         <h4>
-          目前日齡:156 天
+          目前日齡:
+          @{
+
+            IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+            DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
+
+            var daysAge = (DateTime.Today - bornDate).TotalDays;
+
+            <span>@daysAge 天</span>
+
+          }
         </h4>
         <h4>
           目前豬舍:保育舍
         </h4>
         <h4>
-          總飼料量:46kg
+          總飼料量:
+          @{
+
+            var feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
+
+            <span>@feedSum kg</span> 
+            
+          }
         </h4>
       </div>
     </div>
