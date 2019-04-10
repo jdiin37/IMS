@@ -561,4 +561,19 @@
   <data name="WorkDate_end" xml:space="preserve">
     <value>WorkDate_end</value>
   </data>
+  <data name="FeedType" xml:space="preserve">
+    <value>FeedType</value>
+  </data>
+  <data name="InventoryPigCount" xml:space="preserve">
+    <value>InventoryPigCount</value>
+  </data>
+  <data name="InventoryWeight" xml:space="preserve">
+    <value>InventoryWeight</value>
+  </data>
+  <data name="WorkPlace" xml:space="preserve">
+    <value>WorkPlace</value>
+  </data>
+  <data name="WorkUser" xml:space="preserve">
+    <value>WorkUser</value>
+  </data>
 </root>

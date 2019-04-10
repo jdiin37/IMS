@@ -2,35 +2,37 @@
 
 @{
   string thisTraceNo = ViewBag.TraceNo;
-  double avgWeight = 96.3;
-  int pigCnt = 116;
-  double sumWeight = avgWeight * pigCnt;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
   DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
   bool isOut = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Any();
+
+  double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
+  double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
+  int? pigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault();
+  DateTime lastInvenDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
+  var lastInvenAge = (lastInvenDate - bornDate).TotalDays;
+  double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
 
 }
 
 @using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post", OnSuccess = "init();" }))
 {
   <div id="traceDetail-tool">
-    <div class="row">
+
+    <div class="row" id="div_TopArea">
 
       <div class="col-md-8">
+        <h4><b>新增作業</b></h4>
         @Html.Action("_CreateTraceDetail", new { traceNo = ViewBag.TraceNo })
 
       </div>
       <div class="col-md-4">
-        <h3>詳細資料</h3>
-        <h4>
-          豬隻數量:
-          <span>@pigCnt</span>
-        </h4>
+        <h4><b>詳細資料</b></h4>
 
         @{
           if (isOut)
           {
-            <h4>
+            <h5>
               出貨日齡:
               @{
                 DateTime outDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Select(m => m.WorkDate).FirstOrDefault();
@@ -39,19 +41,16 @@
                 <span>@outdaysAge 天</span>
               }
 
-            </h4>
-            <h4>
+            </h5>
+            <h5>
               出貨平均重量(kg):@avgWeight
-            </h4>
-            <h4>
-              總重量(kg):@sumWeight
+            </h5>
 
-            </h4>
-            
-            }
+
+          }
           else
           {
-            <h4>
+            <h5>
               目前日齡:
               @{
 
@@ -60,39 +59,68 @@
                 <span>@daysAge 天</span>
 
               }
-            </h4>
-            <h4>
-              目前豬舍:
-              <label class="radio-inline"><input type="radio" name="optradio" checked>分娩舍</label>
-              <label class="radio-inline"><input type="radio" name="optradio">保育舍</label>
-              <label class="radio-inline"><input type="radio" name="optradio">肉豬舍</label>
-            </h4>
+            </h5>
           }
         }
 
-        <h4>
+        <h5>
+          最新盤點日齡:
+          @if (lastInvenAge < 0)
+          {
+            <span class="text-danger">未盤點</span>
+          }
+          else
+          {
+            <span class="text-info">@lastInvenAge 天</span>
+          }
+        </h5>
+        <h5>
+          最新盤點豬隻數量:
+          @if (pigCnt == null)
+          {
+            <span class="text-danger">未盤點</span>
+          }
+          else
+          {
+            <span class="text-info">@pigCnt 隻</span>
+          }
+        </h5>
+        <h5>
+          最新盤點總重量(kg):
+          @if (sumWeight == null)
+          {
+            <span class="text-danger">未盤點</span>
+          }
+          else
+          {
+            <span class="text-info">@sumWeight kg</span>
+          }
+        </h5>
+        <h5>
           總飼料量:
-          @{
-
-            double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
-
-            <span>@feedSum kg</span>
-
+          @if (feedSum == null)
+          {
+            <span class="text-danger">無資料</span>
           }
-        </h4>
-        <h4>
+          else
+          {
+            <span class="text-info">@feedSum kg</span>
+          }
+        </h5>
+
+        <h5>
           飼料換肉率:
-          @{
-            if(feedSum != null)
-            {
-
-              var feedToMeat = (sumWeight / feedSum);
-              
-              <span>@Convert.ToDouble(feedToMeat).ToString("0.00") kg</span>
-            }
-
+          @if (feedSum == null || pigCnt == null)
+          {
+            <span class="text-danger">請先進行盤點及飼料作業</span>
           }
-        </h4>
+          else
+          {
+            var feedToMeat = (sumWeight / feedSum);
+
+            <span class="text-info">@Convert.ToDouble(feedToMeat).ToString("0.00") kg</span>
+          }
+        </h5>
       </div>
     </div>
 
@@ -102,10 +130,36 @@
       </b>
 
       <div class="pull-right">
-        <label class="checkbox-inline bg-warning myCheckBox"><input type="checkbox" value="" id="ckb-warning" checked>飼料</label>
-        <label class="checkbox-inline bg-success myCheckBox"><input type="checkbox" value="" id="ckb-success" checked>投藥</label>
-        <label class="checkbox-inline bg-danger myCheckBox"><input type="checkbox" value="" id="ckb-danger" checked>疫苗</label>
-        <label class="checkbox-inline bg-info myCheckBox"><input type="checkbox" value="" id="ckb-info" checked>其他</label>
+        <label class="checkbox-inline bg-default myCheckBox">
+          <input type="checkbox" value="" id="ckb-default" checked>盤點
+          <span class="badge">
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").Count()
+          </span>
+        </label>
+        <label class="checkbox-inline bg-warning myCheckBox">
+          <input type="checkbox" value="" id="ckb-warning" checked>飼料
+          <span class="badge">
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Count()
+          </span>
+        </label>
+        <label class="checkbox-inline bg-success myCheckBox">
+          <input type="checkbox" value="" id="ckb-success" checked>投藥
+          <span class="badge">
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "投藥").Count()
+          </span>
+        </label>
+        <label class="checkbox-inline bg-danger myCheckBox">
+          <input type="checkbox" value="" id="ckb-danger" checked>疫苗
+          <span class="badge">
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "疫苗").Count()
+          </span>
+        </label>
+        <label class="checkbox-inline bg-info myCheckBox">
+          <input type="checkbox" value="" id="ckb-info" checked>其他
+          <span class="badge">
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "其他").Count()
+          </span>
+        </label>
       </div>
     </h4>
     <hr class="underline-b" />
@@ -118,7 +172,7 @@
         {
           cssClass = "panel-warning";
         }
-        else if (item.WorkType == "出生")
+        else if (item.WorkType == "盤點")
         {
           cssClass = "panel-default";
         }
@@ -130,7 +184,7 @@
         {
           cssClass = "panel-danger";
         }
-        else if (item.WorkType == "生產出貨")
+        else if (item.WorkType == "出生" || item.WorkType == "生產出貨")
         {
           cssClass = "panel-primary";
         }
@@ -141,26 +195,38 @@
             <div class="panel-heading clearfix">
               <div class="panel-title pull-left panel-tool">
                 <p><b>@item.WorkType</b> </p>
-                <sma class="pull-left">
-                  @item.WorkDate.ToString("yyyy/MM/dd") @if (item.WorkDate_end.HasValue)
-                {<span>-</span> @item.WorkDate_end.Value.ToString("yyyy/MM/dd")}
-                </sma>
+
               </div>
               <div class="btn-group pull-right">
-                <button type="button" class="btn-default btnEdit btn" id="btnEdit"  onclick="editMod(this)">
+                <button type="button" class="btn-default btnEdit btn" id="btnEdit" onclick="editMod(this)">
                   <li class="fa fa-pencil-square-o"></li>
                 </button>
-                <button type="button" class="btn-default btnSave btn" id="btnSave"  onclick="noteditMod(this)">
+                <button type="button" class="btn-default btnSave btn" id="btnSave" onclick="noteditMod(this)">
                   <li class="fa fa-floppy-o"></li>
-                </button><a href="@Url.Action("DeleteTraceDetail", new { seqNo = item.SeqNo })" class="btn btn-default "  onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
+                </button><a href="@Url.Action("DeleteTraceDetail", new { seqNo = item.SeqNo })" class="btn btn-default " onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
 
                 @*@Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "DeleteTraceDetail", new { seqNo = item.SeqNo }, new { @class = "btn btn-default", onclick = "return confirm('您確定要刪除嗎??')" })*@
 
               </div>
             </div>
-            <div class="panel-body" style="min-height:120px;">
+            <div class="panel-body" style="min-height:144px;">
               @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkContent</span>
+
+              @if (item.InventoryPigCount != null)
+              {
+                <br />
+                @Html.LabelFor(model => model.FirstOrDefault().InventoryPigCount, htmlAttributes: new { @class = "control-label" })
+                <span>:@item.InventoryPigCount</span>
+              }
+
+              @if (item.InventoryWeight != null)
+              {
+                <br />
+                @Html.LabelFor(model => model.FirstOrDefault().InventoryWeight, htmlAttributes: new { @class = "control-label" })
+                <span>:@item.InventoryWeight</span>
+              }
+
 
               @if (item.WorkMemo != null)
               {
@@ -169,18 +235,45 @@
                 <span>:@item.WorkMemo</span>
               }
 
+              @if (item.FeedType != null)
+              {
+                <br />
+                @Html.LabelFor(model => model.FirstOrDefault().FeedType, htmlAttributes: new { @class = "control-label" })
+                <span>:@item.FeedType</span>
+              }
+
               @if (item.FeedValue != null)
               {
                 <br />
                 @Html.LabelFor(model => model.FirstOrDefault().FeedValue, htmlAttributes: new { @class = "control-label" })
                 <span>:@item.FeedValue kg</span>
               }
+
+              @if (item.WorkType == "盤點")
+              {
+                <br />
+                var InventorydaysAge = (item.WorkDate - bornDate).TotalDays;
+
+                <span>盤點日齡:@InventorydaysAge 天</span>
+              }
+
             </div>
 
             @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
             @*<div class="panel-footer">
                   @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
               </div>*@
+            <div class="panel-footer">
+              @Html.LabelFor(model => model.FirstOrDefault().WorkUser, htmlAttributes: new { @class = "control-label" })
+              <span>:@item.WorkUser </span>
+              <br />
+              @Html.LabelFor(model => model.FirstOrDefault().WorkPlace, htmlAttributes: new { @class = "control-label" })
+              <span>:@item.WorkPlace </span>
+              <br />
+              @Html.LabelFor(model => model.FirstOrDefault().WorkDate, htmlAttributes: new { @class = "control-label" }):@item.WorkDate.ToString("yyyy/MM/dd") @if (item.WorkDate_end.HasValue)
+              {<span>-</span> @item.WorkDate_end.Value.ToString("yyyy/MM/dd")}
+
+            </div>
           </div>
         </div>
       }

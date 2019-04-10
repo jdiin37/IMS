@@ -561,4 +561,19 @@
   <data name="WorkDate_end" xml:space="preserve">
     <value>作業日期(迄)</value>
   </data>
+  <data name="FeedType" xml:space="preserve">
+    <value>飼料種類</value>
+  </data>
+  <data name="InventoryPigCount" xml:space="preserve">
+    <value>盤點豬隻數量</value>
+  </data>
+  <data name="InventoryWeight" xml:space="preserve">
+    <value>盤點總重量(kg)</value>
+  </data>
+  <data name="WorkPlace" xml:space="preserve">
+    <value>作業地點</value>
+  </data>
+  <data name="WorkUser" xml:space="preserve">
+    <value>作業人員</value>
+  </data>
 </root>

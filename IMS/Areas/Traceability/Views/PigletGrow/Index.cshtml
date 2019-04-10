@@ -7,11 +7,11 @@
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
 
-<h2>豬隻成長履歷</h2>
-
+<h2>批次豬隻成長履歷</h2>
+<hr />
 <div class="row">
   <div class="col-sm-12">
-    <div class="panel panel-info">
+    <div class="panel panel-default">
       <!-- Default panel contents -->
       @*<div class="panel-heading">查詢結果</div>*@
       <div class="panel-body">
@@ -49,6 +49,9 @@
               <b>仔豬數量</b>
             </th>
             <th>
+              <b>最近盤點數量</b>
+            </th>
+            <th>
               <b>出貨狀態</b>
             </th>
             <th>
@@ -69,6 +72,9 @@
               </td>
               <td>
                 @Html.DisplayFor(m => item.PigletCnt).ToString()
+              </td>
+              <td>
+                @IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault()
               </td>
               <td>
                 @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "生產出貨").Any())

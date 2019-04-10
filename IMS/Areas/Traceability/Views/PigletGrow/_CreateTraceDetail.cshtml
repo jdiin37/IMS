@@ -1,6 +1,5 @@
 ﻿
 @model IMS.Models.TraceDetail
-<h3>新增作業</h3>
 @using (Html.BeginForm())
 {
   @Html.AntiForgeryToken()
@@ -39,17 +38,54 @@
       
       </div>
     </div>
+    <div class="form-group" id="InventoryTool" style="display:none;">
+
+      @Html.LabelFor(model => model.InventoryPigCount, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+      <div class="col-md-4">
+        @Html.EditorFor(model => model.InventoryPigCount, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.InventoryPigCount, "", new { @class = "text-danger" })
+      </div>
+
+
+      @Html.LabelFor(model => model.InventoryWeight, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+      <div class="col-md-4">
+        @Html.EditorFor(model => model.InventoryWeight, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FeedValue, "", new { @class = "text-danger" })
+      </div>
+    </div>
     <div class="form-group" id="FeedTool" style="display:none;">
+
+      @Html.LabelFor(model => model.FeedType, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
+      <div class="col-md-4">
+        @Html.EditorFor(model => model.FeedType, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.FeedType, "", new { @class = "text-danger" })
+      </div>
+
+
       @Html.LabelFor(model => model.FeedValue, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
       <div class="col-md-4">
         @Html.EditorFor(model => model.FeedValue, new { htmlAttributes = new { @class = "form-control" } })
         @Html.ValidationMessageFor(model => model.FeedValue, "", new { @class = "text-danger" })
       </div>
       @*@Html.LabelFor(model => model.FeedUnit, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="col-md-4">
+      @Html.EditorFor(model => model.FeedUnit, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.FeedUnit, "", new { @class = "text-danger" })
+    </div>*@
+    </div>
+    <div class="form-group">
+      @Html.LabelFor(model => model.WorkUser, htmlAttributes: new { @class = "control-label col-md-2" })
       <div class="col-md-4">
-        @Html.EditorFor(model => model.FeedUnit, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.FeedUnit, "", new { @class = "text-danger" })
-      </div>*@
+        @Html.EditorFor(model => model.WorkUser, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.WorkUser, "", new { @class = "text-danger" })
+      </div>
+      
+      @Html.LabelFor(model => model.WorkPlace, htmlAttributes: new { @class = "control-label col-md-2" })
+      <div class="col-md-4">
+        @*@Html.EditorFor(model => model.WorkPlace, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.WorkPlace, "", new { @class = "text-danger" })*@
+        @getDropDown.getWorkPlace("WorkPlace", "", false, true, false)
+      </div>
     </div>
     <div class="form-group">
       @Html.LabelFor(model => model.WorkContent, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
@@ -117,12 +153,8 @@
           </div>
       </div>*@
     <div class="form-group">
-      @Html.LabelFor(model => model.WorkUser, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkUser, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkUser, "", new { @class = "text-danger" })
-      </div>
-      <div class="col-md-6 text-right">
+      
+      <div class="col-md-12 text-right">
         
         <input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />
       </div>

@@ -8,7 +8,7 @@
 body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: rgba(209, 209, 209,0.3);
+    /*background-color: rgba(209, 209, 209,0.3);*/
 }
 
 /*.panel-tool {
@@ -75,11 +75,11 @@ body {
     background-image: linear-gradient(to bottom,#337ab7 0,#265a88 100%);
 }
 
-.jumbotron {
+/*.jumbotron {
     background-color: white;
     -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.075);
     box-shadow: 0 1px 2px rgba(0,0,0,.075);
-}
+}*/
 
 .page-header {
     border-bottom: 1px solid #286090;
@@ -88,6 +88,30 @@ hr {
     border-top: 1px solid #286090;
 }
 
+
+
+.panel-yellow {
+  border-color: rgba(0,0,0,.125)
+}
+
+  .panel-yellow > .panel-heading {
+    color: #ffffff;
+    background-color: #ffc107;
+    border-color: rgba(0,0,0,.125)
+  }
+
+    .panel-yellow > .panel-heading + .panel-collapse > .panel-body {
+      border-top-color: rgba(0,0,0,.125)
+    }
+
+    .panel-yellow > .panel-heading .badge {
+      color: #dff0d8;
+      background-color: #ffc107
+    }
+
+  .panel-yellow > .panel-footer + .panel-collapse > .panel-body {
+    border-bottom-color: rgba(0,0,0,.125)
+  }
 
 
 /* Set padding to keep content from hitting the edges */
@@ -203,8 +227,17 @@ textarea {
   border-radius: 4px;
 }
 
+.myCheckBox > .badge {
+  color:black;
+  background-color:white;
+}
+
+.bg-default {
+  background-color: #ddd;
+}
+
 @keyframes spin {
-    0% {
+  0% {
         transform: rotate(0deg);
     }
 

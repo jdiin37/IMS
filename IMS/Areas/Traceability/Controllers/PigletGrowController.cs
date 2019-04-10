@@ -53,30 +53,30 @@ namespace IMS.Areas.Traceability.Controllers
           BornDate_e = new DateTime(2018,01,31),
           PigletCnt = 120,
         },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,02,01),
-          BornDate_e = new DateTime(2018,02,28),
-          PigletCnt = 114,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,03,01),
-          BornDate_e = new DateTime(2018,03,31),
-          PigletCnt = 134,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,04,01),
-          BornDate_e = new DateTime(2018,04,30),
-          PigletCnt = 128,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,05,01),
-          BornDate_e = new DateTime(2018,05,31),
-          PigletCnt = 94,
-        },
+        //new PigletGrow
+        //{
+        //  BornDate_s = new DateTime(2018,02,01),
+        //  BornDate_e = new DateTime(2018,02,28),
+        //  PigletCnt = 114,
+        //},
+        //new PigletGrow
+        //{
+        //  BornDate_s = new DateTime(2018,03,01),
+        //  BornDate_e = new DateTime(2018,03,31),
+        //  PigletCnt = 134,
+        //},
+        //new PigletGrow
+        //{
+        //  BornDate_s = new DateTime(2018,04,01),
+        //  BornDate_e = new DateTime(2018,04,30),
+        //  PigletCnt = 128,
+        //},
+        //new PigletGrow
+        //{
+        //  BornDate_s = new DateTime(2018,05,01),
+        //  BornDate_e = new DateTime(2018,05,31),
+        //  PigletCnt = 94,
+        //},
          new PigletGrow
         {
           BornDate_s = new DateTime(2019,02,01),

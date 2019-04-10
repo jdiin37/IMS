@@ -637,6 +637,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 FeedType 的當地語系化字串。
+        /// </summary>
+        public static string FeedType {
+            get {
+                return ResourceManager.GetString("FeedType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 FeedUnit 的當地語系化字串。
         /// </summary>
         public static string FeedUnit {
@@ -678,6 +687,24 @@ namespace IMS.Resources {
         public static string Home {
             get {
                 return ResourceManager.GetString("Home", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 InventoryPigCount 的當地語系化字串。
+        /// </summary>
+        public static string InventoryPigCount {
+            get {
+                return ResourceManager.GetString("InventoryPigCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 InventoryWeight 的當地語系化字串。
+        /// </summary>
+        public static string InventoryWeight {
+            get {
+                return ResourceManager.GetString("InventoryWeight", resourceCulture);
             }
         }
         
@@ -1375,6 +1402,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 WorkPlace 的當地語系化字串。
+        /// </summary>
+        public static string WorkPlace {
+            get {
+                return ResourceManager.GetString("WorkPlace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 WorkProcess 的當地語系化字串。
         /// </summary>
         public static string WorkProcess {
@@ -1389,6 +1425,15 @@ namespace IMS.Resources {
         public static string WorkType {
             get {
                 return ResourceManager.GetString("WorkType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 WorkUser 的當地語系化字串。
+        /// </summary>
+        public static string WorkUser {
+            get {
+                return ResourceManager.GetString("WorkUser", resourceCulture);
             }
         }
     }

@@ -25,6 +25,7 @@ namespace IMS.Models
 
     [Display(Name = "WorkType", ResourceType = typeof(Resources.Resource))]
     [StringLength(20)]
+    [Required]
     public string WorkType { get; set; }
 
     [Display(Name = "WorkContent", ResourceType = typeof(Resources.Resource))]
@@ -32,6 +33,10 @@ namespace IMS.Models
     [Required]
     public string WorkContent { get; set; }
 
+
+    [Display(Name = "WorkPlace", ResourceType = typeof(Resources.Resource))]
+    [StringLength(40)]
+    public string WorkPlace { get; set; }
 
 
     [Display(Name = "WorkMemo", ResourceType = typeof(Resources.Resource))]
@@ -53,11 +58,23 @@ namespace IMS.Models
     [Display(Name = "FeedValue", ResourceType = typeof(Resources.Resource))]
     public double? FeedValue { get; set; }
 
+    [Display(Name = "FeedType", ResourceType = typeof(Resources.Resource))]
+    [StringLength(40)]
+    public string FeedType { get; set; }
+
     [Display(Name = "FeedUnit", ResourceType = typeof(Resources.Resource))]
     public string FeedUnit { get; set; }
 
 
-    [DisplayName("新增人員")]
+    [Display(Name = "InventoryPigCount", ResourceType = typeof(Resources.Resource))]
+    public int? InventoryPigCount { get; set; }
+
+    [Display(Name = "InventoryWeight", ResourceType = typeof(Resources.Resource))]
+    public double? InventoryWeight { get; set; }
+
+
+    [Display(Name = "WorkUser", ResourceType = typeof(Resources.Resource))]
+    [Required]
     public string WorkUser { get; set; }
 
     [StringLength(2)]

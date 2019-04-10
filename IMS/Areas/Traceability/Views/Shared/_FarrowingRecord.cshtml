@@ -67,7 +67,13 @@
               @*<button type="button" class="btn btn-danger"  onclick = "return confirm('確定要刪除嗎??')">
                     <li class="fa fa-remove"></li>
                 </button>*@
-              <a href="@Url.Action("DeleteRecord", new { farrowingRecordGid = item.GID, pigGid = ViewBag.PigGid })" class=" btn-link " onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
+                <button type="button" class="btn-link btnEdit btn" id="btnEdit" style="padding:0 4px 0 4px;" onclick="editMod(this)">
+                  <li class="fa fa-pencil-square-o"></li>
+                </button>
+                <button type="button" class="btn-link btnSave btn" id="btnSave" style="padding:0 4px 0 4px;" onclick="noteditMod(this)">
+                  <li class="fa fa-floppy-o"></li>
+                </button>
+              <a href="@Url.Action("DeleteRecord", new { farrowingRecordGid = item.GID, pigGid = ViewBag.PigGid })" class=" btn-link " style="padding:0 4px 0 4px;" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></a>
 
               @*<button type="submit" class="btn btn-danger" onclick="return confirm('確定要刪除嗎??')"><li class="fa fa-remove"></li></button>*@
             </td>

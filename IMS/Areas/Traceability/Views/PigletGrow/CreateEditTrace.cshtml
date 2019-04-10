@@ -21,8 +21,10 @@
     }
 
   </small>
-
-  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default pull-right" })
+  <div class="pull-right">
+    <button id="slide_TopArea" class=" btn btn-default btn-circle">收合</button>
+    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
+  </div>
 </h2>
 
 
@@ -38,8 +40,13 @@
 
         if (this.value == '飼料') {
           $('#FeedTool').show();
+          $('#InventoryTool').hide();
+        } else if (this.value == '盤點') {
+          $('#InventoryTool').show();
+          $('#FeedTool').hide();
         } else {
           $('#FeedTool').hide();
+          $('#InventoryTool').hide();
         }
       });
 
@@ -74,11 +81,23 @@
         }
         $('.panel-info').parent().hide();
       });
+
+      $('#ckb-default').change(function () {
+        if ($(this).is(":checked")) {
+          $('.panel-default').parent().show();
+          return;
+        }
+        $('.panel-default').parent().hide();
+      });
+      
     }
     
 
 
     $(function () {
+      $("#slide_TopArea").click(function () {
+        $("#div_TopArea").slideToggle("");
+      });
       init();
     });
   </script>
