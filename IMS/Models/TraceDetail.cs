@@ -11,6 +11,7 @@ namespace IMS.Models
     public int SeqNo { get; set; }
 
     [Required]
+    [MaxLength(30, ErrorMessage = "長度不得超過30"), MinLength(4, ErrorMessage = "長度不得小於4")]
     [Display(Name = "TraceNo", ResourceType = typeof(Resources.Resource))]
     public string TraceNo { get; set; }
 

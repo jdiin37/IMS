@@ -31,6 +31,7 @@
             <div class="col-sm-6 ">
               <br />
               <input type="submit" value=@IMS.Resources.Resource.Comm_Search class="btn btn-default" />
+              <button id="btn_create" class="btn btn-primary">@IMS.Resources.Resource.Comm_Add</button>
             </div>
           </div>
         }
@@ -39,6 +40,9 @@
       <table class="table table-hover table-striped table-responsive">
         <thead class="text-center">
           <tr>
+            <th>
+              <b>履歷編號</b>
+            </th>
             <th width="120px">
               <b>生產日期(起)</b>
             </th>
@@ -62,8 +66,11 @@
         <tbody>
           @foreach (var item in Model)
           {
-            string traceNo = item.BornDate_s.ToString("yyyyMMdd") + item.BornDate_e.ToString("yyyyMMdd");
+            string traceNo = item.TraceNo;
             <tr>
+              <td>
+                @Html.DisplayFor(m => item.TraceNo).ToString()
+              </td>
               <td>
                 @Html.DisplayFor(m => item.BornDate_s).ToString()
               </td>
@@ -117,21 +124,27 @@
 @section JS{
 
   <script>
-        if ($.cookie("pigFarmId")) {
-            $("#PigFramDDl").val($.cookie("pigFarmId"));
-        } else {
-            setPigFarmId($("#PigFramDDl").val());
+    if ($.cookie("pigFarmId")) {
+        $("#PigFramDDl").val($.cookie("pigFarmId"));
+    } else {
+        setPigFarmId($("#PigFramDDl").val());
 
-        }
+    }
 
 
-        $("#PigFramDDl").change(function () {
+    $("#PigFramDDl").change(function () {
 
-            setPigFarmId($(this).val());
-            var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
-            window.location = url;
+        setPigFarmId($(this).val());
+        var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
+        window.location = url;
 
-        });
+    });
+
+    $("#btn_create").click(function (e) {
+      
+      showCreateTraceMaster();
+      e.preventDefault();
+    });
 
 
   </script>

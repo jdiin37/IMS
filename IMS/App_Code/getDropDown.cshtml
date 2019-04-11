@@ -1,8 +1,8 @@
 ﻿@helper getEnumDropdown(string name, Type enumType, Enum value, bool HasEmpty = false, string elementStr = null)
 {
-          /**/
+  /**/
 
-          /**/
+  /**/
   <select name="@name" id="@name" @(elementStr == null ? "" : elementStr)>
     @{
       if (HasEmpty)
@@ -31,224 +31,244 @@
 //權限等級下拉
 @helper getAccountLevel(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.AccountLevel> list = IMSdb.AccountLevel.Where(m => m.Status == "Y").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.Level" @(item.Level == val ? "selected" : "")>@item.LevelName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.AccountLevel> list = IMSdb.AccountLevel.Where(m => m.Status == "Y").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.Level" @(item.Level == val ? "selected" : "")>@item.LevelName</option>
+      }
+    }
+  </select>
 }
 
 
 //code類別
 @helper getCategory(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.Category> list = IMSdb.Category.ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.CategoryID" @(item.CategoryID.ToString() == val ? "selected" : "")>@item.CategoryName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.Category> list = IMSdb.Category.ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.CategoryID" @(item.CategoryID.ToString() == val ? "selected" : "")>@item.CategoryName</option>
+      }
+    }
+  </select>
 }
 
 
 //豬場下拉
 @helper getPigFarm(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.PigFarm> list = IMSdb.PigFarm.Where(m => m.Status == "Y").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.Id" @(item.Id.ToString() == val ? "selected" : "")>@item.Name</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.PigFarm> list = IMSdb.PigFarm.Where(m => m.Status == "Y").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.Id" @(item.Id.ToString() == val ? "selected" : "")>@item.Name</option>
+      }
+    }
+  </select>
 }
 
 //使用區分都市
 @helper getUseIsCity(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A01").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A01").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 //使用區分非都市
 @helper getUseNonCity(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A02").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A02").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 //非都市土地用地類別
 @helper getNonCityType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A03").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A03").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 
 //使用區分都市
 @helper getLandProperty(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A04").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "A04").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 
 //經營型態
 @helper getRunType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "B01").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "B01").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 
 //生產流程種類
 @helper getProduceType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "T01").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "T01").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 //加工流程種類
 @helper getProcessType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "T02").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "T02").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }
 
 //作業地點
 @helper getWorkPlace(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
-          /**/
+  /**/
 
-          string requriedStr = "", multiple = "";
-          requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
-          multiple = hasMultiple ? "multiple" : "";
-          <select name="@name" id="@name" @requriedStr @multiple class="form-control">
-            @{
-              IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-              List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "P01").ToList();
-              foreach (var item in list)
-              {
-                <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
-              }
-            }
-          </select>
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "P01").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
+}
+
+//豬隻品種
+@helper getPigType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
+{
+  /**/
+
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  <select name="@name" id="@name" @requriedStr @multiple class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "PT").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
 }

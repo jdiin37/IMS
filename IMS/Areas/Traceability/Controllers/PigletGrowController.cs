@@ -52,6 +52,8 @@ namespace IMS.Areas.Traceability.Controllers
           BornDate_s = new DateTime(2018,01,01),
           BornDate_e = new DateTime(2018,01,31),
           PigletCnt = 120,
+          PigType = "L",
+          SeqNo = 1,
         },
         //new PigletGrow
         //{
@@ -82,6 +84,16 @@ namespace IMS.Areas.Traceability.Controllers
           BornDate_s = new DateTime(2019,02,01),
           BornDate_e = new DateTime(2019,02,28),
           PigletCnt = 113,
+          PigType = "D",
+          SeqNo = 2,
+        },
+          new PigletGrow
+        {
+          BornDate_s = new DateTime(2019,03,01),
+          BornDate_e = new DateTime(2019,03,07),
+          PigletCnt = 81,
+          PigType = "L",
+          SeqNo = 3,
         },
       };
       
@@ -115,9 +127,10 @@ namespace IMS.Areas.Traceability.Controllers
           WorkContent = "出生",
           CreDate = DateTime.Now,
           CreUser = User.ID,
+          WorkUser = User.ID,
           Status = "Y",
-          WorkDate = new DateTime(int.Parse(traceNo.Substring(0, 4)), int.Parse(traceNo.Substring(4, 2)), int.Parse(traceNo.Substring(6, 2))),
-          WorkDate_end = new DateTime(int.Parse(traceNo.Substring(8, 4)), int.Parse(traceNo.Substring(12, 2)), int.Parse(traceNo.Substring(14, 2))),
+          WorkDate = new DateTime(int.Parse(traceNo.Substring(1, 4)), int.Parse(traceNo.Substring(5, 2)), int.Parse(traceNo.Substring(7, 2))),
+          WorkDate_end = new DateTime(int.Parse(traceNo.Substring(9, 4)), int.Parse(traceNo.Substring(13, 2)), int.Parse(traceNo.Substring(15, 2))),
         };
 
         AddTempTraceMaster(traceMaster);

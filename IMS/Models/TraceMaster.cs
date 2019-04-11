@@ -12,7 +12,7 @@ namespace IMS.Models
 
         [Required]
         [Index(IsUnique = true)]
-        [MaxLength(20, ErrorMessage = "長度不得超過20"),MinLength(4, ErrorMessage = "長度不得小於4")]
+        [MaxLength(30, ErrorMessage = "長度不得超過30"),MinLength(4, ErrorMessage = "長度不得小於4")]
         [Display(Name = "TraceNo", ResourceType = typeof(Resources.Resource))]
         public string TraceNo { get; set; }
         

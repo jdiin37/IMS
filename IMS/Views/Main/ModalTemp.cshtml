@@ -1,66 +1,107 @@
 ﻿ <!-- confirm Modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_confirm">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Modal title</h4>
-            </div>
-            <div class="modal-body">
-                <p><span id="confirmMsg">One fine body&hellip;</span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary">確認</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <p><span id="confirmMsg">One fine body&hellip;</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">確認</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- delete Modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_delete">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <p><span id="deleteMsg">One fine body&hellip;</span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">刪除</button>
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <p><span id="deleteMsg">One fine body&hellip;</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger">刪除</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 <!-- intro Modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="modal_intro">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">系統訊息</h4>
-            </div>
-            <div class="modal-body">
-                <p><span id="introMsg">系統訊息&hellip;</span></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal-dialog -->
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">系統訊息</h4>
+      </div>
+      <div class="modal-body">
+        <p><span id="introMsg">系統訊息&hellip;</span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal_createTraceMaster">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">新增批次成長履歷</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label for="pigType">豬隻品種:</label>
+          @getDropDown.getPigType("pigType","")
+        </div>
+        <div class="form-group">
+          <label for="pigType">出生日期 (起):</label>
+          
+          <input type="date" class="form-control" id="sdate" name="sdate" placeholder="起" value="">
+          
+        </div>
+        <div class="form-group">
+          <label>出生日期 (訖):</label>
+          
+          <input type="date" class="form-control" id="edate" name="edate" placeholder="起" value="">
+          
+        </div>
+        <hr />
+        <label for="pigType">仔豬數量:72</label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info">新增</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
 
+
 <script>
-        function showConfirm(Msg) {
-            $('#confirmMsg').text(Msg);
-            $('#modal_confirm').modal('show');
-        }
-        function showDelete(Msg) {
-            $('#deleteMsg').text(Msg);
-            $('#modal_delete').modal('show');
-        }
-        function showIntro(Msg) {
-            $('#introMsg').text(Msg);
-            $('#modal_intro').modal('show');
-        }
+  function showConfirm(Msg) {
+    $('#confirmMsg').text(Msg);
+    $('#modal_confirm').modal('show');
+  }
+  function showDelete(Msg) {
+    $('#deleteMsg').text(Msg);
+    $('#modal_delete').modal('show');
+  }
+  function showIntro(Msg) {
+    $('#introMsg').text(Msg);
+    $('#modal_intro').modal('show');
+  }
+  function showCreateTraceMaster() {
+    
+    $('#modal_createTraceMaster').modal('show');
+  }
+
 </script>

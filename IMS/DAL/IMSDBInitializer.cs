@@ -48,7 +48,7 @@ namespace IMS.DAL
             {
                 new PigFarm
                 {
-                    Name="A養豬場",
+                    Name="測試養豬場",
                     CreDate=DateTime.Now,
                     Status="Y"
                 }
@@ -64,7 +64,14 @@ namespace IMS.DAL
                     CurrentValue = 0,
                     IncrementValue = 1,
                     ModDate=DateTime.Now,
-                }
+                },
+                new SeqNo
+                {
+                    Name="TraceNoSeqNo",
+                    CurrentValue = 0,
+                    IncrementValue = 1,
+                    ModDate=DateTime.Now,
+                },
             };
             seqNos.ForEach(s => context.SeqNo.Add(s));
             context.SaveChanges();
