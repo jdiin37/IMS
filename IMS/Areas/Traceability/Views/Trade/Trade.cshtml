@@ -1,0 +1,158 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<IMS.Models.TraceMaster>
+
+
+@{
+  ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+}
+
+<br />
+
+<h2>
+  出售
+</h2>
+<hr>
+
+<div class="row">
+  <div class="col-sm-9">
+    <div class="panel panel-info">
+      <!-- Default panel contents -->
+      <div class="panel-heading">待出售履歷</div>
+
+      <!-- Table -->
+      <table class="table table-hover table-striped table-responsive">
+        <thead class="text-center">
+          <tr>
+            <th>
+              <label><input type="checkbox" value=""></label>
+            </th>
+            <th>
+              <b>生產履歷編號</b>
+            </th>
+            <th>
+              <b>建立日期</b>
+            </th>
+            <th>
+              <b>建立人員</b>
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>
+                <label><input type="checkbox" value="" class="ckb_addItem" id="@item.TraceNo"></label>
+                @*@if (Html.DisplayFor(m => item.Status).ToString() == "T")
+                  {
+                    <span class="label label-warning">暫存</span>
+                  }
+                  else
+                  {
+                    <span class="label label-success">完成</span>
+                  }*@
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.TraceNo)
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.CreDate)
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.CreUser)
+              </td>
+
+              <td>
+                @Html.ActionLink(IMS.Resources.Resource.Comm_View, "CreateEdit", new { traceNo = item.TraceNo }, new { Class = "btn btn-success" })
+                @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
+                @*@Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })*@
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      @if (Model.Count() < 1)
+      {
+        <div class="well well-sm" style="width:100%">
+          <p class="text-center text-warning">查無資料</p>
+        </div>
+      }
+
+
+      <br />
+      <div class="text-center">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Trade",
+            new { page,traceNo = ViewBag.traceNo, sdate = ViewBag.sdate, edate = ViewBag.edate, status = ViewBag.status }))
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="thumbnail text-center">
+      <h4><b>出售清單</b></h4>
+      <ul id="sellList" class="list-group">
+
+      </ul>
+
+      <hr />
+
+      <button class="btn btn-info" id="btn-sell">確定出售</button>
+
+      <br />
+      <br />
+    </div>
+  </div>
+</div>
+
+
+
+@section JS{
+  <script>
+    function addItem(traceNo) {
+
+      var li = $('<li class="list-group-item">').append('<a href=#>' + traceNo + '</a>');
+
+
+      $('#sellList').append(li);
+    }
+
+    function removeItem(traceNo) {
+      
+      var liList = $('#sellList').find('li');
+
+      liList.each(function (index) {
+        console.log(index + ": " + $(this).text());
+
+        if ($(this).text() == traceNo) {
+          $(this).remove();
+        }
+
+      });
+
+
+    }
+
+    $(function () {
+      $(".ckb_addItem").click(function () {
+        
+        var traceNo = $(this).attr('id');
+        if ($(this).is(':checked')) {
+          addItem(traceNo);
+        } else {
+          removeItem(traceNo);
+        }
+          
+        console.log(traceNo);
+        //alert($(this));
+      });
+    });   
+        //getWorkList();
+  </script>
+
+
+
+}

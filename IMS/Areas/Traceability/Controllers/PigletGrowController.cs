@@ -55,30 +55,70 @@ namespace IMS.Areas.Traceability.Controllers
           PigType = "L",
           SeqNo = 1,
         },
-        //new PigletGrow
-        //{
-        //  BornDate_s = new DateTime(2018,02,01),
-        //  BornDate_e = new DateTime(2018,02,28),
-        //  PigletCnt = 114,
-        //},
-        //new PigletGrow
-        //{
-        //  BornDate_s = new DateTime(2018,03,01),
-        //  BornDate_e = new DateTime(2018,03,31),
-        //  PigletCnt = 134,
-        //},
-        //new PigletGrow
-        //{
-        //  BornDate_s = new DateTime(2018,04,01),
-        //  BornDate_e = new DateTime(2018,04,30),
-        //  PigletCnt = 128,
-        //},
-        //new PigletGrow
-        //{
-        //  BornDate_s = new DateTime(2018,05,01),
-        //  BornDate_e = new DateTime(2018,05,31),
-        //  PigletCnt = 94,
-        //},
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,02,01),
+          BornDate_e = new DateTime(2018,02,28),
+          PigletCnt = 114,
+          PigType = "L",
+          SeqNo = 4,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,03,01),
+          BornDate_e = new DateTime(2018,03,31),
+          PigletCnt = 134,
+          PigType = "L",
+          SeqNo = 5,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,04,01),
+          BornDate_e = new DateTime(2018,04,30),
+          PigletCnt = 128,
+          PigType = "L",
+          SeqNo = 6,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,05,01),
+          BornDate_e = new DateTime(2018,05,31),
+          PigletCnt = 94,
+          PigType = "L",
+          SeqNo = 7,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,06,01),
+          BornDate_e = new DateTime(2018,06,30),
+          PigletCnt = 94,
+          PigType = "L",
+          SeqNo = 8,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,07,01),
+          BornDate_e = new DateTime(2018,07,31),
+          PigletCnt = 94,
+          PigType = "L",
+          SeqNo = 9,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,08,01),
+          BornDate_e = new DateTime(2018,08,31),
+          PigletCnt = 94,
+          PigType = "D",
+          SeqNo = 10,
+        },
+        new PigletGrow
+        {
+          BornDate_s = new DateTime(2018,09,01),
+          BornDate_e = new DateTime(2018,09,30),
+          PigletCnt = 94,
+          PigType = "L",
+          SeqNo = 11,
+        },
          new PigletGrow
         {
           BornDate_s = new DateTime(2019,02,01),
@@ -86,6 +126,7 @@ namespace IMS.Areas.Traceability.Controllers
           PigletCnt = 113,
           PigType = "D",
           SeqNo = 2,
+
         },
           new PigletGrow
         {

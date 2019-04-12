@@ -1,0 +1,228 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<IMS.Models.TraceMaster>
+
+
+@{
+  ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+}
+
+<br />
+<form class="form-horizontal  alert alert-success">
+  <br />
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="traceNo">@IMS.Resources.Resource.TraceNo:</label>
+    <div class="col-sm-10">
+      <input type="text" class="form-control" id="traceNo" name="traceNo" placeholder="輸入查詢編號" value="@ViewBag.traceNo">
+    </div>
+  </div>
+  @*<div class="form-group">
+      <label class="control-label col-sm-2" for="sdate">@IMS.Resources.Resource.CreDate (起):</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="sdate" name="sdate" placeholder="起" value="@ViewBag.sdate">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="edate">@IMS.Resources.Resource.CreDate (訖):</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" id="edate" name="edate" placeholder="起" value="@ViewBag.edate">
+      </div>
+    </div>*@
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="status">@IMS.Resources.Resource.Status :</label>
+    <div class="col-sm-10">
+      <label class="radio-inline">
+        @*<input type="radio" name="status" id="inlineRadio1" value=""> @IMS.Resources.Resource.Comm_All*@
+        @Html.RadioButton("status", "")@IMS.Resources.Resource.Comm_All
+      </label>
+      <label class="radio-inline">
+        @Html.RadioButton("status", "T") 已售出
+      </label>
+      <label class="radio-inline">
+        @Html.RadioButton("status", "Y") 未售出
+      </label>
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <p class="text-danger">@TempData["Err"]</p>
+      <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span> 查詢</button>
+      <a href="@Url.Action("Index")" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> 清除</a>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="panel panel-info">
+      <!-- Default panel contents -->
+      <div class="panel-heading">待出售履歷</div>
+
+      <!-- Table -->
+      <table class="table table-hover table-striped table-responsive">
+        <thead class="text-center">
+          <tr>
+            <th>
+              <label><input type="checkbox" value=""></label>
+            </th>
+            <th>
+              <b>生產履歷編號</b>
+            </th>
+            <th>
+              <b>建立日期</b>
+            </th>
+            <th>
+              <b>建立人員</b>
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+            <tr>
+              <td>
+                <label><input type="checkbox" value=""></label>
+                @*@if (Html.DisplayFor(m => item.Status).ToString() == "T")
+                  {
+                    <span class="label label-warning">暫存</span>
+                  }
+                  else
+                  {
+                    <span class="label label-success">完成</span>
+                  }*@
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.TraceNo)
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.CreDate)
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.CreUser)
+              </td>
+
+              <td>
+                @Html.ActionLink(IMS.Resources.Resource.Comm_View, "CreateEdit", new { traceNo = item.TraceNo }, new { Class = "btn btn-success" })
+                @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
+                @*@Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { seqNo = item.SeqNo }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })*@
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      @if (Model.Count() < 1)
+      {
+        <div class="well well-sm" style="width:100%">
+          <p class="text-center text-warning">查無資料</p>
+        </div>
+      }
+
+
+      <br />
+      <div class="text-center">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Search",
+            new { page,traceNo = ViewBag.traceNo, sdate = ViewBag.sdate, edate = ViewBag.edate, status = ViewBag.status }))
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+@*<div class="row">
+
+      <div class="col-sm-12">
+          <br />
+          <div class="panel panel-info">
+              <div class="panel-heading">
+                  <h2 class="panel-title">
+                      現有 @IMS.Resources.Resource.WorkProcess
+                      <small>最新10筆</small>
+                      <span class="pull-right">
+                          <a href="@Url.Action("Index","WorkBasic")" class="btn btn-default">
+                              <span class="glyphicon glyphicon-cog"></span> @IMS.Resources.Resource.WorkBasicMgr
+                          </a>
+                      </span>
+                  </h2>
+                  <br />
+
+              </div>
+              <div class="panel-body">
+                  <table class="table table-responsive">
+                      <thead>
+                          <tr>
+                              <th>
+                                  <b>#</b>
+                              </th>
+                              <th>
+                                  <b>作業編號</b>
+                              </th>
+                              <th>
+                                  <b>作業種類</b>
+                              </th>
+                              <th>
+                                  <b>作業內容</b>
+                              </th>
+
+                          </tr>
+                      </thead>
+                      <tbody id="worklist">
+
+                      </tbody>
+                      <tfoot id="worklistfoot">
+
+                      </tfoot>
+                  </table>
+
+
+
+
+
+              </div>
+          </div>
+      </div>
+
+  </div>*@
+
+
+@section JS{
+  <script>
+        function getWorkList() {
+
+            url = "@Url.Action("GetWorkList")";
+            $.ajax({
+                type: "GET",
+                url: url,
+                success: function (data) {
+                    $('#worklist').empty();
+                    console.log(data);
+                    $.each(data, function (index, item) {
+                        if (index >= 10) {
+                            return false;
+                        }
+                        var tr = $('<tr>').html('<td>' + (index+1) + '</td>'
+                            + '<td>' + item.WorkCode + '</td>'
+                            + '<td>' + item.WorkType + '</td>'
+                            + '<td>' + item.WorkContent + '</td>');
+                        $('#worklist').append(tr);
+                    });
+
+
+                }, error: function () {
+                    $('#worklist').empty();
+                    var error = $('<p>').html('Not Found');
+                    $('#worklist').append(error);
+                }
+
+            });
+
+        };
+
+        //getWorkList();
+  </script>
+
+
+
+}

@@ -89,18 +89,18 @@
 
 <div class="">
     <h3 class="underline-b"><b>仔豬成長履歷</b></h3>
-    @Html.Action("_ProduceForTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo })
+    @Html.Action("_ProduceForTrace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
 <div class="">
     <h3 class="underline-b"><b>@IMS.Resources.Resource.TraceProcess</b></h3>
-    @Html.Action("_ProcessForTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo })
+    @Html.Action("_ProcessForTrace", new { traceNo = Model.traceMaster.TraceNo })
 </div>
 
 <div class="btn-group pull-right">
-    @Html.ActionLink(IMS.Resources.Resource.Comm_Temp, "TempTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-info" })
-    @Html.ActionLink(IMS.Resources.Resource.Comm_Done, "DoneTrace", "Trace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-success" })
-    @Html.ActionLink("取消", "Index","Home", new { }, new { @class = "btn btn-default" })
+    @*@Html.ActionLink(IMS.Resources.Resource.Comm_Temp, "TempTrace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-info" })
+    @Html.ActionLink(IMS.Resources.Resource.Comm_Done, "DoneTrace", new { traceNo = Model.traceMaster.TraceNo }, new { @class = "btn btn-success" })*@
+    @Html.ActionLink("取消", "Index", new { }, new { @class = "btn btn-default" })
 </div>
 
 

@@ -1285,6 +1285,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 TradePM 的當地語系化字串。
+        /// </summary>
+        public static string TradePM {
+            get {
+                return ResourceManager.GetString("TradePM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 User 的當地語系化字串。
         /// </summary>
         public static string User {
