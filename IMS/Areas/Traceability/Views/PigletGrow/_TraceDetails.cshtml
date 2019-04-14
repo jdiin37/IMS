@@ -1,12 +1,12 @@
 ﻿@model IEnumerable<IMS.Models.TraceDetail>
-
+@using IMS.Comm
 @{
   string thisTraceNo = ViewBag.TraceNo;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
   DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
   bool isOut = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Any();
 
-  double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
+  double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Sum(m => m.FeedValue);
   double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
   int? pigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault();
   DateTime lastInvenDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();

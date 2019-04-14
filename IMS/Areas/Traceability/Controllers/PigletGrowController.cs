@@ -38,7 +38,7 @@ namespace IMS.Areas.Traceability.Controllers
         }
 
       }
-      var list = getPigletGrows();
+      var list = getPigletGrows().OrderByDescending(m=>m.BornDate_s);
 
       int pageNumber = (page ?? 1);
       return View(list.ToPagedList(pageNumber, Config.PageSize));
@@ -141,8 +141,7 @@ namespace IMS.Areas.Traceability.Controllers
       return list.ToList();
 
     }
-
-    //重做一個 成長履歷 不要用之前的
+    
     public ActionResult CreateEditTrace(string traceNo)
     {
       ViewBag.TraceNo = traceNo;
@@ -164,6 +163,7 @@ namespace IMS.Areas.Traceability.Controllers
         TraceDetail traceDetail = new TraceDetail()
         {
           TraceNo = traceNo,
+          WorkStage = (int)IMSEnum.WorkStage.Stage1,
           WorkType = "出生",
           WorkContent = "出生",
           CreDate = DateTime.Now,
@@ -189,14 +189,14 @@ namespace IMS.Areas.Traceability.Controllers
     public PartialViewResult _TraceDetails(string traceNo)
     {
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
-                     orderby c.WorkDate 
+      var traceDetails = from c in IMSdb.TraceDetail
+                         where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
+                         orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView(produces.ToList());
+      return PartialView(traceDetails.ToList());
     }
 
     [HttpPost]
@@ -204,6 +204,8 @@ namespace IMS.Areas.Traceability.Controllers
     {
       if (ModelState.IsValid)
       {
+        traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage1;
+
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
         traceDetail.Status = "Y";
@@ -223,14 +225,14 @@ namespace IMS.Areas.Traceability.Controllers
         return JavaScript("showIntro('" + message + "')");
       }
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo 
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
                      orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView("_TraceDetails", produces.ToList());
+      return PartialView("_TraceDetails", traceDetails.ToList());
     }
 
     public PartialViewResult _CreateTraceDetail(string traceNo)
@@ -247,14 +249,14 @@ namespace IMS.Areas.Traceability.Controllers
     public PartialViewResult _TraceDetailsStage2(string traceNo)
     {
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView(produces.ToList());
+      return PartialView(traceDetails.ToList());
     }
 
     [HttpPost]
@@ -262,6 +264,7 @@ namespace IMS.Areas.Traceability.Controllers
     {
       if (ModelState.IsValid)
       {
+        traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage2;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
         traceDetail.Status = "Y";
@@ -281,14 +284,14 @@ namespace IMS.Areas.Traceability.Controllers
         return JavaScript("showIntro('" + message + "')");
       }
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView("_TraceDetailsStage2", produces.ToList());
+      return PartialView("_TraceDetailsStage2", traceDetails.ToList());
     }
 
     public PartialViewResult _CreateTraceDetailStage2(string traceNo)
@@ -304,14 +307,14 @@ namespace IMS.Areas.Traceability.Controllers
     public PartialViewResult _TraceDetailsStage3(string traceNo)
     {
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView(produces.ToList());
+      return PartialView(traceDetails.ToList());
     }
 
     [HttpPost]
@@ -319,6 +322,7 @@ namespace IMS.Areas.Traceability.Controllers
     {
       if (ModelState.IsValid)
       {
+        traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage3;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
         traceDetail.Status = "Y";
@@ -338,14 +342,14 @@ namespace IMS.Areas.Traceability.Controllers
         return JavaScript("showIntro('" + message + "')");
       }
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView("_TraceDetailsStage3", produces.ToList());
+      return PartialView("_TraceDetailsStage3", traceDetails.ToList());
     }
 
     public PartialViewResult _CreateTraceDetailStage3(string traceNo)
@@ -362,14 +366,14 @@ namespace IMS.Areas.Traceability.Controllers
     public PartialViewResult _TraceDetailsStageLast(string traceNo)
     {
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView(produces.ToList());
+      return PartialView(traceDetails.ToList());
     }
 
     [HttpPost]
@@ -377,6 +381,7 @@ namespace IMS.Areas.Traceability.Controllers
     {
       if (ModelState.IsValid)
       {
+        traceDetail.WorkStage = (int)IMSEnum.WorkStage.StageLast;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
         traceDetail.Status = "Y";
@@ -396,14 +401,14 @@ namespace IMS.Areas.Traceability.Controllers
         return JavaScript("showIntro('" + message + "')");
       }
 
-      var produces = from c in IMSdb.TraceDetail
-                     where c.TraceNo == traceNo
+      var traceDetails = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
                      orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
-      return PartialView("_TraceDetailsStageLast", produces.ToList());
+      return PartialView("_TraceDetailsStageLast", traceDetails.ToList());
     }
 
 

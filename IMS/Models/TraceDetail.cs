@@ -23,6 +23,9 @@ namespace IMS.Models
     [StringLength(20)]
     public string WorkClass { get; set; }
 
+    [Display(Name = "WorkStage", ResourceType = typeof(Resources.Resource))]   
+    public int WorkStage { get; set; }
+
 
     [Display(Name = "WorkType", ResourceType = typeof(Resources.Resource))]
     [StringLength(20)]

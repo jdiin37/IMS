@@ -1465,6 +1465,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 WorkStage 的當地語系化字串。
+        /// </summary>
+        public static string WorkStage {
+            get {
+                return ResourceManager.GetString("WorkStage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 WorkType 的當地語系化字串。
         /// </summary>
         public static string WorkType {

@@ -385,6 +385,7 @@
     <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
     <Compile Include="Areas\Traceability\TraceabilityAreaRegistration.cs" />
     <Compile Include="Comm\Config.cs" />
+    <Compile Include="Comm\IMSEnum.cs" />
     <Compile Include="Comm\SlackClient.cs" />
     <Compile Include="Controllers\AuthFilter.cs" />
     <Compile Include="Controllers\BaseController.cs" />
