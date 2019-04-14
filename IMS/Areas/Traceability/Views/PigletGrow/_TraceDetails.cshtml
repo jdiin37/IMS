@@ -15,6 +15,10 @@
 
   var daysAge = (DateTime.Today - bornDate).TotalDays;
 
+
+ 
+
+
 }
 
 @using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post", OnSuccess = "init();" }))
@@ -108,31 +112,31 @@
         <label class="checkbox-inline bg-default myCheckBox">
           <input type="checkbox" value="" id="ckb-default" checked>盤點
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-warning myCheckBox">
           <input type="checkbox" value="" id="ckb-warning" checked>飼料
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-success myCheckBox">
           <input type="checkbox" value="" id="ckb-success" checked>投藥
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "投藥").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "投藥" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-danger myCheckBox">
           <input type="checkbox" value="" id="ckb-danger" checked>疫苗
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "疫苗").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "疫苗" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-info myCheckBox">
           <input type="checkbox" value="" id="ckb-info" checked>其他
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "其他").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "其他" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Count()
           </span>
         </label>
       </div>
