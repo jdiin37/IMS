@@ -22,14 +22,32 @@
 
   </small>
   <div class="pull-right">
-    <button id="slide_TopArea" class=" btn btn-default btn-circle">收合</button>
+    @*<button id="slide_TopArea" class=" btn btn-default btn-circle">收合</button>*@
     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
   </div>
 </h2>
 
+<ul class="nav nav-tabs" role="tablist">
+  <li role="presentation" class="active"><a href="#stage1" aria-controls="stage1" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage1</a></li>
+  <li role="presentation"><a href="#stage2" aria-controls="stage2" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage2</a></li>
+  <li role="presentation"><a href="#stage3" aria-controls="stage3" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage3</a></li>
+  <li role="presentation"><a href="#stageLast" aria-controls="stageLast" role="tab" data-toggle="tab">@IMS.Resources.Resource.StageLast</a></li>
+</ul>
+<div class="tab-content">
 
-@Html.Action("_TraceDetails", new { traceNo = Model.TraceNo })
-
+  <div role="tabpanel" class="tab-pane active" id="stage1">
+    @Html.Action("_TraceDetails", new { traceNo = Model.TraceNo })
+  </div>
+  <div role="tabpanel" class="tab-pane" id="stage2">
+    @Html.Action("_TraceDetailsStage2", new { traceNo = Model.TraceNo })
+  </div>
+  <div role="tabpanel" class="tab-pane" id="stage3">
+    @Html.Action("_TraceDetailsStage3", new { traceNo = Model.TraceNo })
+  </div>
+  <div role="tabpanel" class="tab-pane" id="stageLast">
+    @Html.Action("_TraceDetailsStageLast", new { traceNo = Model.TraceNo })
+  </div>
+</div>
 
 
 
@@ -89,9 +107,9 @@
         }
         $('.panel-default').parent().hide();
       });
-      
+
     }
-    
+
 
 
     $(function () {

@@ -576,6 +576,18 @@
   <data name="WorkUser" xml:space="preserve">
     <value>WorkUser</value>
   </data>
+  <data name="Stage1" xml:space="preserve">
+    <value>Stage1</value>
+  </data>
+  <data name="Stage2" xml:space="preserve">
+    <value>Stage2</value>
+  </data>
+  <data name="Stage3" xml:space="preserve">
+    <value>Stage3</value>
+  </data>
+  <data name="StageLast" xml:space="preserve">
+    <value>StageLast</value>
+  </data>
   <data name="TradePM" xml:space="preserve">
     <value>TradePM</value>
   </data>

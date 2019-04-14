@@ -576,6 +576,18 @@
   <data name="WorkUser" xml:space="preserve">
     <value>作業人員</value>
   </data>
+  <data name="Stage1" xml:space="preserve">
+    <value>仔豬期</value>
+  </data>
+  <data name="Stage2" xml:space="preserve">
+    <value>保育期</value>
+  </data>
+  <data name="Stage3" xml:space="preserve">
+    <value>生長肥育期</value>
+  </data>
+  <data name="StageLast" xml:space="preserve">
+    <value>出售</value>
+  </data>
   <data name="TradePM" xml:space="preserve">
     <value>交易管理系統</value>
   </data>

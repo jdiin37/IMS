@@ -236,6 +236,15 @@ textarea {
   background-color: #ddd;
 }
 
+.tab-pane {
+  border-bottom: 1px solid #ddd;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-radius: 0px 0px 4px 4px;
+  padding: 8px;
+}
+
+
 @keyframes spin {
   0% {
         transform: rotate(0deg);

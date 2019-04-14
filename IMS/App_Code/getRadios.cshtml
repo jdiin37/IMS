@@ -47,3 +47,67 @@
   }
 
 }
+
+@helper getWS1(string name, string val = null, string itemType = null, string elementStr = null)
+{
+
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "WS1").ToList();
+
+  foreach (var item in list)
+  {
+    <label class="radio-inline">
+      <input type="radio" name="@name" id="@name" value="@item.SubName" @(item.SubName == val ? "checked = true" : "") @(elementStr == null ? "" : elementStr)>
+      <span>@item.SubName</span>
+    </label>
+  }
+
+}
+
+@helper getWS2(string name, string val = null, string itemType = null, string elementStr = null)
+{
+
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "WS2").ToList();
+
+  foreach (var item in list)
+  {
+    <label class="radio-inline">
+      <input type="radio" name="@name" id="@name" value="@item.SubName" @(item.SubName == val ? "checked = true" : "") @(elementStr == null ? "" : elementStr)>
+      <span>@item.SubName</span>
+    </label>
+  }
+
+}
+
+@helper getWS3(string name, string val = null, string itemType = null, string elementStr = null)
+{
+
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "WS3").ToList();
+
+  foreach (var item in list)
+  {
+    <label class="radio-inline">
+      <input type="radio" name="@name" id="@name" value="@item.SubName" @(item.SubName == val ? "checked = true" : "") @(elementStr == null ? "" : elementStr)>
+      <span>@item.SubName</span>
+    </label>
+  }
+
+}
+
+@helper getWSLast(string name, string val = null, string itemType = null, string elementStr = null)
+{
+
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "WSLast").ToList();
+
+  foreach (var item in list)
+  {
+    <label class="radio-inline">
+      <input type="radio" name="@name" id="@name" value="@item.SubName" @(item.SubName == val ? "checked = true" : "") @(elementStr == null ? "" : elementStr)>
+      <span>@item.SubName</span>
+    </label>
+  }
+
+}

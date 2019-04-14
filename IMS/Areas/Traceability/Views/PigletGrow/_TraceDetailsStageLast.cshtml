@@ -1,4 +1,5 @@
-﻿@model IEnumerable<IMS.Models.TraceDetail>
+﻿
+@model IEnumerable<IMS.Models.TraceDetail>
 
 @{
   string thisTraceNo = ViewBag.TraceNo;
@@ -13,45 +14,58 @@
   var lastInvenAge = (lastInvenDate - bornDate).TotalDays;
   double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
 
-  var daysAge = (DateTime.Today - bornDate).TotalDays;
-
 }
 
-@using (Ajax.BeginForm("_TraceDetails", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetail-tool", HttpMethod = "Post", OnSuccess = "init();" }))
+@using (Ajax.BeginForm("_TraceDetailsStageLast", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStageLast-tool", HttpMethod = "Post", OnSuccess = "init();" }))
 {
-  <div id="traceDetail-tool">
+  <div id="traceDetailStage3-tool">
 
     <div class="row" id="div_TopArea">
 
       <div class="col-md-8">
         <h4><b>新增作業</b></h4>
-        @Html.Action("_CreateTraceDetail", new { traceNo = ViewBag.TraceNo })
+        @Html.Action("_CreateTraceDetailStageLast", new { traceNo = ViewBag.TraceNo })
 
       </div>
       <div class="col-md-4">
-        <h4><b>@IMS.Resources.Resource.Stage1 詳細資料</b></h4>
+        <h4><b>@IMS.Resources.Resource.StageLast 詳細資料</b></h4>
 
         @{
-          
-          <h5>
-            目前日齡:
-            @{
-              
-              <span>@daysAge 天</span>
+          if (isOut)
+          {
+            <h5>
+              出貨日齡:
+              @{
+                DateTime outDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Select(m => m.WorkDate).FirstOrDefault();
+                var outdaysAge = (outDate - bornDate).TotalDays;
 
-            }
-          </h5>
-          <h5>
-            離乳日齡:
-            @{
-              
-              <span>@daysAge 天</span>
-            }
-          </h5>
+                <span>@outdaysAge 天</span>
+              }
+
+            </h5>
+            <h5>
+              出貨平均重量(kg):@avgWeight
+            </h5>
+
+
+          }
+          else
+          {
+            <h5>
+              目前日齡:
+              @{
+
+                var daysAge = (DateTime.Today - bornDate).TotalDays;
+
+                <span>@daysAge 天</span>
+
+              }
+            </h5>
+          }
         }
 
         <h5>
-          距離上次秤重天數:
+          最新盤點日齡:
           @if (lastInvenAge < 0)
           {
             <span class="text-danger">未盤點</span>
@@ -62,7 +76,7 @@
           }
         </h5>
         <h5>
-          離乳頭數:
+          最新盤點豬隻數量:
           @if (pigCnt == null)
           {
             <span class="text-danger">未盤點</span>
@@ -73,7 +87,7 @@
           }
         </h5>
         <h5>
-          離乳總重量(kg):
+          最新盤點總重量(kg):
           @if (sumWeight == null)
           {
             <span class="text-danger">未盤點</span>
@@ -84,7 +98,7 @@
           }
         </h5>
         <h5>
-          @IMS.Resources.Resource.Stage1 總飼料量:
+          總飼料量:
           @if (feedSum == null)
           {
             <span class="text-danger">無資料</span>
@@ -95,7 +109,19 @@
           }
         </h5>
 
-        
+        <h5>
+          飼料換肉率:
+          @if (feedSum == null || pigCnt == null)
+          {
+            <span class="text-danger">請先進行盤點及飼料作業</span>
+          }
+          else
+          {
+            var feedToMeat = (sumWeight / feedSum);
+
+            <span class="text-info">@Convert.ToDouble(feedToMeat).ToString("0.00") kg</span>
+          }
+        </h5>
       </div>
     </div>
 

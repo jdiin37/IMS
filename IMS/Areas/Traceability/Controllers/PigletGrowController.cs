@@ -184,6 +184,7 @@ namespace IMS.Areas.Traceability.Controllers
 
     }
 
+    #region Stage1
     [ChildActionOnly]//無法在瀏覽器上用URL存取此action
     public PartialViewResult _TraceDetails(string traceNo)
     {
@@ -232,13 +233,190 @@ namespace IMS.Areas.Traceability.Controllers
       return PartialView("_TraceDetails", produces.ToList());
     }
 
-
     public PartialViewResult _CreateTraceDetail(string traceNo)
     {
 
       ViewBag.TraceNo = traceNo;
       return PartialView("_CreateTraceDetail");
     }
+
+    #endregion
+
+    #region Stage2
+    [ChildActionOnly]//無法在瀏覽器上用URL存取此action
+    public PartialViewResult _TraceDetailsStage2(string traceNo)
+    {
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView(produces.ToList());
+    }
+
+    [HttpPost]
+    public ActionResult _TraceDetailsStage2(TraceDetail traceDetail, string traceNo)
+    {
+      if (ModelState.IsValid)
+      {
+        traceDetail.CreDate = DateTime.Now;
+        traceDetail.CreUser = User.ID;
+        traceDetail.Status = "Y";
+        IMSdb.TraceDetail.Add(traceDetail);
+        IMSdb.SaveChanges();
+      }
+      else
+      {
+
+        var message = string.Join("", ModelState.Values
+        .SelectMany(v => v.Errors)
+        .Select(e => e.ErrorMessage));
+
+
+        //TempData["Err"] = message;
+
+        return JavaScript("showIntro('" + message + "')");
+      }
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView("_TraceDetailsStage2", produces.ToList());
+    }
+
+    public PartialViewResult _CreateTraceDetailStage2(string traceNo)
+    {
+
+      ViewBag.TraceNo = traceNo;
+      return PartialView("_CreateTraceDetailStage2");
+    }
+    #endregion
+
+    #region Stage3
+    [ChildActionOnly]//無法在瀏覽器上用URL存取此action
+    public PartialViewResult _TraceDetailsStage3(string traceNo)
+    {
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView(produces.ToList());
+    }
+
+    [HttpPost]
+    public ActionResult _TraceDetailsStage3(TraceDetail traceDetail, string traceNo)
+    {
+      if (ModelState.IsValid)
+      {
+        traceDetail.CreDate = DateTime.Now;
+        traceDetail.CreUser = User.ID;
+        traceDetail.Status = "Y";
+        IMSdb.TraceDetail.Add(traceDetail);
+        IMSdb.SaveChanges();
+      }
+      else
+      {
+
+        var message = string.Join("", ModelState.Values
+        .SelectMany(v => v.Errors)
+        .Select(e => e.ErrorMessage));
+
+
+        //TempData["Err"] = message;
+
+        return JavaScript("showIntro('" + message + "')");
+      }
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView("_TraceDetailsStage3", produces.ToList());
+    }
+
+    public PartialViewResult _CreateTraceDetailStage3(string traceNo)
+    {
+
+      ViewBag.TraceNo = traceNo;
+      return PartialView("_CreateTraceDetailStage3");
+    }
+
+    #endregion
+
+    #region StageLast
+    [ChildActionOnly]//無法在瀏覽器上用URL存取此action
+    public PartialViewResult _TraceDetailsStageLast(string traceNo)
+    {
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView(produces.ToList());
+    }
+
+    [HttpPost]
+    public ActionResult _TraceDetailsStageLast(TraceDetail traceDetail, string traceNo)
+    {
+      if (ModelState.IsValid)
+      {
+        traceDetail.CreDate = DateTime.Now;
+        traceDetail.CreUser = User.ID;
+        traceDetail.Status = "Y";
+        IMSdb.TraceDetail.Add(traceDetail);
+        IMSdb.SaveChanges();
+      }
+      else
+      {
+
+        var message = string.Join("", ModelState.Values
+        .SelectMany(v => v.Errors)
+        .Select(e => e.ErrorMessage));
+
+
+        //TempData["Err"] = message;
+
+        return JavaScript("showIntro('" + message + "')");
+      }
+
+      var produces = from c in IMSdb.TraceDetail
+                     where c.TraceNo == traceNo
+                     orderby c.WorkDate
+                     select c;
+
+      ViewBag.TraceNo = traceNo;
+
+      return PartialView("_TraceDetailsStageLast", produces.ToList());
+    }
+
+
+    public PartialViewResult _CreateTraceDetailStageLast(string traceNo)
+    {
+
+      ViewBag.TraceNo = traceNo;
+      return PartialView("_CreateTraceDetailStageLast");
+    }
+
+
+    #endregion
+
 
     public ActionResult DeleteTraceDetail(int seqNo)
     {
@@ -250,6 +428,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       return RedirectToAction("CreateEditTrace", new { traceNo = traceDetail.TraceNo });
     }
+    
 
     #region Method
     public TraceMaster AddTempTraceMaster(TraceMaster traceMaster)

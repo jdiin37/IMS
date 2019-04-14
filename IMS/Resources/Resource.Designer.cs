@@ -1159,6 +1159,42 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 Stage1 的當地語系化字串。
+        /// </summary>
+        public static string Stage1 {
+            get {
+                return ResourceManager.GetString("Stage1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Stage2 的當地語系化字串。
+        /// </summary>
+        public static string Stage2 {
+            get {
+                return ResourceManager.GetString("Stage2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 Stage3 的當地語系化字串。
+        /// </summary>
+        public static string Stage3 {
+            get {
+                return ResourceManager.GetString("Stage3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 StageLast 的當地語系化字串。
+        /// </summary>
+        public static string StageLast {
+            get {
+                return ResourceManager.GetString("StageLast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 Status 的當地語系化字串。
         /// </summary>
         public static string Status {
