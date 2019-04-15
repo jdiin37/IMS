@@ -3,6 +3,49 @@
 @{
   ViewBag.Title = IMS.Resources.Resource.TracePM + Model.TraceNo;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
+  var daysAge = (DateTime.Today - bornDate).TotalDays;
+
+  int pigChangeCnt = 0;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Any())
+  {
+    pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+  }
+  
+  int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == Model.TraceNo).Select(m => m.PigCnt).FirstOrDefault();
+  int totalPigCnt = pigCnt + pigChangeCnt;
+
+  bool stage1flag = false, stage2flag = false, stage3flag = false, stageLastflag = false;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "離乳").Any())
+  {
+    if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "離保育").Any())
+    {
+      if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "出售").Any())
+      {
+        stageLastflag = true;
+        stage3flag = true;
+        stage2flag = true;
+        stage1flag = true;
+      }
+      else
+      {
+        stage3flag = true;
+        stage2flag = true;
+        stage1flag = true;
+      }
+    }
+    else
+    {
+      stage2flag = true;
+      stage1flag = true;
+    }
+
+  }
+  else
+  {
+    stage1flag = true;
+  }
+
 }
 
 
@@ -11,14 +54,14 @@
   <small>
     @Model.TraceNo
     @*@if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "生產出貨").Any())
-    {
-      <span class="label label-success">已出貨</span>
-      @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })
-    }
-    else
-    {
-      <span class="label label-warning">未出貨</span>
-    }*@
+      {
+        <span class="label label-success">已出貨</span>
+        @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })
+      }
+      else
+      {
+        <span class="label label-warning">未出貨</span>
+      }*@
 
   </small>
   <span class="pull-right">
@@ -27,11 +70,79 @@
   </span>
 </h2>
 
+<h5>
+
+
+  <label>
+    出生豬隻數量:
+  </label>
+  @{
+    <span>@pigCnt 隻</span>
+  }
+  &nbsp;&nbsp;
+  <label>出生日期:</label>
+  @{
+
+    <span>@bornDate.ToString("yyyy/MM/dd") </span>
+
+  }
+</h5>
+<h5>
+  <label>
+    目前豬隻數量:
+  </label>
+  @{
+    <span>@totalPigCnt 隻</span>
+  }
+
+  &nbsp;&nbsp;
+  <label>目前日齡:</label>
+  @{
+
+    <span>@daysAge 天</span>
+
+  }
+</h5>
+
 <ul class="nav nav-tabs" role="tablist">
-  <li role="presentation" class="active"><a href="#stage1" aria-controls="stage1" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage1</a></li>
-  <li role="presentation"><a href="#stage2" aria-controls="stage2" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage2</a></li>
-  <li role="presentation"><a href="#stage3" aria-controls="stage3" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage3</a></li>
-  <li role="presentation"><a href="#stageLast" aria-controls="stageLast" role="tab" data-toggle="tab">@IMS.Resources.Resource.StageLast</a></li>
+  @if (stage1flag)
+  {
+    <li role="presentation" class="active"><a href="#stage1" aria-controls="stage1" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage1</a></li>
+  }
+  else
+  {
+    <li role="presentation" class="active disabled"><a href="#stage1" aria-controls="stage1" role="tab">@IMS.Resources.Resource.Stage1</a></li>
+  }
+
+  @if (stage2flag)
+  {
+    <li role="presentation"><a href="#stage2" aria-controls="stage2" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage2</a></li>
+  }
+  else
+  {
+    <li role="presentation" class="disabled"><a href="#stage2" aria-controls="stage2" role="tab" >@IMS.Resources.Resource.Stage2</a></li>
+  }
+
+  @if (stage3flag)
+  {
+    <li role="presentation"><a href="#stage3" aria-controls="stage3" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage3</a></li>
+  }
+  else
+  {
+    <li role="presentation" class="disabled"><a href="#stage3" aria-controls="stage3" role="tab" >@IMS.Resources.Resource.Stage3</a></li>
+  }
+
+  @if (stageLastflag)
+  {
+    <li role="presentation"><a href="#stageLast" aria-controls="stageLast" role="tab" data-toggle="tab">@IMS.Resources.Resource.StageLast</a></li>
+  }
+  else
+  {
+    <li role="presentation" class="disabled"><a href="#stageLast" aria-controls="stageLast" role="tab">@IMS.Resources.Resource.StageLast</a></li>
+  }
+  
+  
+  
 </ul>
 <div class="tab-content">
 
@@ -72,7 +183,7 @@
     function hideAllTool() {
       $('#InventoryTool').find('input').val("");
       $('#FeedTool').find('input').val("");
-      
+
       $('#FeedTool').hide();
       $('#InventoryTool').hide();
       $('#PigChangeTool').hide();
@@ -93,7 +204,7 @@
         }
       });
 
-      
+
       $('#ckb-danger').change(function () {
         if ($(this).is(":checked")) {
           $('.panel-danger').parent().show();

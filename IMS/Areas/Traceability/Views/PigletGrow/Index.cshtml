@@ -50,13 +50,13 @@
               <b>生產日期(訖)</b>
             </th>
             <th>
-              <b>仔豬數量</b>
+              <b>出生仔豬數量</b>
             </th>
             <th>
-              <b>最近盤點數量</b>
+              <b>目前豬隻數量</b>
             </th>
             <th>
-              <b>出貨狀態</b>
+              <b>所屬階段</b>
             </th>
             <th>
               <b>成長履歷</b>
@@ -67,6 +67,12 @@
           @foreach (var item in Model)
           {
             string traceNo = item.TraceNo;
+            int nowPigCnt = 0;
+            if(IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
+            {
+              nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+            }
+            nowPigCnt = item.PigletCnt + nowPigCnt;
             <tr>
               <td>
                 @Html.DisplayFor(m => item.TraceNo).ToString()
@@ -81,16 +87,31 @@
                 @Html.DisplayFor(m => item.PigletCnt).ToString()
               </td>
               <td>
-                @IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault()
+                @nowPigCnt
               </td>
               <td>
-                @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "生產出貨").Any())
+                @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "離乳").Any())
                 {
-                  <span class="label label-success">已出貨</span>
+                  if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "離保育").Any())
+                  {
+                    if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "出售").Any())
+                    {
+                      <span class="label label-primary">@IMS.Resources.Resource.StageLast</span>
+                    }
+                    else
+                    {
+                      <span class="label label-success">@IMS.Resources.Resource.Stage3</span>
+                    }
+                  }
+                  else
+                  {
+                    <span class="label label-info">@IMS.Resources.Resource.Stage2</span>
+                  }
+
                 }
                 else
                 {
-                  <span class="label label-warning">未出貨</span>
+                  <span class="label label-warning">@IMS.Resources.Resource.Stage1</span>
                 }
               </td>
               <td>
