@@ -6,6 +6,7 @@
   DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
   var daysAge = (DateTime.Today - bornDate).TotalDays;
 
+  //豬隻異動作業彙總
   int pigChangeCnt = 0;
   if (IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "豬隻異動").Any())
   {
@@ -13,32 +14,32 @@
   }
   int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == thisTraceNo).Select(m => m.PigCnt).FirstOrDefault();
   int totalPigCnt = pigCnt + pigChangeCnt;
+  
 
-  bool isOut = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Any();
-
-
+  //飼料作業彙總
   bool isFeed = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Any();
   double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Sum(m => m.FeedValue);
   DateTime? lastFeedDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
 
-
+  //秤重作業彙總
   bool isInventory = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Any();
   double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
   DateTime? lastInventoryDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
+  double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
 
+  //離乳作業彙總
   bool isWeaning = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "離乳" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Any();
   int pigChangeCntBeforeWeaning = 0;
   if (IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "豬隻異動").Any())
   {
     pigChangeCntBeforeWeaning = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "豬隻異動" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Sum(m => m.PigChangeCnt);
   }
-
   int WeaningCnt = pigCnt + pigChangeCntBeforeWeaning;
   DateTime? WeaningDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "離乳" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
 
+
   DateTime lastInvenDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
   var lastInvenAge = (lastInvenDate - bornDate).TotalDays;
-  double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
 
 
 }
@@ -307,10 +308,6 @@
 
             </div>
 
-            @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
-            @*<div class="panel-footer">
-                  @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
-              </div>*@
             <div class="panel-footer">
               @Html.LabelFor(model => model.FirstOrDefault().WorkUser, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkUser </span>
