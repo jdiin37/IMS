@@ -26,6 +26,9 @@ namespace IMS.Models
         [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
         public DateTime? PkgDate { get; set; }
 
+        [Display(Name = "PigCnt", ResourceType = typeof(Resources.Resource))]
+        public int PigCnt { get; set; }
+
 
         [StringLength(2)]
         public string Status { get; set; }

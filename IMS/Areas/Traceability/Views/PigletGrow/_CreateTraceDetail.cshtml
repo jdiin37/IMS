@@ -4,14 +4,14 @@
 {
   @Html.AntiForgeryToken()
 
-  <div class="form-horizontal well">
+  <div class="form-horizontal alert alert-info">
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @*@Html.LabelFor(model => model.TraceNo, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-      @Html.EditorFor(model => model.TraceNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
-      @Html.ValidationMessageFor(model => model.TraceNo, "", new { @class = "text-danger" })
-    </div>*@
+      <div class="col-md-4">
+        @Html.EditorFor(model => model.TraceNo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+        @Html.ValidationMessageFor(model => model.TraceNo, "", new { @class = "text-danger" })
+      </div>*@
     @Html.HiddenFor(model => model.TraceNo)
 
     @*<div class="form-group">
@@ -35,127 +35,166 @@
         @*@Html.EditorFor(model => model.WorkType, new { htmlAttributes = new { @class = "form-control" } })
           @Html.ValidationMessageFor(model => model.WorkType, "", new { @class = "text-danger" })*@
         @getRadios.getWS1("WorkType", "")
-      
+
       </div>
     </div>
+
+    @*豬隻異動*@
+    <div class="form-group" id="PigChangeTool" style="display:none;">
+
+
+
+
+      @*@Html.LabelFor(model => model.PigChangeCnt, htmlAttributes: new { @class = "control-label col-md-2 text-right" })*@
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.PigChangeCnt)
+
+          </div>
+          
+            <select class="form-control" id="pigChangeType" name="pigChangeType">
+              <option value="1">增加</option>
+              <option value="-1">減少</option>
+            </select>
+          
+          @Html.EditorFor(model => model.PigChangeCnt, new { htmlAttributes = new { @class = "form-control",min="0",step="1", @Value = "0" } })
+          <span class="input-group-addon">隻</span>
+        </div>
+      </div>
+      
+    </div>
+
+    @*秤重*@
     <div class="form-group" id="InventoryTool" style="display:none;">
 
-      @Html.LabelFor(model => model.InventoryPigCount, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.InventoryPigCount, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.InventoryPigCount, "", new { @class = "text-danger" })
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.InventoryPigCount)
+
+          </div>
+          @Html.EditorFor(model => model.InventoryPigCount, new { htmlAttributes = new { @class = "form-control" } })
+          <span class="input-group-addon">隻</span>
+        </div>
       </div>
 
 
-      @Html.LabelFor(model => model.InventoryWeight, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.InventoryWeight, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.FeedValue, "", new { @class = "text-danger" })
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.InventoryWeight)
+
+          </div>
+          @Html.EditorFor(model => model.InventoryWeight, new { htmlAttributes = new { @class = "form-control" } })
+          <span class="input-group-addon">kg</span>
+        </div>
       </div>
     </div>
+
+    @*飼料*@
     <div class="form-group" id="FeedTool" style="display:none;">
 
-      @Html.LabelFor(model => model.FeedType, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.FeedType, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.FeedType, "", new { @class = "text-danger" })
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.FeedType)
+
+          </div>
+          @Html.EditorFor(model => model.FeedType, new { htmlAttributes = new { @class = "form-control" } })
+          
+        </div>
       </div>
 
 
-      @Html.LabelFor(model => model.FeedValue, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.FeedValue, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.FeedValue, "", new { @class = "text-danger" })
-      </div>
-      @*@Html.LabelFor(model => model.FeedUnit, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-md-4">
-      @Html.EditorFor(model => model.FeedUnit, new { htmlAttributes = new { @class = "form-control" } })
-      @Html.ValidationMessageFor(model => model.FeedUnit, "", new { @class = "text-danger" })
-    </div>*@
-    </div>
-    <div class="form-group">
-      @Html.LabelFor(model => model.WorkUser, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkUser, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkUser, "", new { @class = "text-danger" })
-      </div>
-      
-      @Html.LabelFor(model => model.WorkPlace, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @*@Html.EditorFor(model => model.WorkPlace, new { htmlAttributes = new { @class = "form-control" } })
-      @Html.ValidationMessageFor(model => model.WorkPlace, "", new { @class = "text-danger" })*@
-        @getDropDown.getWorkPlace("WorkPlace", "", false, true, false)
-      </div>
-    </div>
-    <div class="form-group">
-      @Html.LabelFor(model => model.WorkContent, htmlAttributes: new { @class = "control-label col-md-2 text-right" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkContent, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkContent, "", new { @class = "text-danger" })
-      </div>
-      @Html.LabelFor(model => model.WorkMemo, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkMemo, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkMemo, "", new { @class = "text-danger" })
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.FeedValue)
+          </div>
+          @Html.EditorFor(model => model.FeedValue, new { htmlAttributes = new { @class = "form-control" } })
+          <span class="input-group-addon">kg</span>
+        </div>
       </div>
     </div>
 
     <div class="form-group">
-      @Html.LabelFor(model => model.WorkDate, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkDate, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkDate, "", new { @class = "text-danger" })
+      <div class="col-md-6">
+
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkUser)
+
+          </div>
+          @Html.EditorFor(model => model.WorkUser, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+
       </div>
-      @Html.LabelFor(model => model.WorkDate_end, htmlAttributes: new { @class = "control-label col-md-2" })
-      <div class="col-md-4">
-        @Html.EditorFor(model => model.WorkDate_end, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.WorkDate, "", new { @class = "text-danger" })
+
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkPlace)
+
+          </div>
+          @getDropDown.getWorkPlace("WorkPlace", "", false, true, false)
+
+        </div>
+
       </div>
-      
     </div>
-    @*<div class="form-group">
-          @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-10">
-              @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
-          </div>
-      </div>
-
-      <div class="form-group">
-          @Html.LabelFor(model => model.CreDate, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-10">
-              @Html.EditorFor(model => model.CreDate, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.CreDate, "", new { @class = "text-danger" })
-          </div>
-      </div>
-
-      <div class="form-group">
-          @Html.LabelFor(model => model.CreUser, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-10">
-              @Html.EditorFor(model => model.CreUser, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.CreUser, "", new { @class = "text-danger" })
-          </div>
-      </div>
-
-      <div class="form-group">
-          @Html.LabelFor(model => model.ModDate, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-10">
-              @Html.EditorFor(model => model.ModDate, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.ModDate, "", new { @class = "text-danger" })
-          </div>
-      </div>
-
-      <div class="form-group">
-          @Html.LabelFor(model => model.ModUser, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-10">
-              @Html.EditorFor(model => model.ModUser, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.ModUser, "", new { @class = "text-danger" })
-          </div>
-      </div>*@
     <div class="form-group">
-      
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkContent)
+
+          </div>
+          @Html.EditorFor(model => model.WorkContent, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkMemo)
+
+          </div>
+          @Html.EditorFor(model => model.WorkMemo, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkDate)
+
+          </div>
+          @Html.EditorFor(model => model.WorkDate, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            @Html.DisplayNameFor(model => model.WorkDate_end)
+
+          </div>
+          @Html.EditorFor(model => model.WorkDate_end, new { htmlAttributes = new { @class = "form-control" } })
+
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="form-group">
+
       <div class="col-md-12 text-right">
-        
+
         <input type="submit" value="@IMS.Resources.Resource.Comm_Add" class="btn btn-info" />
       </div>
     </div>

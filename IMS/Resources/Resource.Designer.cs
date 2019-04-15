@@ -907,6 +907,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 PigChangeCnt 的當地語系化字串。
+        /// </summary>
+        public static string PigChangeCnt {
+            get {
+                return ResourceManager.GetString("PigChangeCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 PigCnt 的當地語系化字串。
+        /// </summary>
+        public static string PigCnt {
+            get {
+                return ResourceManager.GetString("PigCnt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 父 的當地語系化字串。
         /// </summary>
         public static string PigDad {

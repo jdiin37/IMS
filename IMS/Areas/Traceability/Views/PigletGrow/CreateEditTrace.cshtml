@@ -10,7 +10,7 @@
   <b>@IMS.Resources.Resource.TracePM</b>
   <small>
     @Model.TraceNo
-    @if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "生產出貨").Any())
+    @*@if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "生產出貨").Any())
     {
       <span class="label label-success">已出貨</span>
       @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })
@@ -18,13 +18,13 @@
     else
     {
       <span class="label label-warning">未出貨</span>
-    }
+    }*@
 
   </small>
-  <div class="pull-right">
+  <span class="pull-right">
     @*<button id="slide_TopArea" class=" btn btn-default btn-circle">收合</button>*@
     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
-  </div>
+  </span>
 </h2>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -53,21 +53,47 @@
 
 @section JS{
   <script>
+
+    function showFeedTool() {
+      hideAllTool();
+      $('#FeedTool').show();
+    }
+
+    function showInventoryTool() {
+      hideAllTool();
+      $('#InventoryTool').show();
+    }
+
+    function showPigChangeTool() {
+      hideAllTool();
+      $('#PigChangeTool').show();
+    }
+
+    function hideAllTool() {
+      $('#InventoryTool').find('input').val("");
+      $('#FeedTool').find('input').val("");
+      
+      $('#FeedTool').hide();
+      $('#InventoryTool').hide();
+      $('#PigChangeTool').hide();
+    }
+
+
     function init() {
       $('input[type=radio][name=WorkType]').change(function () {
 
         if (this.value == '飼料') {
-          $('#FeedTool').show();
-          $('#InventoryTool').hide();
-        } else if (this.value == '盤點') {
-          $('#InventoryTool').show();
-          $('#FeedTool').hide();
+          showFeedTool();
+        } else if (this.value == '秤重') {
+          showInventoryTool();
+        } else if (this.value == '豬隻異動') {
+          showPigChangeTool();
         } else {
-          $('#FeedTool').hide();
-          $('#InventoryTool').hide();
+          hideAllTool();
         }
       });
 
+      
       $('#ckb-danger').change(function () {
         if ($(this).is(":checked")) {
           $('.panel-danger').parent().show();

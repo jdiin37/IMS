@@ -576,6 +576,12 @@
   <data name="WorkUser" xml:space="preserve">
     <value>WorkUser</value>
   </data>
+  <data name="PigChangeCnt" xml:space="preserve">
+    <value>PigChangeCnt</value>
+  </data>
+  <data name="PigCnt" xml:space="preserve">
+    <value>PigCnt</value>
+  </data>
   <data name="Stage1" xml:space="preserve">
     <value>Stage1</value>
   </data>

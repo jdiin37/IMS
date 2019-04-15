@@ -26,6 +26,9 @@ namespace IMS.Models
     [Display(Name = "WorkStage", ResourceType = typeof(Resources.Resource))]   
     public int WorkStage { get; set; }
 
+    [Display(Name = "PigChangeCnt", ResourceType = typeof(Resources.Resource))]
+    public int PigChangeCnt { get; set; }
+
 
     [Display(Name = "WorkType", ResourceType = typeof(Resources.Resource))]
     [StringLength(20)]

@@ -565,16 +565,19 @@
     <value>飼料種類</value>
   </data>
   <data name="InventoryPigCount" xml:space="preserve">
-    <value>盤點豬隻數量</value>
+    <value>秤重豬隻數量</value>
   </data>
   <data name="InventoryWeight" xml:space="preserve">
-    <value>盤點總重量(kg)</value>
+    <value>秤重總重量(kg)</value>
   </data>
   <data name="WorkPlace" xml:space="preserve">
     <value>作業地點</value>
   </data>
   <data name="WorkUser" xml:space="preserve">
     <value>作業人員</value>
+  </data>
+  <data name="PigChangeCnt" xml:space="preserve">
+    <value>豬隻異動數</value>
   </data>
   <data name="Stage1" xml:space="preserve">
     <value>仔豬期</value>
@@ -593,5 +596,8 @@
   </data>
   <data name="WorkStage" xml:space="preserve">
     <value>作業階段</value>
+  </data>
+  <data name="PigCnt" xml:space="preserve">
+    <value>豬隻數量</value>
   </data>
 </root>

@@ -142,9 +142,11 @@ namespace IMS.Areas.Traceability.Controllers
 
     }
     
-    public ActionResult CreateEditTrace(string traceNo)
+    public ActionResult CreateEditTrace(string traceNo,int? pigCnt)
     {
       ViewBag.TraceNo = traceNo;
+
+      int pigCnt1 = pigCnt ?? 0;
 
       TraceMaster traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
 
@@ -153,6 +155,7 @@ namespace IMS.Areas.Traceability.Controllers
         traceMaster = new TraceMaster()
         {
           TraceNo = traceNo,
+          PigCnt = pigCnt1,
           PigFarmId = Request.Cookies["pigFarmId"].Value,
           CreDate = DateTime.Now,
           CreUser = User.ID,
@@ -200,11 +203,12 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     [HttpPost]
-    public ActionResult _TraceDetails(TraceDetail traceDetail, string traceNo)
+    public ActionResult _TraceDetails(TraceDetail traceDetail, string traceNo,int pigChangeType)
     {
       if (ModelState.IsValid)
       {
         traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage1;
+        traceDetail.PigChangeCnt = pigChangeType * traceDetail.PigChangeCnt;
 
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
