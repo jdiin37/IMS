@@ -44,6 +44,43 @@ namespace IMS.Areas.Traceability.Controllers
       return View(list.ToPagedList(pageNumber, Config.PageSize));
     }
 
+    [ChildActionOnly]
+    public ActionResult ModalCreateTraceMaster()
+    {
+      return PartialView();
+    }
+
+    public ActionResult GetPigCnt(DateTime sdate,DateTime edate)
+    {
+      if (sdate == null)
+      {
+        sdate = edate;
+      }
+
+      if (edate == null)
+      {
+        edate = sdate; 
+      }
+      
+      sdate = sdate.AddMilliseconds(-1);
+      edate = edate.AddDays(1);
+
+
+      int? pigCnt = IMSdb.FarrowingRecord.Where(m => m.FarrowingDate >= sdate && m.FarrowingDate < edate).Select(x=>x.BornCnt).Sum();
+      if (Request.IsAjaxRequest())
+      {
+        if (pigCnt == null)
+        {
+          return Json(0, JsonRequestBehavior.AllowGet);
+        }
+
+        return Json(pigCnt, JsonRequestBehavior.AllowGet);  //將物件序列化JSON並回傳
+      }
+
+      return Json(pigCnt, JsonRequestBehavior.AllowGet);
+    }
+
+
     private IEnumerable<PigletGrow> getPigletGrows()
     {
       List<PigletGrow> list = new List<PigletGrow> (){

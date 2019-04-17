@@ -68,7 +68,7 @@
           {
             string traceNo = item.TraceNo;
             int nowPigCnt = 0;
-            if(IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
+            if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
             {
               nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
             }
@@ -115,7 +115,7 @@
                 }
               </td>
               <td>
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = traceNo , pigCnt = item.PigletCnt}, new { Class = "btn btn-success" })
+                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = traceNo, pigCnt = item.PigletCnt }, new { Class = "btn btn-success" })
               </td>
 
 
@@ -142,6 +142,8 @@
   </div>
 </div>
 
+@{Html.RenderAction("ModalCreateTraceMaster");}
+
 @section JS{
 
   <script>
@@ -152,45 +154,60 @@
 
     }
 
-    function addTraceMaster() {
-      
-      var $form = $('#traceMasterVM');
+    function ajax_addTraceMaster() {
 
-      console.log($form);
-      //var url = "http://" + document.location.host + "/api/TraceMaster";
+      var $form = $('#traceMasterVM');      
+      var url = "http://" + document.location.host + "/api/TraceMaster";
       var data = $form.find('input[name],select[name]').serialize();
-
       console.log(data);
-
-      //$.ajax({
-      //  type: "POST",
-      //  url: url,
-      //  data: data,
-      //  success: function (data) {
-      //    console.log(data);
-      //    alert("新增成功");
-      //  }
-      //});
+      $.ajax({
+        type: "POST",
+        url: url,
+        data: data,
+        success: function (data) {
+          console.log(data);
+          alert("新增成功");
+          location.reload();
+        }
+      });
     }
 
+    function ajax_getPigCnt(sdate, edate) {
+      var url = "@Url.Action("GetPigCnt")?sdate=" + sdate + "&edate=" + edate;      
+      return $.ajax({
+          type: "GET",
+          url: url       
+      });
+    };
 
-
-    $("#PigFramDDl").change(function () {
-
-        setPigFarmId($(this).val());
-        var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
-        window.location = url;
+    $('#BornDate_e,#BornDate_s').change(function () {
+      if ($('#BornDate_s').val() && $('#BornDate_e').val()) {
+        $.when(ajax_getPigCnt($('#BornDate_s').val(), $('#BornDate_e').val())).done(function (data) {
+          $('#PigCnt').val(data);
+          if (data) {
+            $('#btn_addTraceMaster').attr("disabled", false);
+          } else {
+            $('#btn_addTraceMaster').attr("disabled", true);
+          }
+        });
+      }
 
     });
 
+
+    $("#PigFramDDl").change(function () {
+        setPigFarmId($(this).val());
+        var url = '@Url.Action("Index")?pigFarmId=' + $(this).val()
+        window.location = url;
+    });
+
     $("#btn_create").click(function (e) {
-      
       showCreateTraceMaster();
       e.preventDefault();
     });
 
     $("#btn_addTraceMaster").click(function () {
-      addTraceMaster();
+      ajax_addTraceMaster();
     })
 
 

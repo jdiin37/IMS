@@ -69,10 +69,6 @@ function doAjax(url, data, callback, callback_1) {
 }
 
 
-
-
-
-
 var PigFarmId = "";
 
 function setPigFarmId(val) {
@@ -101,20 +97,5 @@ jQuery(document).ready(function ($) {
 		$.cookie("sysLang", $(this).val(), { path: '/', expires: 365 });
 		location.reload();
 	});
-
-
-	//if ($.cookie("pigFarmId")) {
-	//	$("#PigFarm").val($.cookie("pigFarmId"));
-	//} else {
-	//	setPigFarmId($("#PigFarm").val());
-
-	//}
-
-	//$("#PigFarm").change(function () {
-	//	//alert(document.location.origin);
-	//	setPigFarmId($(this).val());
-	//	location.href = document.location.origin + "/Management/Home"
-	//});
-	
-	
+  
 });
