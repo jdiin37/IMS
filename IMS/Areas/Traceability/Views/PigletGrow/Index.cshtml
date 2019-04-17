@@ -152,6 +152,28 @@
 
     }
 
+    function addTraceMaster() {
+      
+      var $form = $('#traceMasterVM');
+
+      console.log($form);
+      //var url = "http://" + document.location.host + "/api/TraceMaster";
+      var data = $form.find('input[name],select[name]').serialize();
+
+      console.log(data);
+
+      //$.ajax({
+      //  type: "POST",
+      //  url: url,
+      //  data: data,
+      //  success: function (data) {
+      //    console.log(data);
+      //    alert("新增成功");
+      //  }
+      //});
+    }
+
+
 
     $("#PigFramDDl").change(function () {
 
@@ -166,6 +188,10 @@
       showCreateTraceMaster();
       e.preventDefault();
     });
+
+    $("#btn_addTraceMaster").click(function () {
+      addTraceMaster();
+    })
 
 
   </script>

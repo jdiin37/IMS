@@ -580,13 +580,13 @@
     <value>豬隻異動數</value>
   </data>
   <data name="Stage1" xml:space="preserve">
-    <value>仔豬期</value>
+    <value>哺乳期</value>
   </data>
   <data name="Stage2" xml:space="preserve">
     <value>保育期</value>
   </data>
   <data name="Stage3" xml:space="preserve">
-    <value>生長肥育期</value>
+    <value>生長期</value>
   </data>
   <data name="StageLast" xml:space="preserve">
     <value>出售</value>
@@ -599,5 +599,8 @@
   </data>
   <data name="PigCnt" xml:space="preserve">
     <value>豬隻數量</value>
+  </data>
+  <data name="Stage4" xml:space="preserve">
+    <value>肥育期</value>
   </data>
 </root>

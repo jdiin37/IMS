@@ -56,28 +56,31 @@
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         <h4 class="modal-title">新增批次成長履歷</h4>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" id="traceMasterVM">
         <div class="form-group">
-          <label for="pigType">豬隻品種:</label>
-          @getDropDown.getPigType("pigType","")
+          <label for="PigType">豬隻品種:</label>
+          @getDropDown.getPigType("PigType", "")
         </div>
         <div class="form-group">
           <label for="pigType">出生日期 (起):</label>
-          
-          <input type="date" class="form-control" id="sdate" name="sdate" placeholder="起" value="">
-          
+
+          <input type="date" class="form-control" id="BornDate_s" name="BornDate_s" placeholder="起" value="">
+
         </div>
         <div class="form-group">
           <label>出生日期 (訖):</label>
-          
-          <input type="date" class="form-control" id="edate" name="edate" placeholder="起" value="">
-          
+
+          <input type="date" class="form-control" id="BornDate_e" name="BornDate_e" placeholder="起" value="">
+
         </div>
         <hr />
-        <label for="pigType">出生仔豬數量:23</label>
+        <label for="pigType">
+          出生仔豬數量:
+        </label>
+        <input type="text" class="form-control" id="PigCnt" name="PigCnt" readonly>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-info">新增</button>
+        <button type="button" class="btn btn-info" id="btn_addTraceMaster">新增</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
       </div>
     </div><!-- /.modal-content -->

@@ -267,7 +267,7 @@
       List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "PT").ToList();
       foreach (var item in list)
       {
-        <option value="@item.SubName" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
+        <option value="@item.SubValue" @(item.SubName.ToString() == val ? "selected" : "")>@item.SubName</option>
       }
     }
   </select>

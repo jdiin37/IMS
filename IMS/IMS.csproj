@@ -396,6 +396,7 @@
     <Compile Include="Controllers\WebApi\FarrowingRecordController.cs" />
     <Compile Include="Controllers\WebApi\BaseApiController.cs" />
     <Compile Include="Controllers\WebApi\testController.cs" />
+    <Compile Include="Controllers\WebApi\TraceMasterController.cs" />
     <Compile Include="Controllers\WebApi\TraceDetailController.cs" />
     <Compile Include="DAL\IMSDBContext.cs" />
     <Compile Include="DAL\IMSDBInitializer.cs" />
