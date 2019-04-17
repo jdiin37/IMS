@@ -1,6 +1,6 @@
 ﻿
 @using PagedList.Mvc;
-@model PagedList.IPagedList<IMS.ViewModels.PigletGrow>
+@model PagedList.IPagedList<IMS.Models.TraceMaster>
 
 @{
   ViewBag.Title = "批次豬隻成長履歷";
@@ -43,17 +43,17 @@
             <th>
               <b>履歷編號</b>
             </th>
-            <th width="120px">
-              <b>生產日期(起)</b>
-            </th>
-            <th width="120px">
-              <b>生產日期(訖)</b>
+            <th>
+              <b>建立日期(起)</b>
             </th>
             <th>
               <b>出生仔豬數量</b>
             </th>
             <th>
               <b>目前豬隻數量</b>
+            </th>
+            <th>
+              <b>目前日齡</b>
             </th>
             <th>
               <b>所屬階段</b>
@@ -72,22 +72,27 @@
             {
               nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
             }
-            nowPigCnt = item.PigletCnt + nowPigCnt;
+            nowPigCnt = item.PigCnt + nowPigCnt;
+            DateTime bornDate = item.BornDate;
+            DateTime bornDate_end = item.BornDate_end;
+            var daysAge = (DateTime.Today - bornDate).TotalDays;
+            var daysAge_end = (DateTime.Today - bornDate_end).TotalDays;
+
             <tr>
               <td>
                 @Html.DisplayFor(m => item.TraceNo).ToString()
               </td>
               <td>
-                @Html.DisplayFor(m => item.BornDate_s).ToString()
+                @Html.DisplayFor(m => item.CreDate)
               </td>
               <td>
-                @Html.DisplayFor(m => item.BornDate_e).ToString()
-              </td>
-              <td>
-                @Html.DisplayFor(m => item.PigletCnt).ToString()
+                @Html.DisplayFor(m => item.PigCnt).ToString()
               </td>
               <td>
                 @nowPigCnt
+              </td>
+              <td>
+                @daysAge_end - @daysAge 天
               </td>
               <td>
                 @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "離乳").Any())
@@ -115,7 +120,7 @@
                 }
               </td>
               <td>
-                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = traceNo, pigCnt = item.PigletCnt }, new { Class = "btn btn-success" })
+                @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "CreateEditTrace", new { traceNo = traceNo, pigCnt = item.PigCnt }, new { Class = "btn btn-success" })
               </td>
 
 
@@ -159,6 +164,7 @@
       var $form = $('#traceMasterVM');      
       var url = "http://" + document.location.host + "/api/TraceMaster";
       var data = $form.find('input[name],select[name]').serialize();
+      data = data + "&PigFarmId=" + $("#PigFramDDl").val();
       console.log(data);
       $.ajax({
         type: "POST",
@@ -172,24 +178,27 @@
       });
     }
 
-    function ajax_getPigCnt(sdate, edate) {
-      var url = "@Url.Action("GetPigCnt")?sdate=" + sdate + "&edate=" + edate;      
+    function ajax_getPigCnt(sdate, edate,dadType,momType) {
+      var url = "@Url.Action("GetPigCnt")?sdate=" + sdate + "&edate=" + edate + "&dadType=" + dadType+ "&momType=" + momType+"&PigFarmId=" + $("#PigFramDDl").val();      
       return $.ajax({
           type: "GET",
           url: url       
       });
     };
 
-    $('#BornDate_e,#BornDate_s').change(function () {
+    $('#BornDate_e,#BornDate_s,#dadType,#momType').change(function () {
       if ($('#BornDate_s').val() && $('#BornDate_e').val()) {
-        $.when(ajax_getPigCnt($('#BornDate_s').val(), $('#BornDate_e').val())).done(function (data) {
-          $('#PigCnt').val(data);
-          if (data) {
-            $('#btn_addTraceMaster').attr("disabled", false);
-          } else {
-            $('#btn_addTraceMaster').attr("disabled", true);
-          }
-        });
+        $.when(ajax_getPigCnt($('#BornDate_s').val(),
+          $('#BornDate_e').val(),
+          $('#dadType').val(),
+          $('#momType').val())).done(function (data) {
+            $('#PigCnt').val(data);
+            if (data) {
+              $('#btn_addTraceMaster').attr("disabled", false);
+            } else {
+              $('#btn_addTraceMaster').attr("disabled", true);
+            }
+          });
       }
 
     });

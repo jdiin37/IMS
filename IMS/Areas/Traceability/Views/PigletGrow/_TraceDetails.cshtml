@@ -14,7 +14,7 @@
   }
   int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == thisTraceNo).Select(m => m.PigCnt).FirstOrDefault();
   int totalPigCnt = pigCnt + pigChangeCnt;
-  
+
 
   //飼料作業彙總
   bool isFeed = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Any();
@@ -23,7 +23,9 @@
 
   //秤重作業彙總
   bool isInventory = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).Any();
-  double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
+  double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
+  int? lastInventoryPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault();
+
   DateTime? lastInventoryDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "秤重" && m.WorkStage == (int)IMSEnum.WorkStage.Stage1).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
   double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
 
@@ -105,9 +107,11 @@
           @if (isInventory)
           {
             <h5>
-              @IMS.Resources.Resource.Stage1 秤重重量:
-              <span>@sumWeight kg</span>
+              @IMS.Resources.Resource.Stage1 秤重重量 / 隻數:
+              <span>@sumWeight kg/ @lastInventoryPigCnt 隻</span>
             </h5>
+
+
             <h5>
               最後秤重日期:
               <span>@lastInventoryDate.Value.ToString("yyyy/MM/dd")  </span>

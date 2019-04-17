@@ -589,13 +589,19 @@
     <value>生長期</value>
   </data>
   <data name="StageLast" xml:space="preserve">
-    <value>出售</value>
+    <value>肥育期</value>
   </data>
   <data name="TradePM" xml:space="preserve">
     <value>交易管理系統</value>
   </data>
   <data name="WorkStage" xml:space="preserve">
     <value>作業階段</value>
+  </data>
+  <data name="BornDate" xml:space="preserve">
+    <value>出生日期起</value>
+  </data>
+  <data name="BornDate_end" xml:space="preserve">
+    <value>出生日期訖</value>
   </data>
   <data name="PigCnt" xml:space="preserve">
     <value>豬隻數量</value>

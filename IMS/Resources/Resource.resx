@@ -576,6 +576,12 @@
   <data name="WorkUser" xml:space="preserve">
     <value>WorkUser</value>
   </data>
+  <data name="BornDate" xml:space="preserve">
+    <value>BornDate</value>
+  </data>
+  <data name="BornDate_end" xml:space="preserve">
+    <value>BornDate_end</value>
+  </data>
   <data name="PigChangeCnt" xml:space="preserve">
     <value>PigChangeCnt</value>
   </data>

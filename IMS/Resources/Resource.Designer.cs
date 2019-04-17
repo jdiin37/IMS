@@ -223,6 +223,24 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 BornDate 的當地語系化字串。
+        /// </summary>
+        public static string BornDate {
+            get {
+                return ResourceManager.GetString("BornDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 BornDate_end 的當地語系化字串。
+        /// </summary>
+        public static string BornDate_end {
+            get {
+                return ResourceManager.GetString("BornDate_end", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 死仔數 的當地語系化字串。
         /// </summary>
         public static string BornDeadCnt {

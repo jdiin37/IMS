@@ -7,8 +7,12 @@
       </div>
       <div class="modal-body" id="traceMasterVM">
         <div class="form-group">
-          <label for="PigType">豬隻品種:</label>
-          @getDropDown.getPigType("PigType", "")
+          <label for="momType">母親品種:</label>
+          @getDropDown.getPigType("momType", "")
+        </div>
+        <div class="form-group">
+          <label for="dadType">父親品種:</label>
+          @getDropDown.getPigType("dadType", "")
         </div>
         <div class="form-group">
           <label for="pigType">出生日期 (起):</label>
@@ -27,6 +31,7 @@
           出生仔豬數量:
         </label>
         <input type="text" class="form-control" id="PigCnt" name="PigCnt" readonly>
+        @*<input type="hidden" id="PigFarmId" name="PigFarmId" value="@ViewBag.PigFarmId"/>*@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-info" id="btn_addTraceMaster" disabled>新增</button>

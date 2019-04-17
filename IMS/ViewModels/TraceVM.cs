@@ -15,7 +15,8 @@ namespace IMS.ViewModels
 
   public class TraceMasterVM
   {
-    public string PigType { get; set; }
+    public string dadType { get; set; }
+    public string momType { get; set; }
     public string PigFarmId { get; set; }
     public DateTime BornDate_s { get; set; }
     public DateTime BornDate_e { get; set; }
@@ -24,7 +25,7 @@ namespace IMS.ViewModels
     {
       get
       {
-        return PigType + BornDate_s.ToString("yyyyMMdd") + BornDate_e.ToString("yyyyMMdd");
+        return momType + dadType + BornDate_s.ToString("yyyyMMdd") + BornDate_e.ToString("yyyyMMdd");
       }
       set { }
     }

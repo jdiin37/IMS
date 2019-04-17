@@ -3,15 +3,17 @@
 @{
   ViewBag.Title = IMS.Resources.Resource.TracePM + Model.TraceNo;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-  DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
+  DateTime bornDate = Model.BornDate;
+  DateTime bornDate_end = Model.BornDate_end;
   var daysAge = (DateTime.Today - bornDate).TotalDays;
+  var daysAge_end = (DateTime.Today - bornDate_end).TotalDays;
 
   int pigChangeCnt = 0;
   if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Any())
   {
     pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
   }
-  
+
   int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == Model.TraceNo).Select(m => m.PigCnt).FirstOrDefault();
   int totalPigCnt = pigCnt + pigChangeCnt;
 
@@ -83,7 +85,7 @@
   <label>出生日期:</label>
   @{
 
-    <span>@bornDate.ToString("yyyy/MM/dd") </span>
+    <span>@bornDate.ToString("yyyy/MM/dd") - @bornDate_end.ToString("yyyy/MM/dd")</span>
 
   }
 </h5>
@@ -91,15 +93,16 @@
   <label>
     目前豬隻數量:
   </label>
-  @{
-    <span>@totalPigCnt 隻</span>
-  }
+
+    <span id="span_nowPigCnt"></span>
+    <span>隻 </span>
+
 
   &nbsp;&nbsp;
   <label>目前日齡:</label>
   @{
 
-    <span>@daysAge 天</span>
+    <span>@daysAge 天 - @daysAge_end 天</span>
 
   }
 </h5>
@@ -164,6 +167,19 @@
 
 @section JS{
   <script>
+    function ajax_refreshPigCnt() {
+      var url = "@Url.Action("RefreshPigCnt")?traceNo=" + "@Model.TraceNo" ;      
+      return $.ajax({
+          type: "GET",
+          url: url,
+          success: function (data) {
+            console.log(data);
+            $('#span_nowPigCnt').text(data);
+          }
+        });
+    }
+    
+
 
     function showFeedTool() {
       hideAllTool();
@@ -191,8 +207,9 @@
 
 
     function init() {
-      $('input[type=radio][name=WorkType]').change(function () {
+      ajax_refreshPigCnt();
 
+      $('input[type=radio][name=WorkType]').change(function () {
         if (this.value == '飼料') {
           showFeedTool();
         } else if (this.value == '秤重') {
@@ -244,11 +261,8 @@
         }
         $('.panel-default').parent().hide();
       });
-
     }
-
-
-
+    
     $(function () {
       $("#slide_TopArea").click(function () {
         $("#div_TopArea").slideToggle("");

@@ -40,6 +40,8 @@ namespace IMS.Controllers.WebApi
         CreDate = DateTime.Now,
         CreUser = User.ID,
         Status = "T",
+        BornDate = traceMasterVM.BornDate_s,
+        BornDate_end = traceMasterVM.BornDate_e,
       };
 
       IMSdb.TraceMaster.Add(item);

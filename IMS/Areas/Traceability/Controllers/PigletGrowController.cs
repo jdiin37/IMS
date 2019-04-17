@@ -24,7 +24,7 @@ namespace IMS.Areas.Traceability.Controllers
           if (IMSdb.PigFarm.Where(x => x.Status == "Y").Any())
           {
             pigFarmId = IMSdb.PigFarm.Where(x => x.Status == "Y").FirstOrDefault().Id.ToString();
-            ViewBag.PigFarmId = pigFarmId;
+            
           }
           else
           {
@@ -38,7 +38,9 @@ namespace IMS.Areas.Traceability.Controllers
         }
 
       }
-      var list = getPigletGrows().OrderByDescending(m=>m.BornDate_s);
+
+      ViewBag.PigFarmId = pigFarmId;
+      var list = getPigletGrows();
 
       int pageNumber = (page ?? 1);
       return View(list.ToPagedList(pageNumber, Config.PageSize));
@@ -50,7 +52,31 @@ namespace IMS.Areas.Traceability.Controllers
       return PartialView();
     }
 
-    public ActionResult GetPigCnt(DateTime sdate,DateTime edate)
+    public ActionResult RefreshPigCnt(string traceNo)
+    {
+      int pigChangeCnt = 0;
+      if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
+      {
+        pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+      }
+
+      int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).Select(m => m.PigCnt).FirstOrDefault();
+      int totalPigCnt = pigCnt + pigChangeCnt;
+
+      if (Request.IsAjaxRequest())
+      {
+        if (totalPigCnt == 0)
+        {
+          return Json(0, JsonRequestBehavior.AllowGet);
+        }
+
+        return Json(totalPigCnt, JsonRequestBehavior.AllowGet);  //將物件序列化JSON並回傳
+      }
+
+      return Json(totalPigCnt, JsonRequestBehavior.AllowGet);
+    }
+
+    public ActionResult GetPigCnt(DateTime sdate, DateTime edate, string dadType, string momType)
     {
       if (sdate == null)
       {
@@ -59,14 +85,21 @@ namespace IMS.Areas.Traceability.Controllers
 
       if (edate == null)
       {
-        edate = sdate; 
+        edate = sdate;
       }
-      
+
       sdate = sdate.AddMilliseconds(-1);
       edate = edate.AddDays(1);
 
+      int? pigCnt = (from a in IMSdb.FarrowingRecord
+                     join b in IMSdb.PigBasic
+                     on a.PigGid equals b.GID
+                     where a.FarrowingDate >= sdate && a.FarrowingDate < edate
+                     && a.Status == "Y"
+                     && a.BoarNo.StartsWith(dadType)
+                     && b.PigType.StartsWith(momType)
+                     select a.BornCnt).Sum();
 
-      int? pigCnt = IMSdb.FarrowingRecord.Where(m => m.FarrowingDate >= sdate && m.FarrowingDate < edate).Select(x=>x.BornCnt).Sum();
       if (Request.IsAjaxRequest())
       {
         if (pigCnt == null)
@@ -81,101 +114,102 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
 
-    private IEnumerable<PigletGrow> getPigletGrows()
-    {
-      List<PigletGrow> list = new List<PigletGrow> (){
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,01,01),
-          BornDate_e = new DateTime(2018,01,31),
-          PigletCnt = 120,
-          PigType = "L",
-          SeqNo = 1,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,02,01),
-          BornDate_e = new DateTime(2018,02,28),
-          PigletCnt = 114,
-          PigType = "L",
-          SeqNo = 4,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,03,01),
-          BornDate_e = new DateTime(2018,03,31),
-          PigletCnt = 134,
-          PigType = "L",
-          SeqNo = 5,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,04,01),
-          BornDate_e = new DateTime(2018,04,30),
-          PigletCnt = 128,
-          PigType = "L",
-          SeqNo = 6,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,05,01),
-          BornDate_e = new DateTime(2018,05,31),
-          PigletCnt = 94,
-          PigType = "L",
-          SeqNo = 7,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,06,01),
-          BornDate_e = new DateTime(2018,06,30),
-          PigletCnt = 94,
-          PigType = "L",
-          SeqNo = 8,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,07,01),
-          BornDate_e = new DateTime(2018,07,31),
-          PigletCnt = 94,
-          PigType = "L",
-          SeqNo = 9,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,08,01),
-          BornDate_e = new DateTime(2018,08,31),
-          PigletCnt = 94,
-          PigType = "D",
-          SeqNo = 10,
-        },
-        new PigletGrow
-        {
-          BornDate_s = new DateTime(2018,09,01),
-          BornDate_e = new DateTime(2018,09,30),
-          PigletCnt = 94,
-          PigType = "L",
-          SeqNo = 11,
-        },
-         new PigletGrow
-        {
-          BornDate_s = new DateTime(2019,02,01),
-          BornDate_e = new DateTime(2019,02,28),
-          PigletCnt = 113,
-          PigType = "D",
-          SeqNo = 2,
 
-        },
-          new PigletGrow
-        {
-          BornDate_s = new DateTime(2019,03,01),
-          BornDate_e = new DateTime(2019,03,07),
-          PigletCnt = 81,
-          PigType = "L",
-          SeqNo = 3,
-        },
-      };
-      
-      return list.ToList();
+    private IEnumerable<TraceMaster> getPigletGrows()
+    {
+      //List<PigletGrow> list = new List<PigletGrow> (){
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,01,01),
+      //    BornDate_e = new DateTime(2018,01,31),
+      //    PigletCnt = 120,
+      //    PigType = "L",
+      //    SeqNo = 1,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,02,01),
+      //    BornDate_e = new DateTime(2018,02,28),
+      //    PigletCnt = 114,
+      //    PigType = "L",
+      //    SeqNo = 4,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,03,01),
+      //    BornDate_e = new DateTime(2018,03,31),
+      //    PigletCnt = 134,
+      //    PigType = "L",
+      //    SeqNo = 5,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,04,01),
+      //    BornDate_e = new DateTime(2018,04,30),
+      //    PigletCnt = 128,
+      //    PigType = "L",
+      //    SeqNo = 6,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,05,01),
+      //    BornDate_e = new DateTime(2018,05,31),
+      //    PigletCnt = 94,
+      //    PigType = "L",
+      //    SeqNo = 7,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,06,01),
+      //    BornDate_e = new DateTime(2018,06,30),
+      //    PigletCnt = 94,
+      //    PigType = "L",
+      //    SeqNo = 8,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,07,01),
+      //    BornDate_e = new DateTime(2018,07,31),
+      //    PigletCnt = 94,
+      //    PigType = "L",
+      //    SeqNo = 9,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,08,01),
+      //    BornDate_e = new DateTime(2018,08,31),
+      //    PigletCnt = 94,
+      //    PigType = "D",
+      //    SeqNo = 10,
+      //  },
+      //  new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2018,09,01),
+      //    BornDate_e = new DateTime(2018,09,30),
+      //    PigletCnt = 94,
+      //    PigType = "L",
+      //    SeqNo = 11,
+      //  },
+      //   new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2019,02,01),
+      //    BornDate_e = new DateTime(2019,02,28),
+      //    PigletCnt = 113,
+      //    PigType = "D",
+      //    SeqNo = 2,
+
+      //  },
+      //    new PigletGrow
+      //  {
+      //    BornDate_s = new DateTime(2019,03,01),
+      //    BornDate_e = new DateTime(2019,03,07),
+      //    PigletCnt = 81,
+      //    PigType = "L",
+      //    SeqNo = 3,
+      //  },
+      //};
+      var traceMasters = IMSdb.TraceMaster.Select(z => z).OrderByDescending(m => m.CreDate);
+      return traceMasters.ToList();
 
     }
     
