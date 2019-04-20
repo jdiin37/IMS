@@ -157,7 +157,7 @@ namespace IMS.Areas.Sys.Controllers
                 item.ModUser = User.ID;
                 item.ModDate = DateTime.Now;
                 IMSdb.SaveChanges();
-                return RedirectToAction("Index");
+                return  RedirectToAction("Index", new { categoryId = categorySub.CategoryID });
             }
 
             return View(categorySub);

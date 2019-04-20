@@ -44,7 +44,7 @@
               <b>履歷編號</b>
             </th>
             <th>
-              <b>建立日期(起)</b>
+              <b>出生日期(起)</b>
             </th>
             <th>
               <b>出生仔豬數量</b>
@@ -68,9 +68,9 @@
           {
             string traceNo = item.TraceNo;
             int nowPigCnt = 0;
-            if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
+            if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoPigChange").Any())
             {
-              nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+              nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
             }
             nowPigCnt = item.PigCnt + nowPigCnt;
             DateTime bornDate = item.BornDate;
@@ -83,7 +83,7 @@
                 @Html.DisplayFor(m => item.TraceNo).ToString()
               </td>
               <td>
-                @Html.DisplayFor(m => item.CreDate)
+                @Html.DisplayFor(m => item.BornDate)
               </td>
               <td>
                 @Html.DisplayFor(m => item.PigCnt).ToString()
@@ -95,28 +95,28 @@
                 @daysAge_end - @daysAge 天
               </td>
               <td>
-                @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "離乳").Any())
+                @if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoneStage1").Any())
                 {
-                  if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "離保育").Any())
+                  if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoneStage2").Any())
                   {
-                    if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "出售").Any())
+                    if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoneStage3").Any())
                     {
-                      <span class="label label-primary">@IMS.Resources.Resource.StageLast</span>
+                      <span class="label label-success">@IMS.Resources.Resource.StageLast</span>
                     }
                     else
                     {
-                      <span class="label label-success">@IMS.Resources.Resource.Stage3</span>
+                      <span class="label label-info">@IMS.Resources.Resource.Stage3</span>
                     }
                   }
                   else
                   {
-                    <span class="label label-info">@IMS.Resources.Resource.Stage2</span>
+                    <span class="label label-warning">@IMS.Resources.Resource.Stage2</span>
                   }
 
                 }
                 else
                 {
-                  <span class="label label-warning">@IMS.Resources.Resource.Stage1</span>
+                  <span class="label label-danger">@IMS.Resources.Resource.Stage1</span>
                 }
               </td>
               <td>

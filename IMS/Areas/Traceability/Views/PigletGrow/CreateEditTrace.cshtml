@@ -9,20 +9,26 @@
   var daysAge_end = (DateTime.Today - bornDate_end).TotalDays;
 
   int pigChangeCnt = 0;
-  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Any())
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoPigChange").Any())
   {
-    pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+    pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
   }
 
   int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == Model.TraceNo).Select(m => m.PigCnt).FirstOrDefault();
   int totalPigCnt = pigCnt + pigChangeCnt;
 
-  bool stage1flag = false, stage2flag = false, stage3flag = false, stageLastflag = false;
-  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "離乳").Any())
+  bool isOnSale = false;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoneStageLast").Any())
   {
-    if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "離保育").Any())
+    isOnSale = true;
+  }
+
+  bool stage1flag = false, stage2flag = false, stage3flag = false, stageLastflag = false;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoneStage1").Any())
+  {
+    if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoneStage2").Any())
     {
-      if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "出售").Any())
+      if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "DoneStage3").Any())
       {
         stageLastflag = true;
         stage3flag = true;
@@ -52,18 +58,13 @@
 
 
 <h2>
-  <b>@IMS.Resources.Resource.TracePM</b>
+  <b>@IMS.Resources.Resource.TraceNo</b>
   <small>
     @Model.TraceNo
-    @*@if (IMSdb.TraceDetail.Where(m => m.TraceNo == Model.TraceNo && m.WorkType == "生產出貨").Any())
-      {
-        <span class="label label-success">已出貨</span>
-        @Html.ActionLink("查看交易明細", "", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-link" })
-      }
-      else
-      {
-        <span class="label label-warning">未出貨</span>
-      }*@
+    @if (isOnSale)
+    {
+      <span class="label label-success">待出售</span>
+    }
 
   </small>
   <span class="pull-right">
@@ -178,49 +179,63 @@
           }
         });
     }
-    
+
+    function ajax_whichStage() {
+      var url = "@Url.Action("WhichStage")?traceNo=" + "@Model.TraceNo" ;      
+      return $.ajax({
+          type: "GET",
+          url: url,
+          success: function (data) {
+            console.log(data);
+            $('#span_nowPigCnt').text(data);
+          }
+        });
+    }
 
 
     function showFeedTool() {
       hideAllTool();
-      $('#FeedTool').show();
+      $('.FeedTool').show();
     }
 
     function showInventoryTool() {
       hideAllTool();
-      $('#InventoryTool').show();
+      $('.InventoryTool').show();
     }
 
     function showPigChangeTool() {
       hideAllTool();
-      $('#PigChangeTool').show();
+      $('.PigChangeTool').show();
     }
 
     function hideAllTool() {
-      $('#InventoryTool').find('input').val("");
-      $('#FeedTool').find('input').val("");
+      $('.InventoryTool').find('input').val("");
+      $('.FeedTool').find('input').val("");
 
-      $('#FeedTool').hide();
-      $('#InventoryTool').hide();
-      $('#PigChangeTool').hide();
+      $('.FeedTool').hide();
+      $('.InventoryTool').hide();
+      $('.PigChangeTool').hide();
     }
 
 
     function init() {
       ajax_refreshPigCnt();
+      hideAllTool();     
+      bindingEvent();
+    }
 
+    function bindingEvent() {
       $('input[type=radio][name=WorkType]').change(function () {
-        if (this.value == '飼料') {
+        if (this.value == 'DoFeed') {
           showFeedTool();
-        } else if (this.value == '秤重') {
+        } else if (this.value == 'DoWeight') {
           showInventoryTool();
-        } else if (this.value == '豬隻異動') {
+        } else if (this.value == 'DoPigChange') {
           showPigChangeTool();
         } else {
           hideAllTool();
         }
       });
-
 
       $('#ckb-danger').change(function () {
         if ($(this).is(":checked")) {
@@ -261,12 +276,15 @@
         }
         $('.panel-default').parent().hide();
       });
-    }
-    
-    $(function () {
-      $("#slide_TopArea").click(function () {
-        $("#div_TopArea").slideToggle("");
+
+      $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        hideAllTool();
+
       });
+    }
+
+    $(function () {
+     
       init();
     });
   </script>

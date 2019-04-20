@@ -1,127 +1,148 @@
-﻿
-@model IEnumerable<IMS.Models.TraceDetail>
-
+﻿@model IEnumerable<IMS.Models.TraceDetail>
+@using IMS.Comm
 @{
   string thisTraceNo = ViewBag.TraceNo;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
-  DateTime bornDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "出生").Select(m => m.WorkDate).FirstOrDefault();
-  bool isOut = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Any();
+  DateTime bornDate = IMSdb.TraceMaster.Where(m => m.TraceNo == thisTraceNo).Select(x => x.BornDate).FirstOrDefault();
+  DateTime bornDate_end = IMSdb.TraceMaster.Where(m => m.TraceNo == thisTraceNo).Select(x => x.BornDate_end).FirstOrDefault();
+  int BornPigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == thisTraceNo).Select(m => m.PigCnt).FirstOrDefault();
 
-  double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Sum(m => m.FeedValue);
-  double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
-  int? pigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault();
-  DateTime lastInvenDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
-  var lastInvenAge = (lastInvenDate - bornDate).TotalDays;
-  double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(pigCnt);
+  //豬隻異動作業彙總
+  int pigChangeCnt = 0;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoPigChange").Any())
+  {
+    pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
+  }
+
+
+
+  //飼料作業彙總
+  bool isFeed = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Any();
+  double? feedSum = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Sum(m => m.FeedValue);
+  DateTime? lastFeedDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
+
+  //秤重作業彙總
+  bool isInventory = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Any();
+  double? sumWeight = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).OrderByDescending(x => x.WorkDate).Select(m => m.InventoryWeight).FirstOrDefault();
+  int? lastInventoryPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).OrderByDescending(x => x.WorkDate).Select(m => m.InventoryPigCount).FirstOrDefault();
+  DateTime lastInventoryDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
+  double avgWeight = Convert.ToDouble(sumWeight) / Convert.ToInt16(lastInventoryPigCnt);
+  var lastInventoryDayAge = (lastInventoryDate - bornDate).TotalDays;
+  var lastInventoryDayAge_end = (lastInventoryDate - bornDate_end).TotalDays;
+
+
+  //離肥育作業彙總
+  int StageLastpigChangeCnt = 0;
+  if (IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoPigChange" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Any())
+  {
+    StageLastpigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoPigChange" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Sum(m => m.PigChangeCnt);
+  }
+  DateTime StageLastLeaveDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoneStage2" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).OrderByDescending(x => x.WorkDate).Select(m => m.WorkDate).FirstOrDefault();
+  var StageLastDayAge = (StageLastLeaveDate - bornDate).TotalDays;
+  var StageLastDayAge_end = (StageLastLeaveDate - bornDate_end).TotalDays;
+
+
 
 }
 
 @using (Ajax.BeginForm("_TraceDetailsStageLast", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStageLast-tool", HttpMethod = "Post", OnSuccess = "init();" }))
 {
-  <div id="traceDetailStage3-tool">
+  <div id="traceDetailStageLast-tool">
 
     <div class="row" id="div_TopArea">
 
-      <div class="col-md-8">
-        <h4><b>新增作業</b></h4>
-        @Html.Action("_CreateTraceDetailStageLast", new { traceNo = ViewBag.TraceNo })
+
+      <div class="col-md-4">
+        <h4><b>@IMS.Resources.Resource.StageLast 作業資料彙整</b></h4>
+
+
+
+
+        <div id="FeedData" class="well-sm well">
+
+          @if (isFeed)
+          {
+            <h5>
+              @IMS.Resources.Resource.StageLast 總飼料量:
+              <span>@feedSum kg</span>
+            </h5>
+            <h5>
+              最後飼料日期:
+              <span>@lastFeedDate.Value.ToString("yyyy/MM/dd") </span>
+            </h5>
+          }
+          else
+          {
+            <h5>
+              <span class="text-danger">無飼料資料</span>
+            </h5>
+          }
+
+
+        </div>
+
+        <div id="InventoryData" class="well-sm well">
+
+          @if (isInventory)
+          {
+            <h5>
+              @IMS.Resources.Resource.StageLast 秤重重量 / 隻數:
+              <span>@sumWeight kg/ @lastInventoryPigCnt 隻</span>
+            </h5>
+
+
+            <h5>
+              最後秤重日期:
+              <span>@lastInventoryDate.ToString("yyyy/MM/dd")  </span>
+            </h5>
+            <h5>
+              平均重量:
+              <span>@avgWeight.ToString("0.00") kg</span>
+
+            </h5>
+            <h5>
+              最後秤重日齡:
+              <span>@lastInventoryDayAge - @lastInventoryDayAge_end  天</span>
+            </h5>
+          }
+          else
+          {
+            <h5>
+              <span class="text-danger">無秤重資料</span>
+            </h5>
+          }
+
+        </div>
+
+        <div id="ChangeData" class="well-sm well">
+          <h5>
+            @IMS.Resources.Resource.StageLast 豬隻異動:
+            @if (StageLastpigChangeCnt != 0)
+            {
+
+              if (StageLastpigChangeCnt > 0)
+              {
+                <span> 增加 @StageLastpigChangeCnt</span>
+              }
+              else
+              {
+                <span class="text-danger"> 減少 @(Math.Abs(StageLastpigChangeCnt))</span>
+              }
+            }
+            else
+            {
+              <span class="text-info">無豬隻異動資料</span>
+            }
+          </h5>
+
+        </div>
+
 
       </div>
-      <div class="col-md-4">
-        <h4><b>@IMS.Resources.Resource.StageLast 詳細資料</b></h4>
+      <div class="col-md-8">
+        <h4><b>@IMS.Resources.Resource.StageLast 新增作業</b></h4>
+        @Html.Action("_CreateTraceDetailStageLast", new { traceNo = ViewBag.TraceNo })
 
-        @{
-          if (isOut)
-          {
-            <h5>
-              出貨日齡:
-              @{
-                DateTime outDate = IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "生產出貨").Select(m => m.WorkDate).FirstOrDefault();
-                var outdaysAge = (outDate - bornDate).TotalDays;
-
-                <span>@outdaysAge 天</span>
-              }
-
-            </h5>
-            <h5>
-              出貨平均重量(kg):@avgWeight
-            </h5>
-
-
-          }
-          else
-          {
-            <h5>
-              目前日齡:
-              @{
-
-                var daysAge = (DateTime.Today - bornDate).TotalDays;
-
-                <span>@daysAge 天</span>
-
-              }
-            </h5>
-          }
-        }
-
-        <h5>
-          最新盤點日齡:
-          @if (lastInvenAge < 0)
-          {
-            <span class="text-danger">未盤點</span>
-          }
-          else
-          {
-            <span class="text-info">@lastInvenAge 天</span>
-          }
-        </h5>
-        <h5>
-          最新盤點豬隻數量:
-          @if (pigCnt == null)
-          {
-            <span class="text-danger">未盤點</span>
-          }
-          else
-          {
-            <span class="text-info">@pigCnt 隻</span>
-          }
-        </h5>
-        <h5>
-          最新盤點總重量(kg):
-          @if (sumWeight == null)
-          {
-            <span class="text-danger">未盤點</span>
-          }
-          else
-          {
-            <span class="text-info">@sumWeight kg</span>
-          }
-        </h5>
-        <h5>
-          總飼料量:
-          @if (feedSum == null)
-          {
-            <span class="text-danger">無資料</span>
-          }
-          else
-          {
-            <span class="text-info">@feedSum kg</span>
-          }
-        </h5>
-
-        <h5>
-          飼料換肉率:
-          @if (feedSum == null || pigCnt == null)
-          {
-            <span class="text-danger">請先進行盤點及飼料作業</span>
-          }
-          else
-          {
-            var feedToMeat = (sumWeight / feedSum);
-
-            <span class="text-info">@Convert.ToDouble(feedToMeat).ToString("0.00") kg</span>
-          }
-        </h5>
       </div>
     </div>
 
@@ -130,38 +151,40 @@
         作業紀錄
       </b>
 
-      <div class="pull-right">
+      <span class="pull-right">
         <label class="checkbox-inline bg-default myCheckBox">
-          <input type="checkbox" value="" id="ckb-default" checked>盤點
+          <input type="checkbox" value="" id="ckb-default" checked>秤重
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "盤點").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-warning myCheckBox">
           <input type="checkbox" value="" id="ckb-warning" checked>飼料
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "飼料").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-success myCheckBox">
           <input type="checkbox" value="" id="ckb-success" checked>投藥
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "投藥").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoMed" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-danger myCheckBox">
           <input type="checkbox" value="" id="ckb-danger" checked>疫苗
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "疫苗").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoVaccine" && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-info myCheckBox">
           <input type="checkbox" value="" id="ckb-info" checked>其他
           <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "其他").Count()
+            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo
+            && m.WorkType != "DoWeight" && m.WorkType != "DoFeed" && m.WorkType != "DoMed" && m.WorkType != "DoVaccine"
+            && m.WorkStage == (int)IMSEnum.WorkStage.StageLast).Count()
           </span>
         </label>
-      </div>
+      </span>
     </h4>
     @*<hr class="underline-b" />*@
 
@@ -173,33 +196,41 @@
       @foreach (var item in Model)
       {
         string cssClass = "panel-info";
-        if (item.WorkType == "飼料")
+        string panelTitle = "";
+        if (item.WorkType == "DoFeed")
         {
           cssClass = "panel-warning";
+          panelTitle = "飼料";
         }
-        else if (item.WorkType == "盤點")
+        else if (item.WorkType == "DoWeight")
         {
           cssClass = "panel-default";
+          panelTitle = "秤重";
         }
-        else if (item.WorkType == "投藥")
+        else if (item.WorkType == "DoMed")
         {
           cssClass = "panel-success";
+          panelTitle = "投藥";
         }
-        else if (item.WorkType == "疫苗")
+        else if (item.WorkType == "DoVaccine")
         {
           cssClass = "panel-danger";
+          panelTitle = "疫苗";
         }
-        else if (item.WorkType == "出生" || item.WorkType == "生產出貨")
+        else if (item.WorkType == "DoPigChange")
         {
-          cssClass = "panel-primary";
+          panelTitle = "豬隻異動";
+        }
+        else if (item.WorkType == "DoneStageLast")
+        {
+          panelTitle = "待出售";
         }
 
-        @*7.3 在/Shared/_CommentsForPhoto.cshtml加入IEnumerable<T>及foreach (var item in Model){}*@
         <div class="col-md-4 col-sm-6">
           <div class="panel @cssClass">
             <div class="panel-heading clearfix">
               <div class="panel-title pull-left panel-tool">
-                <p><b>@item.WorkType</b> </p>
+                <p><b>@panelTitle</b> </p>
 
               </div>
               <div class="btn-group pull-right">
@@ -218,20 +249,21 @@
               @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkContent</span>
 
-              @if (item.InventoryPigCount != null)
+              @if (item.PigChangeCnt != 0)
               {
                 <br />
-                @Html.LabelFor(model => model.FirstOrDefault().InventoryPigCount, htmlAttributes: new { @class = "control-label" })
-                <span>:@item.InventoryPigCount</span>
-              }
+                @Html.LabelFor(model => model.FirstOrDefault().PigChangeCnt, htmlAttributes: new { @class = "control-label" })
 
-              @if (item.InventoryWeight != null)
-              {
-                <br />
-                @Html.LabelFor(model => model.FirstOrDefault().InventoryWeight, htmlAttributes: new { @class = "control-label" })
-                <span>:@item.InventoryWeight</span>
-              }
+                if (@item.PigChangeCnt > 0)
+                {
+                  <span>: 增加 @item.PigChangeCnt</span>
+                }
+                else
+                {
+                  <span>: 減少 @(Math.Abs(item.PigChangeCnt))</span>
+                }
 
+              }
 
               @if (item.WorkMemo != null)
               {
@@ -254,20 +286,36 @@
                 <span>:@item.FeedValue kg</span>
               }
 
-              @if (item.WorkType == "盤點")
+              @if (item.WorkType == "DoWeight")
               {
-                <br />
-                var InventorydaysAge = (item.WorkDate - bornDate).TotalDays;
+                if (item.InventoryPigCount != null)
+                {
+                  <br />
+                  @Html.LabelFor(model => model.FirstOrDefault().InventoryPigCount, htmlAttributes: new { @class = "control-label" })
+                  <span>:@item.InventoryPigCount</span>
+                }
 
-                <span>盤點日齡:@InventorydaysAge 天</span>
+                if (item.InventoryWeight != null)
+                {
+                  <br />
+                  @Html.LabelFor(model => model.FirstOrDefault().InventoryWeight, htmlAttributes: new { @class = "control-label" })
+                  <span>:@item.InventoryWeight</span>
+                }
+
+                double pigAvgWeight = Convert.ToDouble(item.InventoryWeight) / Convert.ToInt16(item.InventoryPigCount);
+
+                <br />
+                <span>平均重量:@pigAvgWeight.ToString("0.00") kg</span>
+
+                var workdaysAge = (item.WorkDate - bornDate).TotalDays;
+                <br />
+                <span>秤重日齡:@workdaysAge 天</span>
+
               }
+
 
             </div>
 
-            @*//7-8-2 在_CommentsForPhoto.cshtml加入Delete連結*@
-            @*<div class="panel-footer">
-                  @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.SeqNo }, new { @class = "btn btn-warning", onclick = "return confirm('您確定要刪除嗎??')" })
-              </div>*@
             <div class="panel-footer">
               @Html.LabelFor(model => model.FirstOrDefault().WorkUser, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkUser </span>

@@ -54,9 +54,10 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.CategoryID }, new { Class = "btn btn-success" }) |
-                    @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
-                    @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.CategoryID }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" })
+                  @Html.ActionLink(IMS.Resources.Resource.Comm_Edit, "Edit", new { id = item.CategoryID }, new { Class = "btn btn-success" }) |
+                  @*@Html.ActionLink(IMS.Resources.Resource.Comm_Details, "Details", new { id=item.ID }, new { Class = "btn btn-info" }) |*@
+                  @Html.ActionLink(IMS.Resources.Resource.Comm_Delete, "Delete", new { id = item.CategoryID }, new { onclick = "return confirm('確定要刪除嗎??')", Class = "btn btn-danger" }) |
+                  @Html.ActionLink(IMS.Resources.Resource.Comm_Edit + "子項目", "Index", "CategorySub", new { categoryId = item.CategoryID }, new { Class = "btn btn-info" })
                 </td>
             </tr>
         }

@@ -55,9 +55,9 @@ namespace IMS.Areas.Traceability.Controllers
     public ActionResult RefreshPigCnt(string traceNo)
     {
       int pigChangeCnt = 0;
-      if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Any())
+      if (IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoPigChange").Any())
       {
-        pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "豬隻異動").Sum(m => m.PigChangeCnt);
+        pigChangeCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == traceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
       }
 
       int pigCnt = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).Select(m => m.PigCnt).FirstOrDefault();
@@ -213,46 +213,13 @@ namespace IMS.Areas.Traceability.Controllers
 
     }
     
-    public ActionResult CreateEditTrace(string traceNo,int? pigCnt)
+    public ActionResult CreateEditTrace(string traceNo)
     {
       ViewBag.TraceNo = traceNo;
-
-      int pigCnt1 = pigCnt ?? 0;
+      
 
       TraceMaster traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
-
-      if (traceMaster == null)
-      {
-        traceMaster = new TraceMaster()
-        {
-          TraceNo = traceNo,
-          PigCnt = pigCnt1,
-          PigFarmId = Request.Cookies["pigFarmId"].Value,
-          CreDate = DateTime.Now,
-          CreUser = User.ID,
-          Status = "T",
-        };
-
-       
-        TraceDetail traceDetail = new TraceDetail()
-        {
-          TraceNo = traceNo,
-          WorkStage = (int)IMSEnum.WorkStage.Stage1,
-          WorkType = "出生",
-          WorkContent = "出生",
-          CreDate = DateTime.Now,
-          CreUser = User.ID,
-          WorkUser = User.ID,
-          Status = "Y",
-          WorkDate = new DateTime(int.Parse(traceNo.Substring(1, 4)), int.Parse(traceNo.Substring(5, 2)), int.Parse(traceNo.Substring(7, 2))),
-          WorkDate_end = new DateTime(int.Parse(traceNo.Substring(9, 4)), int.Parse(traceNo.Substring(13, 2)), int.Parse(traceNo.Substring(15, 2))),
-        };
-
-        AddTempTraceMaster(traceMaster);
-        AddTraceDetail(traceDetail);
-
-      }
-
+      
       return View(traceMaster);
 
 
@@ -265,8 +232,8 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                          where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
-                         orderby c.WorkDate 
-                     select c;
+                         orderby c.WorkDate descending
+                         select c;
 
       ViewBag.TraceNo = traceNo;
 
@@ -302,12 +269,15 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
-                     orderby c.WorkDate 
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
 
+      if (traceDetail.WorkType.StartsWith("Done")) return JavaScript("location.reload();");
+      
       return PartialView("_TraceDetails", traceDetails.ToList());
+      
     }
 
     public PartialViewResult _CreateTraceDetail(string traceNo)
@@ -326,7 +296,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -361,10 +331,12 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
+
+      if (traceDetail.WorkType.StartsWith("Done")) return JavaScript("location.reload();");
 
       return PartialView("_TraceDetailsStage2", traceDetails.ToList());
     }
@@ -384,7 +356,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -419,10 +391,12 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
+
+      if (traceDetail.WorkType.StartsWith("Done")) return JavaScript("location.reload();");
 
       return PartialView("_TraceDetailsStage3", traceDetails.ToList());
     }
@@ -443,7 +417,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -478,10 +452,12 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
-                     orderby c.WorkDate
+                     orderby c.WorkDate descending
                      select c;
 
       ViewBag.TraceNo = traceNo;
+
+      if (traceDetail.WorkType.StartsWith("Done")) return JavaScript("location.reload();");
 
       return PartialView("_TraceDetailsStageLast", traceDetails.ToList());
     }

@@ -5,8 +5,12 @@
     ViewBag.Title = IMS.Resources.Resource.CategorySubMgr;
 }
 
-<h2>類別 : @ViewBag.CategoryListName</h2>
-
+<h2>
+  類別 : @ViewBag.CategoryListName
+  <small class="pull-right">
+    <a class="btn btn-default" href="@Url.Action("Index","Category",new { area="Sys"})">返回 @IMS.Resources.Resource.CategoryMgr</a>
+  </small>
+</h2>
 @*<p>
     @Html.ActionLink("新增項目", "Create", new { categoryId = ViewBag.CategoryId }, new { Class = "btn btn-primary" })
 </p>*@

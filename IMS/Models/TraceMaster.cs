@@ -31,13 +31,13 @@ namespace IMS.Models
 
     [Required]
     [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+    [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "BornDate", ResourceType = typeof(Resources.Resource))]
     public DateTime BornDate { get; set; }
 
     [Required]
     [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd HH:mm:ss}", ApplyFormatInEditMode = true)]
+    [DisplayFormat(DataFormatString = "{0:yyyy/MM/dd}", ApplyFormatInEditMode = true)]
     [Display(Name = "BornDate_end", ResourceType = typeof(Resources.Resource))]
     public DateTime BornDate_end { get; set; }
 
