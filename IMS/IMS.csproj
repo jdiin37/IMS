@@ -319,6 +319,7 @@
     <Content Include="Areas\Traceability\Views\PigletGrow\_CreateTraceDetailStage3.cshtml" />
     <Content Include="Areas\Traceability\Views\PigletGrow\_CreateTraceDetailStageLast.cshtml" />
     <Content Include="Areas\Traceability\Views\PigletGrow\ModalCreateTraceMaster.cshtml" />
+    <Content Include="Areas\Traceability\Views\Trade\ModalCheckSale.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />

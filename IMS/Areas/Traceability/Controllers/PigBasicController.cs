@@ -76,7 +76,7 @@ namespace IMS.Areas.Traceability.Controllers
       pigBasic.CreUser = User.ID;
       pigBasic.Status = "Y";
 
-      if (IMSdb.PigBasic.Where(m => m.PigNo == pigBasic.PigNo).Any())
+      if (IMSdb.PigBasic.Where(m => m.PigNo == pigBasic.PigNo && m.Status=="Y").Any())
       {
         ViewBag.ErrMsg = "編號重複";
         return View(pigBasic);

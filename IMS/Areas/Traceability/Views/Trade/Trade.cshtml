@@ -4,6 +4,7 @@
 
 @{
   ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
 
 <br />
@@ -27,13 +28,13 @@
               <label><input type="checkbox" value=""></label>
             </th>
             <th>
-              <b>生產履歷編號</b>
+              <b>履歷編號</b>
             </th>
             <th>
-              <b>建立日期</b>
+              <b>目前日齡</b>
             </th>
             <th>
-              <b>建立人員</b>
+              <b>豬隻數量</b>
             </th>
             <th>
 
@@ -43,6 +44,18 @@
         <tbody>
           @foreach (var item in Model)
           {
+
+            int nowPigCnt = 0;
+            if (IMSdb.TraceDetail.Where(m => m.TraceNo == item.TraceNo && m.WorkType == "DoPigChange").Any())
+            {
+              nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == item.TraceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
+            }
+            nowPigCnt = item.PigCnt + nowPigCnt;
+            DateTime bornDate = item.BornDate;
+            DateTime bornDate_end = item.BornDate_end;
+            var daysAge = (DateTime.Today - bornDate).TotalDays;
+            var daysAge_end = (DateTime.Today - bornDate_end).TotalDays;
+
             <tr>
               <td>
                 <label><input type="checkbox" value="" class="ckb_addItem" id="@item.TraceNo"></label>
@@ -59,10 +72,10 @@
                 @Html.DisplayFor(m => item.TraceNo)
               </td>
               <td>
-                @Html.DisplayFor(m => item.CreDate)
+                @daysAge_end - @daysAge 天
               </td>
               <td>
-                @Html.DisplayFor(m => item.CreUser)
+                @nowPigCnt 隻
               </td>
 
               <td>
@@ -93,10 +106,9 @@
   </div>
   <div class="col-sm-3">
     <div class="thumbnail text-center">
-      <h4><b>出售清單</b></h4>
-      <ul id="sellList" class="list-group">
-
-      </ul>
+      <h4><b>出售履歷清單</b></h4>
+      <hr />
+      <ul id="sellList" class="list-group"></ul>
 
       <hr />
 
@@ -108,20 +120,20 @@
   </div>
 </div>
 
-
+@{Html.RenderAction("ModalCheckSale");}
 
 @section JS{
   <script>
     function addItem(traceNo) {
 
-      var li = $('<li class="list-group-item">').append('<a href=#>' + traceNo + '</a>');
+      var li = $('<li class="list-group-item">').append('<a class="sellItem" href=#>' + traceNo + '</a>');
 
 
       $('#sellList').append(li);
     }
 
     function removeItem(traceNo) {
-      
+
       var liList = $('#sellList').find('li');
 
       liList.each(function (index) {
@@ -138,19 +150,24 @@
 
     $(function () {
       $(".ckb_addItem").click(function () {
-        
+
         var traceNo = $(this).attr('id');
         if ($(this).is(':checked')) {
           addItem(traceNo);
         } else {
           removeItem(traceNo);
         }
-          
-        console.log(traceNo);
-        //alert($(this));
+
       });
-    });   
-        //getWorkList();
+
+      $("#btn-sell").click(function (e) {
+        showCheckSale();
+        e.preventDefault();
+      });
+
+
+    });
+          //getWorkList();
   </script>
 
 

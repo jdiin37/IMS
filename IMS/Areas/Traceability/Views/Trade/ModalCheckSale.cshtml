@@ -1,0 +1,137 @@
+﻿
+<div class="modal fade" tabindex="-1" role="dialog" id="modal_checkSale">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">確認出售</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>履歷編號</th>
+              <th>豬隻數量</th>
+              <th>總公斤數</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+
+          </tbody>
+
+        </table>
+        <hr />
+        <div class="row" id="SaleTool">
+          <div class="col-md-4">
+            <p>豬隻總數: <input type="number" class="form-control" id="totalPigCnt" name="totalPigCnt" readonly></p>
+          </div>
+          <div class="col-md-4">
+            <p>豬隻總重量(公斤): <input type="number" class="form-control" id="totalWeight" name="totalWeight" readonly></p>
+          </div>
+          <div class="col-md-4">
+            <p>平均豬隻重量(公斤): <input type="number" class="form-control" id="avgWeight" name="avgWeight" readonly></p>
+          </div>
+          <div class="col-md-4">
+            <p>交易價格: <input type="number" class="form-control" id="totalPrice" name="totalPrice"></p>
+          </div>
+          <div class="col-md-4">
+            <p>平均價格(元/公斤): <input type="number" class="form-control" id="avgPrice" name="avgPrice" readonly></p>
+          </div>
+          <div class="col-md-4">
+            <p>交易對象: <input type="text" class="form-control" id="saleTo" name="saleTo"></p>
+          </div>
+          <div class="col-md-4">
+            <p>備註: <textarea class="form-control" id="saleMemo" name="saleMemo" cols="40" rows="3"></textarea></p>
+          </div>
+        </div>
+        
+        @*<input type="hidden" id="PigFarmId" name="PigFarmId" value="@ViewBag.PigFarmId"/>*@
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-info" id="btn_OKSale" disabled>出售</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+  function showCheckSale() {
+    $('#tbody').empty();
+    $('#SaleTool').find('input').val("");
+    
+    var totalPigCnt = 0;
+    var totalWeight = 0;
+    var avgWeight = 0;
+    var totalPrice = 0;
+    var avgPrice = 0;
+
+    function enableSale() {
+      if (parseInt(totalPrice)) {
+        avgPrice = parseInt(totalPrice) / totalWeight;
+        $('#avgPrice').val(avgPrice.toFixed(2));
+        $('#btn_OKSale').attr("disabled", false);
+      } else {
+        $('#btn_OKSale').attr("disabled", true);
+      }
+    }
+
+    $('.ckb_addItem:checked').each(function (index) {
+      var tr = $(this).parents('tr');
+      var traceNo = tr.find("td").eq(1).text();
+      var pigCnt = tr.find("td").eq(3).text();
+      totalPigCnt += parseInt(pigCnt.replace("隻", ""));
+
+      var element = '<input class="form-control pigWeight">';
+      var editInput = $(element).attr({
+        type: "number",
+
+      });;
+
+      var eq0 = $('<td>').text(traceNo);
+      var eq1 = $('<td>').text(pigCnt);
+      var eq2 = $('<td>').append(editInput);
+
+      var addtr = $('<tr>');
+      addtr.append(eq0);
+      addtr.append(eq1);
+      addtr.append(eq2);
+
+      $('#tbody').append(addtr);
+    });;
+
+    $('#totalPigCnt').val(totalPigCnt);
+
+    $('.pigWeight').change(function () {
+      totalWeight = 0;
+      $('.pigWeight').each(function (index) {
+        if (parseInt($(this).val())) {
+          totalWeight += parseInt($(this).val()); 
+        }
+      });
+      $('#totalWeight').val(totalWeight);
+
+      //算平均重量
+      avgWeight = totalWeight/totalPigCnt;
+      $('#avgWeight').val(avgWeight.toFixed(2));
+
+      //算平均價格
+      totalPrice = $('#totalPrice').val();
+      enableSale();
+    });
+
+    $('#totalPrice').change(function () {
+      totalPrice = $(this).val();
+      enableSale();
+    });
+
+
+    $('#btn_OKSale').click(function () {
+      alert('確定出售嗎?');
+    });
+
+    $('#modal_checkSale').modal('show');
+  }
+
+</script>

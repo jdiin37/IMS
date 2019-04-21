@@ -106,9 +106,41 @@ namespace IMS.Areas.Traceability.Controllers
         lists = lists.Where(x => x.TraceNo.Contains(traceNo));
       }
 
-      return lists.ToList();
+      //篩選出待出售的
+      List<TraceMaster> rtnList = lists.ToList();
+      foreach (var item in rtnList.ToList())
+      {
+        if(!IMSdb.TraceDetail.Where(m=>m.TraceNo == item.TraceNo && m.WorkType == "DoneStageLast" ).Any())
+        {
+          rtnList.Remove(item);
+        }
+      }
+
+      return rtnList;
     }
 
+
+
+    [ChildActionOnly]
+    public ActionResult ModalCheckSale()
+    {
+      return PartialView();
+    }
+
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// 沒用到的??
+    /// </summary>
+    /// <returns></returns>
     public ActionResult GetWorkList()
     {
       var workList = IMSdb.WorkBasic.Where(m => m.Status != "N").OrderBy(m => m.WorkCode).ToList();
