@@ -21,28 +21,33 @@
 
         </table>
         <hr />
-        <div class="row" id="SaleTool">
+        <div class="row" id="TradeTool">
           <div class="col-md-4">
-            <p>豬隻總數: <input type="number" class="form-control" id="totalPigCnt" name="totalPigCnt" readonly></p>
+            <p>豬隻總數: <input type="number" class="form-control" id="TradePigCnt" name="TradePigCnt" readonly></p>
           </div>
           <div class="col-md-4">
-            <p>豬隻總重量(公斤): <input type="number" class="form-control" id="totalWeight" name="totalWeight" readonly></p>
+            <p>豬隻總重量(公斤): <input type="number" class="form-control" id="SumWeight" name="SumWeight" readonly></p>
           </div>
           <div class="col-md-4">
             <p>平均豬隻重量(公斤): <input type="number" class="form-control" id="avgWeight" name="avgWeight" readonly></p>
           </div>
           <div class="col-md-4">
-            <p>交易價格: <input type="number" class="form-control" id="totalPrice" name="totalPrice"></p>
+            <p>交易價格: <input type="number" class="form-control" id="TradePrice" name="TradePrice"></p>
           </div>
           <div class="col-md-4">
             <p>平均價格(元/公斤): <input type="number" class="form-control" id="avgPrice" name="avgPrice" readonly></p>
           </div>
           <div class="col-md-4">
-            <p>交易對象: <input type="text" class="form-control" id="saleTo" name="saleTo"></p>
+            <p>交易對象: <input type="text" class="form-control" id="TradeTo" name="TradeTo"></p>
           </div>
           <div class="col-md-4">
-            <p>備註: <textarea class="form-control" id="saleMemo" name="saleMemo" cols="40" rows="3"></textarea></p>
+            <p>備註: <textarea class="form-control" id="TradeMemo" name="TradeMemo" cols="40" rows="3"></textarea></p>
           </div>
+
+          <div class="col-md-4">
+            <input type="hidden" class="form-control" id="TraceNos" name="TraceNos" cols="40" rows="3">
+          </div>
+
         </div>
         
         @*<input type="hidden" id="PigFarmId" name="PigFarmId" value="@ViewBag.PigFarmId"/>*@
@@ -57,19 +62,42 @@
 
 
 <script>
+  function ajax_addTradeRecord() {
+
+    var $form = $('#TradeTool');
+    var url = "http://" + document.location.host + "/api/TradeRecord";
+    var data = $form.find('input[name],select[name]').serialize();
+    
+    console.log(data);
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: data,
+      success: function (data) {
+        console.log(data);
+        alert("交易成功");
+        //location.reload();
+      }
+    });
+  }
+
+
+
+
   function showCheckSale() {
     $('#tbody').empty();
-    $('#SaleTool').find('input').val("");
+    $('#TradeTool').find('input').val("");
     
-    var totalPigCnt = 0;
-    var totalWeight = 0;
+    var tradePigCnt = 0;
+    var tradePrice = 0;
+    var sumWeight = 0;
     var avgWeight = 0;
-    var totalPrice = 0;
     var avgPrice = 0;
+    var traceNos = "";
 
     function enableSale() {
-      if (parseInt(totalPrice)) {
-        avgPrice = parseInt(totalPrice) / totalWeight;
+      if (parseInt(tradePrice)) {
+        avgPrice = parseInt(tradePrice) / sumWeight;
         $('#avgPrice').val(avgPrice.toFixed(2));
         $('#btn_OKSale').attr("disabled", false);
       } else {
@@ -79,9 +107,9 @@
 
     $('.ckb_addItem:checked').each(function (index) {
       var tr = $(this).parents('tr');
-      var traceNo = tr.find("td").eq(1).text();
+      var traceNo = tr.find("td").eq(1).text().trim();
       var pigCnt = tr.find("td").eq(3).text();
-      totalPigCnt += parseInt(pigCnt.replace("隻", ""));
+      tradePigCnt += parseInt(pigCnt.replace("隻", ""));
 
       var element = '<input class="form-control pigWeight">';
       var editInput = $(element).attr({
@@ -97,41 +125,45 @@
       addtr.append(eq0);
       addtr.append(eq1);
       addtr.append(eq2);
-
+      traceNos += traceNo + ";";
       $('#tbody').append(addtr);
-    });;
+    });
 
-    $('#totalPigCnt').val(totalPigCnt);
+    console.log(traceNos);
+
+    $('#TraceNos').val(traceNos.trim());
+
+
+    $('#TradePigCnt').val(tradePigCnt);
 
     $('.pigWeight').change(function () {
-      totalWeight = 0;
+      sumWeight = 0;
       $('.pigWeight').each(function (index) {
         if (parseInt($(this).val())) {
-          totalWeight += parseInt($(this).val()); 
+          sumWeight += parseInt($(this).val()); 
         }
       });
-      $('#totalWeight').val(totalWeight);
+      $('#SumWeight').val(sumWeight);
 
       //算平均重量
-      avgWeight = totalWeight/totalPigCnt;
+      avgWeight = sumWeight/tradePigCnt;
       $('#avgWeight').val(avgWeight.toFixed(2));
 
       //算平均價格
-      totalPrice = $('#totalPrice').val();
+      tradePrice = $('#TradePrice').val();
       enableSale();
     });
 
-    $('#totalPrice').change(function () {
-      totalPrice = $(this).val();
+    $('#TradePrice').change(function () {
+      tradePrice = $(this).val();
       enableSale();
     });
 
 
-    $('#btn_OKSale').click(function () {
-      alert('確定出售嗎?');
-    });
-
+    
     $('#modal_checkSale').modal('show');
   }
+
+  
 
 </script>

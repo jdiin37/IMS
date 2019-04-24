@@ -232,7 +232,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                          where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
-                         orderby c.WorkDate descending
+                         orderby c.WorkDate 
                          select c;
 
       ViewBag.TraceNo = traceNo;
@@ -269,7 +269,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage1
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -296,7 +296,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -331,7 +331,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage2
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -356,7 +356,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -391,7 +391,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.Stage3
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -417,7 +417,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;
@@ -452,7 +452,7 @@ namespace IMS.Areas.Traceability.Controllers
 
       var traceDetails = from c in IMSdb.TraceDetail
                      where c.TraceNo == traceNo && c.WorkStage == (int)IMSEnum.WorkStage.StageLast
-                     orderby c.WorkDate descending
+                     orderby c.WorkDate 
                      select c;
 
       ViewBag.TraceNo = traceNo;

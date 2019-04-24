@@ -112,6 +112,19 @@
   @Scripts.Render("~/bundles/bootstrap")
   @Scripts.Render("~/bundles/jquery_setting")
 
+
+  @{
+    <script>
+
+      var control = "@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()";
+      if (control != "Home") {
+          $("#top_menu").hide();
+      } ;
+
+    </script>
+  }
+
+
   @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
   @RenderSection("JS", required: false)
 

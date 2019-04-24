@@ -1,0 +1,81 @@
+﻿
+
+<div class="modal fade" tabindex="-1" role="dialog" id="modal_viewTrade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">交易編號: <b id="TradeseqNo"></b></h4>
+      </div>
+      <div class="modal-body" id="TradeContent">
+
+        <div class="loader"></div>
+
+        @*<input type="hidden" id="PigFarmId" name="PigFarmId" value="@ViewBag.PigFarmId"/>*@
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">離開</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<script>
+
+  
+
+
+  function ajax_getTrade(seqNo) {
+    var url = "http://" + document.location.host + "/api/TradeRecord/" + seqNo;
+    $.ajax({
+      type: "GET",
+      url: url,
+      success: function (data) {
+        $('#TradeContent').empty();
+        console.log(data);
+        var date = new Date(data.CreDate);
+        date = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate();
+        var tradeDate = $('<p class="row">').append('<label class="col-xs-6 text-right">交易日期:</label>').append('<span class="col-xs-6 text-left">' + date + '</span>');
+        var tradePrice = $('<p class="row">').append('<label class="col-xs-6 text-right">交易金額:</label>').append('<span class="col-xs-6 text-left">' + data.TradePrice + ' 元</span>');
+        var tradePinCnt = $('<p class="row">').append('<label class="col-xs-6 text-right">交易豬隻數:</label>').append('<span class="col-xs-6 text-left">' + data.TradePigCnt + ' 隻</span>');
+        var avgWeight = $('<p class="row">').append('<label class="col-xs-6 text-right">平均重量:</label>').append('<span class="col-xs-6 text-left">' + data.avgWeight + ' 公斤</span>');
+        var avgPrice = $('<p class="row">').append('<label class="col-xs-6 text-right">平均價格:</label>').append('<span class="col-xs-6 text-left">' + data.avgPrice + ' 元/公斤</span>');
+        var tradeTo = $('<p class="row">').append('<label class="col-xs-6 text-right">交易對象:</label>').append('<span class="col-xs-6 text-left">' + data.TradeTo + '</span>');
+        var tradeMemo = $('<p class="row">').append('<label class="col-xs-6 text-right">備註:</label>').append('<span class="col-xs-6 text-left">' + data.TradeMemo + '</span>');
+
+
+        var arrTraceNos = data.TraceNos.split(";");
+        
+        var traceNos = "<hr><b>成長履歷編號:</b><br/>";
+        function myFunction(value, index, array) {
+          console.log(value);
+          traceNos += "<a href='#'>" + value + "</a><br/>"
+        }
+        arrTraceNos.forEach(myFunction);
+
+        
+
+        $('#TradeContent').append(tradeDate).append(tradePrice).append(tradePinCnt).append(avgWeight).append(avgPrice).append(tradeTo).append(tradeMemo).append(traceNos);
+
+      }, error: function () {
+        $('#TradeContent').empty();
+        var error = $('<p>').html('Not Found');
+        $('#TradeContent').append(error);
+      }
+
+    });
+  }
+
+
+  function showViewTrade(seqNo) {
+    //$('#modal-body').empty();
+
+    $('#TradeseqNo').text(seqNo);
+    ajax_getTrade(seqNo);
+    $('#modal_viewTrade').modal('show');
+  }
+
+
+
+</script>

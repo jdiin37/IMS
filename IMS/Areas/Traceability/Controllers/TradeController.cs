@@ -57,25 +57,43 @@ namespace IMS.Areas.Traceability.Controllers
       return View(traceMasters.ToPagedList(pageNumber, Config.PageSize));
     }
 
-    public ActionResult Search(int? page, string traceNo, DateTime? sdate, DateTime? edate, string status)
+    public ActionResult Search(int? page, DateTime? sdate, DateTime? edate)
     {
       if (!(sdate != null && edate != null) && !(sdate == null && edate == null))
       {
         TempData["Err"] = "請輸入完整的日期起迄日";
       }
-
-      ViewBag.traceNo = traceNo;
+      
 
       ViewBag.sdate = sdate?.ToString("yyyy-MM-dd");
       ViewBag.edate = edate?.ToString("yyyy-MM-dd");
-      ViewBag.status = status;
+      
 
-      var traceMasters = getTraceMasters(traceNo, sdate, edate, status);
+      var tradeRecords = getTradeRecord(sdate, edate);
 
 
       int pageNumber = (page ?? 1);
 
-      return View(traceMasters.ToPagedList(pageNumber, Config.PageSize));
+      return View(tradeRecords.ToPagedList(pageNumber, Config.PageSize));
+    }
+
+
+    private IEnumerable<TradeRecord> getTradeRecord(DateTime? sdate, DateTime? edate)
+    {
+      IEnumerable<TradeRecord> lists;
+
+
+      if (sdate != null && edate != null)
+      {
+        lists = IMSdb.TradeRecord.Where(x => x.CreDate >= sdate && x.CreDate <= edate).Select(m => m).OrderByDescending(m => m.CreDate);
+      }
+      else
+      {
+        lists = IMSdb.TradeRecord.Select(z => z).OrderByDescending(m => m.CreDate);
+      }
+
+      
+      return lists;
     }
 
 
@@ -128,7 +146,13 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
 
+    [ChildActionOnly]
+    public ActionResult ModalViewTrade()
+    {
+      return PartialView();
+    }
 
+    
 
 
 

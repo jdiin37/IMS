@@ -165,7 +165,15 @@
         e.preventDefault();
       });
 
-
+      $("#btn_OKSale").click(function (e) {
+        var r = confirm("確定要出售嗎??");
+        if (r == true) {
+          ajax_addTradeRecord();
+        } else {
+          
+        }
+      });
+      
     });
           //getWorkList();
   </script>

@@ -153,31 +153,31 @@
 
       <span class="pull-right">
         <label class="checkbox-inline bg-default myCheckBox">
-          <input type="checkbox" value="" id="ckb-default" checked>秤重
+          <input type="checkbox" value="" class="ckb-default" checked>秤重
           <span class="badge">
             @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.Stage2).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-warning myCheckBox">
-          <input type="checkbox" value="" id="ckb-warning" checked>飼料
+          <input type="checkbox" value="" class="ckb-warning" checked>飼料
           <span class="badge">
             @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage2).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-success myCheckBox">
-          <input type="checkbox" value="" id="ckb-success" checked>投藥
+          <input type="checkbox" value="" class="ckb-success" checked>投藥
           <span class="badge">
             @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoMed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage2).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-danger myCheckBox">
-          <input type="checkbox" value="" id="ckb-danger" checked>疫苗
+          <input type="checkbox" value="" class="ckb-danger" checked>疫苗
           <span class="badge">
             @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoVaccine" && m.WorkStage == (int)IMSEnum.WorkStage.Stage2).Count()
           </span>
         </label>
         <label class="checkbox-inline bg-info myCheckBox">
-          <input type="checkbox" value="" id="ckb-info" checked>其他
+          <input type="checkbox" value="" class="ckb-info" checked>其他
           <span class="badge">
             @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo
             && m.WorkType != "DoWeight" && m.WorkType != "DoFeed" && m.WorkType != "DoMed" && m.WorkType != "DoVaccine"

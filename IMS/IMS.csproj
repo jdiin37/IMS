@@ -320,6 +320,7 @@
     <Content Include="Areas\Traceability\Views\PigletGrow\_CreateTraceDetailStageLast.cshtml" />
     <Content Include="Areas\Traceability\Views\PigletGrow\ModalCreateTraceMaster.cshtml" />
     <Content Include="Areas\Traceability\Views\Trade\ModalCheckSale.cshtml" />
+    <Content Include="Areas\Traceability\Views\Trade\ModalViewTrade.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -398,6 +399,7 @@
     <Compile Include="Controllers\WebApi\FarrowingRecordController.cs" />
     <Compile Include="Controllers\WebApi\BaseApiController.cs" />
     <Compile Include="Controllers\WebApi\testController.cs" />
+    <Compile Include="Controllers\WebApi\TradeRecordController.cs" />
     <Compile Include="Controllers\WebApi\TraceMasterController.cs" />
     <Compile Include="Controllers\WebApi\TraceDetailController.cs" />
     <Compile Include="DAL\IMSDBContext.cs" />
@@ -412,6 +414,7 @@
     <Compile Include="Models\TraceDetail.cs" />
     <Compile Include="Models\SeqNo.cs" />
     <Compile Include="Models\TraceMaster.cs" />
+    <Compile Include="Models\TradeRecord.cs" />
     <Compile Include="Models\WorkBasic.cs" />
     <Compile Include="Models\AccountLevel.cs" />
     <Compile Include="Models\Account.cs" />
