@@ -3,9 +3,15 @@
 @model PagedList.IPagedList<IMS.Models.TraceMaster>
 
 @{
-  ViewBag.Title = "批次豬隻成長履歷";
+  ViewBag.Title = IMS.Resources.Resource.PigletGrowPM;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
+<br />
+
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Home")">@IMS.Resources.Resource.Model_Traceability</a></li>
+  <li class=""><a href="@Url.Action("Index","PigletGrow")">@IMS.Resources.Resource.PigletGrowPM</a></li>
+</ol>
 
 <h2>批次豬隻成長履歷</h2>
 <hr />

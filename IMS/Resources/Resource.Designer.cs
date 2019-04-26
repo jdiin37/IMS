@@ -1024,6 +1024,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 PigletGrowPM 的當地語系化字串。
+        /// </summary>
+        public static string PigletGrowPM {
+            get {
+                return ResourceManager.GetString("PigletGrowPM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 母 的當地語系化字串。
         /// </summary>
         public static string PigMom {

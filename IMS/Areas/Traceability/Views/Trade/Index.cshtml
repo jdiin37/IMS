@@ -3,10 +3,15 @@
 
 
 @{
-  ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+  ViewBag.Title = IMS.Resources.Resource.TradePM;
 }
-
 <br />
+
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Home")">@IMS.Resources.Resource.Model_Traceability</a></li>
+  <li class=""><a href="@Url.Action("Index","Trade")">@IMS.Resources.Resource.TradePM</a></li>
+</ol>
+
 <div class="row">
   <div class="col-sm-6">
     <div class="jumbotron text-center">
@@ -22,7 +27,7 @@
       </a>
     </div>
   </div>
-  
+
 </div>
 
 

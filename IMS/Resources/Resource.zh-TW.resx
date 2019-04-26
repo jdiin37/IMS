@@ -606,6 +606,9 @@
   <data name="PigCnt" xml:space="preserve">
     <value>豬隻數量</value>
   </data>
+  <data name="PigletGrowPM" xml:space="preserve">
+    <value>仔豬成長履歷系統</value>
+  </data>
   <data name="Stage4" xml:space="preserve">
     <value>肥育期</value>
   </data>

@@ -3,12 +3,16 @@
 
 
 @{
-  ViewBag.Title = IMS.Resources.Resource.Model_Traceability;
+  ViewBag.Title = "出售";
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
 }
 
 <br />
-
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Home")">@IMS.Resources.Resource.Model_Traceability</a></li>
+  <li class=""><a href="@Url.Action("Index","Trade")">@IMS.Resources.Resource.TradePM</a></li>
+  <li class=""><a href="@Url.Action("Trade","Trade")">出售</a></li>
+</ol>
 <h2>
   出售
 </h2>
