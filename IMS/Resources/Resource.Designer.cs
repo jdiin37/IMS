@@ -655,6 +655,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 FeedToMeet 的當地語系化字串。
+        /// </summary>
+        public static string FeedToMeet {
+            get {
+                return ResourceManager.GetString("FeedToMeet", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 FeedType 的當地語系化字串。
         /// </summary>
         public static string FeedType {
@@ -1362,6 +1371,15 @@ namespace IMS.Resources {
         public static string TraceProduce {
             get {
                 return ResourceManager.GetString("TraceProduce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查詢類似 TradeAnalysis 的當地語系化字串。
+        /// </summary>
+        public static string TradeAnalysis {
+            get {
+                return ResourceManager.GetString("TradeAnalysis", resourceCulture);
             }
         }
         

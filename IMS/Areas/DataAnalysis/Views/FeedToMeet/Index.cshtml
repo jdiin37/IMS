@@ -1,0 +1,181 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<IMS.Models.TraceMaster>
+
+
+@{
+  ViewBag.Title = IMS.Resources.Resource.FeedToMeet;
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+}
+
+<br />
+
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
+  <li class=""><a href="@Url.Action("Index","Home",new { area = "DataAnalysis" })">@IMS.Resources.Resource.Model_DataAnalysis</a></li>
+  <li class="active">@IMS.Resources.Resource.FeedToMeet</li>
+</ol>
+
+<h2>@IMS.Resources.Resource.FeedToMeet</h2>
+<hr />
+
+<div class="row">
+  <div class="col-sm-9">
+    <div class="panel panel-info">
+      <!-- Default panel contents -->
+      @*<div class="panel-heading">欲分析成長履歷</div>*@
+
+      <!-- Table -->
+      <table class="table table-hover table-striped table-responsive">
+        <thead class="text-center">
+          <tr>
+            <th>
+              <label><input type="checkbox" value=""></label>
+            </th>
+            <th>
+              <b>履歷編號</b>
+            </th>
+            <th>
+              <b>目前日齡</b>
+            </th>
+            <th>
+              <b>豬隻數量</b>
+            </th>
+            <th>
+
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach (var item in Model)
+          {
+
+            int nowPigCnt = 0;
+            if (IMSdb.TraceDetail.Where(m => m.TraceNo == item.TraceNo && m.WorkType == "DoPigChange").Any())
+            {
+              nowPigCnt = IMSdb.TraceDetail.Where(m => m.TraceNo == item.TraceNo && m.WorkType == "DoPigChange").Sum(m => m.PigChangeCnt);
+            }
+            nowPigCnt = item.PigCnt + nowPigCnt;
+            DateTime bornDate = item.BornDate;
+            DateTime bornDate_end = item.BornDate_end;
+            var daysAge = (DateTime.Today - bornDate).TotalDays;
+            var daysAge_end = (DateTime.Today - bornDate_end).TotalDays;
+
+            <tr>
+              <td>
+                <label><input type="checkbox" value="" class="ckb_addItem" id="@item.TraceNo"></label>
+                @*@if (Html.DisplayFor(m => item.Status).ToString() == "T")
+                  {
+                    <span class="label label-warning">暫存</span>
+                  }
+                  else
+                  {
+                    <span class="label label-success">完成</span>
+                  }*@
+              </td>
+              <td>
+                @Html.DisplayFor(m => item.TraceNo)
+              </td>
+              <td>
+                @daysAge_end - @daysAge 天
+              </td>
+              <td>
+                @nowPigCnt 隻
+              </td>
+
+              <td>
+                @Html.ActionLink(IMS.Resources.Resource.Comm_View, "CreateEdit", new { traceNo = item.TraceNo }, new { Class = "btn btn-success" })
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+      @if (Model.Count() < 1)
+      {
+        <div class="well well-sm" style="width:100%">
+          <p class="text-center text-warning">查無資料</p>
+        </div>
+      }
+
+
+      <br />
+      <div class="text-center">
+        @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount*@
+
+        @Html.PagedListPager(Model, page => Url.Action("Trade",
+            new { page,traceNo = ViewBag.traceNo, sdate = ViewBag.sdate, edate = ViewBag.edate, status = ViewBag.status }))
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="thumbnail text-center">
+      <h4><b>欲分析成長履歷</b></h4>
+      <hr />
+      <ul id="analysisList" class="list-group"></ul>
+
+      <hr />
+
+      <button class="btn btn-info" id="btn-analysis">分析</button>
+      @*@Html.ActionLink("分析", "Analysis",new { },new { @Class= "btn btn-info" })*@
+      <br />
+      <br />
+    </div>
+  </div>
+</div>
+
+@section JS{
+  <script>
+    function addItem(traceNo) {
+
+      var li = $('<li class="list-group-item">').append('<a class="analysisItem" href=#>' + traceNo + '</a>');
+
+
+      $('#analysisList').append(li);
+    }
+
+    function removeItem(traceNo) {
+
+      var liList = $('#analysisList').find('li');
+
+      liList.each(function (index) {
+        console.log(index + ": " + $(this).text());
+
+        if ($(this).text() == traceNo) {
+          $(this).remove();
+        }
+
+      });
+
+
+    }
+
+    $(function () {
+      $(".ckb_addItem").click(function () {
+
+        var traceNo = $(this).attr('id');
+        if ($(this).is(':checked')) {
+          addItem(traceNo);
+        } else {
+          removeItem(traceNo);
+        }
+
+      });
+
+      $(".btn-analysis").click(function () {
+
+        var traceNo = $(this).attr('id');
+        if ($(this).is(':checked')) {
+          addItem(traceNo);
+        } else {
+          removeItem(traceNo);
+        }
+
+      });
+
+
+    });
+          //getWorkList();
+  </script>
+
+
+
+}

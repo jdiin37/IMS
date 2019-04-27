@@ -1,108 +1,117 @@
 ﻿@{
-    ViewBag.Title = IMS.Resources.Resource.Model_DataAnalysis;
+  ViewBag.Title = IMS.Resources.Resource.Model_DataAnalysis;
 }
 
 <!DOCTYPE html>
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title </title>
-    <link rel="shortcut icon" href="~/favicon.ico">
-    @Styles.Render("~/Content/css")
-    @RenderSection("CSS", required: false)
-    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+  <meta name="viewport" content="width=device-width" />
+  <title>@ViewBag.Title </title>
+  <link rel="shortcut icon" href="~/favicon.ico">
+  @Styles.Render("~/Content/css")
+  @RenderSection("CSS", required: false)
+  <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
 <body>
-    <header>
+  <header>
 
-        <div class="navbar navbar-custom navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="DataAnalysis"})"><span class="fa fa-database">&nbsp;</span>@ViewBag.Title</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav" id="top_menu">
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Classification <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","K-Means",new { area="DataAnalysis"})">K-Means</a></li>
-                                <li><a href="@Url.Action("Index","Self-Organizing Map",new { area="DataAnalysis"})">Self-Organizing Map</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Cluster <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","C4.5",new { area="DataAnalysis"})">C4.5</a></li>
-                                <li><a href="@Url.Action("Index","K-Nearest Neighbor",new { area="DataAnalysis"})">K-Nearest Neighbor</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Associative <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Apriori",new { area="DataAnalysis"})">Apriori</a></li>
-                                <li><a href="@Url.Action("Index","COFI Tree",new { area="DataAnalysis"})">COFI Tree</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Regression <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="@Url.Action("Index","Simple Regression",new { area="DataAnalysis"})">Simple Regression</a></li>
-                                <li><a href="@Url.Action("Index","Multiple Regression",new { area="DataAnalysis"})">Multiple Regression</a></li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
-                        @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
-                    </ul>
-                </div>
-
-            </div>
+    <div class="navbar navbar-custom navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="@Url.Action("Index","Home",new { area="DataAnalysis"})"><span class="fa fa-database">&nbsp;</span>@ViewBag.Title</a>
         </div>
-    </header>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" id="top_menu">
+            <li class="">
+              <a href="@Url.Action("Index","FeedToMeet")">
+                <span class=""></span> @IMS.Resources.Resource.FeedToMeet
+              </a>
+            </li>
+            <li class="">
+              <a href="@Url.Action("Index","TradeAnalysis")">
+                <span class=""></span> @IMS.Resources.Resource.TradeAnalysis
+              </a>
+            </li>
+            @*<li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Classification <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","K-Means",new { area="DataAnalysis"})">K-Means</a></li>
+                      <li><a href="@Url.Action("Index","Self-Organizing Map",new { area="DataAnalysis"})">Self-Organizing Map</a></li>
+                  </ul>
+              </li>
 
-    <section class="container" id="bodyContent">
-        @RenderBody()
-    </section>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Cluster <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","C4.5",new { area="DataAnalysis"})">C4.5</a></li>
+                      <li><a href="@Url.Action("Index","K-Nearest Neighbor",new { area="DataAnalysis"})">K-Nearest Neighbor</a></li>
+                  </ul>
+              </li>
 
-    <hr />
-    <footer class="container">
-        <div class="row">
-            <div class="col-sm-6">
-                <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
-            </div>
-            <div class="col-sm-6">
-                <form class="form-inline">
-                    <div class="form-group">
-                        <label for="langSelect">@IMS.Resources.Resource.LangSys :</label>
-                        <select class="form-control" id="i18n" style="width:280px;">
-                            <option value="zh-TW">繁體中文</option>
-                            <option value="en-US">English</option>
-                        </select>
-                    </div>
-                </form>
-            </div>
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Associative <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","Apriori",new { area="DataAnalysis"})">Apriori</a></li>
+                      <li><a href="@Url.Action("Index","COFI Tree",new { area="DataAnalysis"})">COFI Tree</a></li>
+                  </ul>
+              </li>
+
+              <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@IMS.Resources.Resource.DataAnalysis_Regression <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                      <li><a href="@Url.Action("Index","Simple Regression",new { area="DataAnalysis"})">Simple Regression</a></li>
+                      <li><a href="@Url.Action("Index","Multiple Regression",new { area="DataAnalysis"})">Multiple Regression</a></li>
+                  </ul>
+              </li>*@
+
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            @{Html.RenderAction("BoxMenu", "Main", new { area = "" });}
+            @{Html.RenderAction("UserInfo", "Main", new { area = "" });}
+          </ul>
         </div>
-    </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @Scripts.Render("~/bundles/jquery_setting")
+      </div>
+    </div>
+  </header>
+
+  <section class="container" id="bodyContent">
+    @RenderBody()
+  </section>
+
+  <hr />
+  <footer class="container">
+    <div class="row">
+      <div class="col-sm-6">
+        <p>&copy; @DateTime.Now.Year - @IMS.Resources.Resource.SysTitle Create by @IMS.Resources.Resource.Creater</p>
+      </div>
+      <div class="col-sm-6">
+        <form class="form-inline">
+          <div class="form-group">
+            <label for="langSelect">@IMS.Resources.Resource.LangSys :</label>
+            <select class="form-control" id="i18n" style="width:280px;">
+              <option value="zh-TW">繁體中文</option>
+              <option value="en-US">English</option>
+            </select>
+          </div>
+        </form>
+      </div>
+    </div>
+  </footer>
+
+  @Scripts.Render("~/bundles/jquery")
+  @Scripts.Render("~/bundles/bootstrap")
+  @Scripts.Render("~/bundles/jquery_setting")
 
 
-    @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
-    @RenderSection("JS", required: false)
+  @{Html.RenderAction("ModalTemp", "Main", new { area = "" });}
+  @RenderSection("JS", required: false)
 
 </body>
 </html>

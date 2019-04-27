@@ -582,6 +582,9 @@
   <data name="BornDate_end" xml:space="preserve">
     <value>BornDate_end</value>
   </data>
+  <data name="FeedToMeet" xml:space="preserve">
+    <value>FeedToMeet</value>
+  </data>
   <data name="PigChangeCnt" xml:space="preserve">
     <value>PigChangeCnt</value>
   </data>
@@ -602,6 +605,9 @@
   </data>
   <data name="StageLast" xml:space="preserve">
     <value>StageLast</value>
+  </data>
+  <data name="TradeAnalysis" xml:space="preserve">
+    <value>TradeAnalysis</value>
   </data>
   <data name="TradePM" xml:space="preserve">
     <value>TradePM</value>

@@ -321,6 +321,10 @@
     <Content Include="Areas\Traceability\Views\PigletGrow\ModalCreateTraceMaster.cshtml" />
     <Content Include="Areas\Traceability\Views\Trade\ModalCheckSale.cshtml" />
     <Content Include="Areas\Traceability\Views\Trade\ModalViewTrade.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\FeedToMeet\Index.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\TradeAnalysis\Index.cshtml" />
+    <Content Include="Areas\DataAnalysis\Views\FeedToMeet\Analysis.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -366,7 +370,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Dashboard\Controllers\MainController.cs" />
     <Compile Include="Areas\Dashboard\DashboardAreaRegistration.cs" />
+    <Compile Include="Areas\DataAnalysis\Controllers\FeedToMeetController.cs" />
     <Compile Include="Areas\DataAnalysis\Controllers\HomeController.cs" />
+    <Compile Include="Areas\DataAnalysis\Controllers\TradeAnalysisController.cs" />
     <Compile Include="Areas\DataAnalysis\DataAnalysisAreaRegistration.cs" />
     <Compile Include="Areas\Management\Controllers\FarmDataBaseController.cs" />
     <Compile Include="Areas\Management\Controllers\FarmDataLandController.cs" />
