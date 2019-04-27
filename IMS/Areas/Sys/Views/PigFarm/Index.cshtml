@@ -6,6 +6,13 @@
     ViewBag.Title = IMS.Resources.Resource.PigFarmMgr;
 }
 
+<br />
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">@IMS.Resources.Resource.MenuHome</a></li>
+  <li class=""><a href="@Url.Action("Index","Home",new { area = "Sys" })">@IMS.Resources.Resource.MenuSys</a></li>
+  <li class="active">@IMS.Resources.Resource.PigFarmMgr</li>
+</ol>
+
 <h2>@IMS.Resources.Resource.PigFarmMgr</h2>
 <hr />
 <div class="panel panel-default">

@@ -1,66 +1,68 @@
 ﻿
 @{
-    ViewBag.Title = IMS.Resources.Resource.MenuHome;   
+  ViewBag.Title = IMS.Resources.Resource.MenuHome;
 }
-@*<ol class="breadcrumb">
-    <li class="active"><a href="@Url.Action("Index","Main")">@IMS.Resources.Resource.Home</a></li>
-</ol>*@
+<br />
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">@IMS.Resources.Resource.MenuHome</a></li>
+</ol>
+
 <div class="jumbotron text-center">
-    <h1>@IMS.Resources.Resource.SysTitle</h1>
-    <p class="lead"></p>
-    <p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore ></a></p>
+  <h1>@IMS.Resources.Resource.SysTitle</h1>
+  <p class="lead"></p>
+  @*<p><a href="@Url.Action("ShowPaper","Main",new { area=""})" class="btn btn-primary btn-lg">@IMS.Resources.Resource.Comm_LearnMore ></a></p>*@
 </div>
 <div class="row" id="section1">
-    <div class="col-md-6">
-        <div class="jumbotron text-center">
-            <h2>@IMS.Resources.Resource.Model_Management</h2>
-            <p>
-            </p>
-            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
-        </div>
+  <div class="col-md-6">
+    <div class="jumbotron text-center">
+      <h2>@IMS.Resources.Resource.Model_Management</h2>
+      <p>
+      </p>
+      <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Management"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
     </div>
+  </div>
 
-    <div class="col-md-6">
-        <div class="jumbotron text-center">
-            <h2>@IMS.Resources.Resource.Model_Traceability</h2>
-            <p></p>
-            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
+  <div class="col-md-6">
+    <div class="jumbotron text-center">
+      <h2>@IMS.Resources.Resource.Model_Traceability</h2>
+      <p></p>
+      <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Traceability"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
 
-        </div>
     </div>
-    <div class="col-md-6">
-        <div class="jumbotron text-center">
-            <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
-            <p></p>
-            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
-        </div>
+  </div>
+  <div class="col-md-6">
+    <div class="jumbotron text-center">
+      <h2>@IMS.Resources.Resource.Model_DataAnalysis</h2>
+      <p></p>
+      <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="DataAnalysis"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
     </div>
-    <div class="col-md-6">
-        <div class="jumbotron text-center">
-            <h2>@IMS.Resources.Resource.MenuSys</h2>
-            <p></p>
-            <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Sys"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
-        </div>
+  </div>
+  <div class="col-md-6">
+    <div class="jumbotron text-center">
+      <h2>@IMS.Resources.Resource.MenuSys</h2>
+      <p></p>
+      <p><a class="btn btn-link" href="@Url.Action("Index","Home",new { area="Sys"})">@IMS.Resources.Resource.Comm_Enter ></a></p>
     </div>
+  </div>
 </div>
 @*<div class="row " id="section2">
-    <div class="col-md-6">
-        <h2>何謂 @IMS.Resources.Resource.SysTitle ?</h2>
-        <p>
-            &nbsp; &nbsp; 現今台灣豬場面臨的不只是飼養管理、飼料營養、疾病監控等技術上的議題，更需要良好的經營專長以及藉由資訊系統達到管理的能力，近年來資訊科技技術蓬勃發展，各項產業導入資訊科技已是常態現象，由中央畜產會每年統計的養豬報告顯示，目前台灣養豬場朝向大型少場發展，如導入有用且易用的資訊系統，運用資料分析等技術，勢必有助於養豬產業在知識上的累積及未來發展。
-        </p>
-        <br />
-        <p>
-            &nbsp; &nbsp; 台灣的豬場以屏東縣為例多以經驗方式養豬，在飼養過程中的數據仍須透過紙本記錄，不易管理及應用，因此透過資訊系統將豬隻的生產過程資訊化，除了能朝向無紙化發展，如能將累積的資料加以分析應用，也可提升產銷履歷的附加價值。
-        </p>
-    </div>
-    <div class="col-md-6">
-        <p class="btn-block btn btn-warning">生產</p>
-        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
-        <p class="btn-block btn btn-info">加工</p>
-        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
-        <p class="btn-block btn btn-success">分裝</p>
-        <p class="text-center"><span class="fa fa-arrow-down"></span></p>
-        <p class="btn-block btn btn-primary">回溯履歷</p>
-    </div>
-</div>*@
+      <div class="col-md-6">
+          <h2>何謂 @IMS.Resources.Resource.SysTitle ?</h2>
+          <p>
+              &nbsp; &nbsp; 現今台灣豬場面臨的不只是飼養管理、飼料營養、疾病監控等技術上的議題，更需要良好的經營專長以及藉由資訊系統達到管理的能力，近年來資訊科技技術蓬勃發展，各項產業導入資訊科技已是常態現象，由中央畜產會每年統計的養豬報告顯示，目前台灣養豬場朝向大型少場發展，如導入有用且易用的資訊系統，運用資料分析等技術，勢必有助於養豬產業在知識上的累積及未來發展。
+          </p>
+          <br />
+          <p>
+              &nbsp; &nbsp; 台灣的豬場以屏東縣為例多以經驗方式養豬，在飼養過程中的數據仍須透過紙本記錄，不易管理及應用，因此透過資訊系統將豬隻的生產過程資訊化，除了能朝向無紙化發展，如能將累積的資料加以分析應用，也可提升產銷履歷的附加價值。
+          </p>
+      </div>
+      <div class="col-md-6">
+          <p class="btn-block btn btn-warning">生產</p>
+          <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+          <p class="btn-block btn btn-info">加工</p>
+          <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+          <p class="btn-block btn btn-success">分裝</p>
+          <p class="text-center"><span class="fa fa-arrow-down"></span></p>
+          <p class="btn-block btn btn-primary">回溯履歷</p>
+      </div>
+  </div>*@

@@ -5,6 +5,15 @@
     ViewBag.Title = IMS.Resources.Resource.CategorySubMgr;
 }
 
+<br />
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">@IMS.Resources.Resource.MenuHome</a></li>
+  <li class=""><a href="@Url.Action("Index","Home",new { area = "Sys" })">@IMS.Resources.Resource.MenuSys</a></li>
+  <li class="active">@IMS.Resources.Resource.CategorySubMgr</li>
+</ol>
+
+
+
 <h2>
   類別 : @ViewBag.CategoryListName
   <small class="pull-right">

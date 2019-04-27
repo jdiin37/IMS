@@ -13,6 +13,13 @@
 @*<div class="">
     <h1><span id="pigFarmName"></span></h1>
 </div>*@
+
+<br />
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
+  <li class="active">@IMS.Resources.Resource.Model_Management</li>
+</ol>
+
 <div id="section1">
     <div class="panel panel-default">
         <div class="panel-heading text-center">
@@ -106,7 +113,7 @@
                                 <b>@IMS.Resources.Resource.EnvironmentData_Temperature</b>
                             </h3>
                             <div id="chart_Temperature" style="width:100%; height:400px;"></div>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
+                            <button class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></button>
 
                         </div>
                     </div>
@@ -118,7 +125,7 @@
                                 <b>@IMS.Resources.Resource.EnvironmentData_Humidity</b>
                             </h3>
                             <div id="chart_Humidity" style="width:100%; height:400px;"></div>
-                            <a href="@Url.Action("Index","Health",new { area="Management"})" class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></a>
+                            <button class="btn btn-primary">@IMS.Resources.Resource.Comm_View ></button>
                         </div>
                     </div>
                 </div>
