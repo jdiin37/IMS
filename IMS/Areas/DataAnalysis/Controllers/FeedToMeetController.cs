@@ -65,12 +65,23 @@ namespace IMS.Areas.DataAnalysis.Controllers
       return lists;
     }
 
-    public ActionResult Analysis(string TraceNos)
+    
+    public ActionResult Analysis(string tradeList)
+    {
+      
+      return View();
+    }
+
+
+    [HttpPost]
+    public ActionResult Analysis(List<TraceMaster> TraceNos)
     {
 
-
-
-      return View();
+      if (Request.IsAjaxRequest())
+      {
+        return Json(TraceNos);
+      }
+      return null;
     }
 
 

@@ -5,6 +5,7 @@
 @{
   ViewBag.Title = IMS.Resources.Resource.FeedToMeet;
   IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  string tradeList = "";
 }
 
 <br />
@@ -17,6 +18,8 @@
 
 <h2>@IMS.Resources.Resource.FeedToMeet</h2>
 <hr />
+
+
 
 <div class="row">
   <div class="col-sm-9">
@@ -113,14 +116,17 @@
       <ul id="analysisList" class="list-group"></ul>
 
       <hr />
-
-      <button class="btn btn-info" id="btn-analysis">分析</button>
-      @*@Html.ActionLink("分析", "Analysis",new { },new { @Class= "btn btn-info" })*@
+      <input type="hidden" name="tradeList" id="tradeList" />
+      @*<button class="btn btn-info" id="btn-analysis">分析</button>*@
+      @*@Html.ActionLink("分析", "Analysis", new { tradeList = tradeList }, new { @Class = "btn btn-info" })*@
+      <a href="#" onclick="window.location.href='@Url.Action("Analysis")' + '?tradeList=' + $('#tradeList').val()">分析</a>
       <br />
       <br />
     </div>
   </div>
 </div>
+
+
 
 @section JS{
   <script>
@@ -130,6 +136,8 @@
 
 
       $('#analysisList').append(li);
+      var tradeListVal = $('#tradeList').val() + "," + traceNo;
+      $('#tradeList').val(tradeListVal);
     }
 
     function removeItem(traceNo) {
@@ -144,6 +152,10 @@
         }
 
       });
+
+      var tradeListVal = $('#tradeList').val();
+      tradeListVal.replace(traceNo,"");
+      $('#tradeList').val(tradeListVal);
 
 
     }
@@ -160,15 +172,37 @@
 
       });
 
-      $(".btn-analysis").click(function () {
 
-        var traceNo = $(this).attr('id');
-        if ($(this).is(':checked')) {
-          addItem(traceNo);
-        } else {
-          removeItem(traceNo);
-        }
+      function ajax_Analysis(tradeNoArr) {
 
+        var url = "@Url.Action("Analysis")";
+        var data = tradeNoArr;
+
+        console.log(data);
+        $.ajax({
+          type: "POST",
+          url: url,
+          data: data,
+          success: function (data) {
+            console.log(data);
+            //$('#tablist').append('<li role="presentation" class="active"><a href="#home" aria-controls="stage1" role="tab" data-toggle="tab">分析結果</a></li>')
+            //location.reload();
+          }
+        });
+      }
+
+
+      $("#btn-analysis").click(function () {
+
+        var tradeNoArr = new Array();
+        $('.ckb_addItem:checked').each(function (index) {
+          var tr = $(this).parents('tr');
+          var traceNo = tr.find("td").eq(1).text().trim();
+
+          tradeNoArr.push({ TraceNo: traceNo });
+        });
+
+        ajax_Analysis(tradeNoArr)
       });
 
 
