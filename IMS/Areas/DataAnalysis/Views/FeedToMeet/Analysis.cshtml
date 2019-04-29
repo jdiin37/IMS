@@ -1,11 +1,53 @@
 ﻿
+@model IMS.ViewModels.FeedToMeetVM
+
 @{
   ViewBag.Title = "Analysis";
 }
 
-@TempData["aaa"]
+<h2>
+  <b>@IMS.Resources.Resource.FeedToMeet</b>
+  <small>
+    
+  </small>
+  <span class="pull-right">
+    @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index",new { }, new { @Class = "btn btn-default" })
+  </span>
+</h2>
 
-<h2>Analysis</h2>
+@foreach (var item in Model.stageArea)
+{
+  double addWeight = item.startWeight - item.endWeight;
+  double feedToMeet = item.FeedWeight / addWeight;
+
+  <h4>
+    @item.stageName 日期區間
+  </h4>
+  <p>
+
+    @item.startDate - @item.endDate
+
+  </p>
+
+  <p>
+    初始重量 : @item.startWeight
+  </p>
+  <p>
+    最終重量 : @item.endWeight
+  </p>
+
+  <p>
+    成長量 : @addWeight
+  </p>
+
+  <p>總花費飼料輛 : @item.FeedWeight</p>
+
+  <p>
+    飼料換肉率 : @feedToMeet
+  </p>
+
+  <hr />
+}
 
 
 

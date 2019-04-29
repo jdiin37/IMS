@@ -451,6 +451,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\AccountVM.cs" />
     <Compile Include="ViewModels\PigletGrow.cs" />
+    <Compile Include="ViewModels\FeedToMeetVM.cs" />
     <Compile Include="ViewModels\TraceVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
   </ItemGroup>

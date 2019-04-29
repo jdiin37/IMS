@@ -1,6 +1,7 @@
 ﻿using IMS.Comm;
 using IMS.Controllers;
 using IMS.Models;
+using IMS.ViewModels;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -68,8 +69,47 @@ namespace IMS.Areas.DataAnalysis.Controllers
     
     public ActionResult Analysis(string tradeList)
     {
-      
-      return View();
+      string[] tradeNoArr = tradeList.Split(',');
+
+      foreach(string tradeNo in tradeNoArr)
+      {
+
+
+
+
+
+      }
+      FeedToMeetVM vm = new FeedToMeetVM();
+
+      vm.stageArea = new List<StageArea>
+      {
+        new StageArea
+        {
+          stageName = "哺乳期",
+          startDate = new DateTime(2018,01,01),
+          endDate = new DateTime(2018,02,01),
+        },
+        new StageArea
+        {
+          stageName = "保育期",
+          startDate = new DateTime(2018,02,01),
+          endDate = new DateTime(2018,03,01),
+        },
+        new StageArea
+        {
+          stageName = "生長期",
+          startDate = new DateTime(2018,03,01),
+          endDate = new DateTime(2018,05,15),
+        },
+        new StageArea
+        {
+          stageName = "肥育期",
+          startDate = new DateTime(2018,05,15),
+          endDate = new DateTime(2018,09,01),
+        },
+      };
+
+      return View(vm);
     }
 
 
