@@ -8,45 +8,48 @@
 <h2>
   <b>@IMS.Resources.Resource.FeedToMeet</b>
   <small>
-    
+    履歷編號:@ViewBag.TraceNos
   </small>
   <span class="pull-right">
     @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index",new { }, new { @Class = "btn btn-default" })
   </span>
 </h2>
 
+
+
 @foreach (var item in Model.stageArea)
 {
-  double addWeight = item.startWeight - item.endWeight;
+  double addWeight = item.endWeight - item.startWeight;
+  double startAvgWeight = item.startWeight / item.startPigCnt;
+  double endAvgWeight = item.endWeight / item.endPigCnt;
   double feedToMeet = item.FeedWeight / addWeight;
-
+  <div class="alert alert-success">
   <h4>
     @item.stageName 日期區間
   </h4>
   <p>
 
-    @item.startDate - @item.endDate
+    @item.startDate.ToString("yyyy/MM/dd") - @item.endDate.ToString("yyyy/MM/dd")
 
   </p>
 
   <p>
-    初始重量 : @item.startWeight
+    初始頭數 :@item.startPigCnt   初始重量 : @item.startWeight 平均重量 : @startAvgWeight
   </p>
   <p>
-    最終重量 : @item.endWeight
+    最終頭數 :@item.endPigCnt   最終重量 : @item.endWeight 平均重量 : @endAvgWeight
   </p>
 
   <p>
-    成長量 : @addWeight
+    豬隻總增重量 : @addWeight
   </p>
 
-  <p>總花費飼料輛 : @item.FeedWeight</p>
+  <p>總花費飼料量 : @item.FeedWeight</p>
 
   <p>
     飼料換肉率 : @feedToMeet
   </p>
-
-  <hr />
+  </div>
 }
 
 

@@ -70,7 +70,7 @@ namespace IMS.Areas.DataAnalysis.Controllers
     public ActionResult Analysis(string tradeList)
     {
       string[] tradeNoArr = tradeList.Split(',');
-
+      
       foreach(string tradeNo in tradeNoArr)
       {
 
@@ -79,6 +79,9 @@ namespace IMS.Areas.DataAnalysis.Controllers
 
 
       }
+
+      ViewBag.TraceNos = tradeList;
+
       FeedToMeetVM vm = new FeedToMeetVM();
 
       vm.stageArea = new List<StageArea>
@@ -88,6 +91,12 @@ namespace IMS.Areas.DataAnalysis.Controllers
           stageName = "哺乳期",
           startDate = new DateTime(2018,01,01),
           endDate = new DateTime(2018,02,01),
+          startPigCnt =20,
+          endPigCnt = 18,
+          startWeight = 0,
+          endWeight = 110,
+          FeedWeight = 150,
+
         },
         new StageArea
         {

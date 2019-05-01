@@ -16,7 +16,9 @@ namespace IMS.ViewModels
   {
     public string stageName { get; set; }
 
-    public int PigCnt { get; set; }
+    public int startPigCnt { get; set; }
+
+    public int endPigCnt { get; set; }
 
     public int StageDays { get; set; }
 
