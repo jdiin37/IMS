@@ -80,7 +80,7 @@ namespace IMS.Areas.DataAnalysis.Controllers
 
       }
 
-      ViewBag.TraceNos = tradeList;
+      ViewBag.TraceNos = tradeList.Substring(1);
 
       FeedToMeetVM vm = new FeedToMeetVM();
 
@@ -103,18 +103,33 @@ namespace IMS.Areas.DataAnalysis.Controllers
           stageName = "保育期",
           startDate = new DateTime(2018,02,01),
           endDate = new DateTime(2018,03,01),
+          startPigCnt =18,
+          endPigCnt = 18,
+          startWeight = 110,
+          endWeight = 354,
+          FeedWeight = 420,
         },
         new StageArea
         {
           stageName = "生長期",
           startDate = new DateTime(2018,03,01),
           endDate = new DateTime(2018,05,15),
+          startPigCnt =18,
+          endPigCnt = 18,
+          startWeight = 354,
+          endWeight = 1083,
+          FeedWeight = 1832,
         },
         new StageArea
         {
           stageName = "肥育期",
           startDate = new DateTime(2018,05,15),
           endDate = new DateTime(2018,09,01),
+          startPigCnt =18,
+          endPigCnt = 18,
+          startWeight = 1083,
+          endWeight = 1963,
+          FeedWeight = 3000,
         },
       };
 

@@ -16,38 +16,40 @@
 </h2>
 
 
-
 @foreach (var item in Model.stageArea)
 {
   double addWeight = item.endWeight - item.startWeight;
   double startAvgWeight = item.startWeight / item.startPigCnt;
   double endAvgWeight = item.endWeight / item.endPigCnt;
   double feedToMeet = item.FeedWeight / addWeight;
-  <div class="alert alert-success">
+  <div class="" style="border-top:2px solid black;">
   <h4>
-    @item.stageName 日期區間
+      <b>
+      @item.stageName 
+    </b>
+  
   </h4>
   <p>
 
-    @item.startDate.ToString("yyyy/MM/dd") - @item.endDate.ToString("yyyy/MM/dd")
+    日期區間 : @item.startDate.ToString("yyyy/MM/dd") - @item.endDate.ToString("yyyy/MM/dd")
 
   </p>
 
   <p>
-    初始頭數 :@item.startPigCnt   初始重量 : @item.startWeight 平均重量 : @startAvgWeight
+    初始頭數 :@item.startPigCnt (kg)  初始重量 : @item.startWeight (kg) 平均重量 : @startAvgWeight.ToString("0.00") (kg)
   </p>
   <p>
-    最終頭數 :@item.endPigCnt   最終重量 : @item.endWeight 平均重量 : @endAvgWeight
+    最終頭數 :@item.endPigCnt (kg)  最終重量 : @item.endWeight (kg) 平均重量 : @endAvgWeight.ToString("0.00") (kg)
   </p>
 
   <p>
-    豬隻總增重量 : @addWeight
+    豬隻總增重量 : @addWeight (kg)
   </p>
 
-  <p>總花費飼料量 : @item.FeedWeight</p>
+  <p>總花費飼料量 : @item.FeedWeight (kg)</p>
 
   <p>
-    飼料換肉率 : @feedToMeet
+    飼料換肉率 : @feedToMeet.ToString("0.00")
   </p>
   </div>
 }
