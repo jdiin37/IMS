@@ -45,7 +45,7 @@
 
 }
 
-@using (Ajax.BeginForm("_TraceDetailsStage2", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStage2-tool", HttpMethod = "Post", OnSuccess = "init();" }))
+@using (Ajax.BeginForm("_TraceDetailsStage2", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStage2-tool", HttpMethod = "Post", OnSuccess = "init();" }, new { enctype = "multipart/form-data" }))
 {
   <div id="traceDetailStage2-tool">
 
@@ -221,6 +221,10 @@
         {
           panelTitle = "豬隻異動";
         }
+        else if (item.WorkType == "DoPhoto")
+        {
+          panelTitle = "影像";
+        }
         else if (item.WorkType == "DoneStage2")
         {
           panelTitle = "離保育";
@@ -248,7 +252,10 @@
             <div class="panel-body" style="min-height:144px;">
               @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkContent</span>
-
+              @if (item.PhotoFile != null)
+              {
+                <img src="@Url.Action("GetImage",new { seqNo = item.SeqNo })" class="img-responsive img-rounded" />
+              }
               @if (item.PigChangeCnt != 0)
               {
                 <br />

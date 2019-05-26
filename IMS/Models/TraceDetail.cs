@@ -84,6 +84,11 @@ namespace IMS.Models
     [Required]
     public string WorkUser { get; set; }
 
+    [MaxLength]
+    [DisplayName("上傳照片")]
+    public byte[] PhotoFile { get; set; }
+    
+
     [StringLength(2)]
     public string Status { get; set; }
 

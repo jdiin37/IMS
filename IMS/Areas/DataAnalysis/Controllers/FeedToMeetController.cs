@@ -148,6 +148,71 @@ namespace IMS.Areas.DataAnalysis.Controllers
       return null;
     }
 
+    public ActionResult CreateRandonData()
+    {
+
+      for(int a=0; a < 100; a++)
+      {
+        int pigCnt = getRandomInt(15,30);
+
+        FeetToMeetData feetToMeet = new FeetToMeetData();
+
+
+        feetToMeet.CreDate = DateTime.Now;
+        feetToMeet.Stage1Days = getRandomInt(26,32);
+        feetToMeet.Stage2Days = getRandomInt(54,60) - feetToMeet.Stage1Days;
+        feetToMeet.Stage3Days = getRandomInt(125,140) - (feetToMeet.Stage1Days + feetToMeet.Stage2Days);
+        feetToMeet.Stage4Days = getRandomInt(200, 240) - (feetToMeet.Stage1Days + feetToMeet.Stage2Days + feetToMeet.Stage3Days);
+
+
+        feetToMeet.Stage1sPigCnt = pigCnt + getRandomInt(0, 3);
+        feetToMeet.Stage1ePigCnt = pigCnt;
+        feetToMeet.Stage2sPigCnt = pigCnt;
+        feetToMeet.Stage2ePigCnt = pigCnt;
+        feetToMeet.Stage3sPigCnt = pigCnt;
+        feetToMeet.Stage3ePigCnt = pigCnt;
+        feetToMeet.Stage4sPigCnt = pigCnt;
+        feetToMeet.Stage4ePigCnt = pigCnt;
+
+        feetToMeet.Stage1sWeight = 0;
+        feetToMeet.Stage1eWeight = pigCnt * getRandomDouble(5,7);
+        feetToMeet.Stage2sWeight = feetToMeet.Stage1eWeight;
+        feetToMeet.Stage2eWeight = pigCnt * getRandomDouble(12, 20);
+        feetToMeet.Stage3sWeight = feetToMeet.Stage2eWeight;
+        feetToMeet.Stage3eWeight = pigCnt * getRandomDouble(40, 60);
+        feetToMeet.Stage4sWeight = feetToMeet.Stage3eWeight;
+        feetToMeet.Stage4eWeight = pigCnt * getRandomDouble(60, 110);
+
+      }
+
+      return null;
+    }
+
+    
+    public ActionResult TestRandan()
+    {
+      double a = getRandomDouble(5, 7);
+      double b = getRandomDouble(5, 7);
+
+      double c = getRandomDouble(5, 7);
+      double d = getRandomDouble(5, 7);
+      return null;
+    }
+
+    private int getRandomInt(int x,int y)
+    {
+      Random r = new Random(Guid.NewGuid().GetHashCode());//亂數種子
+      int i = r.Next(x, y);//
+      return i;
+    }
+    
+
+    private double getRandomDouble(double min,double max)
+    {
+      Random r = new Random(Guid.NewGuid().GetHashCode());
+      double i = r.NextDouble() * (max - min) + min;
+      return i;
+    }
 
   }
 }

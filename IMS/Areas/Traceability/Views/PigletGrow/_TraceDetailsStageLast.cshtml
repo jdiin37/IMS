@@ -45,7 +45,7 @@
 
 }
 
-@using (Ajax.BeginForm("_TraceDetailsStageLast", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStageLast-tool", HttpMethod = "Post", OnSuccess = "init();" }))
+@using (Ajax.BeginForm("_TraceDetailsStageLast", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStageLast-tool", HttpMethod = "Post", OnSuccess = "init();" }, new { enctype = "multipart/form-data" }))
 {
   <div id="traceDetailStageLast-tool">
 

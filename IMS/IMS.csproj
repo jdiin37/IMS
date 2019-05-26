@@ -415,6 +415,7 @@
     </Compile>
     <Compile Include="infrastructure\BaseViewPage.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\FeetToMeetData.cs" />
     <Compile Include="Models\FarrowingRecord.cs" />
     <Compile Include="Models\PigBasic.cs" />
     <Compile Include="Models\TraceDetail.cs" />

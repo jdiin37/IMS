@@ -46,6 +46,8 @@ namespace IMS.DAL
 
     public DbSet<TradeRecord> TradeRecord { get; set; }
 
+    public DbSet<FeetToMeetData> FeetToMeetData { get; set; }
+
     public DbSet<SeqNo> SeqNo { get; set; }
   }
 }

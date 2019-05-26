@@ -225,6 +225,17 @@ namespace IMS.Areas.Traceability.Controllers
 
     }
 
+    public FileContentResult GetImage(int seqNo)
+    {
+      TraceDetail traceDetail = IMSdb.TraceDetail.Find(seqNo);
+
+      if (traceDetail != null)
+        return File(traceDetail.PhotoFile, "image/jpeg");
+      else
+        return null;
+    }
+
+
     #region Stage1
     [ChildActionOnly]//無法在瀏覽器上用URL存取此action
     public PartialViewResult _TraceDetails(string traceNo)
@@ -241,10 +252,17 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     [HttpPost]
-    public ActionResult _TraceDetails(TraceDetail traceDetail, string traceNo,int pigChangeType)
+    public ActionResult _TraceDetails(TraceDetail traceDetail, string traceNo,int pigChangeType, HttpPostedFileBase image)
     {
       if (ModelState.IsValid)
       {
+        //有post照片才做照片上傳的處理
+        if (image != null)
+        {
+          traceDetail.PhotoFile = new byte[image.ContentLength];  //取得上傳照片的大小再轉byte陣列
+          image.InputStream.Read(traceDetail.PhotoFile, 0, image.ContentLength);
+        }
+        
         traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage1;
         traceDetail.PigChangeCnt = pigChangeType * traceDetail.PigChangeCnt;
 
@@ -305,10 +323,17 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     [HttpPost]
-    public ActionResult _TraceDetailsStage2(TraceDetail traceDetail, string traceNo)
+    public ActionResult _TraceDetailsStage2(TraceDetail traceDetail, string traceNo, HttpPostedFileBase image2)
     {
       if (ModelState.IsValid)
       {
+        //有post照片才做照片上傳的處理
+        if (image2 != null)
+        {
+          traceDetail.PhotoFile = new byte[image2.ContentLength];  //取得上傳照片的大小再轉byte陣列
+          image2.InputStream.Read(traceDetail.PhotoFile, 0, image2.ContentLength);
+        }
+
         traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage2;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
@@ -365,10 +390,17 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     [HttpPost]
-    public ActionResult _TraceDetailsStage3(TraceDetail traceDetail, string traceNo)
+    public ActionResult _TraceDetailsStage3(TraceDetail traceDetail, string traceNo, HttpPostedFileBase image3)
     {
       if (ModelState.IsValid)
       {
+        //有post照片才做照片上傳的處理
+        if (image3 != null)
+        {
+          traceDetail.PhotoFile = new byte[image3.ContentLength];  //取得上傳照片的大小再轉byte陣列
+          image3.InputStream.Read(traceDetail.PhotoFile, 0, image3.ContentLength);
+        }
+
         traceDetail.WorkStage = (int)IMSEnum.WorkStage.Stage3;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;
@@ -426,10 +458,17 @@ namespace IMS.Areas.Traceability.Controllers
     }
 
     [HttpPost]
-    public ActionResult _TraceDetailsStageLast(TraceDetail traceDetail, string traceNo)
+    public ActionResult _TraceDetailsStageLast(TraceDetail traceDetail, string traceNo, HttpPostedFileBase image4)
     {
       if (ModelState.IsValid)
       {
+        //有post照片才做照片上傳的處理
+        if (image4 != null)
+        {
+          traceDetail.PhotoFile = new byte[image4.ContentLength];  //取得上傳照片的大小再轉byte陣列
+          image4.InputStream.Read(traceDetail.PhotoFile, 0, image4.ContentLength);
+        }
+
         traceDetail.WorkStage = (int)IMSEnum.WorkStage.StageLast;
         traceDetail.CreDate = DateTime.Now;
         traceDetail.CreUser = User.ID;

@@ -208,13 +208,20 @@
       $('.PigChangeTool').show();
     }
 
+    function showPhotoTool() {
+      hideAllTool();
+      $('.PhotoTool').show();
+    }
+
     function hideAllTool() {
       $('.InventoryTool').find('input').val("");
       $('.FeedTool').find('input').val("");
+      $('.PhotoTool').find('input').val("");
 
       $('.FeedTool').hide();
       $('.InventoryTool').hide();
       $('.PigChangeTool').hide();
+      $('.PhotoTool').hide();
     }
 
 
@@ -232,7 +239,9 @@
           showInventoryTool();
         } else if (this.value == 'DoPigChange') {
           showPigChangeTool();
-        } else {
+        }else if (this.value == 'DoPhoto') {
+          showPhotoTool();
+        }else {
           hideAllTool();
         }
       });
