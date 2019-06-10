@@ -325,6 +325,7 @@
     <Content Include="Areas\DataAnalysis\Views\FeedToMeet\Index.cshtml" />
     <Content Include="Areas\DataAnalysis\Views\TradeAnalysis\Index.cshtml" />
     <Content Include="Areas\DataAnalysis\Views\FeedToMeet\Analysis.cshtml" />
+    <Content Include="Areas\Traceability\Views\PigBorn\Index.cshtml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.min.js" />
     <Content Include="Scripts\highchart\export-data.js" />
@@ -389,6 +390,7 @@
     <Compile Include="Areas\Sys\SysAreaRegistration.cs" />
     <Compile Include="Areas\Traceability\Controllers\HomeController.cs" />
     <Compile Include="Areas\Traceability\Controllers\PigBasicController.cs" />
+    <Compile Include="Areas\Traceability\Controllers\PigBornController.cs" />
     <Compile Include="Areas\Traceability\Controllers\PigletGrowController.cs" />
     <Compile Include="Areas\Traceability\Controllers\TradeController.cs" />
     <Compile Include="Areas\Traceability\Controllers\WorkBasicController.cs" />
@@ -453,6 +455,7 @@
     <Compile Include="ViewModels\AccountVM.cs" />
     <Compile Include="ViewModels\PigletGrow.cs" />
     <Compile Include="ViewModels\FeedToMeetVM.cs" />
+    <Compile Include="ViewModels\PigBornListVM.cs" />
     <Compile Include="ViewModels\TraceVM.cs" />
     <Compile Include="ViewModels\CategoryVM.cs" />
   </ItemGroup>

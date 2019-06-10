@@ -615,4 +615,7 @@
   <data name="WorkStage" xml:space="preserve">
     <value>WorkStage</value>
   </data>
+  <data name="PigBornList" xml:space="preserve">
+    <value>PigBornList</value>
+  </data>
 </root>

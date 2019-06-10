@@ -221,6 +221,10 @@
         {
           panelTitle = "豬隻異動";
         }
+        else if (item.WorkType == "DoPhoto")
+        {
+          panelTitle = "影像";
+        }
         else if (item.WorkType == "DoneStage3")
         {
           panelTitle = "離生長";
@@ -248,7 +252,10 @@
             <div class="panel-body" style="min-height:144px;">
               @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkContent</span>
-
+              @if (item.PhotoFile != null)
+              {
+                <img src="@Url.Action("GetImage",new { seqNo = item.SeqNo })" class="img-responsive img-rounded" />
+              }
               @if (item.PigChangeCnt != 0)
               {
                 <br />

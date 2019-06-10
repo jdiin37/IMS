@@ -415,7 +415,7 @@
     <value>包裝日期</value>
   </data>
   <data name="TraceNo" xml:space="preserve">
-    <value>仔豬成長履歷編號</value>
+    <value>豬隻成長履歷編號</value>
   </data>
   <data name="TraceInfo" xml:space="preserve">
     <value>履歷資訊</value>
@@ -529,7 +529,7 @@
     <value>耳號</value>
   </data>
   <data name="PigPM" xml:space="preserve">
-    <value>豬隻生產履歷系統</value>
+    <value>豬隻生產</value>
   </data>
   <data name="PigType" xml:space="preserve">
     <value>品種</value>
@@ -538,7 +538,7 @@
     <value>同胎</value>
   </data>
   <data name="TracePM" xml:space="preserve">
-    <value>仔豬成長履歷系統</value>
+    <value>豬隻成長履歷</value>
   </data>
   <data name="WeaningAge" xml:space="preserve">
     <value>離乳日齡</value>
@@ -592,7 +592,7 @@
     <value>肥育期</value>
   </data>
   <data name="TradePM" xml:space="preserve">
-    <value>交易管理系統</value>
+    <value>豬隻交易管理</value>
   </data>
   <data name="WorkStage" xml:space="preserve">
     <value>作業階段</value>
@@ -617,5 +617,8 @@
   </data>
   <data name="TradeAnalysis" xml:space="preserve">
     <value>交易紀錄分析</value>
+  </data>
+  <data name="PigBornList" xml:space="preserve">
+    <value>豬隻生產清單</value>
   </data>
 </root>

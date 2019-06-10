@@ -6,6 +6,7 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -151,7 +152,7 @@ namespace IMS.Areas.DataAnalysis.Controllers
     public ActionResult CreateRandonData()
     {
 
-      for(int a=0; a < 100; a++)
+      for(int a=0; a < 5; a++)
       {
         int pigCnt = getRandomInt(15,30);
 
@@ -159,10 +160,22 @@ namespace IMS.Areas.DataAnalysis.Controllers
 
 
         feetToMeet.CreDate = DateTime.Now;
+
+        feetToMeet.TraceNo = GetRandomString4(2) + feetToMeet.CreDate.ToString("yyyyMMdd") + feetToMeet.CreDate.ToString("yyyyMMdd") + "-" + GetTraceNoSeqNo().ToString();
+
         feetToMeet.Stage1Days = getRandomInt(26,32);
         feetToMeet.Stage2Days = getRandomInt(54,60) - feetToMeet.Stage1Days;
         feetToMeet.Stage3Days = getRandomInt(125,140) - (feetToMeet.Stage1Days + feetToMeet.Stage2Days);
         feetToMeet.Stage4Days = getRandomInt(200, 240) - (feetToMeet.Stage1Days + feetToMeet.Stage2Days + feetToMeet.Stage3Days);
+
+        feetToMeet.Stage1sDate = feetToMeet.CreDate;
+        feetToMeet.Stage1eDate = feetToMeet.Stage1sDate.Value.AddDays(feetToMeet.Stage1Days);
+        feetToMeet.Stage2sDate = feetToMeet.Stage1eDate;
+        feetToMeet.Stage2eDate = feetToMeet.Stage2sDate.Value.AddDays(feetToMeet.Stage2Days);
+        feetToMeet.Stage3sDate = feetToMeet.Stage2eDate;
+        feetToMeet.Stage3eDate = feetToMeet.Stage3sDate.Value.AddDays(feetToMeet.Stage3Days);
+        feetToMeet.Stage4sDate = feetToMeet.Stage3eDate;
+        feetToMeet.Stage4eDate = feetToMeet.Stage4sDate.Value.AddDays(feetToMeet.Stage4Days);
 
 
         feetToMeet.Stage1sPigCnt = pigCnt + getRandomInt(0, 3);
@@ -175,20 +188,50 @@ namespace IMS.Areas.DataAnalysis.Controllers
         feetToMeet.Stage4ePigCnt = pigCnt;
 
         feetToMeet.Stage1sWeight = 0;
-        feetToMeet.Stage1eWeight = pigCnt * getRandomDouble(5,7);
+        feetToMeet.Stage1eWeight = Math.Round(pigCnt * getRandomDouble(5,7),2);
         feetToMeet.Stage2sWeight = feetToMeet.Stage1eWeight;
-        feetToMeet.Stage2eWeight = pigCnt * getRandomDouble(12, 20);
+        feetToMeet.Stage2eWeight = Math.Round(pigCnt * getRandomDouble(12, 20), 2);
         feetToMeet.Stage3sWeight = feetToMeet.Stage2eWeight;
-        feetToMeet.Stage3eWeight = pigCnt * getRandomDouble(40, 60);
+        feetToMeet.Stage3eWeight = Math.Round(pigCnt * getRandomDouble(40, 60), 2);
         feetToMeet.Stage4sWeight = feetToMeet.Stage3eWeight;
-        feetToMeet.Stage4eWeight = pigCnt * getRandomDouble(60, 110);
+        feetToMeet.Stage4eWeight = Math.Round(pigCnt * getRandomDouble(60, 110), 2);
 
+        feetToMeet.Stage1FeedToMeet = Math.Round(getRandomDouble(0.8, 1.2),2);
+        feetToMeet.Stage2FeedToMeet = Math.Round(getRandomDouble(0.8, 1.2),2);
+        feetToMeet.Stage3FeedToMeet = Math.Round(getRandomDouble(2.3, 2.7),2);
+        feetToMeet.Stage4FeedToMeet = Math.Round(getRandomDouble(3.3, 4.0), 2);
+
+        feetToMeet.Stage1AddWeight = feetToMeet.Stage1eWeight - feetToMeet.Stage1sWeight;
+        feetToMeet.Stage2AddWeight = feetToMeet.Stage2eWeight - feetToMeet.Stage2sWeight;
+        feetToMeet.Stage3AddWeight = feetToMeet.Stage3eWeight - feetToMeet.Stage3sWeight;
+        feetToMeet.Stage4AddWeight = feetToMeet.Stage4eWeight - feetToMeet.Stage4sWeight;
+
+        feetToMeet.Stage1FeedWeight = Math.Round(feetToMeet.Stage1FeedToMeet * feetToMeet.Stage1ePigCnt,2);
+        feetToMeet.Stage2FeedWeight = Math.Round(feetToMeet.Stage2FeedToMeet * feetToMeet.Stage2ePigCnt,2);
+        feetToMeet.Stage3FeedWeight = Math.Round(feetToMeet.Stage3FeedToMeet * feetToMeet.Stage3ePigCnt,2);
+        feetToMeet.Stage4FeedWeight = Math.Round(feetToMeet.Stage4FeedToMeet * feetToMeet.Stage4ePigCnt, 2);
+
+        IMSdb.FeetToMeetData.Add(feetToMeet);
       }
+
+      IMSdb.SaveChanges();
 
       return null;
     }
 
-    
+
+    public string GetRandomString4(int length)
+    {
+      var str = "LD";
+      var next = new Random(Guid.NewGuid().GetHashCode());
+      var builder = new StringBuilder();
+      for (var i = 0; i < length; i++)
+      {
+        builder.Append(str[next.Next(0, str.Length)]);
+      }
+      return builder.ToString();
+    }
+
     public ActionResult TestRandan()
     {
       double a = getRandomDouble(5, 7);

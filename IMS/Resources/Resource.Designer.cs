@@ -934,6 +934,15 @@ namespace IMS.Resources {
         }
         
         /// <summary>
+        ///   查詢類似 PigBornList 的當地語系化字串。
+        /// </summary>
+        public static string PigBornList {
+            get {
+                return ResourceManager.GetString("PigBornList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查詢類似 PigChangeCnt 的當地語系化字串。
         /// </summary>
         public static string PigChangeCnt {

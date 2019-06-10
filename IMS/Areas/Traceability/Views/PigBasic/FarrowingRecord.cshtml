@@ -2,6 +2,8 @@
 
 @{
   ViewBag.Title = "FarrowingRecord";
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+  List<IMS.Models.PigBasic> list = IMSdb.PigBasic.Where(m => m.PigType.Substring(1, 1) == "1").ToList();
 }
 
 <style>
@@ -240,7 +242,8 @@
 
 
 <div class="btn-group pull-right">
-  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
+  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList + IMS.Resources.Resource.PigBornList, "Index", "PigBorn", new { }, new { Class = "btn btn-info" })
+  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList +"豬隻列表", "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
 </div>
 
 @section JS{
@@ -281,6 +284,16 @@
           if (index == 0 || index == 2 || index == 7) {
             editInput.addClass('datetimepicker');
           }
+
+          if (index == 1) {
+            @*element = 
+            @foreach(var boars in list)
+            {
+
+            }*@
+            editInput.addClass('boars')
+          }
+
           editInput.val(val);
           $(this).html("").append(editInput);
         }
@@ -329,7 +342,7 @@
         language: 'zh-TW'
       });
     }
-
+    
     $(function () {
       init();
       $("#slide_basedata").click(function () {

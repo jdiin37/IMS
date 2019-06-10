@@ -3,6 +3,8 @@
   /**/
 
   /**/
+
+  /**/
   <select name="@name" id="@name" @(elementStr == null ? "" : elementStr)>
     @{
       if (HasEmpty)
@@ -33,6 +35,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -52,6 +56,8 @@
 //code類別
 @helper getCategory(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
+  /**/
+
   /**/
 
   string requriedStr = "", multiple = "";
@@ -75,6 +81,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -93,6 +101,8 @@
 //使用區分都市
 @helper getUseIsCity(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
+  /**/
+
   /**/
 
   string requriedStr = "", multiple = "";
@@ -115,6 +125,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -133,6 +145,8 @@
 //非都市土地用地類別
 @helper getNonCityType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
+  /**/
+
   /**/
 
   string requriedStr = "", multiple = "";
@@ -156,6 +170,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -175,6 +191,8 @@
 //經營型態
 @helper getRunType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
+  /**/
+
   /**/
 
   string requriedStr = "", multiple = "";
@@ -198,6 +216,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -216,6 +236,8 @@
 //加工流程種類
 @helper getProcessType(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false)
 {
+  /**/
+
   /**/
 
   string requriedStr = "", multiple = "";
@@ -238,6 +260,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -258,6 +282,8 @@
 {
   /**/
 
+  /**/
+
   string requriedStr = "", multiple = "";
   requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
   multiple = hasMultiple ? "multiple" : "";
@@ -271,4 +297,64 @@
       }
     }
   </select>
+}
+
+//公豬編號列表
+@helper getBoars(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false,bool disable = false)
+{
+
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  string disableStr = disable ? "disabled":"";
+  <select name="@name" id="@name" @requriedStr @multiple @disableStr class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.PigBasic> list = IMSdb.PigBasic.Where(m => m.PigType.Substring(1,1) == "1").ToList();
+      foreach (var item in list)
+      {
+        string value = item.PigType + item.PigNo;
+        <option value="@value" @(value == val ? "selected" : "")>@value</option>
+      }
+    }
+  </select>
+}
+
+
+//豬隻品種性別
+@helper getPigTypeSex(string name, string val = null, bool hasEmpty = false, bool hasRequired = false, bool hasMultiple = false,bool disable = false)
+{
+
+  string requriedStr = "", multiple = "";
+  requriedStr = hasRequired ? "data-val=true data-val-required=<br>" + @IMS.Resources.Resource.Required : "";
+  multiple = hasMultiple ? "multiple" : "";
+  string disableStr = disable ? "disabled":"";
+  <select name="@name" id="@name" @requriedStr @multiple @disableStr class="form-control">
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      List<IMS.Models.CategorySub> list = IMSdb.CategorySub.Where(m => m.CategoryID == "PTS").ToList();
+      foreach (var item in list)
+      {
+        <option value="@item.SubValue" @(item.SubValue.ToString() == val ? "selected" : "")>@item.SubName</option>
+      }
+    }
+  </select>
+}
+
+//豬隻品種性別Label
+@helper getPigTypeSexLabel(string name, string val = null)
+{
+  /**/
+
+  /**/
+  
+  <label name="@name" id="@name"  >
+    @{
+      IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+      string subName = IMSdb.CategorySub.Where(m => m.CategoryID == "PTS" && m.SubValue == val).FirstOrDefault().SubName;     
+      if (subName != null) {
+        <span>@subName</span>
+      }     
+    }
+  </label>
 }

@@ -1,0 +1,63 @@
+﻿
+@{
+  ViewBag.Title = IMS.Resources.Resource.PigBornList;
+  IMS.DAL.IMSDBContext IMSdb = new IMS.DAL.IMSDBContext();
+}
+
+@model IMS.ViewModels.PigBornListVM
+
+<br />
+<ol class="breadcrumb">
+  <li class=""><a href="@Url.Action("Index","Main",new { area = "" })">首頁</a></li>
+  <li class=""><a href="@Url.Action("Index","Home")">@IMS.Resources.Resource.Model_Traceability</a></li>
+  <li class=""><a href="@Url.Action("Index","PigBasic")">@IMS.Resources.Resource.PigPM </a></li>
+  <li class="active">@IMS.Resources.Resource.PigBornList</li>
+</ol>
+<h2>@IMS.Resources.Resource.PigBornList</h2>
+
+
+
+<table class="table table-striped">
+
+  <tr>
+
+    <th>
+      出生日期
+    </th>
+    <th>
+      出生頭數
+    </th>
+    <th>
+      生產母豬編號
+    </th>
+    <th>
+      公豬編號
+    </th>
+
+  </tr>
+
+  @foreach (var item in Model.pigBornList)
+  {
+    
+    string momPigNo = IMSdb.PigBasic.Find(item.MomId).PigType + IMSdb.PigBasic.Find(item.MomId).PigNo;
+   
+    
+  <tr>
+    <td>
+      @if (item.BornDate != null)
+      {
+        <span>@item.BornDate.Value.ToString("yyyy-MM-dd")</span>
+      }
+    </td>
+    <td>
+      @item.BornCnt
+    </td>
+    <td>
+      @Html.ActionLink(momPigNo, "FarrowingRecord", "PigBasic", new { pigGid = item.MomId }, new { Class = "btn btn-link" })
+    </td>
+    <td>
+      @item.BoarNo
+    </td>
+  </tr>
+  }
+</table>
