@@ -275,12 +275,14 @@
 
               </div>
             </div>
-            <div class="panel-body" style="min-height:144px;">
+            <div class="panel-body workPanel">
               @Html.LabelFor(model => model.FirstOrDefault().WorkContent, htmlAttributes: new { @class = "control-label" })
               <span>:@item.WorkContent</span>
               @if (item.PhotoFile != null)
               {
-                <img src="@Url.Action("GetImage",new { seqNo = item.SeqNo })" class="img-responsive img-rounded" />
+                <a href="@Url.Action("GetImage",new { seqNo = item.SeqNo })" target="new">
+                  <img src="@Url.Action("GetImage",new { seqNo = item.SeqNo })" class="img-responsive img-rounded" />
+                </a>
               }
 
 

@@ -14,6 +14,10 @@ namespace IMS.Models
 
     public string TraceNo { get; set; }
 
+    public string SowType { get; set; }
+
+    public string BoarType { get; set; }
+
     public int Stage1sPigCnt { get; set; }
 
     public int Stage1ePigCnt { get; set; }

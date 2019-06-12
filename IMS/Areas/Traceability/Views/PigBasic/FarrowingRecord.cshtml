@@ -248,28 +248,21 @@
 
 @section JS{
   <script>
+    var boarsArr = [];
+
+    @foreach (var d in list)
+    {
+        @:boarsArr.push("@d.PigType@d.PigNo");
+    }
+
+    console.log(boarsArr);
+
     function init() {
         $('.btnEdit').attr("disabled", false);
         $('.btnSave').attr("disabled", true);
     }
-
-    //init();
-
-    //function EditMod() {
-    //    $('.editRow :input').attr("disabled", false);
-    //    $('.btnEdit').attr("disabled", true);
-    //    $('.btnSave').attr("disabled", false);
-    //}
-
-    //function NotEditMod() {
-    //    $('.editRow :input').attr("disabled", true);
-    //    $('.btnEdit').attr("disabled", false);
-    //    $('.btnSave').attr("disabled", true);
-    //}
-
+    
     function editMod(obj) {
-
-
       var $obj = $(obj);
       var $tr = $($obj.parents("tr"));
       console.log($tr);
@@ -286,11 +279,12 @@
           }
 
           if (index == 1) {
-            @*element = 
-            @foreach(var boars in list)
-            {
-
-            }*@
+            editInput = $('<select class="form-control" name="' + $(this).attr('name') + '">');
+            var optionsAsString = "";
+            for (var i = 0; i < boarsArr.length; i++) {
+              optionsAsString += "<option value='" + boarsArr[i] + "'>" + boarsArr[i] + "</option>";
+            }
+            editInput.append(optionsAsString);
             editInput.addClass('boars')
           }
 
@@ -312,7 +306,7 @@
       var $tr = $($obj.parents("tr"));
 
       var url = "http://" + document.location.host + "/api/FarrowingRecord/" + $tr.attr('id');
-      var data = $tr.find('input[name]').serialize();
+      var data = $tr.find('input[name],select[name]').serialize();
       $.ajax({
         type: "PUT",
         url: url,
@@ -320,7 +314,12 @@
         success: function (data) {
           console.log(data);
           $tr.find('td').each(function (index) {
-            if (index < $tr.find('td').length - 1) {
+            if (index == 1) {
+              var val = $(this).find('select').val().trim();
+              var display = $('<span>');
+              display.text(val);
+              $(this).html("").append(display);
+            }else if (index < $tr.find('td').length - 1) {
               var val = $(this).find('input').val().trim();
               var display = $('<span>');
               display.text(val);

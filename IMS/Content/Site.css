@@ -244,7 +244,14 @@ textarea {
   padding: 8px;
 }
 
+.workPanel{
+  min-height:200px;
+  max-height:200px;
+}
 
+.workPanel img{
+  height:100px;
+}
 @keyframes spin {
   0% {
         transform: rotate(0deg);

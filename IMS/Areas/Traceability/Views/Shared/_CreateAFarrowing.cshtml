@@ -8,9 +8,10 @@
       @Html.EditorFor(model => model.BreedingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
       @Html.ValidationMessageFor(model => model.BreedingDate, "", new { @class = "text-danger" })
     </td>
-    <td>
-      @Html.EditorFor(model => model.BoarNo, new { htmlAttributes = new { @class = "form-control" } })
-      @Html.ValidationMessageFor(model => model.BoarNo, "", new { @class = "text-danger" })
+    <td width="140px">
+      @getDropDown.getBoars("BoarNo")
+      @*@Html.EditorFor(model => model.BoarNo, new { htmlAttributes = new { @class = "form-control" } })
+      @Html.ValidationMessageFor(model => model.BoarNo, "", new { @class = "text-danger" })*@
     </td>
     <td>
       @Html.EditorFor(model => model.FarrowingDate, new { htmlAttributes = new { @class = "form-control datetimepicker" } })
