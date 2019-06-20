@@ -6,6 +6,7 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -75,6 +76,17 @@ namespace IMS.Areas.Traceability.Controllers
 
       return Json(totalPigCnt, JsonRequestBehavior.AllowGet);
     }
+
+    public ActionResult WhichStage(string whichStage) 
+    {
+      if (Request.IsAjaxRequest())
+      {
+        Session["WhichStage"] = whichStage;
+        return new HttpStatusCodeResult(HttpStatusCode.OK);
+      }
+      return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+    }
+
 
     public ActionResult GetPigCnt(DateTime sdate, DateTime edate, string dadType, string momType)
     {
@@ -213,10 +225,10 @@ namespace IMS.Areas.Traceability.Controllers
 
     }
     
-    public ActionResult CreateEditTrace(string traceNo)
+    public ActionResult CreateEditTrace(string traceNo,string whichStage ="")
     {
       ViewBag.TraceNo = traceNo;
-      
+      Session["WhichStage"] = whichStage;
 
       TraceMaster traceMaster = IMSdb.TraceMaster.Where(m => m.TraceNo == traceNo).FirstOrDefault();
       
@@ -521,7 +533,7 @@ namespace IMS.Areas.Traceability.Controllers
       IMSdb.TraceDetail.Remove(traceDetail);
       IMSdb.SaveChanges();
 
-      return RedirectToAction("CreateEditTrace", new { traceNo = traceDetail.TraceNo });
+      return RedirectToAction("CreateEditTrace", new { traceNo = traceDetail.TraceNo,whichStage = Session["WhichStage"] });
     }
     
 

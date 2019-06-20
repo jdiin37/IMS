@@ -47,149 +47,149 @@
 
 @using (Ajax.BeginForm("_TraceDetailsStage3", new { traceNo = ViewBag.TraceNo }, new AjaxOptions { UpdateTargetId = "traceDetailStage3-tool", HttpMethod = "Post", OnSuccess = "init();" }, new { enctype = "multipart/form-data" }))
 {
-  <div id="traceDetailStage3-tool">
+<div id="traceDetailStage3-tool">
 
-    <div class="row" id="div_TopArea">
-
-
-      <div class="col-md-4">
-        <h4><b>@IMS.Resources.Resource.Stage3 作業資料彙整</b></h4>
+  <div class="row" id="div_TopArea">
 
 
+    <div class="col-md-4">
+      <h4><b>@IMS.Resources.Resource.Stage3 作業資料彙整</b></h4>
 
 
-        <div id="FeedData" class="well-sm well">
-
-          @if (isFeed)
-          {
-            <h5>
-              @IMS.Resources.Resource.Stage3 總飼料量:
-              <span>@feedSum kg</span>
-            </h5>
-            <h5>
-              最後飼料日期:
-              <span>@lastFeedDate.Value.ToString("yyyy/MM/dd") </span>
-            </h5>
-          }
-          else
-          {
-            <h5>
-              <span class="text-danger">無飼料資料</span>
-            </h5>
-          }
 
 
-        </div>
+      <div id="FeedData" class="well-sm well">
 
-        <div id="InventoryData" class="well-sm well">
-
-          @if (isInventory)
-          {
-            <h5>
-              @IMS.Resources.Resource.Stage3 秤重重量 / 隻數:
-              <span>@sumWeight kg/ @lastInventoryPigCnt 隻</span>
-            </h5>
-
-
-            <h5>
-              最後秤重日期:
-              <span>@lastInventoryDate.ToString("yyyy/MM/dd")  </span>
-            </h5>
-            <h5>
-              平均重量:
-              <span>@avgWeight.ToString("0.00") kg</span>
-
-            </h5>
-            <h5>
-              最後秤重日齡:
-              <span>@lastInventoryDayAge - @lastInventoryDayAge_end  天</span>
-            </h5>
-          }
-          else
-          {
-            <h5>
-              <span class="text-danger">無秤重資料</span>
-            </h5>
-          }
-
-        </div>
-
-        <div id="ChangeData" class="well-sm well">
+        @if (isFeed)
+        {
           <h5>
-            @IMS.Resources.Resource.Stage3 豬隻異動:
-            @if (Stage3pigChangeCnt != 0)
-            {
+            @IMS.Resources.Resource.Stage3 總飼料量:
+            <span>@feedSum kg</span>
+          </h5>
+          <h5>
+            最後飼料日期:
+            <span>@lastFeedDate.Value.ToString("yyyy/MM/dd") </span>
+          </h5>
+        }
+        else
+        {
+          <h5>
+            <span class="text-danger">無飼料資料</span>
+          </h5>
+        }
 
-              if (Stage3pigChangeCnt > 0)
-              {
-                <span> 增加 @Stage3pigChangeCnt</span>
-              }
-              else
-              {
-                <span class="text-danger"> 減少 @(Math.Abs(Stage3pigChangeCnt))</span>
-              }
+
+      </div>
+
+      <div id="InventoryData" class="well-sm well">
+
+        @if (isInventory)
+        {
+          <h5>
+            @IMS.Resources.Resource.Stage3 秤重重量 / 隻數:
+            <span>@sumWeight kg/ @lastInventoryPigCnt 隻</span>
+          </h5>
+
+
+          <h5>
+            最後秤重日期:
+            <span>@lastInventoryDate.ToString("yyyy/MM/dd")  </span>
+          </h5>
+          <h5>
+            平均重量:
+            <span>@avgWeight.ToString("0.00") kg</span>
+
+          </h5>
+          <h5>
+            最後秤重日齡:
+            <span>@lastInventoryDayAge - @lastInventoryDayAge_end  天</span>
+          </h5>
+        }
+        else
+        {
+          <h5>
+            <span class="text-danger">無秤重資料</span>
+          </h5>
+        }
+
+      </div>
+
+      <div id="ChangeData" class="well-sm well">
+        <h5>
+          @IMS.Resources.Resource.Stage3 豬隻異動:
+          @if (Stage3pigChangeCnt != 0)
+          {
+
+            if (Stage3pigChangeCnt > 0)
+            {
+              <span> 增加 @Stage3pigChangeCnt</span>
             }
             else
             {
-              <span class="text-info">無豬隻異動資料</span>
+              <span class="text-danger"> 減少 @(Math.Abs(Stage3pigChangeCnt))</span>
             }
-          </h5>
-
-        </div>
-
-
-      </div>
-      <div class="col-md-8">
-        <h4><b>@IMS.Resources.Resource.Stage2 新增作業</b></h4>
-        @Html.Action("_CreateTraceDetailStage3", new { traceNo = ViewBag.TraceNo })
+          }
+          else
+          {
+            <span class="text-info">無豬隻異動資料</span>
+          }
+        </h5>
 
       </div>
+
+
     </div>
+    <div class="col-md-8">
+      <h4><b>@IMS.Resources.Resource.Stage2 新增作業</b></h4>
+      @Html.Action("_CreateTraceDetailStage3", new { traceNo = ViewBag.TraceNo })
 
-    <h4>
-      <b>
-        作業紀錄
-      </b>
+    </div>
+  </div>
 
-      <span class="pull-right">
-        <label class="checkbox-inline bg-default myCheckBox">
-          <input type="checkbox" value="" class="ckb-default" checked>秤重
-          <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
-          </span>
-        </label>
-        <label class="checkbox-inline bg-warning myCheckBox">
-          <input type="checkbox" value="" class="ckb-warning" checked>飼料
-          <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
-          </span>
-        </label>
-        <label class="checkbox-inline bg-success myCheckBox">
-          <input type="checkbox" value="" class="ckb-success" checked>投藥
-          <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoMed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
-          </span>
-        </label>
-        <label class="checkbox-inline bg-danger myCheckBox">
-          <input type="checkbox" value="" class="ckb-danger" checked>疫苗
-          <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoVaccine" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
-          </span>
-        </label>
-        <label class="checkbox-inline bg-info myCheckBox">
-          <input type="checkbox" value="" class="ckb-info" checked>其他
-          <span class="badge">
-            @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo
-            && m.WorkType != "DoWeight" && m.WorkType != "DoFeed" && m.WorkType != "DoMed" && m.WorkType != "DoVaccine"
-            && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
-          </span>
-        </label>
-      </span>
-    </h4>
-    @*<hr class="underline-b" />*@
+  <h4>
+    <b>
+      作業紀錄( @Model.Count() 筆)
+    </b>
+
+    <span class="pull-right">
+      <label class="checkbox-inline bg-default myCheckBox">
+        <input type="checkbox" value="" class="ckb-default" checked>秤重
+        <span class="badge">
+          @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoWeight" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
+        </span>
+      </label>
+      <label class="checkbox-inline bg-warning myCheckBox">
+        <input type="checkbox" value="" class="ckb-warning" checked>飼料
+        <span class="badge">
+          @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoFeed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
+        </span>
+      </label>
+      <label class="checkbox-inline bg-success myCheckBox">
+        <input type="checkbox" value="" class="ckb-success" checked>投藥
+        <span class="badge">
+          @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoMed" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
+        </span>
+      </label>
+      <label class="checkbox-inline bg-danger myCheckBox">
+        <input type="checkbox" value="" class="ckb-danger" checked>疫苗
+        <span class="badge">
+          @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo && m.WorkType == "DoVaccine" && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
+        </span>
+      </label>
+      <label class="checkbox-inline bg-info myCheckBox">
+        <input type="checkbox" value="" class="ckb-info" checked>其他
+        <span class="badge">
+          @IMSdb.TraceDetail.Where(m => m.TraceNo == thisTraceNo
+          && m.WorkType != "DoWeight" && m.WorkType != "DoFeed" && m.WorkType != "DoMed" && m.WorkType != "DoVaccine"
+          && m.WorkStage == (int)IMSEnum.WorkStage.Stage3).Count()
+        </span>
+      </label>
+    </span>
+  </h4>
+  @*<hr class="underline-b" />*@
 
 
-
+  <div class="container-fluid historylist">
 
     <div class="row">
       <br />
@@ -230,7 +230,7 @@
           panelTitle = "離生長";
         }
 
-        <div class="col-md-4 col-sm-6">
+        <div class="col-md-4 col-sm-6 col-xd-12">
           <div class="panel @cssClass">
             <div class="panel-heading clearfix">
               <div class="panel-title pull-left panel-tool">
@@ -329,11 +329,11 @@
       }
     </div>
 
-
+    </div>
 
 
 
 
 
   </div>
-}
+  }

@@ -252,6 +252,19 @@ textarea {
 .workPanel img{
   height:100px;
 }
+
+.historylist > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.historylist .row > div {
+  display: inline-block;
+  float: none;
+}
+
+
 @keyframes spin {
   0% {
         transform: rotate(0deg);

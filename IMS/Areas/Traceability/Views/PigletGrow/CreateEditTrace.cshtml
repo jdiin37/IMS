@@ -108,7 +108,7 @@
   }
 </h5>
 
-<ul class="nav nav-tabs" role="tablist">
+<ul class="nav nav-tabs" role="tablist" id="stageTabList">
   @if (stage1flag)
   {
     <li role="presentation" class="active"><a href="#stage1" aria-controls="stage1" role="tab" data-toggle="tab">@IMS.Resources.Resource.Stage1</a></li>
@@ -180,14 +180,12 @@
         });
     }
 
-    function ajax_whichStage() {
-      var url = "@Url.Action("WhichStage")?traceNo=" + "@Model.TraceNo" ;      
+    function ajax_whichStage(stage) {
+      var url = "@Url.Action("WhichStage")?whichStage=" + stage ;      
       return $.ajax({
           type: "GET",
           url: url,
           success: function (data) {
-            console.log(data);
-            $('#span_nowPigCnt').text(data);
           }
         });
     }
@@ -289,12 +287,18 @@
       $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         hideAllTool();
 
+        var whichStage = $(e.target).closest('li').find('a').attr('href').replace('#','');
+        ajax_whichStage(whichStage);
       });
     }
 
     $(function () {
      
       init();
+
+      var link = '@Session["WhichStage"]';
+      console.log(link);
+      $('#stageTabList a[href="#' + link + '"]').tab('show');
     });
   </script>
 }
