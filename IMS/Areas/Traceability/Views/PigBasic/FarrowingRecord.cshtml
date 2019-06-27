@@ -22,7 +22,7 @@
 </style>
 
 <h3 class="">
-  <b>@IMS.Resources.Resource.PigNo - @Model.PigNo </b>
+  <b>@IMS.Resources.Resource.PigNo - @Model.PigNo</b> <small><label>日齡:</label> @ViewBag.DayAge <label>天</label></small>
   <button id="slide_basedata" class=" btn btn-info btn-circle">明細</button>
 </h3>
 
@@ -57,12 +57,13 @@
           </div>
           @Html.ValidationMessageFor(model => model.PigType, "", new { @class = "text-danger" })
         </div>
-        @*<div class="col-sm-6">
-              <div class="btn-group pull-right">
-                  <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
-                  @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
-              </div>
-          </div>*@
+        <div class="col-sm-6">
+          <label>日齡:</label> @ViewBag.DayAge <label>天</label>
+            @*<div class="btn-group pull-right">
+                <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
+                @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })
+            </div>*@
+        </div>
       </div>
     </div>
     <hr />

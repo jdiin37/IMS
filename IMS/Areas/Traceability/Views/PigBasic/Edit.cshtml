@@ -10,8 +10,7 @@
 
 @using (Html.BeginForm())
 {
-  @Html.AntiForgeryToken()
-
+  @Html.AntiForgeryToken() 
   <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -46,6 +45,7 @@
             @*@Html.ValidationMessageFor(model => model.PigType, "", new { @class = "text-danger" })*@
           </div>
           <div class="col-sm-6">
+            <label>日齡:</label> @ViewBag.DayAge <label>天</label>
             <div class="btn-group pull-right">
               <input type="submit" value="@IMS.Resources.Resource.Comm_Save" class="btn btn-primary" />
               @Html.ActionLink(IMS.Resources.Resource.Comm_BackToList, "Index", new { pigFarmId = Model.PigFarmId }, new { Class = "btn btn-default" })

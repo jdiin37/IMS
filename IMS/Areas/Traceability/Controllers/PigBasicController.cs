@@ -101,6 +101,7 @@ namespace IMS.Areas.Traceability.Controllers
       }
 
       PigBasic pigBasic = IMSdb.PigBasic.Find(pigGid);
+      ViewBag.DayAge = (DateTime.Today - (pigBasic.PigBirth ?? DateTime.Today)).TotalDays;
       ViewBag.PigFarmId = pigBasic.PigFarmId;
       ViewBag.PigFarmName = IMSdb.PigFarm.Where(m => m.Id.ToString() == pigBasic.PigFarmId).FirstOrDefault().Name;
 
@@ -189,7 +190,7 @@ namespace IMS.Areas.Traceability.Controllers
       {
         return HttpNotFound();
       }
-
+      ViewBag.DayAge = (DateTime.Today - (item.PigBirth ?? DateTime.Today)).TotalDays;
       return View(item);
     }
 
